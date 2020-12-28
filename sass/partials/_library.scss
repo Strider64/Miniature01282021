@@ -1,0 +1,34 @@
+$c2px125em: 0.125em !default; // 0.125em = 2px
+$c4px0250em: 0.250em !default; // 0.250em = 4px
+$c6px375em: 0.375em !default; // 0.375em = 6px
+$c8px05em: 0.500em !default; // 0.500em = 8px
+$c10px625em: 0.625em !default; // 0.625em = 10px
+$c12px075em: 0.750em !default; // 0.750em = 12px
+$c14px0875em: 0.875em !default; // 0.875em = 14px
+$c15px0938em: 0.938em !default; // 0.938em = 15px
+$c18px1125em: 1.125em !default; // 1.125em = 18px
+$c20px1250em: 1.250em !default; // 1.250em = 20px
+$c36px2250em: 2.250em !default; // 2.250em = 36px
+$c50px3125em: 3.125em !default; // 3.125em = 50px
+$c80px5em: 5.000em !default; // 5em = 80px
+$c1200px75em: 75.000em !default; // 75em = 1200px
+
+$factor: 0.5 !default; // Factor for resizing
+$percentageFactor: 0.554 !default;
+//$factor: 1 !default; // Factor for resizing
+//$percentageFactor: 1 !default;
+
+
+
+
+$max-percentage: 100% !default; // max width set at 100%
+
+$grid-template-columns: repeat(7, minmax($c80px5em, 1fr)) !default;
+$grid-template-rows: $c50px3125em !default;
+
+$box-shadow: 0 $c2px125em $c2px125em rgba(0, 0, 0, 0.1) !default;
+
+$padding: $c10px625em 0 !default;
+
+$font-size: 1.2em !default;
+
