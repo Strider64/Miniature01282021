@@ -290,6 +290,90 @@ ul.topNav li.right {float: right;}
   }
 }
 
+.cmsEditor {
+  width: 100%;
+  max-width: 75.000em;
+  background-color: #fef0db;
+  padding: 1.250em;
+  fieldset {
+    border: 0.125em solid #000;
+    padding: 0.938em;
+    margin-bottom: 0.625em;
+    legend {
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      font-size: 1.4em;
+      color: #000;
+      padding: 0 0.313em;
+    }
+    label.heading {
+      clear: left;
+      float: left;
+      display: block;
+      width: 6.250em;
+      height: 2.500em;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.2em;
+      color: #000;
+      text-transform: capitalize;
+      padding: 5px 0 0 0;
+    }
+    input.headingInput {
+      clear: right;
+      display: block;
+      width: 100%;
+      height: 1.875em;
+      border: none;
+      outline: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.0em;
+      color: #2e2e2e;
+      padding-left: 0.313em;
+      margin-bottom: 0.625em;
+    }
+    label.content {
+      clear: both;
+      float: left;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.2em;
+      line-height: 1.5;
+      color: #000;
+    }
+    }
+    textarea.contentTextarea {
+      border: none;
+      outline: none;
+      resize: none;
+      width: 100%;
+      max-width: 100%;
+      height: 12.50em;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.0em;
+      line-height: 1.5;
+      padding: 0.625em 0.313em;
+      margin-top: 0.125em;
+    }
+    input.submitBtn {
+      cursor: pointer;
+      clear: both;
+      border: none;
+      outline: none;
+      float: right;
+      display: block;
+      width: 6.500em;
+      height: 2.500em;
+      background-color: #000;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.0em;
+      text-align: center;
+      text-transform: capitalize;
+      color: #fff;
+      margin-top: 0.625em;
+      margin-right: 0em;
+  }
+
+}
+
+
 
 
 footer {
@@ -367,11 +451,12 @@ CSS Grid layout for modern browsers:
     .mainArea {
       grid-column: 2/3;
       display: grid;
-      grid-template-columns: 25.000em repeat(2, 37.000em) 1fr;
-      grid-template-rows: fit-content(25.000em) fit-content(1fr) fit-content(3.125em);
+      grid-template-columns: 25.000em repeat(2, 37.000em);
+      grid-template-rows: fit-content(25.000em) fit-content(1fr) 50.000em fit-content(3.125em);
       justify-content: space-evenly;
       justify-items: auto;
-      grid-gap: 0.938em;
+      grid-gap: 0;
+      margin: 1.250em;
     }
 
     .navigation {
@@ -395,9 +480,17 @@ CSS Grid layout for modern browsers:
       grid-column: 2/4;
       grid-row: 2/3;
     }
-    .footerStyle {
+
+    .contentContainer {
       grid-column: 1/4;
       grid-row: 3/4;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+    }
+    .footerStyle {
+      grid-column: 1/4;
+      grid-row: 4/5;
       justify-items: auto;
     }
   } // End Media Query
