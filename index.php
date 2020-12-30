@@ -2,16 +2,25 @@
 require_once 'assets/config/config.php';
 require_once "vendor/autoload.php";
 
-use Miniature\CalendarDynamic;
+use Miniature\CalendarObject;
+use Miniature\CMS;
 
-
-$monthly = new CalendarDynamic();
+$monthly = new CalendarObject();
 
 $monthly->phpDate();
 
 $calendar = $monthly->generateCalendar('index.php');
+//$all = CMS::fetch_all();
+//echo "<pre>" . print_r($all, 1) . "</pre>";
+$enter = $_POST['submit'] ?? Null;
 
+if ($enter) {
+    $args = $_POST['cms'];
+    $cms = new CMS($args);
+    //echo "<pre>" . print_r($cms, 1) . "</pre>";
+    $cms->create();
 
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -38,13 +47,13 @@ $calendar = $monthly->generateCalendar('index.php');
     </nav>
     <aside class="sidebar shadow">
         <form class="login" method="post" action="index.php">
-            <label class="username" for="username" class="password">Username</label>
+            <label class="username" for="username">Username</label>
             <input id="username" type="text" name="username" value="">
 
-            <label class="password" for="password" class="password">Password</label>
+            <label class="password" for="password">Password</label>
             <input id="password" type="password" name="password">
 
-            <button type="submit" name="submit" value="Login">Login</button>
+            <button type="submit" name="submit" value="login">Login</button>
         </form>
     </aside>
     <main id="content" class="mainStyle">
@@ -69,6 +78,21 @@ $calendar = $monthly->generateCalendar('index.php');
                     perspiciatis, provident quibusdam sint sit voluptates. Illo, rem!</p></div>
         </div>
     </main>
+    <div class="contentContainer">
+        <form class="cmsEditor" action="index.php" method="post">
+            <fieldset>
+                <legend>Content Management System</legend>
+                    <input type="hidden" name="cms[user_id]" value="3">
+                    <input type="hidden" name="cms[author]" value="John Pepp">
+                    <label class="heading" for="heading">Heading</label>
+                    <input class="headingInput" id="heading" type="text" name="cms[heading]" value="" tabindex="1" required autofocus>
+                    <label class="content" for="content">Content</label>
+                    <textarea class="contentTextarea" id="content" name="cms[content]" tabindex="2"></textarea>
+                <input class="submitBtn" type="submit" name="submit" value="enter">
+            </fieldset>
+        </form>
+    </div>
+
     <footer class="footerStyle">
         <p>&copy; <?php echo date("Y") ?> The Miniature Photographer</p>
     </footer>

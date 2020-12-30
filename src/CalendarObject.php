@@ -9,7 +9,7 @@ use JetBrains\PhpStorm\Pure;
 use Miniature\Database as DB;
 use PDO;
 
-class CalendarDynamic {
+class CalendarObject {
 
     protected $username;
     protected $query;
@@ -84,8 +84,8 @@ class CalendarDynamic {
 
     protected function todaysSquares(): void
     {
-
-        $result = $this->checkForEntry($this->current->format("Y-m-d"));
+        $result = false;
+        //$result = $this->checkForEntry($this->current->format("Y-m-d"));
 
         if ($result) {
             $bold = "day-entry";

@@ -1,9 +1,9 @@
 <?php
 require_once 'assets/config/config.php';
 require_once "vendor/autoload.php";
-use Miniature\CalendarDynamic;
+use Miniature\CalendarObject;
 
-$monthly = new CalendarDynamic();
+$monthly = new CalendarObject();
 
 $monthly->phpDate();
 
