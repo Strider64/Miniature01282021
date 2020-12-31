@@ -31,16 +31,14 @@ class CMS extends DatabaseObject
 //        $this->date_updated = $args['date_updated'] ?? null;
 //        $this->date_added = $args['date_added'] ?? null;
 
-        static::$db_columns = $this->setColumnsNames();
+        static::$db_columns = $this->setColumnsNames(); // Set ColumnNames in DatabaseObject() Class:
 
         // Caution: allows private/protected properties to be set
         foreach($args as $k => $v) {
            if(property_exists($this, $k)) {
             $this->$k = $v;
+            static::$objects[] = $v;
           }
-        }
-        foreach ($args as $key => $value) {
-            static::$objects[] = $value;
         }
     }
 
