@@ -60,37 +60,23 @@ if ($enter) {
         <div class="twoBoxes">
             <div class="box dkBlueGray"><?= $calendar ?></div>
             <div class="box">
-                <h1>Lorem ipsum dolor sit amet.</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta est eum quidem vitae voluptatem.
-                    Accusantium architecto autem corporis eius, eveniet incidunt ipsum maxime placeat quis quos ratione ut
-                    vel voluptate voluptates voluptatum! Ab aperiam aspernatur atque autem, cupiditate delectus deserunt
-                    doloribus esse expedita illo incidunt ipsa, labore nihil nisi numquam qui ratione repellendus, sed sequi
-                    soluta. Ab accusamus aliquid cupiditate deleniti dignissimos dolore et, eveniet facilis hic nam neque
-                    officia provident, quis totam ullam! A aperiam asperiores eum id iure quam quidem ratione sit?
-                    Consequuntur inventore iste labore nostrum optio quasi repudiandae saepe velit! Assumenda fuga fugit nam
-                    possimus quod sapiente, ullam vero! Amet, deleniti ducimus eius et eum facere hic incidunt ipsum
-                    laboriosam laudantium libero maiores mollitia officia quam quibusdam quidem ratione repellat saepe sunt
-                    velit voluptatem voluptates voluptatibus voluptatum? A aliquid asperiores commodi, consectetur culpa
-                    dolore eius esse eum excepturi fuga, impedit iste magni modi molestias natus neque nisi obcaecati odit
-                    officia perferendis porro possimus quaerat quos, rem sunt tempora vitae voluptate. Exercitationem fuga
-                    nulla, quaerat ratione repellendus vero voluptas. Alias aliquid amet assumenda consectetur, ducimus et
-                    ex facilis labore, minima nisi optio porro rem unde! Accusantium aliquam architecto deleniti
-                    perspiciatis, provident quibusdam sint sit voluptates. Illo, rem!</p></div>
+                <form class="cmsEditor" action="index.php" method="post">
+                    <fieldset>
+                        <legend>Content Management System</legend>
+                        <input type="hidden" name="cms[user_id]" value="3">
+                        <input type="hidden" name="cms[author]" value="John Pepp">
+                        <label class="heading" for="heading">Heading</label>
+                        <input class="headingInput" id="heading" type="text" name="cms[heading]" value="" tabindex="1" required autofocus>
+                        <label class="content" for="content">Content</label>
+                        <textarea class="contentTextarea" id="content" name="cms[content]" tabindex="2"></textarea>
+                        <input class="submitBtn" type="submit" name="submit" value="enter">
+                    </fieldset>
+                </form>
+            </div>
         </div>
     </main>
     <div class="contentContainer">
-        <form class="cmsEditor" action="index.php" method="post">
-            <fieldset>
-                <legend>Content Management System</legend>
-                    <input type="hidden" name="cms[user_id]" value="3">
-                    <input type="hidden" name="cms[author]" value="John Pepp">
-                    <label class="heading" for="heading">Heading</label>
-                    <input class="headingInput" id="heading" type="text" name="cms[heading]" value="" tabindex="1" required autofocus>
-                    <label class="content" for="content">Content</label>
-                    <textarea class="contentTextarea" id="content" name="cms[content]" tabindex="2"></textarea>
-                <input class="submitBtn" type="submit" name="submit" value="enter">
-            </fieldset>
-        </form>
+
     </div>
 
     <footer class="footerStyle">
