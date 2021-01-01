@@ -3,9 +3,12 @@
 
 namespace Miniature;
 
+use Exception;
+use JetBrains\PhpStorm\Pure;
 use PDO;
 use DateTime;
 use DateTimeZone;
+
 class CMS extends DatabaseObject
 {
     protected static string $table = "cms";
@@ -18,8 +21,19 @@ class CMS extends DatabaseObject
     public $date_added;
 
 
-    public static function intro($content = "", $count = 100, $id = 0) {
+    #[Pure] public static function intro($content = "", $count = 100, $id = 0): string
+    {
         return substr($content, 0, $count) . '<a class="moreBtn" href="edit.php?id=' . (int)$id . '"> ...more</a>';
+    }
+
+    public static function styleDate($prettyDate): string
+    {
+        try {
+            $dateStylized = new DateTime($prettyDate, new DateTimeZone("America/Detroit"));
+        } catch (Exception $e) {
+            error_log("Caught $e");
+        }
+        return $dateStylized->format("F j, Y");
     }
 
     protected function setColumnsNames(): array
