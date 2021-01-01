@@ -281,10 +281,10 @@ footer {
 
 /* CMS Threads */
 .cmsThreads {
-  display: block;
   width: 100%;
   height: 50.000em;
   background-color: #fff;
+  padding: 1.250em;
   .display {
     padding: 1.250em;
     h3, h4 {
@@ -295,6 +295,28 @@ footer {
       font-size: 1.0em;
       line-height: 1.5;
     }
+    .moreBtn {
+      color: #4786ff;
+      text-decoration: none;
+    }
+  }
+  /* Pagination */
+
+  .pagination {
+    margin: 1em 1.250em;
+  }
+
+  .pagination a, .pagination span {
+    display: inline-block;
+    font-size: 1.2em;
+    color: #000;
+    text-decoration: none;
+    margin: 0 5px;
+  }
+
+  .pagination span.selected {
+    font-weight: bold;
+    color: #4786ff;
   }
 }
 
@@ -369,7 +391,7 @@ CSS Grid layout for modern browsers:
       justify-content: space-evenly;
       justify-items: auto;
       grid-gap: 1.250em;
-      margin: 0em;
+      margin: 0;
     }
 
     .navigation {
@@ -397,7 +419,6 @@ CSS Grid layout for modern browsers:
     .contentContainer {
       grid-column: 1/4;
       grid-row: 3/4;
-      background-color: #fff;
       display: flex;
       justify-content: center;
     }

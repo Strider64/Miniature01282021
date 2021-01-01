@@ -705,10 +705,11 @@ footer p {
 
 /* CMS Threads */
 .cmsThreads {
-  display: block;
   width: 100%;
   height: 50em;
   background-color: #fff;
+  padding: 1.25em;
+  /* Pagination */
 }
 .cmsThreads .display {
   padding: 1.25em;
@@ -720,6 +721,24 @@ footer p {
 .cmsThreads .display p {
   font-size: 1em;
   line-height: 1.5;
+}
+.cmsThreads .display .moreBtn {
+  color: #4786ff;
+  text-decoration: none;
+}
+.cmsThreads .pagination {
+  margin: 1em 1.25em;
+}
+.cmsThreads .pagination a, .cmsThreads .pagination span {
+  display: inline-block;
+  font-size: 1.2em;
+  color: #000;
+  text-decoration: none;
+  margin: 0 5px;
+}
+.cmsThreads .pagination span.selected {
+  font-weight: bold;
+  color: #4786ff;
 }
 
 @media screen and (min-width: 50em) {
@@ -985,7 +1004,7 @@ CSS Grid layout for modern browsers:
       justify-content: space-evenly;
       justify-items: auto;
       grid-gap: 1.25em;
-      margin: 0em;
+      margin: 0;
     }
 
     .navigation {
@@ -1015,7 +1034,6 @@ CSS Grid layout for modern browsers:
     .contentContainer {
       grid-column: 1/4;
       grid-row: 3/4;
-      background-color: #fff;
       display: flex;
       justify-content: center;
     }

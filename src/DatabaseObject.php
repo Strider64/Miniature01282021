@@ -30,7 +30,6 @@ class DatabaseObject
 
     public static function page($perPage, $offset): array
     {
-        echo "<pre>" . print_r(static::$db_columns, 1) . "</pre>";
         $sql = 'SELECT * FROM ' . static::$table . ' ORDER BY id DESC LIMIT :perPage OFFSET :blogOffset';
         $stmt = Database::pdo()->prepare($sql); // Prepare the query:
         $stmt->execute(['perPage' => $perPage, 'blogOffset' => $offset]); // Execute the query with the supplied data:
