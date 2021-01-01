@@ -4,6 +4,8 @@
 namespace Miniature;
 
 use PDO;
+use DateTime;
+use DateTimeZone;
 class CMS extends DatabaseObject
 {
     protected static string $table = "cms";
@@ -14,6 +16,11 @@ class CMS extends DatabaseObject
     public $content;
     public $date_updated;
     public $date_added;
+
+
+    public static function intro($content = "", $count = 100, $id = 0) {
+        return substr($content, 0, $count) . '<a class="moreBtn" href="edit.php?id=' . (int)$id . '"> ...more</a>';
+    }
 
     protected function setColumnsNames(): array
     {
