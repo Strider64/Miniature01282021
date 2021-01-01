@@ -47,7 +47,7 @@ $cms = CMS::fetch_all();
 
                 echo "<h3>" . $record->heading . " on " . $dateAdded->format("F j, Y") . "</h3>\n";
                 echo "<h4> Created by" . $record->author . "</h4>";
-                echo "<p>" . $record->content . "</p>\n";
+                echo "<p>" . CMS::intro($record->content) . "</p>\n";
                echo '</article>';
             }
             ?>
