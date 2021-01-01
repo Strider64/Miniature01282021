@@ -55,109 +55,11 @@ Typography
 --------------------------------------------------------------*/
 
 body {
+  font-size: 1.125em;
   margin: 0;
 }
 
-body,
-button,
-input,
-select,
-textarea {
-  font-family: 'Source Sans Pro', 'Helvetica', 'Arial', sans-serif;
-  font-size: 18px;
-  line-height: 1.5;
-}
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  clear: both;
-}
-
-p {
-  margin-bottom: 1.5em;
-}
-
-b,
-strong {
-  font-weight: bold;
-}
-
-dfn,
-cite,
-em,
-i {
-  font-style: italic;
-}
-
-blockquote {
-  margin: 0 1.5em;
-}
-
-address {
-  margin: 0 0 1.5em;
-}
-
-pre {
-  display: inline-block;
-  font-family: "Courier 10 Pitch", Courier, monospace;
-  color: #ddca7e;
-  background: #282c34;
-  padding: .5em .8em;
-  border-radius: .2em;
-}
-
-code,
-kbd,
-tt,
-var {
-  font: 15px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
-}
-
-abbr,
-acronym {
-  border-bottom: 1px dotted #666;
-  cursor: help;
-}
-
-mark,
-ins {
-  background: #fff9c0;
-  text-decoration: none;
-}
-
-sup,
-sub {
-  font-size: 75%;
-  height: 0;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sup {
-  bottom: 1ex;
-}
-
-sub {
-  top: .5ex;
-}
-
-small {
-  font-size: 75%;
-}
-
-big {
-  font-size: 125%;
-}
-
-figure {
-  margin: 0;
-  padding: 0;
-}
 
 /*--------------------------------------------------------------
 General styling
@@ -171,17 +73,10 @@ General styling
 }
 
 
-h1,
-h2,
-h3 {
-  text-align: center;
-  margin: 0;
-  padding: 1em 0;
-}
+
 
 p {
   margin: 0;
-  padding: 1em 0;
 }
 
 img {
@@ -234,15 +129,15 @@ img {
     outline: none;
     color: #fff;
     border: none;
-    background-color: var(--mauve);
+    background-color: var(--blue);
     box-shadow: 2px 2px 1px rgba(#000, 0.5);
     &:hover, &:active {
-      background-color: #86B3D1;
+      background-color: var(--dk-blue-gray);
     }
   }
 }
 .sidebar {
-  background: #fff;
+  background: var(--mauve);
   padding: 0.625em;
 }
 .navigation {
@@ -283,8 +178,6 @@ ul.topNav li.right {float: right;}
 
 .mainStyle {
   color: #555;
-  background-color: var(--mauve);
-  padding: 0.625em 0.313em;
   h1 {
     text-align: left;
   }
@@ -386,12 +279,32 @@ footer {
   }
 }
 
+/* CMS Threads */
+.cmsThreads {
+  display: block;
+  width: 100%;
+  height: 50.000em;
+  background-color: #fff;
+  .display {
+    padding: 1.250em;
+    h3, h4 {
+      font-size: 1.0em;
+      line-height: 1.0;
+    }
+    p {
+      font-size: 1.0em;
+      line-height: 1.5;
+    }
+  }
+}
+
 @media screen and (min-width: 50em) {
   @supports (display: flex) {
 
     .twoBoxes {
       display: flex;
       justify-content: space-evenly;
+      background-color: #fff;
 
       .box {
         display: block;
@@ -455,8 +368,8 @@ CSS Grid layout for modern browsers:
       grid-template-rows: fit-content(25.000em) fit-content(1fr) 50.000em fit-content(3.125em);
       justify-content: space-evenly;
       justify-items: auto;
-      grid-gap: 0;
-      margin: 1.250em;
+      grid-gap: 1.250em;
+      margin: 0em;
     }
 
     .navigation {

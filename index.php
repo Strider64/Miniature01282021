@@ -19,8 +19,9 @@ if ($enter) {
     $cms = new CMS($args);
     //echo "<pre>" . print_r($cms, 1) . "</pre>";
     $cms->create();
-
 }
+
+//CMS::set_Objects();
 ?>
 <!doctype html>
 <html lang="en">
@@ -39,13 +40,13 @@ if ($enter) {
     </header>
     <nav class="navigation">
         <ul class="topNav">
-            <li><a href="#">home</a></li>
+            <li><a href="index.php">home</a></li>
             <li><a href="#">about</a></li>
-            <li><a href="#">gallery</a></li>
+            <li><a href="cms_forums.php">CMS threads</a></li>
             <li><a href="#">contact</a></li>
         </ul>
     </nav>
-    <aside class="sidebar shadow">
+    <aside class="sidebar">
         <form class="login" method="post" action="index.php">
             <label class="username" for="username">Username</label>
             <input id="username" type="text" name="username" value="">
