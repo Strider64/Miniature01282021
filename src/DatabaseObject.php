@@ -20,8 +20,10 @@ class DatabaseObject
     {
         $query = "SELECT * FROM " . static::$table;
         $stmt = Database::pdo()->query($query);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+
+
 
     /*
      * Grab Record will be used for editing:
@@ -57,18 +59,20 @@ class DatabaseObject
     /*
      * Create prepared statements using ? question marks for the total amount of columns:
     */
-    #[Pure] protected static function placeholders(): string
+    #[Pure] protected static function placeholders($arrayLength): string
     {
-        return str_repeat ('?, ',  count (static::minus_dates()) - 1) . '?';
+        return str_repeat ('?, ', $arrayLength-1 ) . '?';
     }
 
     public function create():bool
     {
+        $arrayLength = count(static::minus_dates());
+        $placeholders = self::placeholders($arrayLength);
         /*
          * Create the actual query to send to database table:
          */
         $query = 'INSERT INTO ' . static::$table . '(' . implode(", ", static::minus_id()) . ' )';
-        $query .= ' VALUES ( ' . static::placeholders() . ', NOW(), NOW() )'; // Notice the 2 NOW() calls for dates:
+        $query .= ' VALUES ( ' . $placeholders . ', NOW(), NOW() )'; // Notice the 2 NOW() calls for dates:
         /*
          * Prepare the Database Table:
          */
@@ -87,7 +91,10 @@ class DatabaseObject
     }
 
     public function update($id) {
-
+        $query = 'UPDATE ' . static::$table . ' SET user_id=:user_id, author=:author, heading=:heading, content=:content, date_updated=NOW() WHERE id =:id';
+        $stmt = static::pdo()->prepare($query);
+        $result = $stmt->execute(['user_id' => $this->user_id, 'author' => $this->author, 'heading' => $this->heading, 'content' => $this->content, 'id' => $this->id]);
+        return $result;
     }
 
     public function delete($id) {
