@@ -39,13 +39,7 @@ $cms = CMS::fetch_all();
             <?php
             foreach ($cms as $record) {
                 echo '<article  class="display">' . "\n";
-                try {
-                    $dateAdded = new DateTime($record->date_added, new DateTimeZone("America/Detroit"));
-                } catch (Exception $e) {
-                    error_log("Caught $e");
-                }
-
-                echo "<h3>" . $record->heading . " on " . $dateAdded->format("F j, Y") . "</h3>\n";
+                echo "<h3>" . $record->heading . " on " . CMS::styleDate($record->date_added) . "</h3>\n";
                 echo "<h4> Created by" . $record->author . "</h4>";
                 echo "<p>" . CMS::intro($record->content) . "</p>\n";
                echo '</article>';
