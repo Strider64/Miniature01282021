@@ -23,7 +23,7 @@ class CMS extends DatabaseObject
 
     #[Pure] public static function intro($content = "", $count = 100, $id = 0): string
     {
-        return substr($content, 0, $count) . '<a class="moreBtn" href="edit.php?id=' . (int)$id . '"> ...more</a>';
+        return substr($content, 0, $count) . '<a class="moreBtn" href="edit.php?id=' . urldecode($id) . '"> ...more</a>';
     }
 
     public static function styleDate($prettyDate): string

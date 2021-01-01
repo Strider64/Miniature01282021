@@ -3,9 +3,18 @@ require_once 'assets/config/config.php';
 require_once "vendor/autoload.php";
 
 use Miniature\CMS;
+use Miniature\Pagination;
 
-$cms = CMS::fetch_all();
+//$cms = CMS::fetch_all();
 //echo "<pre>" . print_r($cms, 1) . "</pre>";
+$current_page = $_GET['page'] ?? 1;
+$per_page = 3;
+$total_count = CMS::countAll();
+
+$pagination = new Pagination($current_page, $per_page, $total_count);
+$offset = $pagination->offset();
+
+$cms = CMS::page($per_page, $offset);
 
 ?>
 <!doctype html>
@@ -44,6 +53,8 @@ $cms = CMS::fetch_all();
                 echo "<p>" . CMS::intro($record->content) . "</p>\n";
                echo '</article>';
             }
+            $url = 'cms_forums.php';
+            echo $pagination->page_links($url);
             ?>
         </div>
     </main>
