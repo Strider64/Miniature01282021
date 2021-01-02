@@ -43,7 +43,7 @@ class DatabaseObject
         $query = "SELECT * FROM " . static::$table . " WHERE id=:id LIMIT 1";
         $stmt = Database::pdo()->prepare($query);
         $stmt->execute(['id' => $id]);
-        return $stmt->fetch(PDO::FETCH_OBJ);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     /*
@@ -101,10 +101,11 @@ class DatabaseObject
     }
 
     public function update($id) {
-        $query = 'UPDATE ' . static::$table . ' SET user_id=:user_id, author=:author, heading=:heading, content=:content, date_updated=NOW() WHERE id =:id';
-        $stmt = static::pdo()->prepare($query);
-        $result = $stmt->execute(['user_id' => $this->user_id, 'author' => $this->author, 'heading' => $this->heading, 'content' => $this->content, 'id' => $this->id]);
-        return $result;
+          echo "<pre>" . print_r(static::$db_columns, 1) . "</pre>";
+//        $query = 'UPDATE ' . static::$table . ' SET user_id=:user_id, author=:author, heading=:heading, content=:content, date_updated=NOW() WHERE id =:id';
+//        $stmt = static::pdo()->prepare($query);
+//        $result = $stmt->execute(['user_id' => $this->user_id, 'author' => $this->author, 'heading' => $this->heading, 'content' => $this->content, 'id' => $this->id]);
+//        return $result;
     }
 
     public function delete($id) {
