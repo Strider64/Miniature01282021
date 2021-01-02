@@ -7,7 +7,9 @@ use Miniature\CMS;
 $id = $_GET['id'];
 
 $record = CMS::fetch_by_id($id);
-
+$cmsRecord = new CMS($record);
+//echo "<pre>" . print_r($cmsRecord,1) . "</pre>";
+//echo "<pre>" . print_r($cmsRecord->update($id), 1) . "</pre>";
 
 ?>
 <!doctype html>
@@ -45,6 +47,13 @@ $record = CMS::fetch_by_id($id);
         </form>
     </aside>
     <main id="content" class="mainStyle">
+        <form class="formGrid" action="edit.php" method="post">
+            <label class="headingLabel" for="heading">Heading</label>
+            <input class="enterHeading" id="heading" type="text" name="cms[heading]" value="<?= $cmsRecord->heading ?>" tabindex="1" required autofocus>
+            <label class="textLabel" for="content">Content</label>
+            <textarea class="contentTextarea" id="content" name="cms[content]" tabindex="2"><?=$cmsRecord->content ?></textarea>
+            <input class="myButton" type="submit" name="submit" value="enter" tabindex="3">
+        </form>
     </main>
     <div class="contentContainer">
 
