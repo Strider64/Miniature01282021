@@ -11,6 +11,7 @@ class DatabaseObject
     static protected string $table = "";
     static protected array $db_columns = [];
     static protected $objects = [];
+    static protected $arrayOfObjects = [];
     static protected $minus_id = [];
 
     /*
@@ -33,7 +34,7 @@ class DatabaseObject
         $sql = 'SELECT * FROM ' . static::$table . ' ORDER BY id DESC LIMIT :perPage OFFSET :blogOffset';
         $stmt = Database::pdo()->prepare($sql); // Prepare the query:
         $stmt->execute(['perPage' => $perPage, 'blogOffset' => $offset]); // Execute the query with the supplied data:
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     /*
      * Grab Record will be used for editing:
@@ -100,12 +101,19 @@ class DatabaseObject
 
     }
 
-    public function update($id) {
-          echo "<pre>" . print_r(static::$db_columns, 1) . "</pre>";
-//        $query = 'UPDATE ' . static::$table . ' SET user_id=:user_id, author=:author, heading=:heading, content=:content, date_updated=NOW() WHERE id =:id';
-//        $stmt = static::pdo()->prepare($query);
-//        $result = $stmt->execute(['user_id' => $this->user_id, 'author' => $this->author, 'heading' => $this->heading, 'content' => $this->content, 'id' => $this->id]);
-//        return $result;
+    public function update() {
+        $attribute_pairs = [];
+
+        foreach (static::$arrayOfObjects as $key => $value)
+        {
+            if($key === 'id') { continue; }
+            $attribute_pairs[] = "{$key}=:{$key}";
+        }
+
+        $sql = 'UPDATE ' . static::$table . ' SET ' . implode(", ", $attribute_pairs) . ', date_updated=NOW() WHERE id =:id';
+
+        $stmt = Database::pdo()->prepare($sql);
+        $stmt->execute(static::$arrayOfObjects);
     }
 
     public function delete($id) {
