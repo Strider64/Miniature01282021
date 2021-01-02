@@ -4,37 +4,11 @@ require_once "vendor/autoload.php";
 
 use Miniature\CMS;
 
-$cms = new CMS();
+$id = $_GET['id'];
 
-$delete_id = (int) ($_GET['delete_id'] ?? null);
+$record = CMS::fetch_by_id($id);
 
-/*
- * If user/admin deletes a post then send the
- * request off to the delete method in order for
- * that particular record (data) to be delete.
- */
-if ($delete_id && is_int($delete_id)) {
-    $result = $cms->delete($delete_id);
-    if ($result) {
-        header("Location: cms_forums.php");
-        exit();
-    }
-}
 
-$id = (int) htmlspecialchars($_GET['id'] ?? null);
-
-/*
- * Set the class to of the record (data) to be display
- * to the class then fetch the data to the $record
- * ARRAY do be displayed on the website.
- */
-if ($id && is_int($id)) {
-    $record = CMS::fetch_by_id($id);
-    $cmsRecord = new CMS($record);
-} else {
-    header("Location: cms_forums.php");
-    exit();
-}
 ?>
 <!doctype html>
 <html lang="en">
@@ -60,18 +34,17 @@ if ($id && is_int($id)) {
         </ul>
     </nav>
     <aside class="sidebar">
+        <form class="login" method="post" action="index.php">
+            <label class="username" for="username">Username</label>
+            <input id="username" type="text" name="username" value="">
 
+            <label class="password" for="password">Password</label>
+            <input id="password" type="password" name="password">
+
+            <button type="submit" name="submit" value="login">Login</button>
+        </form>
     </aside>
     <main id="content" class="mainStyle">
-        <form class="formGrid" action="cms_forums.php" method="post">
-            <input type="hidden" name="cms[id]" value="<?= $cmsRecord->id ?>">
-            <label class="headingLabel" for="heading">Heading</label>
-            <input class="enterHeading" id="heading" type="text" name="cms[heading]" value="<?= $cmsRecord->heading ?>" tabindex="1" required autofocus>
-            <label class="textLabel" for="content">Content</label>
-            <textarea class="contentTextarea" id="content" name="cms[content]" tabindex="2"><?=$cmsRecord->content ?></textarea>
-            <input class="myButton" type="submit" name="submit" value="enter" tabindex="3">
-            <a class="deleteBtn" href="edit.php?delete_id=<?= $cmsRecord->id ?>" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
-        </form>
     </main>
     <div class="contentContainer">
 

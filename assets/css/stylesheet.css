@@ -705,21 +705,55 @@ footer p {
 
 /* CMS Threads */
 .cmsThreads {
-  display: block;
-  width: 100%;
-  height: 50em;
-  background-color: #fff;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto;
+  justify-content: space-evenly;
+  justify-items: auto;
+  background-color: var(--mauve);
+  /* Pagination */
 }
 .cmsThreads .display {
+  grid-column: 1/2;
+  background-color: #fff;
   padding: 1.25em;
 }
-.cmsThreads .display h3, .cmsThreads .display h4 {
+.cmsThreads .display h3 {
+  font-size: 1.4em;
+  line-height: 1;
+}
+.cmsThreads .display h4 {
   font-size: 1em;
   line-height: 1;
 }
 .cmsThreads .display p {
   font-size: 1em;
   line-height: 1.5;
+}
+.cmsThreads .display .moreBtn {
+  color: #844D36;
+  text-decoration: none;
+}
+.cmsThreads .display .moreBtn:hover {
+  color: #4CAF50;
+}
+.cmsThreads .pagination {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  background-color: var(--dk-blue-gray);
+  padding: 1.25em;
+  margin: 0;
+}
+.cmsThreads .pagination a, .cmsThreads .pagination span {
+  display: inline-block;
+  font-size: 1.2em;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 5px;
+}
+.cmsThreads .pagination span.selected {
+  font-weight: bold;
+  color: #ffff00;
 }
 
 @media screen and (min-width: 50em) {
@@ -1015,7 +1049,6 @@ CSS Grid layout for modern browsers:
     .contentContainer {
       grid-column: 1/4;
       grid-row: 3/4;
-      background-color: #fff;
       display: flex;
       justify-content: center;
     }
