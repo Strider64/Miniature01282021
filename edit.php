@@ -3,18 +3,11 @@ require_once 'assets/config/config.php';
 require_once "vendor/autoload.php";
 
 use Miniature\CMS;
-use Miniature\Pagination;
 
-//$cms = CMS::fetch_all();
-//echo "<pre>" . print_r($cms, 1) . "</pre>";
-$current_page = $_GET['page'] ?? 1;
-$per_page = 3;
-$total_count = CMS::countAll();
+$id = $_GET['id'];
 
-$pagination = new Pagination($current_page, $per_page, $total_count);
-$offset = $pagination->offset();
+$record = CMS::fetch_by_id($id);
 
-$cms = CMS::page($per_page, $offset);
 
 ?>
 <!doctype html>
@@ -24,8 +17,8 @@ $cms = CMS::page($per_page, $offset);
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CMS Threads</title>
     <link rel="stylesheet" href="assets/css/stylesheet.css">
+    <title>Edit Record</title>
 </head>
 <body class="site">
 <section class="mainArea">
@@ -41,22 +34,17 @@ $cms = CMS::page($per_page, $offset);
         </ul>
     </nav>
     <aside class="sidebar">
+        <form class="login" method="post" action="index.php">
+            <label class="username" for="username">Username</label>
+            <input id="username" type="text" name="username" value="">
 
+            <label class="password" for="password">Password</label>
+            <input id="password" type="password" name="password">
+
+            <button type="submit" name="submit" value="login">Login</button>
+        </form>
     </aside>
     <main id="content" class="mainStyle">
-        <div class="cmsThreads">
-            <?php
-            $url = 'cms_forums.php';
-            echo $pagination->page_links($url);
-            foreach ($cms as $record) {
-                echo '<article  class="display">' . "\n";
-                echo "<h3>" . $record->heading . " on " . CMS::styleDate($record->date_added) . "</h3>\n";
-                echo "<h4> Created by" . $record->author . "</h4>";
-                echo "<p>" . CMS::intro($record->content, 200, $record->id) . "</p>\n";
-               echo '</article>';
-            }
-            ?>
-        </div>
     </main>
     <div class="contentContainer">
 

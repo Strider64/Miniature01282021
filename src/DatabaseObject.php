@@ -38,12 +38,12 @@ class DatabaseObject
     /*
      * Grab Record will be used for editing:
      */
-    public static function fetch_by_id($id): array
+    public static function fetch_by_id($id)
     {
-        $query = "SELECT " . implode(", ", static::$db_columns) . " FROM " . static::$table . " WHERE id=:id LIMIT 1";
+        $query = "SELECT * FROM " . static::$table . " WHERE id=:id LIMIT 1";
         $stmt = Database::pdo()->prepare($query);
         $stmt->execute(['id' => $id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
     /*
