@@ -4,12 +4,21 @@ require_once "vendor/autoload.php";
 
 use Miniature\CMS;
 
-$id = $_GET['id'];
 
-$record = CMS::fetch_by_id($id);
-$cmsRecord = new CMS($record);
-//echo "<pre>" . print_r($cmsRecord,1) . "</pre>";
-//echo "<pre>" . print_r($cmsRecord->update($id), 1) . "</pre>";
+
+$id = (int) htmlspecialchars($_GET['id'] ?? null);
+
+if ($id && is_int($id)) {
+    $record = CMS::fetch_by_id($id);
+    $cmsRecord = new CMS($record);
+} else {
+    header("Location: cms_forums.php");
+    exit();
+}
+
+
+
+
 
 ?>
 <!doctype html>
@@ -47,7 +56,8 @@ $cmsRecord = new CMS($record);
         </form>
     </aside>
     <main id="content" class="mainStyle">
-        <form class="formGrid" action="edit.php" method="post">
+        <form class="formGrid" action="cms_forums.php" method="post">
+            <input type="hidden" name="cms[id]" value="<?= $cmsRecord->id ?>">
             <label class="headingLabel" for="heading">Heading</label>
             <input class="enterHeading" id="heading" type="text" name="cms[heading]" value="<?= $cmsRecord->heading ?>" tabindex="1" required autofocus>
             <label class="textLabel" for="content">Content</label>

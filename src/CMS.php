@@ -58,7 +58,7 @@ class CMS extends DatabaseObject
         foreach($args as $k => $v) {
            if(property_exists($this, $k)) {
             $this->$k = $v;
-            static::$params[$k] = $v;
+            static::$arrayOfObjects[$k] = $v;
             static::$objects[] = $v;
           }
         }

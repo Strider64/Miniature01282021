@@ -4,9 +4,13 @@ require_once "vendor/autoload.php";
 
 use Miniature\CMS;
 use Miniature\Pagination;
+if (isset($_POST['submit'])) {
+    $args = $_POST['cms'];
+    $update = new CMS($args);
+    $update->update();
+    //echo "<pre>" .  print_r($args, 1) . "</pre>";
+}
 
-//$cms = CMS::fetch_all();
-//echo "<pre>" . print_r($cms, 1) . "</pre>";
 $current_page = $_GET['page'] ?? 1;
 $per_page = 3;
 $total_count = CMS::countAll();
@@ -50,9 +54,9 @@ $cms = CMS::page($per_page, $offset);
             echo $pagination->page_links($url);
             foreach ($cms as $record) {
                 echo '<article  class="display">' . "\n";
-                echo "<h3>" . $record->heading . " on " . CMS::styleDate($record->date_added) . "</h3>\n";
-                echo "<h4> Created by" . $record->author . "</h4>";
-                echo "<p>" . CMS::intro($record->content, 200, $record->id) . "</p>\n";
+                echo "<h3>" . $record['heading'] .  "</h3>\n";
+                echo "<h4> Created by " . $record['author'] . " on " . CMS::styleDate($record['date_added']) . " updated on " . CMS::styleDate($record['date_updated']) . "</h4>";
+                echo "<p>" . nl2br(CMS::intro($record['content'], 200, $record['id'])) . "</p>\n";
                echo '</article>';
             }
             ?>
