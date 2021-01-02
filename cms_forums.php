@@ -54,9 +54,11 @@ $cms = CMS::page($per_page, $offset);
             echo $pagination->page_links($url);
             foreach ($cms as $record) {
                 echo '<article  class="display">' . "\n";
-                echo "<h3>" . $record['heading'] .  "</h3>\n";
-                echo "<h4> Created by " . $record['author'] . " on " . CMS::styleDate($record['date_added']) . " updated on " . CMS::styleDate($record['date_updated']) . "</h4>";
-                echo "<p>" . nl2br(CMS::intro($record['content'], 200, $record['id'])) . "</p>\n";
+                if (!empty($record)) {
+                    echo "<h3>" . $record['heading'] . "</h3>\n";
+                }
+                echo sprintf("<h4> Created by %s on %s updated on %s</h4>", $record['author'], CMS::styleDate($record['date_added']), CMS::styleDate($record['date_updated']));
+                echo sprintf("<p>%s</p>\n", nl2br(CMS::intro($record['content'], 200, $record['id'])));
                echo '</article>';
             }
             ?>
