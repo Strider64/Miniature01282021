@@ -31,7 +31,7 @@ class DatabaseObject
 
     public static function page($perPage, $offset): array
     {
-        $sql = 'SELECT * FROM ' . static::$table . ' ORDER BY id DESC LIMIT :perPage OFFSET :blogOffset';
+        $sql = 'SELECT * FROM ' . static::$table . ' ORDER BY date_updated DESC LIMIT :perPage OFFSET :blogOffset';
         $stmt = Database::pdo()->prepare($sql); // Prepare the query:
         $stmt->execute(['perPage' => $perPage, 'blogOffset' => $offset]); // Execute the query with the supplied data:
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -106,7 +106,7 @@ class DatabaseObject
 
         foreach (static::$arrayOfObjects as $key => $value)
         {
-            if($key === 'id') { continue; }
+            if($key === 'id') { continue; } // Don't include the id:
             $attribute_pairs[] = "{$key}=:{$key}";
         }
 
