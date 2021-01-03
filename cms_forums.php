@@ -4,20 +4,37 @@ require_once "vendor/autoload.php";
 
 use Miniature\CMS;
 use Miniature\Pagination;
+
+/*
+ * If user/admin has update a particular comment
+ * then send that record (data) to the CMS class
+ * and update the data to the database table using
+ * the update method.
+ */
 if (isset($_POST['submit'])) {
     $args = $_POST['cms'];
     $update = new CMS($args);
     $update->update();
-    //echo "<pre>" .  print_r($args, 1) . "</pre>";
 }
 
-$current_page = $_GET['page'] ?? 1;
-$per_page = 3;
-$total_count = CMS::countAll();
+/*
+ * Using pagination in order to have a nice looking
+ * website page.
+ */
+$current_page = $_GET['page'] ?? 1; // Current Page
+$per_page = 3; // Total number of records to be displayed:
+$total_count = CMS::countAll(); // Total Records in the db table:
 
+/* Send the 3 variables to the Pagination class to be processed */
 $pagination = new Pagination($current_page, $per_page, $total_count);
+
+/* Grab the offset (page) location from using the offset method */
 $offset = $pagination->offset();
 
+/*
+ * Grab the data from the CMS class method *static*
+ * and put the data into an array variable.
+ */
 $cms = CMS::page($per_page, $offset);
 
 ?>

@@ -8,6 +8,11 @@ $cms = new CMS();
 
 $delete_id = (int) ($_GET['delete_id'] ?? null);
 
+/*
+ * If user/admin deletes a post then send the
+ * request off to the delete method in order for
+ * that particular record (data) to be delete.
+ */
 if ($delete_id && is_int($delete_id)) {
     $result = $cms->delete($delete_id);
     if ($result) {
@@ -18,6 +23,11 @@ if ($delete_id && is_int($delete_id)) {
 
 $id = (int) htmlspecialchars($_GET['id'] ?? null);
 
+/*
+ * Set the class to of the record (data) to be display
+ * to the class then fetch the data to the $record
+ * ARRAY do be displayed on the website.
+ */
 if ($id && is_int($id)) {
     $record = CMS::fetch_by_id($id);
     $cmsRecord = new CMS($record);
