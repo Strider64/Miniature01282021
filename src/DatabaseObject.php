@@ -11,7 +11,7 @@ class DatabaseObject
     static protected string $table = "";
     static protected array $db_columns = [];
     static protected $objects = [];
-    static protected $params = [];
+    static protected $arrayOfObjects = [];
 
     /*
      * There is NO read() method as fetch_all basically does the same thing:
@@ -132,7 +132,7 @@ class DatabaseObject
         $attribute_pairs = [];
 
         /* Create the prepared statement string */
-        foreach (static::$params as $key => $value)
+        foreach (static::$arrayOfObjects as $key => $value)
         {
             if($key === 'id') { continue; } // Don't include the id:
             $attribute_pairs[] = "{$key}=:{$key}"; // Assign it to an array:
@@ -148,7 +148,7 @@ class DatabaseObject
         $sql .= implode(", ", $attribute_pairs) . ', date_updated=NOW() WHERE id =:id';
 
         /* Normally in to lines, but you can daisy chain pdo method calls */
-        Database::pdo()->prepare($sql)->execute(static::$params);
+        Database::pdo()->prepare($sql)->execute(static::$arrayOfObjects);
 
     }
 
