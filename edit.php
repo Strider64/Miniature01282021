@@ -4,7 +4,17 @@ require_once "vendor/autoload.php";
 
 use Miniature\CMS;
 
+$cms = new CMS();
 
+$delete_id = (int) ($_GET['delete_id'] ?? null);
+
+if ($delete_id && is_int($delete_id)) {
+    $result = $cms->delete($delete_id);
+    if ($result) {
+        header("Location: cms_forums.php");
+        exit();
+    }
+}
 
 $id = (int) htmlspecialchars($_GET['id'] ?? null);
 
@@ -15,6 +25,8 @@ if ($id && is_int($id)) {
     header("Location: cms_forums.php");
     exit();
 }
+
+
 
 
 
@@ -63,6 +75,7 @@ if ($id && is_int($id)) {
             <label class="textLabel" for="content">Content</label>
             <textarea class="contentTextarea" id="content" name="cms[content]" tabindex="2"><?=$cmsRecord->content ?></textarea>
             <input class="myButton" type="submit" name="submit" value="enter" tabindex="3">
+            <a class="deleteBtn" href="edit.php?delete_id=<?= $cmsRecord->id ?>" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
         </form>
     </main>
     <div class="contentContainer">
