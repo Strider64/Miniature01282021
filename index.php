@@ -10,14 +10,17 @@ $monthly = new CalendarObject();
 $monthly->phpDate();
 
 $calendar = $monthly->generateCalendar('index.php');
-//$all = CMS::fetch_all();
-//echo "<pre>" . print_r($all, 1) . "</pre>";
+
 $enter = $_POST['submit'] ?? Null;
 
+/*
+ * If the user/admin has enter a comment then
+ * set the data in the class and then save it
+ * to the database.
+ */
 if ($enter) {
     $args = $_POST['cms'];
     $cms = new CMS($args);
-    //echo "<pre>" . print_r($cms, 1) . "</pre>";
     $cms->create();
 }
 
