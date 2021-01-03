@@ -25,13 +25,6 @@ if ($id && is_int($id)) {
     header("Location: cms_forums.php");
     exit();
 }
-
-
-
-
-
-
-
 ?>
 <!doctype html>
 <html lang="en">

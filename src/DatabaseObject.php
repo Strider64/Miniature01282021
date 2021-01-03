@@ -11,7 +11,7 @@ class DatabaseObject
     static protected string $table = "";
     static protected array $db_columns = [];
     static protected $objects = [];
-    static protected $arrayOfObjects = [];
+    static protected $params = [];
 
     /*
      * There is NO read() method as fetch_all basically does the same thing:
@@ -79,7 +79,7 @@ class DatabaseObject
     /*
      * I found using Question ? for placeholders was easier than trying
      * to figuring out how to use named placeholders. However, I'm sure it can be done,
-     * but I go by the mode if it isn't broke don't fix it. I don't think the variables
+     * but I go by the motto if it isn't broke don't fix it. I don't think the variables
      * have to be sanitized as I am using prepared statements. Though it wouldn't
      * hurt to do so and I might go back to do this when I start validating my code.
      * Once I get this class written I will be able to use it on login/registration
@@ -132,7 +132,7 @@ class DatabaseObject
         $attribute_pairs = [];
 
         /* Create the prepared statement string */
-        foreach (static::$arrayOfObjects as $key => $value)
+        foreach (static::$params as $key => $value)
         {
             if($key === 'id') { continue; } // Don't include the id:
             $attribute_pairs[] = "{$key}=:{$key}"; // Assign it to an array:
@@ -142,20 +142,20 @@ class DatabaseObject
          * The query/sql implodes the prepared statement array in the proper format
          * and I also hard code the date_updated column as I practically use that for
          * all my database table. Though I think you could override that in the child
-         * class if you needed to.
+         * class if you needed too.
          */
         $sql  = 'UPDATE ' . static::$table . ' SET ';
         $sql .= implode(", ", $attribute_pairs) . ', date_updated=NOW() WHERE id =:id';
 
-        /* Normally in to lines, but you can daisy chain pdo method calls */
-        Database::pdo()->prepare($sql)->execute(static::$arrayOfObjects);
+        /* Normally in two lines, but you can daisy chain pdo method calls */
+        Database::pdo()->prepare($sql)->execute(static::$params);
 
     }
 
     /*
      * Delete is probably the most easiest of CRUD (Create Read Update Delete),
-     * but is the most dangerous method of the four as it is permanent of
-     * the methods. USE WITH CAUTION!
+     * but is the most dangerous method of the four as the erasure of the data is permanent of
+     * PlEASE USE WITH CAUTION! (I use a small javascript code to warn users of deletion)
      */
     public function delete($id): bool
     {
