@@ -4,6 +4,28 @@ require_once "vendor/autoload.php";
 
 use Miniature\CalendarObject;
 use Miniature\CMS;
+use Miniature\Database;
+use Miniature\Pagination;
+
+/*
+ * Using pagination in order to have a nice looking
+ * website page.
+ */
+$current_page = $_GET['page'] ?? 1; // Current Page
+$per_page = 3; // Total number of records to be displayed:
+$total_count = CMS::countAll(); // Total Records in the db table:
+
+/* Send the 3 variables to the Pagination class to be processed */
+$pagination = new Pagination($current_page, $per_page, $total_count);
+
+/* Grab the offset (page) location from using the offset method */
+$offset = $pagination->offset();
+
+/*
+ * Grab the data from the CMS class method *static*
+ * and put the data into an array variable.
+ */
+$cms = CMS::page($per_page, $offset);
 
 $monthly = new CalendarObject();
 
@@ -44,7 +66,7 @@ if ($enter) {
     <nav class="navigation">
         <ul class="topNav">
             <li><a href="index.php">home</a></li>
-            <li><a href="#">about</a></li>
+            <li><a href="./admin/index.php">admin</a></li>
             <li><a href="cms_forums.php">CMS threads</a></li>
             <li><a href="#">contact</a></li>
         </ul>
@@ -61,22 +83,20 @@ if ($enter) {
         </form>
     </aside>
     <main id="content" class="mainStyle">
-        <div class="twoBoxes">
-            <div class="box dkBlueGray"><?= $calendar ?></div>
-            <div class="box">
-                <form class="cmsEditor" action="index.php" method="post">
-                    <fieldset>
-                        <legend>Content Management System</legend>
-                        <input type="hidden" name="cms[user_id]" value="3">
-                        <input type="hidden" name="cms[author]" value="John Pepp">
-                        <label class="heading" for="heading">Heading</label>
-                        <input class="headingInput" id="heading" type="text" name="cms[heading]" value="" tabindex="1" required autofocus>
-                        <label class="content" for="content">Content</label>
-                        <textarea class="contentTextarea" id="content" name="cms[content]" tabindex="2"></textarea>
-                        <input class="submitBtn" type="submit" name="submit" value="enter">
-                    </fieldset>
-                </form>
-            </div>
+        <div class="cmsThreads">
+            <?php
+            $url = 'index.php';
+            echo $pagination->page_links($url);
+            foreach ($cms as $record) {
+                echo '<article  class="display">' . "\n";
+                if (!empty($record)) {
+                    echo "<h3>" . $record['heading'] . "</h3>\n";
+                }
+                echo sprintf("<h4> Created by %s on %s updated on %s</h4>", $record['author'], CMS::styleDate($record['date_added']), CMS::styleDate($record['date_updated']));
+                echo sprintf("<p>%s</p>\n", nl2br(CMS::intro($record['content'], 200, $record['id'])));
+                echo '</article>';
+            }
+            ?>
         </div>
     </main>
     <div class="contentContainer">
