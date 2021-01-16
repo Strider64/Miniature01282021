@@ -24,11 +24,7 @@ class Users {
     public $username = NULL;
     public $duplicate = "duplicate";
 
-    protected static function pdo(): PDO
-    {
-        $db = DB::getInstance();
-        return $db->getConnection();
-    }
+
 
     /* Create (Insert) new users information */
 
@@ -45,7 +41,7 @@ class Users {
         unset($data['password']);
         try {
             $this->query = 'INSERT INTO users (fullName, username, status, password, security, email, date_added) VALUES (:fullName, :username, :status, :password, :security, :email, Now())';
-            $this->stmt = static::pdo()->prepare($this->query);
+            $this->stmt = Database::pdo()->prepare($this->query);
             $this->result = $this->stmt->execute([':fullName' => $data['fullName'], ':username' => $data['username'], ':status' => $data['status'], ':password' => $this->pwd, ':security' => 'newuser', ':email' => $data['email']]);
         } catch (PDOException $e) {
 
@@ -91,7 +87,7 @@ class Users {
         $this->query = 'SELECT id, password FROM users WHERE username=:username';
 
 
-        $this->stmt = static::pdo()->prepare($this->query); // Prepare the query:
+        $this->stmt = Database::pdo()->prepare($this->query); // Prepare the query:
         $this->stmt->execute([':username' => $username]); // Execute the query with the supplied user's emaile:
 
         $this->result = $this->stmt->fetch(PDO::FETCH_OBJ); // Fetch the User
@@ -136,7 +132,7 @@ class Users {
 
     private function retrieveSalt($email) {
         $this->query = "SELECT salt FROM members WHERE email=:email";
-        $this->stmt = static::pdo()->prepare($this->query);
+        $this->stmt = Database::pdo()->prepare($this->query);
         $this->stmt->execute([':email' => $email]);
         $this->stmt->setFetchMode(PDO::FETCH_OBJ);
         return $this->stmt->fetchColumn();
@@ -145,7 +141,7 @@ class Users {
     public function username($id = 0) {
 
         $this->query = "SELECT username FROM users WHERE id=:id";
-        $this->stmt = static::pdo()->prepare($this->query);
+        $this->stmt = Database::pdo()->prepare($this->query);
         $this->stmt->execute([':id' => $id]);
         $this->user = $this->stmt->fetch(PDO::FETCH_OBJ);
         return $this->user->username; // Send back Real Name of User:
@@ -156,7 +152,7 @@ class Users {
         $this->query = 'SELECT security_level FROM users WHERE confirmation_code=:confirmation_code';
 
 
-        $this->stmt = static::pdo()->prepare($this->query); // Prepare the query:
+        $this->stmt = Database::pdo()->prepare($this->query); // Prepare the query:
         $this->stmt->execute([':confirmation_code' => $confirmation_code]); // Execute the query with the supplied user's parameter(s):
 
         $this->stmt->setFetchMode(PDO::FETCH_OBJ);
@@ -170,7 +166,7 @@ class Users {
         $this->query = 'UPDATE users SET security_level=:security_level WHERE confirmation_code=:confirmation_code';
 
 
-        $this->stmt = static::pdo()->prepare($this->query);
+        $this->stmt = Database::pdo()->prepare($this->query);
         $this->result = $this->stmt->execute([':security_level' => 'member', ':confirmation_code' => $confirmation_code]);
 
         if ($this->result) {

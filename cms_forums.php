@@ -49,6 +49,19 @@ $cms = CMS::page($per_page, $offset);
     <link rel="stylesheet" href="assets/css/stylesheet.css">
 </head>
 <body class="site">
+<div class="wrapper">
+    <div class="centerForm">
+        <form class="formGrid" action="index.php" method="post">
+            <input type="hidden" name="cms[user_id]" value="3">
+            <input type="hidden" name="cms[author]" value="John Pepp">
+            <label class="headingLabel" for="heading">Heading</label>
+            <input class="enterHeading" id="heading" type="text" name="cms[heading]" value="" tabindex="1" required autofocus>
+            <label class="textLabel" for="content">Content</label>
+            <textarea class="contentTextarea" id="content" name="cms[content]" tabindex="2"></textarea>
+            <input class="myButton" type="submit" name="submit" value="enter">
+        </form>
+    </div>
+</div>
 <section class="mainArea">
     <header class="headerStyle">
         <img src="assets/images/img-header-red-tailed-hawk-001.jpg" alt="Red-tailed Hawk">

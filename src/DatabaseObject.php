@@ -18,9 +18,9 @@ class DatabaseObject
      */
     public static function fetch_all(): array
     {
-        $query = "SELECT * FROM " . static::$table;
-        $stmt = Database::pdo()->query($query);
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
+        $sql = "SELECT * FROM " . static::$table;
+        return Database::pdo()->query($sql)->fetchAll(PDO::FETCH_OBJ);
+
     }
 
     /*
