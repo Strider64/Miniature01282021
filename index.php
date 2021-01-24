@@ -30,7 +30,7 @@ $monthly = new CalendarObject();
 
 $monthly->phpDate();
 
-$calendar = $monthly->generateCalendar('login.php');
+$calendar = $monthly->generateCalendar('index.php');
 
 $enter = $_POST['submit'] ?? Null;
 
@@ -79,7 +79,7 @@ if ($enter) {
     <main id="content" class="mainStyle">
         <div class="cmsThreads">
             <?php
-            $url = 'login.php';
+            $url = 'index.php';
             echo $pagination->page_links($url);
             foreach ($cms as $record) {
                 echo '<article  class="display">' . "\n";
