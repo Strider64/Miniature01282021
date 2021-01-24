@@ -35,12 +35,12 @@ if ($submit) {
     <header class="headerStyle">
         <img src="../assets/images/img-header-red-tailed-hawk-001.jpg" alt="Red-tailed Hawk">
     </header>
-    <nav class="navigation">
-        <ul class="topNav">
-            <li><a href="../index.php">home page</a></li>
-         </ul>
-    </nav>
-    <aside class="sidebar">
+    <div class="topLeft">
+        <nav class="navigation">
+            <ul class="topNav">
+                <li><a href="../index.php">home page</a></li>
+            </ul>
+        </nav>
         <form class="login" method="post" action="login.php">
             <label class="username" for="username">Username</label>
             <input id="username" type="text" name="user[username]" value="">
@@ -50,9 +50,12 @@ if ($submit) {
 
             <button type="submit" name="submit" value="login">Login</button>
         </form>
+    </div>
+    <aside class="sidebar">
+
     </aside>
-    <main id="content" class="mainStyle">
-        <div class="twoBoxes">
+    <main id="content" class="mainStyle"><!-- Part of a grid -->
+        <div class="twoBoxes"> <!-- flex boxes -->
             <div class="box">
 
             </div>

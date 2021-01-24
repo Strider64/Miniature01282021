@@ -63,14 +63,17 @@ if ($enter) {
     <header class="headerStyle">
         <img src="assets/images/img-header-red-tailed-hawk-001.jpg" alt="Red-tailed Hawk">
     </header>
-    <nav class="navigation">
-        <ul class="topNav">
-            <li><a href="index.php">home</a></li>
-            <li><a href="admin/login.php">admin</a></li>
-            <li><a href="cms_forums.php">CMS threads</a></li>
-            <li><a href="#">contact</a></li>
-        </ul>
-    </nav>
+    <div class="topLeft">
+        <nav class="navigation">
+            <ul class="topNav">
+                <li><a href="index.php">home</a></li>
+                <li><a href="admin/login.php">admin</a></li>
+                <li><a href="cms_forums.php">CMS threads</a></li>
+                <li><a href="#">contact</a></li>
+            </ul>
+        </nav>
+        <img src="assets/images/img-logo-001.jpg" alt="Logo for Website">
+    </div>
     <aside class="sidebar">
 
     </aside>
