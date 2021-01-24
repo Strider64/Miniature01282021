@@ -12,7 +12,7 @@ class Database {
 
     // Get an instance of the Database.
     // @return Database:
-    public static function getInstance(): Database
+    protected static function getInstance(): Database
     {
         if (!self::$_instance) {
             self::$_instance = new self();
@@ -45,7 +45,7 @@ class Database {
     }
 
     // Get the PDO connection:
-    public function getConnection(): PDO
+    protected function getConnection(): PDO
     {
         return $this->_connection;
     }

@@ -4,20 +4,45 @@ require_once "vendor/autoload.php";
 
 use Miniature\CalendarObject;
 use Miniature\CMS;
+use Miniature\Database;
+use Miniature\Pagination;
+
+/*
+ * Using pagination in order to have a nice looking
+ * website page.
+ */
+$current_page = $_GET['page'] ?? 1; // Current Page
+$per_page = 3; // Total number of records to be displayed:
+$total_count = CMS::countAll(); // Total Records in the db table:
+
+/* Send the 3 variables to the Pagination class to be processed */
+$pagination = new Pagination($current_page, $per_page, $total_count);
+
+/* Grab the offset (page) location from using the offset method */
+$offset = $pagination->offset();
+
+/*
+ * Grab the data from the CMS class method *static*
+ * and put the data into an array variable.
+ */
+$cms = CMS::page($per_page, $offset);
 
 $monthly = new CalendarObject();
 
 $monthly->phpDate();
 
-$calendar = $monthly->generateCalendar('index.php');
-//$all = CMS::fetch_all();
-//echo "<pre>" . print_r($all, 1) . "</pre>";
+$calendar = $monthly->generateCalendar('login.php');
+
 $enter = $_POST['submit'] ?? Null;
 
+/*
+ * If the user/admin has enter a comment then
+ * set the data in the class and then save it
+ * to the database.
+ */
 if ($enter) {
     $args = $_POST['cms'];
     $cms = new CMS($args);
-    //echo "<pre>" . print_r($cms, 1) . "</pre>";
     $cms->create();
 }
 
@@ -38,42 +63,35 @@ if ($enter) {
     <header class="headerStyle">
         <img src="assets/images/img-header-red-tailed-hawk-001.jpg" alt="Red-tailed Hawk">
     </header>
-    <nav class="navigation">
-        <ul class="topNav">
-            <li><a href="index.php">home</a></li>
-            <li><a href="#">about</a></li>
-            <li><a href="cms_forums.php">CMS threads</a></li>
-            <li><a href="#">contact</a></li>
-        </ul>
-    </nav>
+    <div class="topLeft">
+        <nav class="navigation">
+            <ul class="topNav">
+                <li><a href="index.php">home</a></li>
+                <li><a href="admin/login.php">admin</a></li>
+                <li><a href="cms_forums.php">CMS threads</a></li>
+                <li><a href="#">contact</a></li>
+            </ul>
+        </nav>
+        <img src="assets/images/img-logo-001.jpg" alt="Logo for Website">
+    </div>
     <aside class="sidebar">
-        <form class="login" method="post" action="index.php">
-            <label class="username" for="username">Username</label>
-            <input id="username" type="text" name="username" value="">
 
-            <label class="password" for="password">Password</label>
-            <input id="password" type="password" name="password">
-
-            <button type="submit" name="submit" value="login">Login</button>
-        </form>
     </aside>
     <main id="content" class="mainStyle">
-        <div class="twoBoxes">
-            <div class="box dkBlueGray"><?= $calendar ?></div>
-            <div class="box">
-                <form class="cmsEditor" action="index.php" method="post">
-                    <fieldset>
-                        <legend>Content Management System</legend>
-                        <input type="hidden" name="cms[user_id]" value="3">
-                        <input type="hidden" name="cms[author]" value="John Pepp">
-                        <label class="heading" for="heading">Heading</label>
-                        <input class="headingInput" id="heading" type="text" name="cms[heading]" value="" tabindex="1" required autofocus>
-                        <label class="content" for="content">Content</label>
-                        <textarea class="contentTextarea" id="content" name="cms[content]" tabindex="2"></textarea>
-                        <input class="submitBtn" type="submit" name="submit" value="enter">
-                    </fieldset>
-                </form>
-            </div>
+        <div class="cmsThreads">
+            <?php
+            $url = 'login.php';
+            echo $pagination->page_links($url);
+            foreach ($cms as $record) {
+                echo '<article  class="display">' . "\n";
+                if (!empty($record)) {
+                    echo "<h3>" . $record['heading'] . "</h3>\n";
+                }
+                echo sprintf("<h4> Created by %s on %s updated on %s</h4>", $record['author'], CMS::styleDate($record['date_added']), CMS::styleDate($record['date_updated']));
+                echo sprintf("<p>%s</p>\n", nl2br(CMS::intro($record['content'], 200, $record['id'])));
+                echo '</article>';
+            }
+            ?>
         </div>
     </main>
     <div class="contentContainer">
