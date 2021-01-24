@@ -23,7 +23,8 @@ class Login extends DatabaseObject
 
     public function __construct($args = [])
     {
-        static::$searchItem['username'] = $args['username'];
+        static::$params[] = $args['username'];
+        static::$searchItem = 'username';
         $this->hashed_password = $args['hashed_password'];
     }
 

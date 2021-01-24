@@ -12,7 +12,7 @@ class DatabaseObject
     static protected array $db_columns = [];
     static protected $objects = [];
     static protected $params = [];
-    static protected $searchItem = [];
+    static protected $searchItem;
 
     /*
      * There is NO read() method as fetch_all basically does the same thing:
@@ -20,8 +20,8 @@ class DatabaseObject
     public static function fetch_by_column_name($sql)
     {
         $stmt = Database::pdo()->prepare($sql);
-        $column = array_keys(static::$searchItem);
-        $stmt->execute([ $column[0] => static::$searchItem['username'] ]);
+
+        $stmt->execute([ static::$searchItem => static::$params[0] ]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
