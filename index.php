@@ -4,7 +4,6 @@ require_once "vendor/autoload.php";
 
 use Miniature\CalendarObject;
 use Miniature\CMS;
-use Miniature\Database;
 use Miniature\Pagination;
 
 /*
