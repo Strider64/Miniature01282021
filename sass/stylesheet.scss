@@ -16,6 +16,7 @@ Website Color Theme
   --white: #ffffff;
 }
 
+
 /*--------------------------------------------------------------
 Accessibility
 --------------------------------------------------------------*/
@@ -97,7 +98,7 @@ img {
   label.username {
     grid-column: 1/2;
     grid-row: 1/2;
-    background-color: darken(#86B3D1, 10%);
+    background-color: #86B3D1;
     color: #fff;
     text-align: center;
     line-height: 3.125em;
@@ -107,7 +108,7 @@ img {
   label.password {
     grid-column: 1/2;
     grid-row: 2/3;
-    background-color: darken(#86B3D1, 10%);
+    background-color: #86B3D1;
     color: #fff;
     text-align: center;
     line-height: 3.125em;
@@ -128,10 +129,10 @@ img {
     outline: none;
     color: #fff;
     border: none;
-    background-color: darken(#86B3D1, 10%);
+    background-color: var(--blue);
     box-shadow: 2px 2px 1px rgba(#000, 0.5);
     &:hover, &:active {
-      background-color: darken(#86B3D1, 20%);
+      background-color: var(--dk-blue-gray);
     }
   }
 }
@@ -141,7 +142,6 @@ img {
 }
 .navigation {
   background-color: var(--dk-blue-gray);
-  margin-bottom: 0.500em;
 }
 /*--------------------------------------------------------------
 Navigation Menu Styling
@@ -266,96 +266,7 @@ ul.topNav li.right {float: right;}
 
 }
 
-.dataEntry {
-  display: block;
-  width: 50.000em;
-  height: 37.000em;
-  background-color: #fef0db;
 
-}
-
-
-
-.formGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: auto;
-  justify-content: space-evenly;
-  justify-items: normal;
-  grid-gap: 1.250em;
-  background-color: #f1f1f1;
-  padding: 1.250em;
-}
-.headingLabel {
-  grid-column: 1/2;
-  grid-row: 1/2;
-  background-color: #86B3D1;
-  color: #fff;
-  text-align: center;
-  line-height: 3.125em;
-  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
-}
-.enterHeading {
-  grid-column: 2/5;
-  grid-row: 1/2;
-  border: none;
-  outline: none;
-  background-color: #fff;
-  font-size: 1.2em;
-  line-height: 1.5;
-  height: 3.125em;
-  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
-  padding: 0.313em 0.625em;
-}
-.textLabel {
-  grid-column: 1/2;
-  grid-row: 2/3;
-  background-color: #86B3D1;
-  color: #fff;
-  text-align: center;
-  line-height: 3.125em;
-  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
-}
-.contentTextarea {
-  grid-column: 2/5;
-  grid-row: 2/3;
-  border: none;
-  outline: none;
-  resize: none;
-  background-color: #fff;
-  font-size: 1.2em;
-  line-height: 1.5;
-  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
-  height: 25.00em;
-  padding: 0.625em;
-}
-.deleteBtn {
-  grid-column: 1/2;
-  grid-row: 3/4;
-  display: flex;
-  justify-content: center;
-  text-decoration: none;
-  background-color: #86B3D1;
-  color: #fff;
-  line-height: 3.125em;
-  &:hover, &:active {
-    background-color: darken(#86B3D1, 10%);
-  }
-}
-.myButton {
-  grid-column: 2/5;
-  grid-row: 3/4;
-  outline: none;
-  color: #fff;
-  border: none;
-  background-color: var(--blue);
-  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
-  text-transform: capitalize;
-  height: 3.125em;
-  &:hover, &:active {
-    background-color: darken(#86B3D1, 10%);
-  }
-}
 
 
 footer {
@@ -370,21 +281,13 @@ footer {
 
 /* CMS Threads */
 .cmsThreads {
-  display:grid;
-  grid-template-columns: 1fr;
-  grid-auto-rows: auto;
-  justify-content: space-evenly;
-  justify-items: auto;
-  background-color: var(--mauve);
+  display: block;
+  width: 100%;
+  height: 50.000em;
+  background-color: #fff;
   .display {
-    grid-column: 1/2;
-    background-color: #fff;
     padding: 1.250em;
-    h3 {
-      font-size: 1.4em;
-      line-height: 1.0;
-    }
-    h4 {
+    h3, h4 {
       font-size: 1.0em;
       line-height: 1.0;
     }
@@ -392,35 +295,6 @@ footer {
       font-size: 1.0em;
       line-height: 1.5;
     }
-    .moreBtn {
-      color: #844D36;
-      text-decoration: none;
-      &:hover {
-        color: #4CAF50;
-      }
-    }
-  }
-  /* Pagination */
-
-  .pagination {
-    grid-column: 1/2;
-    grid-row: 1/2;
-    background-color: var(--dk-blue-gray);
-    padding: 1.250em;
-    margin: 0;
-  }
-
-  .pagination a, .pagination span {
-    display: inline-block;
-    font-size: 1.2em;
-    color: #fff;
-    text-decoration: none;
-    margin: 0 5px;
-  }
-
-  .pagination span.selected {
-    font-weight: bold;
-    color: #ffff00;
   }
 }
 
@@ -431,9 +305,7 @@ footer {
       display: flex;
       justify-content: space-evenly;
       background-color: #fff;
-      .bold {
-        background-color: rgba(lightblue, 0.7);
-      }
+
       .box {
         display: block;
         width: 100%;
@@ -489,29 +361,10 @@ CSS Grid layout for modern browsers:
       grid-template-rows: auto;
       grid-gap: 0;
     }
-    .wrapper {
-      grid-column: 2/3;
-      display: none;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.625em;
-      grid-auto-rows: 37.000em;
-      grid-template-areas:
-        ". mid mid ."
-        ". mid mid .";
-      background-color: rgba(#000, 0.2);
-      z-index: 10;
-    }
-
-    .centerForm {
-      grid-area: mid;
-      align-self: center;
-    }
-
     .mainArea {
-      z-index: 1;
       grid-column: 2/3;
       display: grid;
-      grid-template-columns: 25.000em repeat(2, 37.500em);
+      grid-template-columns: 25.000em repeat(2, 37.000em);
       grid-template-rows: fit-content(25.000em) fit-content(1fr) 50.000em fit-content(3.125em);
       justify-content: space-evenly;
       justify-items: auto;
@@ -519,14 +372,11 @@ CSS Grid layout for modern browsers:
       margin: 0;
     }
 
-    .topLeft {
-      grid-column: 1/2;
-      grid-row: 1/2
-    }
     .navigation {
+      grid-column: 1/2;
+      grid-row: 1/2;
       display: flex;
       justify-content: center;
-      height: 3.125em;
 
     }
     .headerStyle {
@@ -547,6 +397,7 @@ CSS Grid layout for modern browsers:
     .contentContainer {
       grid-column: 1/4;
       grid-row: 3/4;
+      background-color: #fff;
       display: flex;
       justify-content: center;
     }
