@@ -12,15 +12,17 @@ class DatabaseObject
     static protected array $db_columns = [];
     static protected $objects = [];
     static protected $params = [];
+    static protected $searchItem = [];
 
     /*
      * There is NO read() method as fetch_all basically does the same thing:
      */
-    public static function fetch_all(): array
+    public static function fetch_by_column_name($sql)
     {
-        $sql = "SELECT * FROM " . static::$table;
-        return Database::pdo()->query($sql)->fetchAll(PDO::FETCH_OBJ);
-
+        $stmt = Database::pdo()->prepare($sql);
+        $column = array_keys(static::$searchItem);
+        $stmt->execute([ $column[0] => static::$searchItem['username'] ]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     /*
@@ -42,8 +44,8 @@ class DatabaseObject
      */
     public static function fetch_by_id($id)
     {
-        $query = "SELECT * FROM " . static::$table . " WHERE id=:id LIMIT 1";
-        $stmt = Database::pdo()->prepare($query);
+        $sql = "SELECT * FROM " . static::$table . " WHERE id=:id LIMIT 1";
+        $stmt = Database::pdo()->prepare($sql);
         $stmt->execute(['id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
@@ -113,7 +115,7 @@ class DatabaseObject
          */
         for ($x=1, $xMax = count(static::$objects); $x <= $xMax; $x++)
         {
-            $stmt->bindParam($x, static::$objects[$x-1], PDO::PARAM_INT );
+            $stmt->bindParam($x, static::$objects[$x-1] );
         }
 
         return $stmt->execute(); // Execute and send boolean true:

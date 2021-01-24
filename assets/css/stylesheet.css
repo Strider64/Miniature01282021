@@ -857,6 +857,9 @@ footer p {
       justify-content: space-evenly;
       background-color: #fff;
     }
+    .twoBoxes .bold {
+      background-color: rgba(173, 216, 230, 0.7);
+    }
     .twoBoxes .box {
       display: block;
       width: 100%;

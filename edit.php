@@ -60,15 +60,7 @@ if ($id && is_int($id)) {
         </ul>
     </nav>
     <aside class="sidebar">
-        <form class="login" method="post" action="index.php">
-            <label class="username" for="username">Username</label>
-            <input id="username" type="text" name="username" value="">
 
-            <label class="password" for="password">Password</label>
-            <input id="password" type="password" name="password">
-
-            <button type="submit" name="submit" value="login">Login</button>
-        </form>
     </aside>
     <main id="content" class="mainStyle">
         <form class="formGrid" action="cms_forums.php" method="post">
