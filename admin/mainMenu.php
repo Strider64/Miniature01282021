@@ -35,7 +35,6 @@ Login::is_login($_SESSION['last_login']);
     </nav>
     <aside class="sidebar">
     </aside>
-
     <main id="content" class="mainStyle">
         <div class="twoBoxes">
             <div class="box">
