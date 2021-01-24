@@ -514,7 +514,7 @@ img {
 .login label.username {
   grid-column: 1/2;
   grid-row: 1/2;
-  background-color: #86B3D1;
+  background-color: #619cc3;
   color: #fff;
   text-align: center;
   line-height: 3.125em;
@@ -524,7 +524,7 @@ img {
 .login label.password {
   grid-column: 1/2;
   grid-row: 2/3;
-  background-color: #86B3D1;
+  background-color: #619cc3;
   color: #fff;
   text-align: center;
   line-height: 3.125em;
@@ -545,11 +545,11 @@ img {
   outline: none;
   color: #fff;
   border: none;
-  background-color: var(--blue);
+  background-color: #619cc3;
   box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
 }
 .login button:hover, .login button:active {
-  background-color: #619cc3;
+  background-color: #4283af;
 }
 
 .sidebar {
@@ -559,6 +559,7 @@ img {
 
 .navigation {
   background-color: var(--dk-blue-gray);
+  margin-bottom: 0.5em;
 }
 
 /*--------------------------------------------------------------
@@ -1136,11 +1137,15 @@ CSS Grid layout for modern browsers:
       margin: 0;
     }
 
-    .navigation {
+    .topLeft {
       grid-column: 1/2;
       grid-row: 1/2;
+    }
+
+    .navigation {
       display: flex;
       justify-content: center;
+      height: 3.125em;
     }
 
     .headerStyle {
