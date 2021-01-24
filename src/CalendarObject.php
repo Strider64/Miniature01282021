@@ -6,14 +6,10 @@ use DateTime;
 use DateTimeZone;
 use Exception;
 use JetBrains\PhpStorm\Pure;
-use Miniature\Database as DB;
-use PDO;
 
 class CalendarObject {
 
     protected $username;
-    protected $query;
-    protected $stmt;
     protected $prev;
     public $current;
     protected $next;
@@ -29,12 +25,6 @@ class CalendarObject {
     protected $monthlyChange;
     protected $pageName = "index";
     protected $generate;
-
-    protected static function pdo(): PDO
-    {
-        $db = DB::getInstance();
-        return $db->getConnection();
-    }
 
     /* Constructor to create the output */
 
@@ -84,12 +74,12 @@ class CalendarObject {
 
     protected function todaysSquares(): void
     {
-        $result = false;
-        //$result = $this->checkForEntry($this->current->format("Y-m-d"));
+        //$result = false;
+        $result = $this->checkForEntry($this->current->format("Y-m-d"));
 
         if ($result) {
-            $bold = "day-entry";
-            $this->output[$this->index]['entry'] = '?location=' . $this->selectedMonth->format('Y-m-d') . '&blog=' . $this->current->format('Y-m-d');
+            $bold = "bold";
+            //$this->output[$this->index]['entry'] = '?location=' . $this->selectedMonth->format('Y-m-d') . '&blog=' . $this->current->format('Y-m-d');
         } else {
             $bold = null;
         }
@@ -98,33 +88,27 @@ class CalendarObject {
          * Determine if just a regular day or if it's a holiday.
          */
         if (array_key_exists($this->current->format("Y-m-d"), $this->holiday)) {
-            $this->output[$this->index]['class'] = 'day day--holiday' . $bold;
+            $this->output[$this->index]['class'] = 'day day--holiday ' . $bold;
             $this->output[$this->index]['date'] = $this->current->format("j");
         } else { // Just a Normal day
-            $this->output[$this->index]['class'] = 'day day' . $bold;
+            $this->output[$this->index]['class'] = 'day day ' . $bold;
             $this->output[$this->index]['date'] = $this->current->format("j");
         }
     }
 
-    protected function checkForEntry($calDate, $page = 'index.php'): bool
+    protected function checkForEntry($calDate)
     {
 
-        $this->username = isset($_SESSION['user']) ? $_SESSION['user']->username : NULL;
 
-        $this->query = 'SELECT 1 FROM cms WHERE page=:page AND DATE_FORMAT(date_added, "%Y-%m-%d")=:date_added';
+        $sql = 'SELECT 1 FROM cms WHERE DATE_FORMAT(date_added, "%Y-%m-%d")=:date_added';
 
-        $this->stmt = static::pdo()->prepare($this->query);
+        $stmt = Database::pdo()->prepare($sql);
 
-        $this->stmt->execute([':page' => $page, ':date_added' => $calDate]);
+        $stmt->execute([':date_added' => $calDate]);
 
-        $this->result = $this->stmt->fetch();
+        return $stmt->fetch();
 
-        /* If result is true there is data in day, otherwise no data */
-        if ($this->result) {
-            return TRUE;
-        }
 
-        return FALSE;
     }
 
     protected function drawDays(): void
@@ -197,30 +181,30 @@ class CalendarObject {
      */
     protected function HTMLDisplay(): string
     {
-        $this->generate = '<div class="calendar-container">' . "\n";
-        $this->generate .= '<div class="calendar-header">' . "\n";
-        $this->generate .= '<a data-pos="prev" class="prev-left" href="' . $this->output[0]['previous'] . '">prev</a>' . "\n";
-        $this->generate .= '<h1 class="output-month">' . $this->output[0]['month'] . '</h1>' . "\n";
-        $this->generate .= '<a data-pos="next" class="next-right" href="' . $this->output[0]['next'] . '">next</a>' . "\n";
-        $this->generate .= '</div>' . "\n"; // End of calendar-header:
+        $generate = '<div class="calendar-container">' . "\n";
+        $generate .= '<div class="calendar-header">' . "\n";
+        $generate .= '<a data-pos="prev" class="prev-left" href="' . $this->output[0]['previous'] . '">prev</a>' . "\n";
+        $generate .= '<h1 class="output-month">' . $this->output[0]['month'] . '</h1>' . "\n";
+        $generate .= '<a data-pos="next" class="next-right" href="' . $this->output[0]['next'] . '">next</a>' . "\n";
+        $generate .= '</div>' . "\n"; // End of calendar-header:
 
 
         /*
          * Start of Calendar Grid
          */
-        $this->generate .= '<div id="block" class="calendar">' . "\n";
+        $generate .= '<div id="block" class="calendar">' . "\n";
 
             for ($i=0; $i <= count($this->dayName) - 1; $i++) {
-                $this->generate .= '<span class="day-name">' . $this->dayName[$i] . '</span>' . "\n";
+                $generate .= '<span class="day-name">' . $this->dayName[$i] . '</span>' . "\n";
             }
 
             for ($j=1; $j <= count($this->output) - 1; $j++ ) {
-                $this->generate .= '<div class="' . $this->output[$j]['class'] . '">' . $this->output[$j]['date'] . '</div>' . "\n";
+                $generate .= '<div class="' . $this->output[$j]['class'] . '">' . $this->output[$j]['date'] . '</div>' . "\n";
             }
 
-        $this->generate .= '</div>' . "\n"; // End of calendar container:
-        $this->generate .= '</div>' . "\n"; // End of calendar-container:
-        return $this->generate;
+        $generate .= '</div>' . "\n"; // End of calendar container:
+        $generate .= '</div>' . "\n"; // End of calendar-container:
+        return $generate;
     }
 
     protected function display(): string

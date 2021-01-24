@@ -42,7 +42,7 @@ class Journal extends Database {
         return $data['page_name'];
     }
 
-    public function read($page_name = "index.php"): array
+    public function read($page_name = "login.php"): array
     {
         $this->query = 'SELECT id, user_id, author, category, page_name, image_path, post, thumb_path, Model, ExposureTime, Aperture, ISO, FocalLength, heading, content, DATE_FORMAT(date_added, "%W, %M %e, %Y") as date_added, date_added as myDate FROM journal WHERE page_name=:page_name ORDER BY myDate DESC';
         $this->stmt = static::pdo()->prepare($this->query); // Prepare the query:
@@ -57,7 +57,7 @@ class Journal extends Database {
         return $stmt->fetchColumn();
     }
 
-    public function readBlog($page_name = "index.php"): array
+    public function readBlog($page_name = "login.php"): array
     {
         $this->query = 'SELECT id, user_id, author, page_name, image_path, post, thumb_path, Model, ExposureTime, Aperture, ISO, FocalLength, heading, content, DATE_FORMAT(date_added, "%W, %M %e, %Y") as date_added, date_added as myDate FROM journal WHERE page_name=:page_name ORDER BY myDate DESC';
         $this->stmt = static::pdo()->prepare($this->query); // Prepare the query:

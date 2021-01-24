@@ -45,7 +45,7 @@ class Database {
     }
 
     // Get the PDO connection:
-    public function getConnection(): PDO
+    protected function getConnection(): PDO
     {
         return $this->_connection;
     }

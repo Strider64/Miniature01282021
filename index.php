@@ -31,7 +31,7 @@ $monthly = new CalendarObject();
 
 $monthly->phpDate();
 
-$calendar = $monthly->generateCalendar('index.php');
+$calendar = $monthly->generateCalendar('login.php');
 
 $enter = $_POST['submit'] ?? Null;
 
@@ -66,26 +66,18 @@ if ($enter) {
     <nav class="navigation">
         <ul class="topNav">
             <li><a href="index.php">home</a></li>
-            <li><a href="./admin/index.php">admin</a></li>
+            <li><a href="admin/login.php">admin</a></li>
             <li><a href="cms_forums.php">CMS threads</a></li>
             <li><a href="#">contact</a></li>
         </ul>
     </nav>
     <aside class="sidebar">
-        <form class="login" method="post" action="index.php">
-            <label class="username" for="username">Username</label>
-            <input id="username" type="text" name="username" value="">
 
-            <label class="password" for="password">Password</label>
-            <input id="password" type="password" name="password">
-
-            <button type="submit" name="submit" value="login">Login</button>
-        </form>
     </aside>
     <main id="content" class="mainStyle">
         <div class="cmsThreads">
             <?php
-            $url = 'index.php';
+            $url = 'login.php';
             echo $pagination->page_links($url);
             foreach ($cms as $record) {
                 echo '<article  class="display">' . "\n";

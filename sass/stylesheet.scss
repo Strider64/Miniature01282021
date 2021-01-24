@@ -16,7 +16,6 @@ Website Color Theme
   --white: #ffffff;
 }
 
-
 /*--------------------------------------------------------------
 Accessibility
 --------------------------------------------------------------*/
@@ -431,7 +430,9 @@ footer {
       display: flex;
       justify-content: space-evenly;
       background-color: #fff;
-
+      .bold {
+        background-color: rgba(lightblue, 0.7);
+      }
       .box {
         display: block;
         width: 100%;
