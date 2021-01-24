@@ -38,7 +38,7 @@ Login::is_login($_SESSION['last_login']);
     <main id="content" class="mainStyle">
         <div class="twoBoxes">
             <div class="box">
-                <form class="formGrid" action="login.php" method="post">
+                <form class="formGrid" action="login.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="cms[user_id]" value="3">
                     <input type="hidden" name="cms[author]" value="John Pepp">
                     <label class="headingLabel" for="heading">Heading</label>
