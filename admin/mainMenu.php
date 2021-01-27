@@ -46,11 +46,11 @@ if (isset($_POST['submit'], $_FILES['image'])) {
 
 
     } else {
-        $data['Model'] = "Sony Alpha Camera";
-        $data['ExposureTime'] = "NA";
-        $data['Aperture'] = "NA";
-        $data['ISO'] = "NA";
-        $data['FocalLength'] = "NA";
+        $data['Model'] = null;
+        $data['ExposureTime'] = null;
+        $data['Aperture'] = null;
+        $data['ISO'] = null;
+        $data['FocalLength'] = null;
     }
     $extensions= array("jpeg","jpg","png");
 
@@ -63,8 +63,8 @@ if (isset($_POST['submit'], $_FILES['image'])) {
     }
 
 
-    $data['thumb_path'] = "../assets/thumbnails";
-    $data['image_path'] = "../assets/uploads/" . $file_name;
+    $data['thumb_path'] = "assets/thumbnails";
+    $data['image_path'] = "assets/uploads/" . $file_name;
 
 
     if(empty($errors) === true){
