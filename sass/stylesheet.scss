@@ -286,9 +286,13 @@ ul.topNav li.right {float: right;}
   background-color: #f1f1f1;
   padding: 1.250em;
 }
+.image-upload {
+  grid-column: 2/5;
+  grid-row: 1/2;
+}
 .headingLabel {
   grid-column: 1/2;
-  grid-row: 1/2;
+  grid-row: 2/3;
   background-color: #86B3D1;
   color: #fff;
   text-align: center;
@@ -297,7 +301,7 @@ ul.topNav li.right {float: right;}
 }
 .enterHeading {
   grid-column: 2/5;
-  grid-row: 1/2;
+  grid-row: 2/3;
   border: none;
   outline: none;
   background-color: #fff;
@@ -309,7 +313,7 @@ ul.topNav li.right {float: right;}
 }
 .textLabel {
   grid-column: 1/2;
-  grid-row: 2/3;
+  grid-row: 3/4;
   background-color: #86B3D1;
   color: #fff;
   text-align: center;
@@ -318,7 +322,7 @@ ul.topNav li.right {float: right;}
 }
 .contentTextarea {
   grid-column: 2/5;
-  grid-row: 2/3;
+  grid-row: 3/4;
   border: none;
   outline: none;
   resize: none;
@@ -331,7 +335,7 @@ ul.topNav li.right {float: right;}
 }
 .deleteBtn {
   grid-column: 1/2;
-  grid-row: 3/4;
+  grid-row: 4/5;
   display: flex;
   justify-content: center;
   text-decoration: none;
@@ -344,7 +348,7 @@ ul.topNav li.right {float: right;}
 }
 .myButton {
   grid-column: 2/5;
-  grid-row: 3/4;
+  grid-row: 4/5;
   outline: none;
   color: #fff;
   border: none;

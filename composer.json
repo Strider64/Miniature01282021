@@ -17,7 +17,9 @@
   "require": {
     "swiftmailer/swiftmailer": "^6.0",
     "ext-pdo": "*",
-    "ext-readline": "*"
+    "ext-readline": "*",
+    "ext-exif": "*",
+    "ext-gd": "*"
   }
   ,
   "require-dev": {

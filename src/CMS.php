@@ -12,8 +12,16 @@ use DateTimeZone;
 class CMS extends DatabaseObject
 {
     protected static string $table = "cms";
+    static protected array $db_columns = ['id', 'user_id', 'thumb_path', 'image_path', 'Model', 'ExposureTime', 'Aperture', 'ISO', 'FocalLength', 'author', 'heading', 'content', 'data_updated', 'date_added'];
     public $id;
     public $user_id;
+    public $thumb_path;
+    public $image_path;
+    public $Model;
+    public $ExposureTime;
+    public $Aperture;
+    public $ISO;
+    public $FocalLength;
     public $author;
     public $heading;
     public $content;
@@ -36,7 +44,7 @@ class CMS extends DatabaseObject
         return $dateStylized->format("F j, Y");
     }
 
-    protected function setColumnsNames(): array
+    protected function setColumnsNames()
     {
         $result = Database::pdo()->query('select * from ' . static::$table .' limit 1');
         return array_keys($result->fetch(PDO::FETCH_ASSOC));
@@ -52,7 +60,6 @@ class CMS extends DatabaseObject
 //        $this->date_updated = $args['date_updated'] ?? null;
 //        $this->date_added = $args['date_added'] ?? null;
 
-        static::$db_columns = $this->setColumnsNames(); // Set ColumnNames in DatabaseObject() Class:
 
         // Caution: allows private/protected properties to be set
         foreach($args as $k => $v) {

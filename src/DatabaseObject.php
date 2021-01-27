@@ -50,75 +50,31 @@ class DatabaseObject
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    /*
-     * There is no id for a new record:
-     */
-    #[Pure] protected static function minus_id(): array
-    {
-        return array_slice(static::$db_columns, 1);
-    }
-
-    /*
-     * Need to figure out the number of placeholders for
-     * the prepared statements. ***NOTE*** All Queries will
-     * have to have date_updated and date_added in them.
-     * Though you could set $db-columns differently and
-     * hard code it in the query string.
-     */
-    #[Pure] protected static function minus_dates(): array
-    {
-        return array_slice(static::minus_id(), 0, 4);
-    }
-
-    /*
-     * Create prepared statements using ? question marks for the total amount of columns:
-    */
-    #[Pure] protected static function placeholders($arrayLength): string
-    {
-        return str_repeat ('?, ', $arrayLength-1 ) . '?';
-    }
-
-    /*
-     * I found using Question ? for placeholders was easier than trying
-     * to figuring out how to use named placeholders. However, I'm sure it can be done,
-     * but I go by the motto if it isn't broke don't fix it. I don't think the variables
-     * have to be sanitized as I am using prepared statements. Though it wouldn't
-     * hurt to do so and I might go back to do this when I start validating my code.
-     * Once I get this class written I will be able to use it on login/registration
-     * and other pages that require a database table.
-     */
 
     public function create():bool
     {
-        /*
-         * Figure out the length of the the array including the id.
-         */
-        $arrayLength = count(static::minus_dates());
 
-        /*
-         * Generate the ? placeholders string.
-         */
-        $placeholders = self::placeholders($arrayLength);
+        /* Initialize an array */
+        $attribute_pairs = [];
 
-        /*
-         * Create the actual query to send to database table:
-         */
-        $sql = 'INSERT INTO ' . static::$table . '(' . implode(", ", static::minus_id()) . ' )';
-        $sql .= ' VALUES ( ' . $placeholders . ', NOW(), NOW() )'; // Notice the 2 NOW() calls for dates:
+
+        $sql = 'INSERT INTO ' . static::$table . '(' . implode(", ", array_keys(static::$params)) . ', date_updated, date_added)';
+        $sql .= ' VALUES ( :' . implode(', :', array_keys(static::$params)) . ', NOW(), NOW() )'; // Notice the 2 NOW() calls for dates:
+
         /*
          * Prepare the Database Table:
          */
         $stmt = Database::pdo()->prepare($sql);
 
-        /*
-         * Bind the Objects values of the parameters to the db table:
-         */
-        for ($x=1, $xMax = count(static::$objects); $x <= $xMax; $x++)
+
+
+        foreach (static::$params as $key => $value)
         {
-            $stmt->bindParam($x, static::$objects[$x-1] );
+            if($key === 'id') { continue; } // Don't include the id:
+            $attribute_pairs[] = $value; // Assign it to an array:
         }
 
-        return $stmt->execute(); // Execute and send boolean true:
+        return $stmt->execute($attribute_pairs); // Execute and send boolean true:
 
     }
 
