@@ -1,4 +1,9 @@
 <?php
+/*
+ * Website Development by John Pepp
+ * Created on February 11, 2020
+ * Updated on January 28, 2021
+ */
 require_once 'assets/config/config.php';
 require_once "vendor/autoload.php";
 
