@@ -6,20 +6,7 @@ use Miniature\CMS;
 
 $cms = new CMS();
 
-$delete_id = (int) ($_GET['delete_id'] ?? null);
 
-/*
- * If user/admin deletes a post then send the
- * request off to the delete method in order for
- * that particular record (data) to be delete.
- */
-if ($delete_id && is_int($delete_id)) {
-    $result = $cms->delete($delete_id);
-    if ($result) {
-        header("Location: cms_forums.php");
-        exit();
-    }
-}
 
 $id = (int) htmlspecialchars($_GET['id'] ?? null);
 
@@ -63,15 +50,7 @@ if ($id && is_int($id)) {
 
     </aside>
     <main id="content" class="mainStyle">
-        <form class="formGrid" action="cms_forums.php" method="post">
-            <input type="hidden" name="cms[id]" value="<?= $cmsRecord->id ?>">
-            <label class="headingLabel" for="heading">Heading</label>
-            <input class="enterHeading" id="heading" type="text" name="cms[heading]" value="<?= $cmsRecord->heading ?>" tabindex="1" required autofocus>
-            <label class="textLabel" for="content">Content</label>
-            <textarea class="contentTextarea" id="content" name="cms[content]" tabindex="2"><?=$cmsRecord->content ?></textarea>
-            <input class="myButton" type="submit" name="submit" value="enter" tabindex="3">
-            <a class="deleteBtn" href="edit.php?delete_id=<?= $cmsRecord->id ?>" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
-        </form>
+        Testing
     </main>
     <div class="contentContainer">
 
