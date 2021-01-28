@@ -3,19 +3,20 @@
 
 namespace Miniature;
 
-use JetBrains\PhpStorm\Pure;
 use PDO;
 
-class DatabaseObject
+class DatabaseObject // Extended by the children class:
 {
-    static protected string $table = "";
-    static protected array $db_columns = [];
+    static protected string $table = ""; // Overridden by the calling class:
+    static protected array $db_columns = []; // Overridden by the calling class:
     static protected $objects = [];
     static protected $params = [];
     static protected $searchItem;
 
     /*
-     * There is NO read() method as fetch_all basically does the same thing:
+     * There is NO read() method this fetch_all method
+     *  basically does the same thing. The query ($sql)
+     *  is done in the class the calls this method.
      */
     public static function fetch_by_column_name($sql)
     {
@@ -32,6 +33,12 @@ class DatabaseObject
         return Database::pdo()->query("SELECT count(*) FROM " . static::$table)->fetchColumn();
     }
 
+    /*
+     * Pagination static function/method to limit
+     * the number of records per page. This is
+     * useful for tables that contain a lot of
+     * records (data).
+     */
     public static function page($perPage, $offset): array
     {
         $sql = 'SELECT * FROM ' . static::$table . ' ORDER BY date_updated DESC LIMIT :perPage OFFSET :blogOffset';
@@ -39,6 +46,7 @@ class DatabaseObject
         $stmt->execute(['perPage' => $perPage, 'blogOffset' => $offset]); // Execute the query with the supplied data:
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
     /*
      * Grab Record will be used for editing:
      */
@@ -50,14 +58,20 @@ class DatabaseObject
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-
+    /*
+     * Create/Insert new record in the database table
+     * that can be used for more than one table.
+     */
     public function create():bool
     {
 
         /* Initialize an array */
         $attribute_pairs = [];
 
-
+        /*
+         * Setup the query using prepared states with static:$params being
+         * the columns and the array keys being the prepared named placeholders.
+         */
         $sql = 'INSERT INTO ' . static::$table . '(' . implode(", ", array_keys(static::$params)) . ', date_updated, date_added)';
         $sql .= ' VALUES ( :' . implode(', :', array_keys(static::$params)) . ', NOW(), NOW() )'; // Notice the 2 NOW() calls for dates:
 
@@ -66,8 +80,11 @@ class DatabaseObject
          */
         $stmt = Database::pdo()->prepare($sql);
 
-
-
+        /*
+         * Grab the corresponding values in order to
+         * insert them into the table when the script
+         * is executed.
+         */
         foreach (static::$params as $key => $value)
         {
             if($key === 'id') { continue; } // Don't include the id:

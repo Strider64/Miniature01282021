@@ -5,13 +5,12 @@ namespace Miniature;
 
 use Exception;
 use JetBrains\PhpStorm\Pure;
-use PDO;
 use DateTime;
 use DateTimeZone;
 
 class CMS extends DatabaseObject
 {
-    protected static string $table = "cms";
+    protected static string $table = "cms"; // Table Name:
     static protected array $db_columns = ['id', 'user_id', 'thumb_path', 'image_path', 'Model', 'ExposureTime', 'Aperture', 'ISO', 'FocalLength', 'author', 'heading', 'content', 'data_updated', 'date_added'];
     public $id;
     public $user_id;
@@ -44,13 +43,6 @@ class CMS extends DatabaseObject
         return $dateStylized->format("F j, Y");
     }
 
-    protected function setColumnsNames()
-    {
-        $result = Database::pdo()->query('select * from ' . static::$table .' limit 1');
-        return array_keys($result->fetch(PDO::FETCH_ASSOC));
-    }
-
-
     public function __construct($args = [])
     {
 //        $this->user_id = $args['user_id'] ?? null;
@@ -69,6 +61,6 @@ class CMS extends DatabaseObject
             static::$objects[] = $v;
           }
         }
-    }
+    } // End of construct method:
 
-}
+} // End of class:
