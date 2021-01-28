@@ -1,10 +1,13 @@
 <?php
 require_once "../assets/config/config.php";
 require_once "../vendor/autoload.php";
+require_once "functions/resize_function.php";
+
 use Miniature\CMS;
 
 define('IMAGE_WIDTH', 2048);
 define('IMAGE_HEIGHT', 1365);
+$save_result = false;
 
 if (isset($_POST['submit'], $_FILES['image'])) {
     $data = $_POST['cms'];
@@ -17,11 +20,9 @@ if (isset($_POST['submit'], $_FILES['image'])) {
     $file_ext=pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
 
 
-
     if ($file_ext === 'jpeg' || $file_ext === 'jpg') {
         $exif_data = @exif_read_data($file_tmp);
-        //echo "<pre>" . print_r($exif_data, 1) . "</pre>";
-        //die();
+
         if (array_key_exists('Make', $exif_data) && array_key_exists('Model', $exif_data)) {
             $data['Model'] = $exif_data['Make'] . ' ' . $exif_data['Model'];
         }
@@ -42,9 +43,6 @@ if (isset($_POST['submit'], $_FILES['image'])) {
             $data['FocalLength'] = $exif_data['FocalLengthIn35mmFilm'] . "mm";
         }
 
-
-
-
     } else {
         $data['Model'] = null;
         $data['ExposureTime'] = null;
@@ -62,13 +60,15 @@ if (isset($_POST['submit'], $_FILES['image'])) {
         $errors[]='File size must be less than or equal to 28 MB';
     }
 
-
+    $dir_path = 'assets/uploads/';
+    $new_file_name = $dir_path . 'img-gallery-' . time() . '.' . $file_ext;
     $data['thumb_path'] = "assets/thumbnails";
-    $data['image_path'] = "assets/uploads/" . $file_name;
+    $data['image_path'] = $new_file_name;
 
+    $save_result = resize($file_tmp, ($new_file_name));
 
     if(empty($errors) === true){
-        move_uploaded_file($file_tmp, "../assets/uploads/" . $file_name);
+        //move_uploaded_file($file_tmp, "../" . $new_file_name);
         /* Save to Database Table CMS */
         $cms = new CMS($data);
         $result = $cms->create();
