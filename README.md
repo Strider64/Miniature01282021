@@ -1,4 +1,4 @@
-#Website Development & Design
+# Website Development & Design
 Created by John Pepp on February 1, 2020
 
 Redoing my whole website to bring it up-to-date with the latest practices
