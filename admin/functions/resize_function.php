@@ -9,11 +9,17 @@ function imageResize($imageSrc, $imageWidth, $imageHeight, $newImageWidth, $newI
     return $newImageLayer;
 }
 
-function resize($file_temp, $new_file_name): bool
+function resize($file_temp, $new_file_name, $thumb = false): bool
 {
     $sourceProperties = getimagesize($file_temp);
-    $newImageWidth =  $sourceProperties[0] * .20;
-    $newImageHeight = $sourceProperties[1] * .20;
+    if ($thumb) {
+        $newImageWidth =  150;
+        $newImageHeight = 150;
+    } else {
+        $newImageWidth =  $sourceProperties[0] * .20;
+        $newImageHeight = $sourceProperties[1] * .20;
+    }
+
     $temp = '../' . $new_file_name;
 
     $imageType = $sourceProperties[2];

@@ -30,9 +30,10 @@ class Login extends DatabaseObject
 
     public function login(): void
     {
-
         $sql = "SELECT id, hashed_password FROM " . static::$table . " WHERE username =:username LIMIT 1";
+
         $user = static::fetch_by_column_name($sql);
+
         if ($user && password_verify($this->hashed_password, $user['hashed_password'])) {
             unset($this->hashed_password, $user['hashed_password']);
             session_regenerate_id(); // prevent session fixation attacks
@@ -43,7 +44,6 @@ class Login extends DatabaseObject
         }
 
         static::$error[] = 'Unable to login in!';
-
 
     }
 

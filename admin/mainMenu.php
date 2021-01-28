@@ -13,13 +13,17 @@ if (isset($_POST['submit'], $_FILES['image'])) {
     $data = $_POST['cms'];
     $errors= array();
     $exif_data = [];
-    $file_name = $_FILES['image']['name'];
-    $file_size =$_FILES['image']['size'];
+    $file_name = $_FILES['image']['name']; // Temporary file for thumbnails directory:
+    $file_size =$_FILES['image']['size']; // Temporary file for uploads directory:
     $file_tmp =$_FILES['image']['tmp_name'];
+    $thumb_tmp = $_FILES['image']['tmp_name'];
     $file_type=$_FILES['image']['type'];
     $file_ext=pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
 
-
+    /*
+     * Set EXIF data info of image for database table that is
+     * if it contains the info otherwise set to null.
+     */
     if ($file_ext === 'jpeg' || $file_ext === 'jpg') {
         $exif_data = @exif_read_data($file_tmp);
 
@@ -50,6 +54,7 @@ if (isset($_POST['submit'], $_FILES['image'])) {
         $data['ISO'] = null;
         $data['FocalLength'] = null;
     }
+
     $extensions= array("jpeg","jpg","png");
 
     if(in_array($file_ext, $extensions, true) === false){
@@ -60,13 +65,36 @@ if (isset($_POST['submit'], $_FILES['image'])) {
         $errors[]='File size must be less than or equal to 28 MB';
     }
 
+    /*
+     * Set the paths to the correct folders
+     */
     $dir_path = 'assets/uploads/';
+    $thumb_path = 'assets/thumbnails/';
+
+    /*
+     * Create unique names for thumbnail and large image.
+     */
+    $new_thumb_name = $thumb_path . 'thumb-gallery-' . time() . '.' . $file_ext;
     $new_file_name = $dir_path . 'img-gallery-' . time() . '.' . $file_ext;
-    $data['thumb_path'] = "assets/thumbnails";
+
+    /*
+     * Set path information for database table.
+     */
+    $data['thumb_path'] = $new_thumb_name;
     $data['image_path'] = $new_file_name;
 
-    $save_result = resize($file_tmp, ($new_file_name));
+    /*
+     * Call resize function to set the thumbnails and large images
+     * to the correct size and save them to their corresponding
+     * directories.
+     */
+    $thumb_result = resize($thumb_tmp, $new_thumb_name, true);
+    $save_result = resize($file_tmp, $new_file_name);
 
+    /*
+     * If no errors save ALL the information to the
+     * database table.
+     */
     if(empty($errors) === true){
         //move_uploaded_file($file_tmp, "../" . $new_file_name);
         /* Save to Database Table CMS */
@@ -75,7 +103,7 @@ if (isset($_POST['submit'], $_FILES['image'])) {
     }else{
         print_r($errors);
     }
-} // Submit
+} // Submit to database table and images to the directories:
 
 ?>
 <!doctype html>
