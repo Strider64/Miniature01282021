@@ -88,10 +88,11 @@ if ($enter) {
             echo $pagination->page_links($url);
             foreach ($cms as $record) {
                 echo '<article  class="display">' . "\n";
-                if (!empty($record)) {
-                    echo "<h3>" . $record['heading'] . "</h3>\n";
-                }
-                echo sprintf("<h4> Created by %s on %s updated on %s</h4>", $record['author'], CMS::styleDate($record['date_added']), CMS::styleDate($record['date_updated']));
+                echo '<img class="thumb" src="' . $record['thumb_path'] .  '">';
+                echo '<div class="cms_heading">';
+                echo "<h3>" . $record['heading'] . "</h3>\n";
+                echo sprintf("<h6> Created by %s on %s updated on %s</h6>", $record['author'], CMS::styleDate($record['date_added']), CMS::styleDate($record['date_updated']));
+                echo '</div>';
                 echo sprintf("<p>%s</p>\n", nl2br(CMS::intro($record['content'], 200, $record['id'])));
                 echo '</article>';
             }

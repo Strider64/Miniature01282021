@@ -3,7 +3,6 @@
 
 namespace Miniature;
 
-use Exception;
 use JetBrains\PhpStorm\Pure;
 use DateTime;
 use DateTimeZone;
@@ -30,16 +29,14 @@ class CMS extends DatabaseObject
 
     #[Pure] public static function intro($content = "", $count = 100, $id = 0): string
     {
-        return substr($content, 0, $count) . '<a class="moreBtn" href="edit.php?id=' . urldecode($id) . '"> ...more</a>';
+        return substr($content, 0, $count) . '<a class="moreBtn" href="display.php?id=' . urldecode($id) . '"> ...more</a>';
     }
 
     public static function styleDate($prettyDate): string
     {
-        try {
-            $dateStylized = new DateTime($prettyDate, new DateTimeZone("America/Detroit"));
-        } catch (Exception $e) {
-            error_log("Caught $e");
-        }
+
+        $dateStylized = new DateTime($prettyDate, new DateTimeZone("America/Detroit"));
+
         return $dateStylized->format("F j, Y");
     }
 

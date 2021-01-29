@@ -18,8 +18,11 @@ $id = (int) htmlspecialchars($_GET['id'] ?? null);
 if ($id && is_int($id)) {
     $record = CMS::fetch_by_id($id);
     $cmsRecord = new CMS($record);
+    //echo "content " . $cmsRecord->content . "<br>";
+    //echo "<pre>" . print_r($cmsRecord, 1) . "</pre>";
+    //die();
 } else {
-    header("Location: cms_forums.php");
+    header("Location: index.php");
     exit();
 }
 ?>
@@ -50,7 +53,13 @@ if ($id && is_int($id)) {
 
     </aside>
     <main id="content" class="mainStyle">
-        Testing
+        <div class="display_record">
+            <img src="<?php echo $cmsRecord->image_path; ?>" alt="Database Image">
+            <h2 class="heading"><?= $cmsRecord->heading ?></h2>
+            <h6 class="sub_heading"><?= $cmsRecord->author ?> on <?php echo CMS::styleDate($cmsRecord->date_added) ?></h6>
+            <p class="content"><?= nl2br($cmsRecord->content) ?></p>
+
+        </div>
     </main>
     <div class="contentContainer">
 

@@ -55,9 +55,9 @@ Typography
 
 body {
   font-size: 1.125em;
+  background-color: black;
   margin: 0;
 }
-
 
 
 /*--------------------------------------------------------------
@@ -377,24 +377,50 @@ footer {
   display:grid;
   grid-template-columns: 1fr;
   grid-auto-rows: auto;
-  justify-content: space-evenly;
+  justify-content: space-around;
   justify-items: auto;
   background-color: var(--mauve);
+  padding: 0.625em;
   .display {
     grid-column: 1/2;
-    background-color: #fff;
-    padding: 1.250em;
-    h3 {
-      font-size: 1.4em;
-      line-height: 1.0;
+    display: grid;
+    grid-template-columns: fit-content(18.500em) minmax(1fr, 37.000em);
+    grid-template-rows: 6.250em 6.250em;
+    grid-row: auto;
+    justify-content: space-evenly;
+    justify-items: left;
+
+    background-color: #f1f1f1;
+    margin-bottom: 0.625em;
+    .thumb {
+      grid-column: 1/2;
+      grid-row: 1/3;
+      display: flex;
+      justify-content: center;
+      width: 18.500em;
+      height: 12.500em;
     }
-    h4 {
-      font-size: 1.0em;
-      line-height: 1.0;
+    .cms_heading {
+      grid-column: 2/3;
+      grid-row: 1/2;
+      padding: 0.625em;
+      h3 {
+        height: 0.313em;
+        font-size: 1.4em;
+        line-height: 0.8;
+      }
+      h6 {
+
+        font-size: 0.8em;
+        line-height: 1.0;
+      }
     }
     p {
+      grid-column: 2/3;
+      grid-row: 2/3;
       font-size: 1.0em;
       line-height: 1.5;
+      padding: 0.625em;
     }
     .moreBtn {
       color: #844D36;
@@ -404,6 +430,7 @@ footer {
       }
     }
   }
+
   /* Pagination */
 
   .pagination {

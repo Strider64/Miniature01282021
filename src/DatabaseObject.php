@@ -9,8 +9,8 @@ class DatabaseObject // Extended by the children class:
 {
     static protected string $table = ""; // Overridden by the calling class:
     static protected array $db_columns = []; // Overridden by the calling class:
-    static protected $objects = [];
-    static protected $params = [];
+    static protected array $objects = [];
+    static protected array $params = [];
     static protected $searchItem;
 
     /*

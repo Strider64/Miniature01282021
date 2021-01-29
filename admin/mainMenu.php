@@ -101,7 +101,7 @@ if (isset($_POST['submit'], $_FILES['image'])) {
         $cms = new CMS($data);
         $result = $cms->create();
     }else{
-        print_r($errors);
+        return $errors;
     }
 } // Submit to database table and images to the directories:
 

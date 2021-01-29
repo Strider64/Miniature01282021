@@ -18,8 +18,8 @@ function resize($file_temp, $new_file_name, $thumb = false): bool
      * resize the images accordingly.
      */
     if ($thumb) {
-        $newImageWidth =  150;
-        $newImageHeight = 100;
+        $newImageWidth =  300;
+        $newImageHeight = 200;
     } else {
         $newImageWidth =  $sourceProperties[0] * .20;
         $newImageHeight = $sourceProperties[1] * .20;
