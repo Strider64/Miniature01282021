@@ -21,7 +21,7 @@ if (isset($_POST['submit'], $_FILES['image'])) {
     $file_tmp = $_FILES['image']['tmp_name'];
     $thumb_tmp = $_FILES['image']['tmp_name'];
     $file_type = $_FILES['image']['type'];
-    $file_ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+    $file_ext = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
 
     /*
      * Set EXIF data info of image for database table that is

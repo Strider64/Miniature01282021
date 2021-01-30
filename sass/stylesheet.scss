@@ -142,7 +142,7 @@ img {
 }
 
 .sidebar {
-  background: var(--mauve);
+  background: #f1f1f1;
   padding: 0.625em;
 }
 
@@ -240,6 +240,26 @@ ul.topNav li.right {
 
 }
 
+/* pagination */
+.pagination {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.2em;
+  padding: 10px 20px 5px 20px;
+  margin: 0px 0px;
+  a {
+    color: #007eff;
+    text-decoration: none;
+    margin: 0 0.500em;
+  }
+  span.selected {
+    font-weight: bold;
+    color: #000;
+  }
+}
 
 /* CMS Create Form */
 .formGrid {
