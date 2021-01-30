@@ -37,20 +37,6 @@ $monthly->phpDate();
 
 $calendar = $monthly->generateCalendar('index.php');
 
-$enter = $_POST['submit'] ?? Null;
-
-/*
- * If the user/admin has enter a comment then
- * set the data in the class and then save it
- * to the database.
- */
-if ($enter) {
-    $args = $_POST['cms'];
-    $cms = new CMS($args);
-    $cms->create();
-}
-
-//CMS::set_Objects();
 ?>
 <!doctype html>
 <html lang="en">
