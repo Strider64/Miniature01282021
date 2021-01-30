@@ -34,7 +34,7 @@ if ($id && is_int($id)) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/css/stylesheet.css">
-    <title>Edit Record</title>
+    <title>Display Full Page</title>
 </head>
 <body class="site">
 <section class="mainArea">
@@ -55,7 +55,7 @@ if ($id && is_int($id)) {
         <div class="display_record">
             <img class="large_img" src="<?php echo $cms->image_path; ?>" alt="<?= $cms->heading ?>">
             <h3 class="record_heading"><?= $cms->heading ?></h3>
-            <h6 class="record_author"><?php echo $cms->author; ?><span class="date_created">created on <?php echo CMS::styleDate($cms->date_added) ?></span></h6>
+            <h6 class="record_author"><?php echo 'by ' . $cms->author; ?><span class="date_created"> created on <?php echo CMS::styleDate($cms->date_added) ?></span></h6>
             <p class="record_content"><?php echo nl2br($cms->content); ?></p>
         </div>
     </main>

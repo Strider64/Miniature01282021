@@ -23,9 +23,19 @@ class Login extends DatabaseObject
 
     public function __construct($args = [])
     {
-        static::$params[] = $args['username'];
         static::$searchItem = 'username';
+        static::$searchValue = $args['username'];
         $this->hashed_password = $args['hashed_password'];
+    }
+
+    public static function full_name(): string
+    {
+        static::$searchItem = 'id';
+        static::$searchValue = $_SESSION['id'];
+        $sql = "SELECT first_name, last_name FROM " . static::$table . " WHERE id =:id LIMIT 1";
+        $user = static::fetch_by_column_name($sql);
+
+        return $user['first_name'] . " " . $user['last_name'];
     }
 
     public function login(): void

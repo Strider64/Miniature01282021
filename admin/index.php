@@ -7,6 +7,8 @@ use Miniature\Login;
 
 Login::is_login($_SESSION['last_login']);
 
+
+
 /*
  * Using pagination in order to have a nice looking
  * website page.
@@ -62,10 +64,10 @@ $cms = CMS::page($per_page, $offset);
 
             foreach ($cms as $record) {
                 echo '<article  class="display">' . "\n";
-                echo '<img class="thumb" src="' . '../' .  $record['thumb_path'] .  '">';
+                echo '<a class="moreBtn" href="edit.php?id=' . urldecode($record['id']) . '"><img class="thumb" src="' . '../' .  $record['thumb_path'] .  '" alt="thumbnail"></a>';
                 echo '<div class="cms_heading">';
                 echo "<h3>" . $record['heading'] . "</h3>\n";
-                echo sprintf("<h6> Created by %s on %s updated on %s</h6>", $record['author'], CMS::styleDate($record['date_added']), CMS::styleDate($record['date_updated']));
+                echo sprintf("<h6> by %s on %s updated on %s</h6>", $record['author'], CMS::styleDate($record['date_added']), CMS::styleDate($record['date_updated']));
                 echo '</div>';
                 echo sprintf("<p>%s</p>\n", nl2br(CMS::intro($record['content'], 200, $record['id'], 'edit.php')));
                 echo '</article>';

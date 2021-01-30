@@ -12,6 +12,7 @@ class DatabaseObject // Extended by the children class:
     static protected array $objects = [];
     static protected array $params = [];
     static protected $searchItem;
+    static protected $searchValue;
 
     /*
      * There is NO read() method this fetch_all method
@@ -22,7 +23,7 @@ class DatabaseObject // Extended by the children class:
     {
         $stmt = Database::pdo()->prepare($sql);
 
-        $stmt->execute([ static::$searchItem => static::$params[0] ]);
+        $stmt->execute([ static::$searchItem => static::$searchValue ]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 

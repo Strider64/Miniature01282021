@@ -6,8 +6,6 @@ use Miniature\CMS;
 use Miniature\Login;
 
 Login::is_login($_SESSION['last_login']);
-$cms = new CMS();
-
 
 
 $id = (int) htmlspecialchars($_GET['id'] ?? null);
@@ -15,18 +13,24 @@ $id = (int) htmlspecialchars($_GET['id'] ?? null);
 /*
  * Set the class to of the record (data) to be display
  * to the class then fetch the data to the $record
- * ARRAY do be displayed on the website.
+ * ARRAY do be displayed on the website. If an
+ * update has been done then update database
+ * table otherwise just fetch the record
+ * by id.
  */
-if ($id && is_int($id)) {
+if (isset($_POST['submit'])) {
+    $cms = new CMS($_POST['cms']);
+    $cms->update();
+    $id = $_POST['cms']['id'];
+} elseif ($id && is_int($id)) {
+
     $record = CMS::fetch_by_id($id);
-    $cmsRecord = new CMS($record);
-    //echo "content " . $cmsRecord->content . "<br>";
-    //echo "<pre>" . print_r($cmsRecord, 1) . "</pre>";
-    //die();
+    $cms = new CMS($record);
 } else {
-    header("Location: cms_forums.php");
+    header("Location: index.php");
     exit();
 }
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -54,7 +58,18 @@ if ($id && is_int($id)) {
 
     </aside>
     <main id="content" class="mainStyle">
-        Testing
+        <form class="formGrid" action="edit.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="cms[id]" value="<?= $id ?>">
+            <input type="hidden" name="cms[user_id]" value="<?= $_SESSION['id'] ?>">
+            <input type="hidden" name="cms[author]" value="<?= Login::full_name() ?>">
+            <input type="hidden" name="action" value="upload">
+            <input class="image-upload" type="file" name="image">
+            <label class="headingLabel" for="heading">Heading</label>
+            <input class="enterHeading" id="heading" type="text" name="cms[heading]" value="<?= $cms->heading ?>" tabindex="1" required autofocus>
+            <label class="textLabel" for="content">Content</label>
+            <textarea class="contentTextarea" id="content" name="cms[content]" tabindex="2"><?= $cms->content ?></textarea>
+            <button class="myButton" type="submit" name="submit" value="enter">submit</button>
+        </form>
     </main>
     <div class="contentContainer">
 

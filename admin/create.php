@@ -14,14 +14,14 @@ $save_result = false;
 
 if (isset($_POST['submit'], $_FILES['image'])) {
     $data = $_POST['cms'];
-    $errors= array();
+    $errors = array();
     $exif_data = [];
     $file_name = $_FILES['image']['name']; // Temporary file for thumbnails directory:
-    $file_size =$_FILES['image']['size']; // Temporary file for uploads directory:
-    $file_tmp =$_FILES['image']['tmp_name'];
+    $file_size = $_FILES['image']['size']; // Temporary file for uploads directory:
+    $file_tmp = $_FILES['image']['tmp_name'];
     $thumb_tmp = $_FILES['image']['tmp_name'];
-    $file_type=$_FILES['image']['type'];
-    $file_ext=pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+    $file_type = $_FILES['image']['type'];
+    $file_ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
 
     /*
      * Set EXIF data info of image for database table that is
@@ -58,16 +58,16 @@ if (isset($_POST['submit'], $_FILES['image'])) {
         $data['FocalLength'] = null;
     }
 
-    $data['content']  = trim($data['content']);
+    $data['content'] = trim($data['content']);
 
-    $extensions= array("jpeg","jpg","png");
+    $extensions = array("jpeg", "jpg", "png");
 
-    if(in_array($file_ext, $extensions, true) === false){
-        $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+    if (in_array($file_ext, $extensions, true) === false) {
+        $errors[] = "extension not allowed, please choose a JPEG or PNG file.";
     }
 
-    if($file_size >= 29360128){
-        $errors[]='File size must be less than or equal to 28 MB';
+    if ($file_size >= 29360128) {
+        $errors[] = 'File size must be less than or equal to 28 MB';
     }
 
     /*
@@ -100,12 +100,12 @@ if (isset($_POST['submit'], $_FILES['image'])) {
      * If no errors save ALL the information to the
      * database table.
      */
-    if(empty($errors) === true){
+    if (empty($errors) === true) {
         //move_uploaded_file($file_tmp, "../" . $new_file_name);
         /* Save to Database Table CMS */
         $cms = new CMS($data);
         $result = $cms->create();
-    }else{
+    } else {
         return $errors;
     }
 } // Submit to database table and images to the directories:
@@ -130,28 +130,24 @@ if (isset($_POST['submit'], $_FILES['image'])) {
         <ul class="topNav">
             <li><a href="index.php">home</a></li>
             <li><a href="create.php">add</a></li>
-            <li><a href="logout.php">logout</a> </li>
+            <li><a href="logout.php">logout</a></li>
         </ul>
     </nav>
     <aside class="sidebar">
     </aside>
     <main id="content" class="mainStyle">
-        <div class="twoBoxes">
-            <div class="box">
-                <form class="formGrid" action="create.php" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="cms[user_id]" value="3">
-                    <input type="hidden" name="cms[author]" value="John Pepp">
-                    <input type="hidden" name="action" value="upload">
-                    <input class="image-upload" type="file" name="image">
-                    <label class="headingLabel" for="heading">Heading</label>
-                    <input class="enterHeading" id="heading" type="text" name="cms[heading]" value="" tabindex="1" required autofocus>
-                    <label class="textLabel" for="content">Content</label>
-                    <textarea class="contentTextarea" id="content" name="cms[content]" tabindex="2"></textarea>
-                    <button class="myButton" type="submit" name="submit" value="enter">submit</button>
-                </form>
-            </div>
-            <div class="box dkBlueGray"></div>
-        </div>
+        <form class="formGrid" action="create.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="cms[user_id]" value="3">
+            <input type="hidden" name="cms[author]" value="John Pepp">
+            <input type="hidden" name="action" value="upload">
+            <input class="image-upload" type="file" name="image">
+            <label class="headingLabel" for="heading">Heading</label>
+            <input class="enterHeading" id="heading" type="text" name="cms[heading]" value="" tabindex="1" required
+                   autofocus>
+            <label class="textLabel" for="content">Content</label>
+            <textarea class="contentTextarea" id="content" name="cms[content]" tabindex="2"></textarea>
+            <button class="myButton" type="submit" name="submit" value="enter">submit</button>
+        </form>
     </main>
     <div class="contentContainer">
 

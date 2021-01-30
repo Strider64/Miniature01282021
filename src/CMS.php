@@ -3,6 +3,7 @@
 
 namespace Miniature;
 
+use Exception;
 use JetBrains\PhpStorm\Pure;
 use DateTime;
 use DateTimeZone;
@@ -26,20 +27,33 @@ class CMS extends DatabaseObject
     public $date_updated;
     public $date_added;
 
-
-    #[Pure] public static function intro($content = "", $count = 100, $id = 0, $page = 'display_page'): string
+    /*
+     * Create a short description of content and place a link button that I call 'more' at the end of the
+     * shorten content.
+     */
+    #[Pure] public static function intro($content = "", $count = 100, $id = 0, $page = 'display_page.php'): string
     {
         return substr($content, 0, $count) . '<a class="moreBtn" href="' . $page . '?id=' . urldecode($id) . '"> ...more</a>';
     }
 
+    /*
+     * Put the date from 00-00-0000 00:00:00 that is stored in the MySQL
+     * database table to a more presentable format such as January 1, 2021.
+     */
     public static function styleDate($prettyDate): string
     {
 
-        $dateStylized = new DateTime($prettyDate, new DateTimeZone("America/Detroit"));
+        try {
+            $dateStylized = new DateTime($prettyDate, new DateTimeZone("America/Detroit"));
+        } catch (Exception $e) {
+        }
 
         return $dateStylized->format("F j, Y");
     }
 
+    /*
+     * Construct the data for the CMS
+     */
     public function __construct($args = [])
     {
 //        $this->user_id = $args['user_id'] ?? null;
@@ -60,4 +74,7 @@ class CMS extends DatabaseObject
         }
     } // End of construct method:
 
+    public function update_records($args = []) {
+        $this->__construct($args);
+    }
 } // End of class:

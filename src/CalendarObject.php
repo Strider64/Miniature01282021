@@ -32,12 +32,12 @@ class CalendarObject {
         try {
             $this->selectedMonth = new DateTime($date, new DateTimeZone("America/Detroit"));
         } catch (Exception $e) {
-            error_log("Caught $e");
+            //error_log("Caught $e");
         }
         try {
             $this->current = new DateTime($date, new DateTimeZone("America/Detroit"));
         } catch (Exception $e) {
-            error_log("Caught $e");
+            //error_log("Caught $e");
         }
         $this->current->modify("first day of this month");
         $this->n = $this->current->format("n"); // Current Month as a number (1-12):
@@ -117,7 +117,7 @@ class CalendarObject {
         try {
             $this->now = new DateTime("Now", new DateTimeZone("America/Detroit"));
         } catch (Exception $e) {
-            error_log("Caught $e");
+            //error_log("Caught $e");
         }
         $x = 1;
         while ($x <= 7) {
@@ -151,7 +151,7 @@ class CalendarObject {
         try {
             $this->monthlyChange = new DateTime($this->current->format("F j, Y"));
         } catch (Exception $e) {
-            error_log("Caught $e");
+            //error_log("Caught $e");
         }
         /* Figure Out Previous Month for Previous Button */
         $this->monthlyChange->modify("-1 month");
