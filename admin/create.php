@@ -4,6 +4,9 @@ require_once "../vendor/autoload.php";
 require_once "functions/resize_function.php";
 
 use Miniature\CMS;
+use Miniature\Login;
+
+Login::is_login($_SESSION['last_login']);
 
 define('IMAGE_WIDTH', 2048);
 define('IMAGE_HEIGHT', 1365);
@@ -54,6 +57,8 @@ if (isset($_POST['submit'], $_FILES['image'])) {
         $data['ISO'] = null;
         $data['FocalLength'] = null;
     }
+
+    $data['content']  = trim($data['content']);
 
     $extensions= array("jpeg","jpg","png");
 
@@ -123,9 +128,8 @@ if (isset($_POST['submit'], $_FILES['image'])) {
     </header>
     <nav class="navigation">
         <ul class="topNav">
-            <li><a href="mainMenu.php">menu</a></li>
-            <li><a href="#">edit</a></li>
-            <li><a href="#">delete</a></li>
+            <li><a href="index.php">home</a></li>
+            <li><a href="create.php">add</a></li>
             <li><a href="logout.php">logout</a> </li>
         </ul>
     </nav>
@@ -134,7 +138,7 @@ if (isset($_POST['submit'], $_FILES['image'])) {
     <main id="content" class="mainStyle">
         <div class="twoBoxes">
             <div class="box">
-                <form class="formGrid" action="mainMenu.php" method="post" enctype="multipart/form-data">
+                <form class="formGrid" action="create.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="cms[user_id]" value="3">
                     <input type="hidden" name="cms[author]" value="John Pepp">
                     <input type="hidden" name="action" value="upload">

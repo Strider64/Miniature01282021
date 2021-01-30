@@ -17,12 +17,12 @@ $id = (int) htmlspecialchars($_GET['id'] ?? null);
  */
 if ($id && is_int($id)) {
     $record = CMS::fetch_by_id($id);
-    $cmsRecord = new CMS($record);
+    $cms = new CMS($record);
     //echo "content " . $cmsRecord->content . "<br>";
     //echo "<pre>" . print_r($cmsRecord, 1) . "</pre>";
     //die();
 } else {
-    header("Location: index.php");
+    header("Location: cms_forums.php");
     exit();
 }
 ?>
@@ -34,7 +34,7 @@ if ($id && is_int($id)) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/css/stylesheet.css">
-    <title>Display the Record</title>
+    <title>Edit Record</title>
 </head>
 <body class="site">
 <section class="mainArea">
@@ -44,8 +44,7 @@ if ($id && is_int($id)) {
     <nav class="navigation">
         <ul class="topNav">
             <li><a href="index.php">home</a></li>
-            <li><a href="#">about</a></li>
-            <li><a href="cms_forums.php">CMS threads</a></li>
+            <li><a href="admin/login.php">admin</a></li>
             <li><a href="#">contact</a></li>
         </ul>
     </nav>
@@ -54,11 +53,10 @@ if ($id && is_int($id)) {
     </aside>
     <main id="content" class="mainStyle">
         <div class="display_record">
-            <img src="<?php echo $cmsRecord->image_path; ?>" alt="Database Image">
-            <h2 class="heading"><?= $cmsRecord->heading ?></h2>
-            <h6 class="sub_heading"><?= $cmsRecord->author ?> on <?php echo CMS::styleDate($cmsRecord->date_added) ?></h6>
-            <p class="content"><?= nl2br($cmsRecord->content) ?></p>
-
+            <img class="large_img" src="<?php echo $cms->image_path; ?>" alt="<?= $cms->heading ?>">
+            <h3 class="record_heading"><?= $cms->heading ?></h3>
+            <h6 class="record_author"><?php echo $cms->author; ?><span class="date_created">created on <?php echo CMS::styleDate($cms->date_added) ?></span></h6>
+            <p class="record_content"><?php echo nl2br($cms->content); ?></p>
         </div>
     </main>
     <div class="contentContainer">

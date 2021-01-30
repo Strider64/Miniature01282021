@@ -27,9 +27,9 @@ class CMS extends DatabaseObject
     public $date_added;
 
 
-    #[Pure] public static function intro($content = "", $count = 100, $id = 0): string
+    #[Pure] public static function intro($content = "", $count = 100, $id = 0, $page = 'display_page'): string
     {
-        return substr($content, 0, $count) . '<a class="moreBtn" href="display.php?id=' . urldecode($id) . '"> ...more</a>';
+        return substr($content, 0, $count) . '<a class="moreBtn" href="' . $page . '?id=' . urldecode($id) . '"> ...more</a>';
     }
 
     public static function styleDate($prettyDate): string

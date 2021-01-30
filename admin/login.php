@@ -38,7 +38,7 @@ if ($submit) {
     <div class="topLeft">
         <nav class="navigation">
             <ul class="topNav">
-                <li><a href="../index.php">home page</a></li>
+                <li><a href="../index.php">home</a></li>
             </ul>
         </nav>
         <form class="login" method="post" action="login.php">
