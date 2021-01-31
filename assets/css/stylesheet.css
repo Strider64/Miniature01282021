@@ -422,6 +422,19 @@ img {
   width: 100%;
   height: auto; }
 
+/* Subscription Styling */
+.subscribe_info {
+  margin: 0.938em; }
+  .subscribe_info h2 {
+    font-family: 'Cormorant Garamond', serif; }
+  .subscribe_info p {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.0em;
+    line-height: 1.5; }
+
+#paypal-button-container {
+  margin-top: 0.938em; }
+
 .login {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -545,8 +558,7 @@ ul.topNav li.right {
   height: auto;
   font-family: 'Rubik', sans-serif;
   font-size: 1.2em;
-  padding: 10px 20px 5px 20px;
-  margin: 0px 0px; }
+  padding: 10px 20px 5px 20px; }
   .pagination a {
     color: var(--dk-tan);
     text-decoration: none;

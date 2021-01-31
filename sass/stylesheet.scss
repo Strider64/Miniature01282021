@@ -84,8 +84,20 @@ img {
   height: auto;
 }
 
-.headerStyle {
-
+/* Subscription Styling */
+.subscribe_info {
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+  }
+  p {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.0em;
+    line-height: 1.5;
+  }
+  margin: 0.938em;
+}
+#paypal-button-container {
+  margin-top: 0.938em;
 }
 
 .login {
@@ -249,7 +261,6 @@ ul.topNav li.right {
   font-family: 'Rubik', sans-serif;
   font-size: 1.2em;
   padding: 10px 20px 5px 20px;
-  margin: 0px 0px;
   a {
     color: var(--dk-tan);
     text-decoration: none;
