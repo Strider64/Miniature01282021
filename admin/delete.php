@@ -2,10 +2,11 @@
 require_once "../assets/config/config.php";
 require_once "../vendor/autoload.php";
 use Miniature\CMS;
+use Miniature\Login;
+
+Login::is_login($_SESSION['last_login']);
 
 $delete = new CMS();
-
-
 
 $id = $_GET['id'] ?? null;
 

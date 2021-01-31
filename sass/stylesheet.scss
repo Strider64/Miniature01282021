@@ -388,6 +388,23 @@ ul.topNav li.right {
       font-size: 1.0em;
       line-height: 1.5;
     }
+    .button {
+      display: inline-block;
+      height: 1.420em;
+      border: none;
+      transition: background-color 0.5s ease;
+      background-color: #4CAF50; /* Green */
+
+      font-family: 'Rubik', sans-serif;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      padding: 0.938em 1.875em;
+      font-size: 1em;
+      &:hover {
+        background-color: darken(#4CAF50, 20%);
+      }
+    }
   }
 }
 
@@ -609,7 +626,7 @@ CSS Grid layout for modern browsers:
           line-height: 1.5;
           padding: 0 0.625em;
         }
-        .delete_btn {
+        .button {
           grid-column: span 3;
           grid-row: 1/2;
           z-index: 10;
