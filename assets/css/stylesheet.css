@@ -959,6 +959,7 @@ CSS Grid layout for modern browsers:
         grid-row: auto;
         justify-content: space-evenly;
         justify-items: left;
+        z-index: 5;
         background-color: #f1f1f1;
         margin-bottom: 0.625em;
         /*
@@ -990,6 +991,12 @@ CSS Grid layout for modern browsers:
           font-size: 1.0em;
           line-height: 1.5;
           padding: 0 0.625em; }
+        .cmsThreads .display .delete_btn {
+          grid-column: span 3;
+          grid-row: 1/2;
+          z-index: 10;
+          float: right;
+          margin: 1.250em 2.500em 0; }
         .cmsThreads .display .moreBtn {
           color: #844D36;
           text-decoration: none; }
