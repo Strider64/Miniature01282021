@@ -92,7 +92,6 @@ $calendar = $monthly->generateCalendar('index.php');
                 }
             }).render('#paypal-button-container');
         </script>
-
     </aside>
     <main id="content" class="mainStyle">
         <div class="cmsThreads">

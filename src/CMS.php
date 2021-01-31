@@ -33,7 +33,7 @@ class CMS extends DatabaseObject
      */
     #[Pure] public static function intro($content = "", $count = 100, $id = 0, $page = 'display_page.php'): string
     {
-        return substr($content, 0, $count) . '<a class="moreBtn" href="' . $page . '?id=' . urldecode($id) . '"> ...more</a>';
+        return substr($content, 0, $count) . '<a class="button" href="' . $page . '?id=' . urldecode($id) . '"> ...more</a>';
     }
 
     /*
