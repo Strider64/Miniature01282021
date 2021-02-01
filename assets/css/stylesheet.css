@@ -413,6 +413,22 @@ General styling
   -webkit-box-shadow: inset 0 0 0.313em #000000;
   box-shadow: inset 0 0 0.313em #000000; }
 
+.button {
+  display: inline-block;
+  height: 1.420em;
+  border: none;
+  transition: background-color 0.5s ease;
+  background-color: #4CAF50;
+  /* Green */
+  font-family: 'Rubik', sans-serif;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding: 0.938em 1.875em;
+  font-size: 1em; }
+  .button:hover {
+    background-color: #2d682f; }
+
 p {
   margin: 0; }
 
@@ -426,11 +442,14 @@ img {
 .subscribe_info {
   margin: 0.938em; }
   .subscribe_info h2 {
-    font-family: 'Cormorant Garamond', serif; }
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4em;
+    color: #555; }
   .subscribe_info p {
     font-family: 'Rubik', sans-serif;
-    font-size: 1.0em;
-    line-height: 1.5; }
+    font-size: 1.2em;
+    line-height: 1.5;
+    color: #555; }
 
 #paypal-button-container {
   margin-top: 0.938em; }
@@ -527,8 +546,8 @@ ul.topNav li.right {
     background-color: #f1f1f1;
     padding: 1.250em; }
     .mainStyle .display_record img {
-      width: 50%;
-      height: 50%; }
+      width: 100%;
+      height: 100%; }
     .mainStyle .display_record h3 {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.2em;
@@ -659,21 +678,6 @@ ul.topNav li.right {
     font-family: 'Rubik', sans-serif;
     font-size: 1.0em;
     line-height: 1.5; }
-  .cmsThreads .display .button {
-    display: inline-block;
-    height: 1.420em;
-    border: none;
-    transition: background-color 0.5s ease;
-    background-color: #4CAF50;
-    /* Green */
-    font-family: 'Rubik', sans-serif;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    padding: 0.938em 1.875em;
-    font-size: 1em; }
-    .cmsThreads .display .button:hover {
-      background-color: #2d682f; }
 
 footer {
   padding: 0.313em;
@@ -953,6 +957,9 @@ CSS Grid layout for modern browsers:
       grid-row: 4/5;
       justify-items: auto; }
 
+    .mainStyle .display_record img {
+      width: 50%;
+      height: 50%; }
     .mainStyle .display_record h3 {
       font-size: 2.4em; }
 
@@ -969,7 +976,7 @@ CSS Grid layout for modern browsers:
       .cmsThreads .display {
         grid-column: 1/2;
         display: grid;
-        grid-template-columns: fit-content(18.5em) minmax(1fr, 37em);
+        grid-template-columns: fit-content(18.5em) minmax(1fr, 37em) 1fr;
         grid-template-rows: 6.250em 6.250em;
         grid-row: auto;
         justify-content: space-evenly;
@@ -1000,23 +1007,18 @@ CSS Grid layout for modern browsers:
           .cmsThreads .display .cms_heading h6 {
             font-size: 0.8em;
             line-height: 0; }
+        .cmsThreads .display .button {
+          grid-column: 3/4;
+          grid-row: 1/3;
+          z-index: 10;
+          float: right;
+          margin: 0.625em 0.625em 0; }
         .cmsThreads .display p {
           grid-column: 2/3;
           grid-row: 2/3;
           font-size: 1.0em;
           line-height: 1.5;
           padding: 0 0.625em; }
-        .cmsThreads .display .button {
-          grid-column: span 3;
-          grid-row: 1/2;
-          z-index: 10;
-          float: right;
-          margin: 1.250em 2.500em 0; }
-        .cmsThreads .display .moreBtn {
-          color: #844D36;
-          text-decoration: none; }
-          .cmsThreads .display .moreBtn:hover {
-            color: #4CAF50; }
       .cmsThreads .pagination {
         grid-column: 1/2;
         grid-row: 1/2;

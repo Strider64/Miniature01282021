@@ -105,6 +105,10 @@ if (isset($_POST['submit'], $_FILES['image'])) {
         /* Save to Database Table CMS */
         $cms = new CMS($data);
         $result = $cms->create();
+        if ($result) {
+            header("Location: index.php");
+            exit();
+        }
     } else {
         return $errors;
     }

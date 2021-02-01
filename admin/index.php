@@ -70,8 +70,8 @@ $cms = CMS::page($per_page, $offset);
                 echo "<h3>" . $record['heading'] . "</h3>\n";
                 echo sprintf("<h6> by %s on %s updated on %s</h6>", $record['author'], CMS::styleDate($record['date_added']), CMS::styleDate($record['date_updated']));
                 echo '</div>';
-                echo sprintf("<p>%s</p>\n", nl2br(CMS::intro($record['content'], 200, $record['id'], 'edit.php')));
-                echo '<a class="button" href="delete.php?id=' . urldecode($record['id']) . '" onclick="return confirm(\'Are you sure you want to delete this item?\');">Delete</a>';
+                echo sprintf("<p>%s</p>\n", nl2br(CMS::intro($record['content'], 200)));
+                echo '<a class="button" href="edit.php?id=' . urldecode($record['id']) . '">Edit Page</a>';
                 echo '</article>';
             }
             ?>

@@ -102,7 +102,7 @@ class DatabaseObject // Extended by the children class:
      * updating was easier that creating/adding a record for
      * some strange reason?
      */
-    public function update(): void
+    public function update(): bool
     {
         /* Initialize an array */
         $attribute_pairs = [];
@@ -125,6 +125,8 @@ class DatabaseObject // Extended by the children class:
 
         /* Normally in two lines, but you can daisy chain pdo method calls */
         Database::pdo()->prepare($sql)->execute(static::$params);
+
+        return true;
 
     }
 

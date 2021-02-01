@@ -31,9 +31,9 @@ class CMS extends DatabaseObject
      * Create a short description of content and place a link button that I call 'more' at the end of the
      * shorten content.
      */
-    #[Pure] public static function intro($content = "", $count = 100, $id = 0, $page = 'display_page.php'): string
+    #[Pure] public static function intro($content = "", $count = 100): string
     {
-        return substr($content, 0, $count) . '<a class="button" href="' . $page . '?id=' . urldecode($id) . '"> ...more</a>';
+        return substr($content, 0, $count) . "...";
     }
 
     /*
@@ -65,16 +65,17 @@ class CMS extends DatabaseObject
 
 
         // Caution: allows private/protected properties to be set
-        foreach($args as $k => $v) {
-           if(property_exists($this, $k)) {
-            $this->$k = $v;
-            static::$params[$k] = $v;
-            static::$objects[] = $v;
-          }
+        foreach ($args as $k => $v) {
+            if (property_exists($this, $k)) {
+                $this->$k = $v;
+                static::$params[$k] = $v;
+                static::$objects[] = $v;
+            }
         }
     } // End of construct method:
 
-    public function update_records($args = []) {
+    public function update_records($args = [])
+    {
         $this->__construct($args);
     }
 } // End of class:

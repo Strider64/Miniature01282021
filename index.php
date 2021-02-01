@@ -63,14 +63,33 @@ $calendar = $monthly->generateCalendar('index.php');
         </nav>
         <img src="assets/images/img-logo-001.jpg" alt="Logo for Website">
     </div>
+
+    <main id="content" class="mainStyle">
+        <div class="cmsThreads">
+            <?php
+
+            foreach ($cms as $record) {
+                echo '<article  class="display">' . "\n\n";
+                echo '<a class="moreBtn" href="display_page.php?id=' . urldecode($record['id']) . '"><img class="thumb" src="' . $record['thumb_path'] .  '" alt="thumbnail"></a>' . "\n";
+                echo '<div class="cms_heading">' . "\n";
+                echo "<h3>" . $record['heading'] . "</h3>\n";
+                echo sprintf("<h6> by %s on %s updated on %s</h6>", $record['author'], CMS::styleDate($record['date_added']), CMS::styleDate($record['date_updated']));
+                echo '</div>' . "\n";
+                echo sprintf("<p>%s</p>\n", nl2br(CMS::intro($record['content'], 100)));
+                echo '<a class="button" href="display_page.php?id=' . urldecode($record['id']) . '">Full Page</a>' . "\n\n";
+                echo '</article>' . "\n\n";
+            }
+            ?>
+        </div>
+    </main>
     <aside class="sidebar">
         <?php
-            $url = 'index.php';
-            echo $pagination->page_links($url);
+        $url = 'index.php';
+        echo $pagination->page_links($url);
         ?>
         <div class="subscribe_info">
             <h2>Please Subscribe</h2>
-            <p>I'm not requiring a registration or a login to access this website, but I'm asking for subcriptions to help pay for some of the costs in developing this website. The costs is only $15.00 USD per year and would be very much appreciated. I will be adding new features to this website in the upcoming weeks and subscriptions will motivate me to continue to develop.</p>
+            <p>I'm not requiring a registration or a login to access this website, but I'm asking for subscriptions to help pay for some of the costs in developing this website. The costs is only $15.00 USD per year and would be very much appreciated. I will be adding new features to this website in the upcoming weeks and subscriptions will motivate me to continue to develop.</p>
         </div>
         <div id="paypal-button-container"></div>
         <script src="https://www.paypal.com/sdk/js?client-id=AfNFD6Lrv6FGJvVGXIycY1HhaNNq22Vw21JAwv4zFSp1cTNGCMItNEKsqEUvgiB2jmN2glzRjzacmqUX&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
@@ -93,23 +112,6 @@ $calendar = $monthly->generateCalendar('index.php');
             }).render('#paypal-button-container');
         </script>
     </aside>
-    <main id="content" class="mainStyle">
-        <div class="cmsThreads">
-            <?php
-
-            foreach ($cms as $record) {
-                echo '<article  class="display">' . "\n";
-                echo '<a class="moreBtn" href="display_page.php?id=' . urldecode($record['id']) . '"><img class="thumb" src="' . $record['thumb_path'] .  '" alt="thumbnail"></a>';
-                echo '<div class="cms_heading">';
-                echo "<h3>" . $record['heading'] . "</h3>\n";
-                echo sprintf("<h6> by %s on %s updated on %s</h6>", $record['author'], CMS::styleDate($record['date_added']), CMS::styleDate($record['date_updated']));
-                echo '</div>';
-                echo sprintf("<p>%s</p>\n", nl2br(CMS::intro($record['content'], 200, $record['id'])));
-                echo '</article>';
-            }
-            ?>
-        </div>
-    </main>
     <div class="contentContainer">
 
     </div>

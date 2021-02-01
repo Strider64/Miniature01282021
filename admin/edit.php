@@ -7,7 +7,7 @@ use Miniature\Login;
 
 Login::is_login($_SESSION['last_login']);
 
-
+$result = false;
 $id = (int) htmlspecialchars($_GET['id'] ?? null);
 
 /*
@@ -20,10 +20,9 @@ $id = (int) htmlspecialchars($_GET['id'] ?? null);
  */
 if (isset($_POST['submit'])) {
     $cms = new CMS($_POST['cms']);
-    $cms->update();
+    $result = $cms->update();
     $id = $_POST['cms']['id'];
 } elseif ($id && is_int($id)) {
-
     $record = CMS::fetch_by_id($id);
     $cms = new CMS($record);
 } else {
@@ -55,7 +54,12 @@ if (isset($_POST['submit'])) {
         </ul>
     </nav>
     <aside class="sidebar">
-
+        <?php echo '<a class="button" href="delete.php?id=' . urldecode($id) . '" onclick="return confirm(\'Are you sure you want to delete this item?\');">Delete</a>'; ?>
+        <?php
+            if ($result) {
+                echo '<h3 class="success">Record Successfully Edited!</h3>' . "\n";
+            }
+        ?>
     </aside>
     <main id="content" class="mainStyle">
         <form class="formGrid" action="edit.php" method="post" enctype="multipart/form-data">

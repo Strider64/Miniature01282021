@@ -22,7 +22,7 @@ if ($id && is_int($id)) {
     //echo "<pre>" . print_r($cmsRecord, 1) . "</pre>";
     //die();
 } else {
-    header("Location: cms_forums.php");
+    header("Location: index.php");
     exit();
 }
 ?>
@@ -48,6 +48,14 @@ if ($id && is_int($id)) {
             <li><a href="#">contact</a></li>
         </ul>
     </nav>
+    <main id="content" class="mainStyle">
+        <div class="display_record">
+            <img class="large_img" src="<?php echo $cms->image_path; ?>" alt="<?= $cms->heading ?>">
+            <h3 class="record_heading"><?= $cms->heading ?></h3>
+            <h6 class="record_author"><?php echo 'by ' . $cms->author; ?><span class="date_created"> created on <?php echo CMS::styleDate($cms->date_added) ?></span></h6>
+            <p class="record_content"><?php echo nl2br($cms->content); ?></p>
+        </div>
+    </main>
     <aside class="sidebar">
         <div class="subscribe_info">
             <h2>Please Subscribe</h2>
@@ -75,14 +83,6 @@ if ($id && is_int($id)) {
         </script>
 
     </aside>
-    <main id="content" class="mainStyle">
-        <div class="display_record">
-            <img class="large_img" src="<?php echo $cms->image_path; ?>" alt="<?= $cms->heading ?>">
-            <h3 class="record_heading"><?= $cms->heading ?></h3>
-            <h6 class="record_author"><?php echo 'by ' . $cms->author; ?><span class="date_created"> created on <?php echo CMS::styleDate($cms->date_added) ?></span></h6>
-            <p class="record_content"><?php echo nl2br($cms->content); ?></p>
-        </div>
-    </main>
     <div class="contentContainer">
 
     </div>
