@@ -111,12 +111,7 @@
                 seconds--;
             }
         };
-
-
-
-
         timer = setInterval(countdown, 1000);
-
     };
 
     const stopTimer = () => {
@@ -134,6 +129,7 @@
              */
             if (userAnswer === correct && userAnswer === parseInt(answer.getAttribute('data-correct'))) {
                 answer.style["background-color"] = myGreen;
+                answer.style['color'] = '#f1f1f1';
             }
 
             /*
@@ -141,9 +137,11 @@
              */
             if (userAnswer !== correct && userAnswer === parseInt(answer.getAttribute('data-correct'))) {
                 answer.style['background-color'] = myRed;
+                answer.style['color'] = '#f1f1f1';
             }
             if (userAnswer !== correct && correct === parseInt(answer.getAttribute('data-correct'))) {
                 answer.style['background-color'] = myGreen;
+                answer.style['color'] = '#f1f1f1';
             }
 
             /*
@@ -151,6 +149,7 @@
              */
             if (userAnswer === 5) {
                 answer.style['background-color'] = myRed;
+                answer.style['color'] = '#f1f1f1';
             }
         });
     };

@@ -5,19 +5,8 @@ require_once "../vendor/autoload.php";
 
 use Miniature\Trivia;
 
-$trivia = new Trivia();
-
-
 /*
- * Read Questions & Answers in from the Database Table Named 'trivia_questions'
- */
-
-
-/* Makes it so we don't have to decode the json coming from Javascript */
-//header('Content-type: application/json');
-
-/*
- * Get Category from the FETCH statment from javascript
+ * Get Category from the FETCH statement from javascript
  */
 $category = htmlspecialchars($_GET['category']);
 
@@ -70,19 +59,13 @@ if (isset($category)) { // Get rid of $api_key if not using:
     output($mData); // Send properly formatted array back to javascript:
 }
 
-
-
-///*
-// * If everything validates OK then send success message to Ajax / JavaScript
-// */
-
 /*
  * After converting data array to JSON send back to javascript using
  * this function.
  */
-function output($output) {
+function output($output)
+{
     http_response_code(200);
-
     try {
         echo json_encode($output, JSON_THROW_ON_ERROR);
     } catch (JsonException) {

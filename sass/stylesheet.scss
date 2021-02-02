@@ -61,6 +61,176 @@ body {
 }
 
 
+/* Trivia Game */
+#mainGame::after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+
+#mainGame #headerStyle {
+  display: block;
+  width: 100%;
+  height: 3.125em;
+  background-color: var(--dk-blue-gray);
+  padding: 0.313em;
+  margin: 0;
+  h2 {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.4em;
+    line-height: 0.313em;
+    text-align: center;
+    color: #fff;
+  }
+}
+
+
+#mainGame #headerStyle h2 #clock {
+  font-size: 1.2em;
+}
+
+#mainGame #headerStyle h2 #currentQuestion {
+  font-size: 1.2em;
+  margin-left: 2rem;
+}
+
+#mainGame #headerStyle h2 #totalQuestions {
+  font-size: 1.2em;
+}
+
+#mainGame #triviaSection {
+  margin: 0px;
+}
+
+#mainGame #triviaSection #questionBox {
+  display: block;
+  width: 100%;
+  height: 18.75em;
+  background-color: #f2f2f2;
+  padding: 0.313em;
+  margin-bottom: 0.313em;
+}
+
+
+#mainGame #triviaSection #questionBox h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4em;
+  line-height: 1.5;
+  color: #2e2e2e;
+  vertical-align: middle;
+}
+
+#mainGame #triviaSection #buttonContainer {
+  display: block;
+  width: 100%;
+  height: auto;
+  background-color: #f1f1f1;
+  padding: 0.313em;
+  margin-bottom: 0.625em;
+}
+
+#mainGame #triviaSection #buttonContainer .answerButton {
+  display: block;
+  width: 100%;
+  height: 50px;
+  outline: none;
+
+  cursor: pointer;
+  background-color: #f1f1f1;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.2em;
+  color: #2e2e2e;
+  text-transform: capitalize;
+  text-align: left;
+  padding-left: 0.625em;
+  margin: 0;
+}
+
+#mainGame #playerStats {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 40px;
+}
+
+#mainGame #playerStats #score {
+  position: absolute;
+  top: 50px;
+  left: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.0em;
+  color: #fff;
+  line-height: 15px;
+}
+
+#mainGame #playerStats #percent {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.0em;
+  color: #fff;
+  line-height: 15px;
+}
+
+#mainGame #nextStyle {
+  position: relative;
+  top: 0px;
+  right: 0px;
+  width: 100%;
+  height: 50px;
+}
+
+#mainGame #nextStyle #next {
+  position: absolute;
+  top: -35px;
+  right: 20px;
+  border: none;
+  outline: none;
+  display: block;
+  width: 100%;
+  max-width: 150px;
+  height: 40px;
+  cursor: pointer;
+  background-color: #555;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.2em;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+#mainGame #nextStyle #next:hover {
+  background-color: rgba(85, 85, 85, 0.7);
+  color: #fff;
+}
+
+a.qBtn {
+  float: right;
+  font-size: 1.0em;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #555;
+  border: 1px solid #555;
+  padding: 2px 7px;
+  margin-right: 5.000em;
+  margin-bottom: 3.125em;
+  transition: background-color .5s;
+}
+
+a.qBtn:visited, a.qBtn:active {
+  background-color: #555;
+}
+
+a.qBtn:hover {
+  color: #555;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.disableClick {
+  pointer-events: none;
+}
+
+
 /*--------------------------------------------------------------
 General styling
 --------------------------------------------------------------*/
@@ -85,6 +255,7 @@ General styling
   text-decoration: none;
   padding: 0.938em 1.875em;
   font-size: 1em;
+
   &:hover {
     background-color: darken(#4CAF50, 20%);
   }
@@ -108,14 +279,17 @@ img {
     font-size: 2.4em;
     color: #555;
   }
+
   p {
     font-family: 'Rubik', sans-serif;
     font-size: 1.2em;
     line-height: 1.5;
     color: #555;
   }
+
   margin: 0.938em;
 }
+
 #paypal-button-container {
   margin-top: 0.938em;
 }
@@ -281,11 +455,13 @@ ul.topNav li.right {
   font-family: 'Rubik', sans-serif;
   font-size: 1.2em;
   padding: 10px 20px 5px 20px;
+
   a {
     color: var(--dk-tan);
     text-decoration: none;
     margin: 0 0.500em;
   }
+
   span.selected {
     font-weight: bold;
     color: #000;
@@ -393,16 +569,19 @@ ul.topNav li.right {
 .cmsThreads {
   background-color: #fff;
   padding: 0.625em;
+
   .display {
 
     .cms_heading {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.2em;
       line-height: 0;
+
       h3 {
         font-size: 1.0em;
       }
     }
+
     p {
       font-family: 'Rubik', sans-serif;
       font-size: 1.0em;
@@ -566,6 +745,7 @@ CSS Grid layout for modern browsers:
           width: 50%;
           height: 50%;
         }
+
         h3 {
           font-size: 2.4em;
         }
@@ -629,7 +809,7 @@ CSS Grid layout for modern browsers:
         }
 
         .button {
-          grid-column:  3/4;
+          grid-column: 3/4;
           grid-row: 1/3;
           z-index: 10;
           float: right;
@@ -643,7 +823,6 @@ CSS Grid layout for modern browsers:
           line-height: 1.5;
           padding: 0 0.625em;
         }
-
 
 
       }

@@ -11,14 +11,28 @@ require_once "../vendor/autoload.php";
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Photography Quiz</title>
-
+    <link rel="stylesheet" href="../assets/css/stylesheet.css">
     <script type="text/javascript" src="../assets/js/game.js" defer></script>
 
 </head>
-<body>
+<body class="site">
+<section class="mainArea">
+    <header class="headerStyle">
+        <img src="../assets/images/img-header-red-tailed-hawk-001.jpg" alt="Red-tailed Hawk">
+    </header>
+    <nav class="navigation">
+        <ul class="topNav">
+            <li><a href="index.php">home</a></li>
+            <li><a href="create.php">add</a></li>
+            <li><a href="game.php">game</a> </li>
+            <li><a href="logout.php">logout</a> </li>
+        </ul>
+    </nav>
+    <aside class="sidebar">
     <div id="startBtn">
         <a class="logo" id="customBtn" title="Start Button" href="game.php"><span>Start Button</span></a>
     </div>
+    </aside>
     <div id="quiz" class="displayMessage" data-username="Strider">
         <div class="triviaContainer" data-records=" ">
             <div id="mainGame">
@@ -32,7 +46,6 @@ require_once "../vendor/autoload.php";
                     </div>
                     <div id="buttonContainer"></div>
                 </div>
-
                 <div id="playerStats">
                     <h2 id="score">Score 0 Points</h2>
                     <h2 id="percent">100 percent</h2>
@@ -43,6 +56,14 @@ require_once "../vendor/autoload.php";
             </div>
         </div>
     </div>
+    <div class="contentContainer">
+
+    </div>
+
+    <footer class="footerStyle">
+        <p>&copy; <?php echo date("Y") ?> The Miniature Photographer</p>
+    </footer>
+</section>
 </body>
 </html>
 
