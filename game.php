@@ -1,6 +1,6 @@
 <?php
-require_once '../assets/config/config.php';
-require_once "../vendor/autoload.php";
+require_once 'assets/config/config.php';
+require_once "vendor/autoload.php";
 
 ?>
 <!doctype html>
@@ -11,21 +11,21 @@ require_once "../vendor/autoload.php";
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Photography Quiz</title>
-    <link rel="stylesheet" href="../assets/css/stylesheet.css">
-    <script type="text/javascript" src="../assets/js/game.js" defer></script>
+    <link rel="stylesheet" href="assets/css/stylesheet.css">
+    <script type="text/javascript" src="assets/js/game.js" defer></script>
 
 </head>
 <body class="site">
 <section class="mainArea">
     <header class="headerStyle">
-        <img src="../assets/images/img-header-red-tailed-hawk-001.jpg" alt="Red-tailed Hawk">
+        <img src="assets/images/img-header-red-tailed-hawk-001.jpg" alt="Red-tailed Hawk">
     </header>
     <nav class="navigation">
         <ul class="topNav">
             <li><a href="index.php">home</a></li>
-            <li><a href="create.php">add</a></li>
+            <li><a href="admin/login.php">admin</a></li>
             <li><a href="game.php">game</a> </li>
-            <li><a href="logout.php">logout</a> </li>
+            <li><a href="#">contact</a></li>
         </ul>
     </nav>
     <aside class="sidebar">

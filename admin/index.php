@@ -49,7 +49,6 @@ $cms = CMS::page($per_page, $offset);
         <ul class="topNav">
             <li><a href="index.php">home</a></li>
             <li><a href="create.php">add</a></li>
-            <li><a href="game.php">game</a> </li>
             <li><a href="logout.php">logout</a> </li>
         </ul>
     </nav>

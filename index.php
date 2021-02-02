@@ -48,6 +48,7 @@ include "shared/includes/inc.header.php";
             <ul class="topNav">
                 <li><a href="index.php">home</a></li>
                 <li><a href="admin/login.php">admin</a></li>
+                <li><a href="game.php">game</a> </li>
                 <li><a href="#">contact</a></li>
             </ul>
         </nav>
