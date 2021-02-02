@@ -74,8 +74,4 @@ class CMS extends DatabaseObject
         }
     } // End of construct method:
 
-    public function update_records($args = [])
-    {
-        $this->__construct($args);
-    }
 } // End of class:

@@ -27,6 +27,14 @@ class DatabaseObject // Extended by the children class:
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public static function fetch_all_by_column_name($sql): array
+    {
+        $stmt = Database::pdo()->prepare($sql);
+
+        $stmt->execute([ static::$searchItem => static::$searchValue ]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     /*
      * Total rows in Database Table
      */
@@ -63,6 +71,23 @@ class DatabaseObject // Extended by the children class:
      * Create/Insert new record in the database table
      * that can be used for more than one table.
      */
+
+    /**
+     * @param mixed $searchItem
+     */
+    public static function setSearchItem(mixed $searchItem): void
+    {
+        self::$searchItem = $searchItem;
+    }
+
+    /**
+     * @param mixed $searchValue
+     */
+    public static function setSearchValue(mixed $searchValue): void
+    {
+        self::$searchValue = $searchValue;
+    }
+
     public function create():bool
     {
 

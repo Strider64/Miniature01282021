@@ -26,7 +26,7 @@ if (!empty($id)) {
      */
     header("Location: index.php");
     exit();
-} else {
-    header("Location: index.php");
-    exit();
 }
+
+header("Location: index.php");
+exit();
