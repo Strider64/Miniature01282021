@@ -242,14 +242,14 @@ body {
 
 #mainGame #headerStyle {
   display: block;
-  width: 100%;
+  width: 98%;
   height: 3.125em;
   background-color: var(--dk-blue-gray);
   padding: 0.313em;
   margin: 0; }
   #mainGame #headerStyle h2 {
     font-family: 'Rubik', sans-serif;
-    font-size: 1.4em;
+    font-size: 0.8em;
     line-height: 0.313em;
     text-align: center;
     color: #fff; }
@@ -269,7 +269,7 @@ body {
 
 #mainGame #triviaSection #questionBox {
   display: block;
-  width: 100%;
+  width: 97%;
   height: 18.75em;
   background-color: #f2f2f2;
   padding: 0.313em;
@@ -277,14 +277,14 @@ body {
 
 #mainGame #triviaSection #questionBox h2 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4em;
+  font-size: 1.2em;
   line-height: 1.5;
   color: #2e2e2e;
   vertical-align: middle; }
 
 #mainGame #triviaSection #buttonContainer {
   display: block;
-  width: 100%;
+  width: 98%;
   height: auto;
   background-color: #f1f1f1;
   padding: 0.313em;
@@ -1107,6 +1107,15 @@ CSS Grid layout for modern browsers:
       height: 50%; }
     .mainStyle .display_record h3 {
       font-size: 2.4em; }
+
+    #mainGame #headerStyle h2 {
+      font-size: 1.4em; }
+
+    #mainGame #triviaSection #questionBox {
+      padding: 0.625em; }
+      #mainGame #triviaSection #questionBox h2 {
+        font-size: 1.4em;
+        line-height: 1.5; }
 
     /* CMS Threads */
     .cmsThreads {

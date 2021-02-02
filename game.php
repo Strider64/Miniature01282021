@@ -29,10 +29,12 @@ require_once "vendor/autoload.php";
         </ul>
     </nav>
     <aside class="sidebar">
+
     <div id="startBtn">
         <a class="logo" id="customBtn" title="Start Button" href="game.php"><span>Start Button</span></a>
     </div>
     </aside>
+    <main id="content" class="mainStyle">
     <div id="quiz" class="displayMessage" data-username="Strider">
         <div class="triviaContainer" data-records=" ">
             <div id="mainGame">
@@ -56,6 +58,7 @@ require_once "vendor/autoload.php";
             </div>
         </div>
     </div>
+    </main>
     <div class="contentContainer">
 
     </div>
