@@ -30,14 +30,17 @@ if (hash_equals($_SESSION['token'], $data['token'])) {
          * another 3rd Party Mailer or write you own email script (I wouldn't
          * recommend it).
          */
+        $data['message'] =
+            '<html lang="en">' .
+            '<body>' .
+            '<p style="font-size: 1.8em; line-height: 1.5;">' . $data['name'] . ' type of message is ' . $data['reason'] . '</p>' .
+            '<p style="font-size: 1.6em; line-height: 1.5;">' . $data['comments'] . '</p>' .
+            '<p style="font-size: 1.4em; line-height: 1.5;">Thank You, for taking your time to contact me! I will get back to you as soon as I can.</p>' .
+            '</body>' .
+            '</html>';
         $send = new sendMail();
 
-        $send->sendFrom([$data['email'] => $data['name']]);
-        $send->sendTo(['jrpepp@pepster.com', 'pepster@pepster.com' => 'John Pepp']);
-        $content = $data['phone'] . "\n" . $data['website'] . "\n" . $data['reason'] . "\n" . $data['comments'];
-        $send->content($content);
-        $send->subject('A email from The Miniature Photographer');
-        $result = $send->sendEmail();
+        $result = $send->sendEmail($data);
 
         /* Send Back Result (true or false) back to Fetch */
         if ($result) {

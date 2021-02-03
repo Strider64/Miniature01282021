@@ -1,7 +1,7 @@
 form#contact {
   display: block;
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
   height: auto;
   background-color: #f2f2f2;
   padding: 0.938em 1.250em;
@@ -83,7 +83,7 @@ form#contact #radio-toolbar input[type="radio"]:checked + label {
   color: #555; }
 form#contact p {
   margin: 0 0 1em 0; }
-form#contact textareaLabel {
+form#contact .textareaLabel {
   clear: both;
   float: left;
   font-family: Arial, Helvetica, sans-serif;
@@ -104,7 +104,8 @@ form#contact textarea {
   font-size: 1.0em;
   line-height: 1.5;
   padding: 0.625em 0.313em;
-  margin-top: 0.125em; }
+  margin-bottom: 1.250em;
+}
 form#contact input[type=submit] {
   cursor: pointer;
   clear: both;

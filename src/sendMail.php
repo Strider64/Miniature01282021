@@ -6,6 +6,7 @@ namespace Miniature;
  * In order to use swiftmailer the below is needed....
  */
 
+use Swift_Attachment;
 use Swift_SmtpTransport;
 use Swift_Message;
 use Swift_Mailer;
@@ -42,7 +43,7 @@ class sendMail {
         $this->content = $content;
     }
 
-    public function sendEmail() {
+    public function sendEmail($data) {
         /* Setup swiftmailer using your email server information */
         $transport = (new Swift_SmtpTransport('smtp.gmail.com', 587, 'tls'))
                 ->setUsername("chalkboardquiz@gmail.com")
@@ -52,10 +53,12 @@ class sendMail {
         $mailer = new Swift_Mailer($transport);
 
         /* create message */
-        $message = (new Swift_Message($this->subject))
-                ->setFrom($this->sendFrom)
-                ->setTo($this->sendTo)
-                ->setBody($this->content);
+        $message = (new Swift_Message('A email from ' . $data['name']))
+                ->setFrom([$data['email'] => $data['name']])
+                ->setTo(['jrpepp@pepster.com'])
+                ->setCc([$data['email'] => $data['name']])
+                ->setBody($data['message'], 'text/html')
+                ->attach(entity: Swift_Attachment::fromPath('https://www.miniaturephotographer.com/assets/images/img-logo-003.jpg'));
 
         /* Send the message */
         return $mailer->send($message);
