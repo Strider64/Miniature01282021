@@ -136,7 +136,7 @@ body {
 }
 
 #mainGame #triviaSection {
-  margin: 0px;
+  margin: 0;
 }
 
 #mainGame #triviaSection #questionBox {
@@ -212,8 +212,8 @@ body {
 
 #mainGame #nextStyle {
   position: relative;
-  top: 0px;
-  right: 0px;
+  top: 0;
+  right: 0;
   width: 100%;
   height: 50px;
 }
@@ -290,8 +290,8 @@ General styling
   color: white;
   text-align: center;
   text-decoration: none;
-  padding: 0.938em 1.875em;
-  font-size: 1em;
+  padding: 0.313em 1.563em;
+  font-size: 0.8em;
 
   &:hover {
     background-color: darken(#4CAF50, 20%);
