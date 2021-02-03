@@ -359,18 +359,17 @@
 
 
     //d.querySelector('.main').scrollIntoView();
-    selectCat('photography');
-/*    const startGame = (e) => {
+    //selectCat('photography');
+   const startGame = (e) => {
         e.preventDefault();
         selectCat('photography');
-        d.querySelector('#startBtn').style.display = 'none';
         d.querySelector('.displayStatus').style.display = 'none';
+        d.querySelector('#customBtn').style.display = 'none';
         d.querySelector('#quiz').style.display = 'block';
-    };*/
+    };
 
-    /*d.querySelector('#customBtn').addEventListener('click', startGame, false);
-    d.querySelector('#gameNav').style.display = "none";
-    d.querySelector('#gameMasthead').style.display = "none";
-    d.querySelector('.main-area').style.padding = "0px";*/
+    d.querySelector('#customBtn').addEventListener('click', startGame, false);
+    d.querySelector('#quiz').style.display = "none";
+
 
 })();

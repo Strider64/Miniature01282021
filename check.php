@@ -4,9 +4,6 @@ require_once "vendor/autoload.php";
 
 use Miniature\Trivia;
 
-/* Makes it so we don't have to decode the json coming from javascript */
-header('Content-type: application/json');
-
 /*
  * The below must be used in order for the json to be decoded properly.
  */

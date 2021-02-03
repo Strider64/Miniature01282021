@@ -235,6 +235,35 @@ body {
   margin: 0; }
 
 /* Trivia Game */
+.displayStatus {
+  width: 18.750em;
+  background-color: #f1f1f1;
+  padding: 0.313em 1.250em 1.250em;
+  margin: 0 auto; }
+  .displayStatus h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4em;
+    line-height: 0; }
+  .displayStatus p {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.2em;
+    line-height: 1.5; }
+  .displayStatus #customBtn {
+    display: block;
+    height: 1.420em;
+    border: none;
+    transition: background-color 0.5s ease;
+    background-color: #4CAF50;
+    /* Green */
+    font-family: 'Rubik', sans-serif;
+    font-size: 1em;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 0.938em 1.875em; }
+    .displayStatus #customBtn:hover {
+      background-color: #2d682f; }
+
 #mainGame::after {
   content: ' ';
   display: block;
@@ -1107,6 +1136,15 @@ CSS Grid layout for modern browsers:
       height: 50%; }
     .mainStyle .display_record h3 {
       font-size: 2.4em; }
+
+    .displayStatus {
+      width: 50.000em; }
+      .displayStatus h4 {
+        font-size: 1.8em; }
+
+    .triviaContainer {
+      width: 50.000em;
+      margin: 0 auto; }
 
     #mainGame #headerStyle h2 {
       font-size: 1.4em; }

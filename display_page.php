@@ -6,8 +6,6 @@ use Miniature\CMS;
 
 $cms = new CMS();
 
-
-
 $id = (int) htmlspecialchars($_GET['id'] ?? null);
 
 /*
@@ -18,9 +16,6 @@ $id = (int) htmlspecialchars($_GET['id'] ?? null);
 if ($id && is_int($id)) {
     $record = CMS::fetch_by_id($id);
     $cms = new CMS($record);
-    //echo "content " . $cmsRecord->content . "<br>";
-    //echo "<pre>" . print_r($cmsRecord, 1) . "</pre>";
-    //die();
 } else {
     header("Location: index.php");
     exit();
