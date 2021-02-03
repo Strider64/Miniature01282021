@@ -29,38 +29,52 @@ require_once "vendor/autoload.php";
         <img src="assets/images/img-logo-004.jpg" alt="Logo for Website">
     </div>
     <main id="content" class="mainStyle">
+        <form id="contact" name="contact" action="contact.php" method="post"  autocomplete="on">
+            <div id="message">
+                <h2 id="notice">Form Notification</h2>
+                <a  id="messageSuccess" href="index.php" title="Home Page">Home</a>
+            </div>
+            <fieldset>
+                <legend>Contact Form</legend>
+                <input id="token" type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+                <label class="labelstyle" for="name" accesskey="U">Name</label>
+                <input name="name" type="text" id="name" tabindex="1" autofocus required="required" />
+
+                <label class="labelstyle" for="email" accesskey="E">Email</label>
+                <input name="email" type="email" id="email" tabindex="2" required="required" />
+
+                <label class="labelstyle" for="phone" accesskey="P" >Phone <small>(optional)</small></label>
+                <input name="phone" type="tel" id="phone" tabindex="3">
+
+                <label class="labelstyle" for="web" accesskey="W">Website <small>(optional)</small></label>
+                <input name="website" type="text"  id="web" tabindex="4">
+
+                <div id="radio-toolbar">
+                    <input type="radio" id="radioMessage" name="reason" value="message" checked>
+                    <label for="radioMessage">message</label>
+
+                    <input type="radio" id="radioOrder" name="reason" value="order">
+                    <label for="radioOrder">order</label>
+
+                    <input type="radio" id="radioStatus" name="reason" value="status">
+                    <label for="radioStatus">status</label>
+                </div>
+                <p>&nbsp;</p>
+                <label class="textareaLabel" for="comments">Comments Length:<span id="length"></span></label>
+                <textarea name="comments" id="comments" spellcheck="true" tabindex="6" required="required"></textarea>
+                <?php if (filter_input(INPUT_SERVER, 'SERVER_NAME', FILTER_SANITIZE_URL) == "localhost") { ?>
+                    <div id="recaptcha" class="g-recaptcha" data-sitekey="6LdXNpAUAAAAAMwtslAEqbi9CU3sviuv2imYbQfe" data-callback="correctCaptcha"></div>
+
+                <?php } else { ?>
+                    <!-- Use a data callback function that Google provides -->
+                    <div id="recaptcha" class="g-recaptcha" data-sitekey="6LdXNpAUAAAAAMwtslAEqbi9CU3sviuv2imYbQfe" data-callback="correctCaptcha"></div>
+                <?php } ?>
+                <input id="submitForm" type="submit" name="submit" value="submit" tabindex="7" data-response="">
+            </fieldset>
+        </form>
     </main>
     <aside class="sidebar">
-        <div class="subscribe_info">
-            <h2>Please Subscribe</h2>
-            <p>I'm not requiring a registration or a login to access this website, but I'm asking for subscriptions to
-                help
-                pay for some of the costs in developing this website. The costs is only $15.00 USD per year and would be
-                very much appreciated. I will be adding new features to this website in the upcoming weeks and
-                subscriptions
-                will motivate me to continue to develop.</p>
-        </div>
-        <div id="paypal-button-container"></div>
-        <script src="https://www.paypal.com/sdk/js?client-id=AfNFD6Lrv6FGJvVGXIycY1HhaNNq22Vw21JAwv4zFSp1cTNGCMItNEKsqEUvgiB2jmN2glzRjzacmqUX&vault=true&intent=subscription"
-                data-sdk-integration-source="button-factory"></script>
-        <script>
-            paypal.Buttons({
-                style: {
-                    shape: 'pill',
-                    color: 'black',
-                    layout: 'vertical',
-                    label: 'subscribe'
-                },
-                createSubscription: function (data, actions) {
-                    return actions.subscription.create({
-                        'plan_id': 'P-5E965765G91370830MALBZOI'
-                    });
-                },
-                onApprove: function (data, actions) {
-                    alert(data.subscriptionID);
-                }
-            }).render('#paypal-button-container');
-        </script>
+        <?php include "shared/includes/inc.sidebar.php"; ?>
     </aside>
     <div class="contentContainer">
 
@@ -70,5 +84,13 @@ require_once "vendor/autoload.php";
         <p>&copy; <?php echo date("Y") ?> The Miniature Photographer</p>
     </footer>
 </section>
+<script src="assets/js/contact.js" async defer></script>
+<!-- Fetch the g-response using a callback function -->
+<script>
+    var correctCaptcha = function (response) {
+        document.querySelector('#submitForm').setAttribute('data-response', response);
+    };
+</script>
+<script src='https://www.google.com/recaptcha/api.js' async defer></script>
 </body>
 </html>

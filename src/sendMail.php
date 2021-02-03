@@ -12,36 +12,40 @@ use Swift_Mailer;
 
 class sendMail {
 
-    public $result = \NULL;
-    public $subject = \NULL;
+    public $result;
+    public $subject;
     public $sendTo = [];
     public $sendFrom = [];
-    public $content = \NULL;
+    public $content;
 
     public function __construct() {
         
     }
 
-    public function sendTo(array $sendTo) {
+    public function sendTo(array $sendTo): void
+    {
         $this->sendTo = $sendTo;
     }
 
-    public function sendFrom(array $sendFrom = ['jrpepp@pepster' => 'John Pepp']) {
+    public function sendFrom(array $sendFrom = ['jrpepp@pepster' => 'John Pepp']): void
+    {
         $this->sendFrom = $sendFrom;
     }
 
-    public function subject($subject) {
+    public function subject($subject): void
+    {
         $this->subject = $subject;
     }
 
-    public function content($content) {
+    public function content($content): void
+    {
         $this->content = $content;
     }
 
     public function sendEmail() {
         /* Setup swiftmailer using your email server information */
-        $transport = (new Swift_SmtpTransport('smtp.gmail.com', EMAIL_PORT, 'tls'))
-                ->setUsername(G_USERNAME)
+        $transport = (new Swift_SmtpTransport('smtp.gmail.com', 587, 'tls'))
+                ->setUsername("chalkboardquiz@gmail.com")
                 ->setPassword(G_PASSWORD);
 
         // Create the Mailer using your created Transport

@@ -58,10 +58,10 @@ if ($id && is_int($id)) {
     </main>
     <aside class="sidebar">
         <div class="subscribe_info">
-            <h2>Please Subscribe</h2>
+            <h2>Subscribe</h2>
             <p>I'm not requiring a registration or a login to access this website, but I'm asking for subcriptions to
                 help pay for some of the costs in developing this website. The costs is only $15.00 USD per year and
-                would be very much appreciated. I will be adding new features to this website in the upcoming weeks and
+                would be very much appreciated. I will be adding new features to this website and
                 subscriptions will motivate me to continue to develop.</p>
         </div>
         <div id="paypal-button-container"></div>

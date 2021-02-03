@@ -628,6 +628,7 @@ ul.topNav li.right {
   }
 }
 
+@import "partials/_contact";
 
 footer {
   padding: 0.313em;
@@ -689,7 +690,7 @@ Basic responsive layout for all browsers:
 --------------------------------------------------------------*/
 
 .site {
-  background-color: var(--blue);
+  background-color: #BFB49D;
   max-width: 75em;
   margin: 0 auto;
 }

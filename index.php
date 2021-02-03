@@ -48,7 +48,7 @@ include "shared/includes/inc.header.php";
             <ul class="topNav">
                 <li><a href="index.php">home</a></li>
                 <li><a href="admin/login.php">admin</a></li>
-                <li><a href="game.php">game</a> </li>
+                <li><a href="game.php">game</a></li>
                 <li><a href="contact.php">contact</a></li>
             </ul>
         </nav>
@@ -77,36 +77,7 @@ include "shared/includes/inc.header.php";
         $url = 'index.php';
         echo $pagination->page_links($url);
         ?>
-        <div class="subscribe_info">
-            <h2>Please Subscribe</h2>
-            <p>I'm not requiring a registration or a login to access this website, but I'm asking for subscriptions to
-                help
-                pay for some of the costs in developing this website. The costs is only $15.00 USD per year and would be
-                very much appreciated. I will be adding new features to this website in the upcoming weeks and
-                subscriptions
-                will motivate me to continue to develop.</p>
-        </div>
-        <div id="paypal-button-container"></div>
-        <script src="https://www.paypal.com/sdk/js?client-id=AfNFD6Lrv6FGJvVGXIycY1HhaNNq22Vw21JAwv4zFSp1cTNGCMItNEKsqEUvgiB2jmN2glzRjzacmqUX&vault=true&intent=subscription"
-                data-sdk-integration-source="button-factory"></script>
-        <script>
-            paypal.Buttons({
-                style: {
-                    shape: 'pill',
-                    color: 'black',
-                    layout: 'vertical',
-                    label: 'subscribe'
-                },
-                createSubscription: function (data, actions) {
-                    return actions.subscription.create({
-                        'plan_id': 'P-5E965765G91370830MALBZOI'
-                    });
-                },
-                onApprove: function (data, actions) {
-                    alert(data.subscriptionID);
-                }
-            }).render('#paypal-button-container');
-        </script>
+        <?php include 'shared/includes/inc.sidebar.php'; ?>
     </aside>
     <div class="contentContainer">
 
