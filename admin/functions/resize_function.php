@@ -17,12 +17,19 @@ function resize($file_temp, $new_file_name, $thumb = false): bool
      * Determine if it's a thumbnail or large image then
      * resize the images accordingly.
      */
+    $old_width = $sourceProperties[0];
+    $old_height = $sourceProperties[1];
+
+    $new_height = null;
+
     if ($thumb) {
-        $newImageWidth =  300;
-        $newImageHeight = 200;
+        $new_width = 300;
+        $newImageHeight = ($new_width * $old_height) / $old_width;
+        $newImageWidth = $new_width;
     } else {
-        $newImageWidth =  $sourceProperties[0] * .20;
-        $newImageHeight = $sourceProperties[1] * .20;
+        $new_width = 1200;
+        $newImageHeight = ($new_width * $old_height) / $old_width;
+        $newImageWidth = $new_width;
     }
 
     $temp = '../' . $new_file_name; // folder is nested one down from root:

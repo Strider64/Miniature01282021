@@ -721,6 +721,7 @@ ul.topNav li.right {
     padding: 1.250em; }
     .mainStyle .display_record img {
       width: 100%;
+      max-width: 50.000em;
       height: 100%; }
     .mainStyle .display_record h3 {
       font-family: 'Cormorant Garamond', serif;
