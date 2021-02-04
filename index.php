@@ -38,6 +38,9 @@ $monthly->phpDate();
 
 $calendar = $monthly->generateCalendar('index.php');
 include "shared/includes/inc.header.php";
+
+//echo '<img class="thumb" src="' . $record['thumb_path'] . '" alt="thumbnail">' . "\n";
+
 ?>
 <section class="mainArea">
     <header class="headerStyle">
@@ -54,24 +57,24 @@ include "shared/includes/inc.header.php";
         </nav>
         <img src="assets/images/img-logo-003.jpg" alt="Logo for Website">
     </div>
-    <main id="content" class="mainStyle">
-        <div class="cmsThreads">
-            <?php
 
-            foreach ($cms as $record) {
-                echo '<article  class="display">' . "\n\n";
-                echo '<a class="moreBtn" href="display_page.php?id=' . urldecode($record['id']) . '"><img class="thumb" src="' . $record['thumb_path'] . '" alt="thumbnail"></a>' . "\n";
-                echo '<div class="cms_heading">' . "\n";
-                echo "<h3>" . $record['heading'] . "</h3>\n";
-                echo sprintf("<h6> by %s on %s updated on %s</h6>", $record['author'], CMS::styleDate($record['date_added']), CMS::styleDate($record['date_updated']));
-                echo '</div>' . "\n";
-                echo sprintf("<p>%s</p>\n", nl2br(CMS::intro($record['content'], 100)));
-                echo '<a class="button" href="display_page.php?id=' . urldecode($record['id']) . '">Full Page</a>' . "\n\n";
-                echo '</article>' . "\n\n";
-            }
-            ?>
-        </div>
-    </main>
+    <ul class="cards">
+        <?php
+        foreach ($cms as $record) {
+            echo '<li class="card">';
+            echo '<a href="display_page.php?id=' . urldecode($record['id']) . '">';
+            echo '<img class="thumb" src="' . $record['thumb_path'] .  '" alt="thumbnail">';
+            echo '<div class="cms_heading">';
+            echo '<h2>' . $record['heading'] . '</h2>';
+            echo '<p class="byline">by ' . $record['author'] . ' on ' . CMS::styleDate($record['date_added']) . '</p>';
+            echo '</div>';
+            echo '<p class="cms_content">' . nl2br(CMS::intro($record['content'], 200)) . '</p>';
+            echo '</a>';
+            echo '</li>';
+        }
+        ?>
+    </ul>
+
     <aside class="sidebar">
         <?php
         $url = 'index.php';

@@ -58,29 +58,25 @@ $cms = CMS::page($per_page, $offset);
         echo $pagination->page_links($url);
         ?>
     </aside>
-    <main id="content" class="mainStyle">
-        <div class="cmsThreads">
-            <?php
-
-            foreach ($cms as $record) {
-                echo '<article  class="display">' . "\n";
-                echo '<a class="moreBtn" href="edit.php?id=' . urldecode($record['id']) . '"><img class="thumb" src="' . '../' .  $record['thumb_path'] .  '" alt="thumbnail"></a>';
-
-                echo '<div class="cms_heading">';
-                echo "<h3>" . $record['heading'] . "</h3>\n";
-                echo sprintf("<h6> by %s on %s updated on %s</h6>", $record['author'], CMS::styleDate($record['date_added']), CMS::styleDate($record['date_updated']));
-                echo '</div>';
-                echo sprintf("<p>%s</p>\n", nl2br(CMS::intro($record['content'], 200)));
-                echo '<a class="button" href="edit.php?id=' . urldecode($record['id']) . '">Edit Page</a>';
-                echo '</article>';
-            }
-            ?>
-        </div>
-    </main>
+    <ul class="cards">
+        <?php
+        foreach ($cms as $record) {
+            echo '<li class="card">';
+            echo '<a href="edit.php?id=' . urldecode($record['id']) . '">';
+            echo '<img class="thumb" src="../' . $record['thumb_path'] .  '" alt="thumbnail">';
+            echo '<div class="cms_heading">';
+            echo '<h2>' . $record['heading'] . '</h2>';
+            echo '<p class="byline">by ' . $record['author'] . ' on ' . CMS::styleDate($record['date_added']) . '</p>';
+            echo '</div>';
+            echo '<p class="cms_content">' . nl2br(CMS::intro($record['content'], 200)) . '</p>';
+            echo '</a>';
+            echo '</li>';
+        }
+        ?>
+    </ul>
     <div class="contentContainer">
 
     </div>
-
     <footer class="footerStyle">
         <p>&copy; <?php echo date("Y") ?> The Miniature Photographer</p>
     </footer>

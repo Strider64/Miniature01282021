@@ -454,7 +454,7 @@ ul.topNav li.right {
 
     h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2em;
+      font-size: 2.2em;
       font-weight: 700;
       line-height: 0;
     }
@@ -601,34 +601,63 @@ ul.topNav li.right {
   }
 }
 
+@import "partials/_contact";
 
-/* CMS Threads */
-.cmsThreads {
-  background-color: #fff;
-  padding: 0.625em;
-
-  .display {
-
-    .cms_heading {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2em;
-      line-height: 0;
-
-      h3 {
-        font-size: 1.0em;
-      }
-    }
-
-    p {
-      font-family: 'Rubik', sans-serif;
-      font-size: 1.0em;
-      line-height: 1.5;
-    }
-
-  }
+/*--------------------------------------------------------------
+Cards:
+--------------------------------------------------------------*/
+.main-area {
+  padding: 1em;
+  background-color: hsl(0, 0%, 90%);
 }
 
-@import "partials/_contact";
+.cards {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.card {
+  margin-bottom: 1em;
+}
+
+.card a {
+  display: block;
+  padding: 0;
+  color: hsl(0, 0%, 5%);
+  text-decoration: none;
+  background: white;
+  border: 1px transparent;
+  transition: all .2s;
+  .thumb {
+    width: 18.500em;
+    height: 12.500em;
+  }
+  .cms_heading {
+    padding: 0 0.625em;
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 8px;
+    }
+    p.byline {
+      font-family: 'Rubik', sans-serif;
+      font-size: 0.8em;
+      font-style: italic;
+      font-weight: bold;
+      padding-bottom: 0.313em;
+    }
+  }
+  .cms_content {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.0em;
+    line-height: 1.8;
+    padding: 1.250em 0.625em;
+  }
+  &:focus, &:hover {
+    margin: -0.313em 0.313em 0.313em -0.313em;
+    box-shadow: 0.313em 0.313em 0px 0px hsla(0, 0%, 40%, 0.9);
+  }
+}
 
 footer {
   padding: 0.313em;
@@ -777,18 +806,7 @@ CSS Grid layout for modern browsers:
       justify-items: auto;
     }
 
-    .mainStyle {
-      .display_record {
-        img {
-          width: 50%;
-          height: 50%;
-        }
 
-        h3 {
-          font-size: 2.4em;
-        }
-      }
-    }
     .displayStatus {
       width: 50.000em;
       h4 {
@@ -810,103 +828,30 @@ CSS Grid layout for modern browsers:
         line-height: 1.5;
       }
     }
-    /* CMS Threads */
-    .cmsThreads {
+
+    /* Card Grid */
+    .cards {
+      grid-column: 2/4;
+      grid-row: 2/3;
+    }
+    .card a {
       display: grid;
-      grid-template-columns: 1fr;
-      grid-auto-rows: auto;
-      justify-content: space-around;
-      justify-items: auto;
-      background-color: var(--mauve);
-      padding: 0.625em;
+      grid-template-columns: fit-content(18.500em) 1fr;
+      grid-template-rows: fit-content(12.50em) 1fr;
+    }
+    .thumb {
+      grid-column: 1/2;
+      grid-row: 1/3;
+    }
+    .cms_heading {
+      grid-column: 2/3;
+      grid-row: 1/2;
 
-      .display {
-        grid-column: 1/2;
-        display: grid;
-        grid-template-columns: fit-content(18.500em) minmax(1fr, 37.000em) 1fr;
-        grid-template-rows: 6.250em 6.250em;
-        grid-row: auto;
-        justify-content: space-evenly;
-        justify-items: left;
-        z-index: 5;
-        background-color: #f1f1f1;
-        margin-bottom: 0.625em;
+    }
+    cms_content {
+      grid-column: 2/3;
+      grid-row: 2/3;
 
-        .thumb {
-          grid-column: 1/2;
-          grid-row: 1/3;
-          display: flex;
-          justify-content: center;
-          width: 18.500em;
-          height: 12.500em;
-        }
-
-
-        .display_record {
-          background-color: #f1f1f1;
-          padding: 1.250em;
-        }
-
-        /*
-         * Display Records 3 Per Page
-         */
-        .cms_heading {
-          grid-column: 2/3;
-          grid-row: 1/2;
-          padding: 0.625em;
-
-          h3 {
-            font-size: 1.8em;
-            line-height: 0;
-          }
-
-          h6 {
-            font-size: 0.8em;
-            line-height: 0;
-          }
-        }
-
-        .button {
-          grid-column: 3/4;
-          grid-row: 1/3;
-          z-index: 10;
-          float: right;
-          margin: 0.625em 0.625em 0;
-        }
-
-        p {
-          grid-column: 2/3;
-          grid-row: 2/3;
-          font-size: 1.0em;
-          line-height: 1.5;
-          padding: 0 0.625em;
-        }
-
-
-      }
-
-      /* Pagination */
-
-      .pagination {
-        grid-column: 1/2;
-        grid-row: 1/2;
-        background-color: var(--dk-blue-gray);
-        padding: 1.250em;
-        margin: 0;
-      }
-
-      .pagination a, .pagination span {
-        display: inline-block;
-        font-size: 1.2em;
-        color: #fff;
-        text-decoration: none;
-        margin: 0 5px;
-      }
-
-      .pagination span.selected {
-        font-weight: bold;
-        color: #ffff00;
-      }
     }
 
   }

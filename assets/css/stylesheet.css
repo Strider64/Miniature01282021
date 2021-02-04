@@ -724,7 +724,7 @@ ul.topNav li.right {
       height: 100%; }
     .mainStyle .display_record h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2em;
+      font-size: 2.2em;
       font-weight: 700;
       line-height: 0; }
     .mainStyle .display_record h6 {
@@ -837,21 +837,6 @@ ul.topNav li.right {
   height: 3.125em; }
   .myButton:hover, .myButton:active {
     background-color: #619cc3; }
-
-/* CMS Threads */
-.cmsThreads {
-  background-color: #fff;
-  padding: 0.625em; }
-  .cmsThreads .display .cms_heading {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2em;
-    line-height: 0; }
-    .cmsThreads .display .cms_heading h3 {
-      font-size: 1.0em; }
-  .cmsThreads .display p {
-    font-family: 'Rubik', sans-serif;
-    font-size: 1.0em;
-    line-height: 1.5; }
 
 form#contact {
   display: block;
@@ -1110,6 +1095,52 @@ form#contact {
       transition: background-color .5s; }
       form#contact input[type=submit]:hover {
         background-color: rgba(0, 0, 0, 0.3); } }
+/*--------------------------------------------------------------
+Cards:
+--------------------------------------------------------------*/
+.main-area {
+  padding: 1em;
+  background-color: #e6e6e6; }
+
+.cards {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+
+.card {
+  margin-bottom: 1em; }
+
+.card a {
+  display: block;
+  padding: 0;
+  color: #0d0d0d;
+  text-decoration: none;
+  background: white;
+  border: 1px transparent;
+  transition: all .2s; }
+  .card a .thumb {
+    width: 18.500em;
+    height: 12.500em; }
+  .card a .cms_heading {
+    padding: 0 0.625em; }
+    .card a .cms_heading h2 {
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 8px; }
+    .card a .cms_heading p.byline {
+      font-family: 'Rubik', sans-serif;
+      font-size: 0.8em;
+      font-style: italic;
+      font-weight: bold;
+      padding-bottom: 0.313em; }
+  .card a .cms_content {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.0em;
+    line-height: 1.8;
+    padding: 1.250em 0.625em; }
+  .card a:focus, .card a:hover {
+    margin: -0.313em 0.313em 0.313em -0.313em;
+    box-shadow: 0.313em 0.313em 0px 0px rgba(102, 102, 102, 0.9); }
+
 footer {
   padding: 0.313em;
   text-align: center;
@@ -1388,12 +1419,6 @@ CSS Grid layout for modern browsers:
       grid-row: 4/5;
       justify-items: auto; }
 
-    .mainStyle .display_record img {
-      width: 50%;
-      height: 50%; }
-    .mainStyle .display_record h3 {
-      font-size: 2.4em; }
-
     .displayStatus {
       width: 50.000em; }
       .displayStatus h4 {
@@ -1412,76 +1437,26 @@ CSS Grid layout for modern browsers:
         font-size: 1.4em;
         line-height: 1.5; }
 
-    /* CMS Threads */
-    .cmsThreads {
+    /* Card Grid */
+    .cards {
+      grid-column: 2/4;
+      grid-row: 2/3; }
+
+    .card a {
       display: grid;
-      grid-template-columns: 1fr;
-      grid-auto-rows: auto;
-      justify-content: space-around;
-      justify-items: auto;
-      background-color: var(--mauve);
-      padding: 0.625em;
-      /* Pagination */ }
-      .cmsThreads .display {
-        grid-column: 1/2;
-        display: grid;
-        grid-template-columns: fit-content(18.5em) minmax(1fr, 37em) 1fr;
-        grid-template-rows: 6.250em 6.250em;
-        grid-row: auto;
-        justify-content: space-evenly;
-        justify-items: left;
-        z-index: 5;
-        background-color: #f1f1f1;
-        margin-bottom: 0.625em;
-        /*
-         * Display Records 3 Per Page
-         */ }
-        .cmsThreads .display .thumb {
-          grid-column: 1/2;
-          grid-row: 1/3;
-          display: flex;
-          justify-content: center;
-          width: 18.500em;
-          height: 12.500em; }
-        .cmsThreads .display .display_record {
-          background-color: #f1f1f1;
-          padding: 1.250em; }
-        .cmsThreads .display .cms_heading {
-          grid-column: 2/3;
-          grid-row: 1/2;
-          padding: 0.625em; }
-          .cmsThreads .display .cms_heading h3 {
-            font-size: 1.8em;
-            line-height: 0; }
-          .cmsThreads .display .cms_heading h6 {
-            font-size: 0.8em;
-            line-height: 0; }
-        .cmsThreads .display .button {
-          grid-column: 3/4;
-          grid-row: 1/3;
-          z-index: 10;
-          float: right;
-          margin: 0.625em 0.625em 0; }
-        .cmsThreads .display p {
-          grid-column: 2/3;
-          grid-row: 2/3;
-          font-size: 1.0em;
-          line-height: 1.5;
-          padding: 0 0.625em; }
-      .cmsThreads .pagination {
-        grid-column: 1/2;
-        grid-row: 1/2;
-        background-color: var(--dk-blue-gray);
-        padding: 1.250em;
-        margin: 0; }
-      .cmsThreads .pagination a, .cmsThreads .pagination span {
-        display: inline-block;
-        font-size: 1.2em;
-        color: #fff;
-        text-decoration: none;
-        margin: 0 5px; }
-      .cmsThreads .pagination span.selected {
-        font-weight: bold;
-        color: #ffff00; } } }
+      grid-template-columns: fit-content(18.5em) 1fr;
+      grid-template-rows: fit-content(12.5em) 1fr; }
+
+    .thumb {
+      grid-column: 1/2;
+      grid-row: 1/3; }
+
+    .cms_heading {
+      grid-column: 2/3;
+      grid-row: 1/2; }
+
+    cms_content {
+      grid-column: 2/3;
+      grid-row: 2/3; } } }
 
 /*# sourceMappingURL=stylesheet.css.map */
