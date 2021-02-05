@@ -109,7 +109,7 @@ body {
   display: block;
   width: 98%;
   height: 3.125em;
-  background-color: var(--dk-blue-gray);
+  background-color: #898ac4;;
   padding: 0.313em;
   margin: 0;
   h2 {
@@ -229,7 +229,7 @@ body {
   max-width: 150px;
   height: 40px;
   cursor: pointer;
-  background-color: #555;
+  background-color: #898ac4;
   font-family: 'Teko', sans-serif;
   font-size: 1.2em;
   color: #fff;
@@ -237,7 +237,7 @@ body {
 }
 
 #mainGame #nextStyle #next:hover {
-  background-color: rgba(85, 85, 85, 0.7);
+  background-color: #6869a2;
   color: #fff;
 }
 
@@ -852,7 +852,6 @@ CSS Grid layout for modern browsers:
     cms_content {
       grid-column: 2/3;
       grid-row: 2/3;
-
     }
 
   }
