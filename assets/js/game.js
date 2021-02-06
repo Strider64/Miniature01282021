@@ -52,7 +52,7 @@
     const next = d.querySelector('#next');
     const points = 100;
     const scoreText = d.querySelector('#score');
-    const percent = d.querySelector('#percent');
+    let percent = d.querySelector('#percent');
     const dSec = 20; // Countdown Clock for questions:
 
     let gameIndex = 0,
@@ -324,7 +324,7 @@
 
     /* Success function utilizing FETCH */
     const quizUISuccess = (parsedData) => {
-        mainGame.style.display = 'block';
+        mainGame.style.display = 'grid';
         console.log(parsedData);
         gameData = parsedData;
         //gameData = parsedData.sort(() => Math.random() - .5); // randomize questions:
@@ -360,7 +360,7 @@
 
     //d.querySelector('.main').scrollIntoView();
     //selectCat('photography');
-   const startGame = (e) => {
+    const startGame = (e) => {
         e.preventDefault();
         selectCat('photography');
         d.querySelector('.displayStatus').style.display = 'none';
@@ -371,5 +371,6 @@
     d.querySelector('#customBtn').addEventListener('click', startGame, false);
     d.querySelector('#quiz').style.display = "none";
 
+    ;
 
 })();

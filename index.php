@@ -17,7 +17,7 @@ use Miniature\Pagination;
  * website page.
  */
 $current_page = $_GET['page'] ?? 1; // Current Page
-$per_page = 3; // Total number of records to be displayed:
+$per_page = 5; // Total number of records to be displayed:
 $total_count = CMS::countAll(); // Total Records in the db table:
 
 /* Send the 3 variables to the Pagination class to be processed */
@@ -37,33 +37,50 @@ $monthly = new CalendarObject();
 $monthly->phpDate();
 
 $calendar = $monthly->generateCalendar('index.php');
-include "shared/includes/inc.header.php";
+
 
 //echo '<img class="thumb" src="' . $record['thumb_path'] . '" alt="thumbnail">' . "\n";
 
 ?>
-<section class="mainArea">
-    <header class="headerStyle">
-        <img src="assets/images/img-header-red-tailed-hawk-001.jpg" alt="Red-tailed Hawk">
-    </header>
-    <div class="topLeft">
-        <nav class="navigation">
-            <ul class="topNav">
-                <li><a href="index.php">home</a></li>
-                <li><a href="admin/login.php">admin</a></li>
-                <li><a href="game.php">game</a></li>
-                <li><a href="contact.php">contact</a></li>
-            </ul>
-        </nav>
-        <img src="assets/images/img-logo-003.jpg" alt="Logo for Website">
-    </div>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/stylesheet.css">
+    <title><?php /** @noinspection PhpUndefinedVariableInspection */
+        echo ($pageName === 'index') ? 'The Miniature Photographer' : $pageName; ?></title>
+    <script src="assets/js/menu.js" defer></script>
+</head>
+<body class="site">
+<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+<header class="masthead">
+    <h1 class="site-title">The Miniature Photographer</h1>
+</header>
+
+<section class="main-nav">
+    <button class="trigger" aria-expanded="false">Menu<span class="screen-reader-text">Reveal menu</span></button>
+
+    <nav>
+        <ul>
+            <li><a href="index.php">home</a></li>
+            <li><a href="admin/login.php">admin</a></li>
+            <li><a href="game.php">game</a></li>
+            <li><a href="contact.php">contact</a></li>
+        </ul>
+    </nav>
+</section><!-- .main-nav -->
+
+<main id="content" class="main-area">
 
     <ul class="cards">
         <?php
         foreach ($cms as $record) {
             echo '<li class="card">';
             echo '<a href="display_page.php?id=' . urldecode($record['id']) . '">';
-            echo '<img class="thumb" src="' . $record['thumb_path'] .  '" alt="thumbnail">';
+            echo '<img class="thumb" src="' . $record['thumb_path'] . '" alt="thumbnail">';
             echo '<div class="cms_heading">';
             echo '<h2>' . $record['heading'] . '</h2>';
             echo '<p class="byline">by ' . $record['author'] . ' on ' . CMS::styleDate($record['date_added']) . '</p>';
@@ -75,20 +92,20 @@ include "shared/includes/inc.header.php";
         ?>
     </ul>
 
-    <aside class="sidebar">
+</main>
+<section class="sidebar">
+    <aside class="twin">
         <?php
         $url = 'index.php';
         echo $pagination->page_links($url);
         ?>
-        <?php include 'shared/includes/inc.sidebar.php'; ?>
     </aside>
-    <div class="contentContainer">
-
-    </div>
-
-    <footer class="footerStyle">
-        <p>&copy; <?php echo date("Y") ?> The Miniature Photographer</p>
-    </footer>
-</section>
+    <aside class="twin">
+        <img src="assets/images/img-logo-003.jpg" alt="Detroit Kern's Clock">
+    </aside>
+</section><!-- .twins -->
+<footer class="colophon">
+    <p>&copy; <?php echo date("Y") ?> The Miniature Photographer</p>
+</footer>
 </body>
 </html>

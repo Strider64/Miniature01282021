@@ -64,41 +64,42 @@ body {
 /* Trivia Game */
 
 .displayStatus {
-  width: 18.750em;
-  background-color: #f1f1f1;
-  padding: 0.313em 1.250em 1.250em;
-  margin: 0 auto;
+  padding: 1.250em;
+
   h4 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.4em;
     line-height: 0;
   }
+
   p {
     font-family: 'Rubik', sans-serif;
     font-size: 1.2em;
     line-height: 1.5;
   }
+
   #customBtn {
     display: block;
     height: 1.420em;
     border: none;
     transition: background-color 0.5s ease;
-    background-color: #4CAF50; /* Green */
+    background-color: #327a35;
     font-family: 'Rubik', sans-serif;
     font-size: 1em;
     color: white;
     text-align: center;
     text-decoration: none;
     padding: 0.938em 1.875em;
-
     &:hover {
-      background-color: darken(#4CAF50, 20%);
+      background-color: #4cab50;
     }
   }
 
 }
 
-
+#mainGame {
+  margin-top: 1.250em;
+}
 #mainGame::after {
   content: ' ';
   display: block;
@@ -106,29 +107,25 @@ body {
 }
 
 #mainGame #headerStyle {
-  display: block;
-  width: 98%;
-  height: 3.125em;
-  background-color: #898ac4;;
-  padding: 0.313em;
-  margin: 0;
+
+
   h2 {
     font-family: 'Rubik', sans-serif;
     font-size: 0.8em;
     line-height: 0.313em;
     text-align: center;
-    color: #fff;
+    color: #000;
   }
 }
 
 
 #mainGame #headerStyle h2 #clock {
-  font-size: 1.2em;
+  font-size: 1.4em;
 }
 
 #mainGame #headerStyle h2 #currentQuestion {
   font-size: 1.2em;
-  margin-left: 2rem;
+  margin-left: 2em;
 }
 
 #mainGame #headerStyle h2 #totalQuestions {
@@ -140,27 +137,18 @@ body {
 }
 
 #mainGame #triviaSection #questionBox {
-  display: block;
-  width: 97%;
-  height: 18.75em;
-  background-color: #f2f2f2;
-  padding: 0.313em;
-  margin-bottom: 0.313em;
+  background-color: #f1f1f1;
+  padding: 0.313em 0.625em;
 }
 
 
 #mainGame #triviaSection #questionBox h2 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2em;
+  font-size: 1.4em;
   line-height: 1.5;
-  color: #2e2e2e;
-  vertical-align: middle;
 }
 
 #mainGame #triviaSection #buttonContainer {
-  display: block;
-  width: 98%;
-  height: auto;
   background-color: #f1f1f1;
   padding: 0.313em;
   margin-bottom: 0.625em;
@@ -169,9 +157,8 @@ body {
 #mainGame #triviaSection #buttonContainer .answerButton {
   display: block;
   width: 100%;
-  height: 50px;
+  height: 3.125em;
   outline: none;
-
   cursor: pointer;
   background-color: #f1f1f1;
   font-family: 'Rubik', sans-serif;
@@ -192,22 +179,22 @@ body {
 
 #mainGame #playerStats #score {
   position: absolute;
-  top: 50px;
-  left: 5px;
-  font-family: Arial, Helvetica, sans-serif;
+  top: 3.125em;
+  left: 0.313em;
+  font-family: 'Rubik', sans-serif;
   font-size: 1.0em;
-  color: #fff;
-  line-height: 15px;
+  color: #000;
+  line-height: 0.938em;
 }
 
 #mainGame #playerStats #percent {
   position: absolute;
-  top: 50px;
-  right: 50px;
-  font-family: Arial, Helvetica, sans-serif;
+  top: 3.125em;
+  right: 3.125em;
+  font-family: 'Rubik', sans-serif;
   font-size: 1.0em;
-  color: #fff;
-  line-height: 15px;
+  color: #000;
+  line-height: 0.938em;
 }
 
 #mainGame #nextStyle {
@@ -215,7 +202,7 @@ body {
   top: 0;
   right: 0;
   width: 100%;
-  height: 50px;
+  height: 3.125em;
 }
 
 #mainGame #nextStyle #next {
@@ -226,19 +213,18 @@ body {
   outline: none;
   display: block;
   width: 100%;
-  max-width: 150px;
-  height: 40px;
+  max-width: 9.375em;
+  height: 2.500em;
   cursor: pointer;
   background-color: #898ac4;
-  font-family: 'Teko', sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-size: 1.2em;
   color: #fff;
   text-transform: capitalize;
 }
 
 #mainGame #nextStyle #next:hover {
-  background-color: #6869a2;
-  color: #fff;
+
 }
 
 a.qBtn {
@@ -309,179 +295,154 @@ img {
   height: auto;
 }
 
-/* Subscription Styling */
-.subscribe_info {
-  h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.4em;
-    color: #555;
-  }
 
-  p {
-    font-family: 'Rubik', sans-serif;
-    font-size: 1.2em;
-    line-height: 1.5;
-    color: #555;
-  }
-
-  margin: 0.938em;
-}
-
-#paypal-button-container {
-  margin-top: 0.938em;
-}
-
+/* Login Form CSS */
 .login {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 3.125em;
-  grid-gap: 0.313em;
   padding: 0.313em;
-
-  label.username {
-    grid-column: 1/2;
-    grid-row: 1/2;
+  margin-top: 3.125em;
+  .text_username{
+    display: flex;
+    justify-content: center;
     background-color: darken(#86B3D1, 10%);
     color: #fff;
-    text-align: center;
-    line-height: 3.125em;
     box-shadow: 2px 2px 1px rgba(#000, 0.5);
-    padding: 0.313em;
+    padding: 1.250em;
   }
 
-  label.password {
-    grid-column: 1/2;
-    grid-row: 2/3;
-    background-color: darken(#86B3D1, 10%);
-    color: #fff;
-    text-align: center;
-    line-height: 3.125em;
-    box-shadow: 2px 2px 1px rgba(#000, 0.5);
-    padding: 0.313em;
-  }
-
-  #username, #password {
+  .io_username {
     outline: none;
     border: none;
     background-color: #fef0db;
     box-shadow: 2px 2px 1px rgba(#000, 0.5);
     font-size: 1.2em;
-    padding: .313em;
+    padding: 1.250em 3.25em;
   }
 
-  button {
-    grid-column: 1/3;
-    grid-row: 3/4;
+  .text_password {
+    display: flex;
+    justify-content: center;
+    background-color: darken(#86B3D1, 10%);
+    color: #fff;
+    box-shadow: 2px 2px 1px rgba(#000, 0.5);
+    padding: 1.250em;
+  }
+
+  .io_password {
+    outline: none;
+    border: none;
+    background-color: #fef0db;
+    box-shadow: 2px 2px 1px rgba(#000, 0.5);
+    font-size: 1.2em;
+    padding: 1.250em 3.25em;
+  }
+
+  .login_button {
     outline: none;
     color: #fff;
     border: none;
     background-color: darken(#86B3D1, 10%);
     box-shadow: 2px 2px 1px rgba(#000, 0.5);
-
+    padding: 0.625em;
     &:hover, &:active {
       background-color: darken(#86B3D1, 20%);
     }
   }
 }
 
-.sidebar {
-  background: #f1f1f1;
-  padding: 0.625em;
-}
+/*--------------------------------------------------------------
+Header:
+--------------------------------------------------------------*/
 
-.navigation {
-  background-color: var(--dk-blue-gray);
-  margin-bottom: 0.500em;
+.masthead {
+  padding: 0 1em;
+  text-align: center;
+  border-bottom: 1px solid hsl(0, 0%, 90%);
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    color: rgba(#555, 0.8);
+  }
 }
 
 /*--------------------------------------------------------------
-Navigation Menu Styling
+Navigation:
 --------------------------------------------------------------*/
-ul.topNav {
-  list-style-type: none;
+.main-nav {
+  padding: 1em;
+  font-size: 1.1em;
+  color: white;
+  background-color: rgba(#555, 0.5);
+}
+
+.trigger {
+  display: none;
+  padding: .1em .5em;
+  color: white;
+  background-color: rgba(#555, 1.0);
+  border: none;
+  transform: rotate(90deg);
+}
+
+.trigger:focus,
+.trigger:hover {
+  outline: 2px dotted hsl(0, 0%, 10%);
+}
+
+.trigger:focus {
+  outline-color: white;
+}
+
+.main-nav ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  list-style-type: none;
 }
 
-ul.topNav li {
-  float: left;
-}
-
-ul.topNav li a {
+.main-nav a {
   display: block;
+  padding: .4em 1em;
   color: white;
-  text-align: center;
   text-transform: capitalize;
-  padding: 0.875em 1em;
   text-decoration: none;
 }
 
-ul.topNav li a:hover:not(.active) {
-  background-color: #111;
+.main-nav a:focus,
+.main-nav a:hover {
+  text-decoration: underline;
 }
 
-ul.topNav li a.active {
-  background-color: #4CAF50;
-}
+/* Display Full Page */
+.display_record {
+  padding: 1.250em;
 
-ul.topNav li.right {
-  float: right;
-}
-
-@media screen and (max-width: 37.000em) {
-  ul.topNav li.right,
-  ul.topNav li {
-    float: none;
+  img {
+    width: 100%;
+    max-width: 50.000em;
+    height: 100%;
   }
-  ul.topNav li a {
-    text-align: left;
+
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2em;
+    font-weight: 700;
+    line-height: 0;
   }
-}
 
-.mainStyle {
-  color: #555;
-
-
-  .display_record {
-    background-color: #f1f1f1;
-    padding: 1.250em;
-
-    img {
-      width: 100%;
-      max-width: 50.000em;
-      height: 100%;
-    }
-
-    h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2em;
-      font-weight: 700;
-      line-height: 0;
-    }
-
-    h6 {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.2em;
-      line-height: 0.6;
-    }
-
-    p {
-      font-family: 'Rubik', sans-serif;
-      font-size: 1.2em;
-      line-height: 1.5;
-    }
+  h6 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2em;
+    line-height: 0.6;
   }
-}
 
-
-.dataEntry {
-  display: block;
-  width: 50.000em;
-  height: 37.000em;
-  background-color: #fef0db;
-
+  p {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.2em;
+    line-height: 1.5;
+  }
 }
 
 /* pagination */
@@ -507,38 +468,29 @@ ul.topNav li.right {
   }
 }
 
-/* CMS Create Form */
-.formGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: auto;
-  justify-content: space-evenly;
-  justify-items: normal;
-  grid-gap: 1.250em;
-  background-color: #f1f1f1;
-  padding: 1.250em;
-
-  .image-upload {
-    grid-column: 2/5;
-    grid-row: 1/2;
+/* Create Form  styling */
+.form_classes {
+  width: 100%;
+  margin-top: 2.500em;
+  .form_image_upload_style {
+    width: 100%;
   }
 
-  .headingLabel {
-    grid-column: 1/2;
-    grid-row: 2/3;
+  .heading_label_style {
+    width: 100%;
     background-color: #86B3D1;
     color: #fff;
     text-align: center;
     line-height: 3.125em;
     box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+    padding: 1.250em 2.500em;
   }
 
-  .enterHeading {
-    grid-column: 2/5;
-    grid-row: 2/3;
+  .enter_input_style {
+    width: 100%;
     border: none;
     outline: none;
-    background-color: #fff;
+    background-color: #f2f2f2;
     font-size: 1.2em;
     line-height: 1.5;
     height: 3.125em;
@@ -546,23 +498,22 @@ ul.topNav li.right {
     padding: 0.313em 0.625em;
   }
 
-  .textLabel {
-    grid-column: 1/2;
-    grid-row: 3/4;
+  .text_label_style {
+    width: 100%;
     background-color: #86B3D1;
     color: #fff;
     text-align: center;
     line-height: 3.125em;
     box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+    padding: 1.250em 2.500em;
   }
 
-  .contentTextarea {
-    grid-column: 2/5;
-    grid-row: 3/4;
+  .text_input_style {
+    width: 100%;
     border: none;
     outline: none;
     resize: none;
-    background-color: #fff;
+    background-color: #f2f2f2;
     font-size: 1.2em;
     line-height: 1.5;
     box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
@@ -570,9 +521,22 @@ ul.topNav li.right {
     padding: 0.625em;
   }
 
+  .form_button {
+
+    outline: none;
+    color: #fff;
+    border: none;
+    background-color: var(--blue);
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+    text-transform: capitalize;
+
+    padding: 0.625em 15.8em;
+    &:hover, &:active {
+      background-color: darken(#86B3D1, 10%);
+    }
+  }
+
   .deleteBtn {
-    grid-column: 1/2;
-    grid-row: 4/5;
     display: flex;
     justify-content: center;
     text-decoration: none;
@@ -586,35 +550,25 @@ ul.topNav li.right {
   }
 }
 
-.myButton {
-  grid-column: 2/5;
-  grid-row: 4/5;
-  outline: none;
-  color: #fff;
-  border: none;
-  background-color: var(--blue);
-  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
-  text-transform: capitalize;
-  height: 3.125em;
 
-  &:hover, &:active {
-    background-color: darken(#86B3D1, 10%);
-  }
-}
 
 @import "partials/_contact";
 
-/*--------------------------------------------------------------
-Cards:
---------------------------------------------------------------*/
-.main-area {
-  padding: 1em;
-  background-color: hsl(0, 0%, 90%);
+
+/* Sidebar CSS */
+
+.twin {
+  padding: 0.313em;
+  color: white;
 }
 
+.twin:last-of-type {
+  background-color: rgba(#555, 0.2);
+}
+
+/* CSS for Listings of Blogs/Threads */
 .cards {
-  margin: 0;
-  padding: 0;
+  padding: 1.250em;
   list-style-type: none;
 }
 
@@ -623,184 +577,94 @@ Cards:
 }
 
 .card a {
-  display: block;
-  padding: 0;
   color: hsl(0, 0%, 5%);
   text-decoration: none;
-  background: white;
   border: 1px transparent;
   transition: all .2s;
+
   .thumb {
-    width: 18.500em;
-    height: 12.500em;
+    width: 100%
   }
+
   .cms_heading {
+    background-color: #f1f1f1;
     padding: 0 0.625em;
+
     h2 {
       font-family: 'Cormorant Garamond', serif;
-      line-height: 8px;
+      line-height: .313em;
     }
+
     p.byline {
       font-family: 'Rubik', sans-serif;
       font-size: 0.8em;
       font-style: italic;
       font-weight: bold;
-      padding-bottom: 0.313em;
     }
   }
+
   .cms_content {
+    background-color: #f1f1f1;
     font-family: 'Rubik', sans-serif;
     font-size: 1.0em;
     line-height: 1.8;
-    padding: 1.250em 0.625em;
+    padding: 0 0.625em;
   }
+
   &:focus, &:hover {
     margin: -0.313em 0.313em 0.313em -0.313em;
-    box-shadow: 0.313em 0.313em 0px 0px hsla(0, 0%, 40%, 0.9);
+    box-shadow: 0.313em 0.313em 0px 0px hsla(0, 0%, 30%, 0.4);
   }
 }
 
-footer {
+/* Footer CSS */
+.colophon {
   padding: 0.313em;
   text-align: center;
-  background-color: var(--dk-blue-gray);
-
+  margin-top: 6.250em;
+  border-top: 1px solid hsl(0, 0%, 90%);
   p {
-    color: #fff;
+    font-family: 'Rubik', sans-serif;
+    color: #000;
   }
 }
 
-@media screen and (min-width: 50em) {
-  @supports (display: flex) {
 
-    .twoBoxes {
-      display: flex;
-      justify-content: space-evenly;
-      background-color: #fff;
-
-      .bold {
-        background-color: rgba(lightblue, 0.7);
-      }
-
-      .box {
-        display: block;
-        width: 100%;
-        max-width: 37.00em;
-        height: auto;
-        background-color: #fff;
-        padding: 1.250em;
-        margin: 0.625em;
-        $factor: 1;
-        $percentageFactor: 1;
-        @import "partials/_calendar";
-
-        h1, p {
-          color: var(--dk-blue-gray);
-        }
-
-        h1 {
-          line-height: 1.0;
-        }
-
-        p {
-          font-size: 1.2em;
-        }
-      }
-
-      .dkBlueGray {
-        background-color: var(--dk-blue-gray);
-      }
-
-    }
-  }
-}
 
 /*--------------------------------------------------------------
-Basic responsive layout for all browsers:
+CSS Grid layout for wider screens, when browser supports grid:
 --------------------------------------------------------------*/
-
-.site {
-  background-color: #BFB49D;
-  max-width: 75em;
-  margin: 0 auto;
-}
-
-/*--------------------------------------------------------------
-CSS Grid layout for modern browsers:
---------------------------------------------------------------*/
-
 @supports (grid-area: auto) {
 
-  @media screen and (min-width: 75em) {
+  @media screen and (min-width: 27em) {
 
+    /* Main Site Grid with sliding navigation */
     .site {
-      max-width: none;
+      position: relative;
+      left: -14em;
+      overflow-x: hidden;
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      grid-template-rows: auto;
-      grid-gap: 0;
-    }
-    .wrapper {
-      grid-column: 2/3;
-      display: none;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.625em;
-      grid-auto-rows: 37.000em;
+      grid-template-columns: 15em calc(100% - 1em);
       grid-template-areas:
-        ". mid mid ."
-        ". mid mid .";
-      background-color: rgba(#000, 0.2);
-      z-index: 10;
+				"nav header"
+				"nav main"
+				"nav sidebar"
+				"nav footer";
+      transition: left .6s;
     }
 
-    .centerForm {
-      grid-area: mid;
-      align-self: center;
+    .reveal {
+      left: 0;
     }
 
-    .mainArea {
-      z-index: 1;
-      grid-column: 2/3;
-      display: grid;
-      grid-template-columns: 25.000em repeat(2, 37.500em);
-      grid-template-rows: fit-content(25.000em) fit-content(1fr) 50.000em fit-content(3.125em);
-      justify-content: space-evenly;
-      justify-items: auto;
-      grid-gap: 1.250em;
-      margin: 0;
+    .masthead {
+      grid-area: header;
     }
 
-    .topLeft {
-      grid-column: 1/2;
-      grid-row: 1/2
-    }
-    .navigation {
-      display: flex;
-      justify-content: center;
-      height: 3.125em;
-
-    }
-    .headerStyle {
-      grid-column: 2/4;
-      grid-row: 1/2;
-      padding: 0;
-      margin: 0;
-    }
-    .sidebar {
-      grid-column: 1/2;
-      grid-row: 2/3;
-    }
-    .mainStyle {
-      grid-column: 2/4;
-      grid-row: 2/3;
+    .main-area {
+      grid-area: main;
     }
 
-    .contentContainer {
-      grid-column: 1/4;
-      grid-row: 3/4;
-      display: flex;
-      justify-content: center;
-    }
     .footerStyle {
       grid-column: 1/4;
       grid-row: 4/5;
@@ -808,54 +672,228 @@ CSS Grid layout for modern browsers:
     }
 
 
-    .displayStatus {
-      width: 50.000em;
-      h4 {
-        font-size: 1.8em;
-      }
+    .sidebar {
+      grid-area: sidebar;
     }
 
-    .triviaContainer {
-      width: 50.000em;
-      margin: 0 auto;
-    }
-    #mainGame #headerStyle h2 {
-      font-size: 1.4em;
-    }
-    #mainGame #triviaSection #questionBox {
-      padding: 0.625em;
-      h2 {
-        font-size: 1.4em;
-        line-height: 1.5;
-      }
+    .colophon {
+      grid-area: footer;
     }
 
-    /* Card Grid */
-    .cards {
-      grid-column: 2/4;
-      grid-row: 2/3;
+    .main-nav {
+      grid-area: nav;
     }
-    .card a {
-      display: grid;
-      grid-template-columns: fit-content(18.500em) 1fr;
-      grid-template-rows: fit-content(12.50em) 1fr;
-    }
-    .thumb {
-      grid-column: 1/2;
-      grid-row: 1/3;
-    }
-    .cms_heading {
-      grid-column: 2/3;
-      grid-row: 1/2;
 
+    .main-nav ul {
+      position: fixed;
+      display: none;
+      flex-direction: column;
     }
-    cms_content {
-      grid-column: 2/3;
-      grid-row: 2/3;
+
+    .open ul {
+      display: flex;
     }
+
+    .trigger {
+      position: fixed;
+      display: block;
+      top: 1.5em;
+      left: -0.9em;
+      transition: left .6s;
+    }
+
+    .reveal .trigger {
+      left: 12em;
+    }
+
 
   }
   // End Media Query
 }
 
-// End Support Grid Area
+@media screen and (min-width: 60em) {
+  /* Cards Grid */
+  .cards {
+    width: 60em;
+    padding: 0;
+    margin: 1.250em auto;
+  }
+
+  .card a {
+    display: grid;
+    grid-template-columns: fit-content(18.500em) 1fr;
+    grid-template-areas:
+				"thumbnail heading"
+				"thumbnail content";
+    justify-content: space-around;
+  }
+  .thumb {
+    grid-area: thumbnail;
+  }
+  .cms_heading {
+    grid-area: heading;
+  }
+  .cms_content {
+    grid-area: content;
+  }
+
+/* Full Page Grid */
+  .display_record {
+    display: grid;
+    grid-template-columns: fit-content(60.00em);
+    grid-template-areas:
+				"image"
+				"heading"
+                "sub-heading"
+                "paragraph";
+    justify-content: space-around;
+
+    img {
+      grid-area: image;
+    }
+
+    h3 {
+      grid-area: heading;
+    }
+
+    h6 {
+      grid-area: sub-heading;
+    }
+
+    p {
+      grid-area: paragraph;
+    }
+  }
+
+  /* Login Form Grid */
+  .login {
+    display: grid;
+    grid-template-columns: 18.5em 30em;
+    grid-template-rows: 3.125em 3.125em 3.125em;
+    grid-template-areas:
+				"user_label user_io"
+				"password_label password_io"
+                "login_button login_button";
+    grid-gap: 1.250em;
+    justify-content: center;
+  }
+
+  .text_username {
+    grid-area: user_label;
+  }
+
+  .io_username {
+    grid-area: user_io;
+  }
+
+  .text_password {
+    grid-area: password_label;
+  }
+
+  .io_password {
+    grid-area: password_io;
+  }
+
+  .login_button {
+    grid-area: login_button;
+  }
+
+  /* form grid styling */
+  .form_classes {
+    display: grid;
+    grid-template-columns: 18.5em 30em;
+    grid-auto-rows: auto;
+    grid-template-areas:
+				"upload upload"
+				"heading heading_input"
+                "content_label content"
+                " . form_button";
+    grid-gap: 1.250em;
+    justify-content: center;
+    overflow: hidden;
+    .form_image_upload_style {
+      grid-area: upload;
+    }
+    .heading_label_style {
+      grid-area: heading;
+      padding: 0;
+    }
+    .enter_input_style {
+      grid-area: heading_input;
+    }
+    .text_label_style {
+      grid-area: content_label;
+      padding: 0;
+    }
+    .text_input_style {
+      grid-area: content;
+    }
+    .form_button {
+      grid-area: form_button;
+    }
+  }
+
+
+  /* Display Info for Trivia Game*/
+  .displayStatus {
+    display: grid;
+    grid-template-columns: fit-content(60.00em);
+    grid-template-areas:
+				"start"
+				"title"
+                "info";
+    justify-content: space-around;
+  }
+
+  .startBtn {
+    grid-area: start;
+  }
+
+  .displayTitle {
+    grid-area: title;
+  }
+
+  .triviaInfo {
+    grid-area: info;
+  }
+
+  /* Trivia Game Grid */
+  #mainGame {
+    display: grid;
+    grid-template-columns: fit-content(50.00em);
+    grid-template-areas:
+				"header"
+				"game"
+                "stats"
+                "next";
+    justify-content: space-around;
+  }
+
+  #headerStyle {
+    grid-area: header;
+  }
+
+  #triviaSection {
+    grid-area: game;
+  }
+
+  #playerStats {
+    grid-area: stats;
+  }
+
+  #nextStyle {
+    grid-area: next;
+  }
+
+} // End of Media Query
+
+@media screen and (min-width: 78em) {
+
+  .site {
+    grid-template-columns: 15em calc(100% - 16em) 15em;
+    grid-template-areas:
+				"nav header header"
+				"nav main sidebar"
+				"nav footer footer";
+  }
+}
