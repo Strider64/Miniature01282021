@@ -521,6 +521,20 @@ Navigation:
     padding: 0.625em;
   }
 
+  .delete_button {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: #fff;
+    background-color: var(--blue);
+    padding: 0.625em 2.500em;
+    transition: background-color .5s;
+    &:hover, &:active {
+      background-color: darken(#86B3D1, 10%);
+    }
+  }
   .form_button {
 
     outline: none;
@@ -528,9 +542,11 @@ Navigation:
     border: none;
     background-color: var(--blue);
     box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.2em;
     text-transform: capitalize;
-
-    padding: 0.625em 15.8em;
+    padding: 0.625em 13.1em;
+    transition: background-color .5s;
     &:hover, &:active {
       background-color: darken(#86B3D1, 10%);
     }
@@ -807,7 +823,7 @@ CSS Grid layout for wider screens, when browser supports grid:
 				"upload upload"
 				"heading heading_input"
                 "content_label content"
-                " . form_button";
+                "delete form_button";
     grid-gap: 1.250em;
     justify-content: center;
     overflow: hidden;
@@ -828,6 +844,11 @@ CSS Grid layout for wider screens, when browser supports grid:
     .text_input_style {
       grid-area: content;
     }
+
+    .delete_button {
+      grid-area: delete;
+    }
+
     .form_button {
       grid-area: form_button;
     }
