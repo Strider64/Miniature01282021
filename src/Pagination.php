@@ -114,17 +114,4 @@ class Pagination {
         return $links;
     }
 
-
-    #[Pure] public function page_links($url): string
-    {
-        $output = "";
-        if($this->total_pages() > 1) {
-            $output .= "<div class=\"pagination\">";
-            $output .= $this->previous_link($url);
-            $output .= $this->number_links($url);
-            $output .= $this->next_link($url);
-            $output .= "</div>";
-        }
-        return $output;
-    }
 }

@@ -2,8 +2,8 @@
 /*
  * Website Development by John Pepp
  * Created on February 11, 2020
- * Updated on February 3, 2021
- * Version 1.0.2 Beta
+ * Updated on February 11, 2021
+ * Version 1.5.0 Beta
  */
 require_once 'assets/config/config.php';
 require_once "vendor/autoload.php";
@@ -93,7 +93,7 @@ $calendar = $monthly->generateCalendar('index.php');
             echo "\t\t\t\t" . '<img class="thumb" src="' . htmlspecialchars($record['thumb_path']) . '" alt="thumbnail">' . "\n";
             echo "\t\t\t\t" . '<div class="cms_heading">' . "\n";
             echo "\t\t\t\t\t" . '<h2>' . htmlspecialchars($record['heading']) . '</h2>' . "\n";
-            echo "\t\t\t\t\t" . '<p class="byline">by ' . htmlspecialchars($record['author']) . ' on ' . htmlspecialchars(CMS::styleDate($record['date_added'])) . '</p>' . "\n";
+            echo "\t\t\t\t\t" . '<p class="byline">by ' . htmlspecialchars($record['author']) . ' on ' . htmlspecialchars(CMS::styleDate($record['date_updated'])) . '</p>' . "\n";
             echo "\t\t\t\t" . '</div>' . "\n";
             echo "\t\t\t\t" . '<p class="cms_content">' . nl2br(htmlspecialchars(CMS::intro($record['content'], 200))) . '</p>' . "\n";
             echo "\t\t\t\t" . '</a>' . "\n";
