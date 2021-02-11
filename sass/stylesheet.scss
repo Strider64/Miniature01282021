@@ -435,7 +435,7 @@ Navigation:
 
   h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2em;
+    font-size: 1.2em;
     color: #555555;
     font-weight: 700;
     font-variant-ligatures: contextual;
@@ -450,7 +450,7 @@ Navigation:
     -webkit-font-smoothing: antialiased;
     font-style: italic;
     color: #555;
-    font-size: 1.2em;
+    font-size: 1.0em;
     line-height: 0.6;
   }
 
@@ -612,6 +612,7 @@ Navigation:
 }
 
 .card {
+  background-color: #f1f1f1;
   margin-bottom: 1em;
 }
 
@@ -626,24 +627,24 @@ Navigation:
   }
 
   .cms_heading {
-    background-color: #f1f1f1;
     padding: 0 0.625em;
 
     h2 {
       font-family: 'Cormorant Garamond', serif;
       line-height: .313em;
+      font-size: 1.2em;
     }
 
     p.byline {
       font-family: 'Rubik', sans-serif;
-      font-size: 0.8em;
+      font-size: 0.6em;
       font-style: italic;
       font-weight: bold;
+      padding-bottom: 0.313em;
     }
   }
 
   .cms_content {
-    background-color: #f1f1f1;
     font-family: 'Rubik', sans-serif;
     font-size: 1.0em;
     line-height: 1.8;
@@ -771,6 +772,10 @@ CSS Grid layout for wider screens, when browser supports grid:
   }
   .cms_heading {
     grid-area: heading;
+    font-size: 1.4em;
+    p.byline {
+      font-size: 1.0em;
+    }
   }
   .cms_content {
     grid-area: content;
@@ -786,6 +791,9 @@ CSS Grid layout for wider screens, when browser supports grid:
                 "sub-heading"
                 "paragraph";
     justify-content: space-around;
+    background-color: #f1f1f1;
+    width: 50em;
+    margin: 1.250em auto;
 
     img {
       grid-area: image;
@@ -793,10 +801,14 @@ CSS Grid layout for wider screens, when browser supports grid:
 
     h3 {
       grid-area: heading;
+      font-size: 2.2em;
+      margin: 0.8em 0 0.4em;
     }
 
     h6 {
       grid-area: sub-heading;
+      font-size: 1.2em;
+      margin: 0.8em 0;
     }
 
     p {

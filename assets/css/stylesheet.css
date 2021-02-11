@@ -705,7 +705,7 @@ Navigation:
     height: 100%; }
   .display_record h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2em;
+    font-size: 1.2em;
     color: #555555;
     font-weight: 700;
     font-variant-ligatures: contextual;
@@ -718,7 +718,7 @@ Navigation:
     -webkit-font-smoothing: antialiased;
     font-style: italic;
     color: #555;
-    font-size: 1.2em;
+    font-size: 1.0em;
     line-height: 0.6; }
   .display_record p {
     font-family: 'Rubik', sans-serif;
@@ -1098,6 +1098,7 @@ form#contact {
   list-style-type: none; }
 
 .card {
+  background-color: #f1f1f1;
   margin-bottom: 1em; }
 
 .card a {
@@ -1108,18 +1109,18 @@ form#contact {
   .card a .thumb {
     width: 100%; }
   .card a .cms_heading {
-    background-color: #f1f1f1;
     padding: 0 0.625em; }
     .card a .cms_heading h2 {
       font-family: 'Cormorant Garamond', serif;
-      line-height: .313em; }
+      line-height: .313em;
+      font-size: 1.2em; }
     .card a .cms_heading p.byline {
       font-family: 'Rubik', sans-serif;
-      font-size: 0.8em;
+      font-size: 0.6em;
       font-style: italic;
-      font-weight: bold; }
+      font-weight: bold;
+      padding-bottom: 0.313em; }
   .card a .cms_content {
-    background-color: #f1f1f1;
     font-family: 'Rubik', sans-serif;
     font-size: 1.0em;
     line-height: 1.8;
@@ -1210,7 +1211,10 @@ CSS Grid layout for wider screens, when browser supports grid:
     grid-area: thumbnail; }
 
   .cms_heading {
-    grid-area: heading; }
+    grid-area: heading;
+    font-size: 1.4em; }
+    .cms_heading p.byline {
+      font-size: 1.0em; }
 
   .cms_content {
     grid-area: content; }
@@ -1220,13 +1224,20 @@ CSS Grid layout for wider screens, when browser supports grid:
     display: grid;
     grid-template-columns: fit-content(60em);
     grid-template-areas: "image" "heading" "sub-heading" "paragraph";
-    justify-content: space-around; }
+    justify-content: space-around;
+    background-color: #f1f1f1;
+    width: 50em;
+    margin: 1.250em auto; }
     .display_record img {
       grid-area: image; }
     .display_record h3 {
-      grid-area: heading; }
+      grid-area: heading;
+      font-size: 2.2em;
+      margin: 0.8em 0 0.4em; }
     .display_record h6 {
-      grid-area: sub-heading; }
+      grid-area: sub-heading;
+      font-size: 1.2em;
+      margin: 0.8em 0; }
     .display_record p {
       grid-area: paragraph; }
 
