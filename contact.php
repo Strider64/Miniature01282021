@@ -1,6 +1,7 @@
 <?php
 require_once 'assets/config/config.php';
 require_once "vendor/autoload.php";
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -10,12 +11,15 @@ require_once "vendor/autoload.php";
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Contact Page</title>
+    <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="assets/css/stylesheet.css">
+
     <script src="assets/js/menu.js" defer></script>
 </head>
 <body class="site">
 <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 <header class="masthead">
+    <a href="index"><img class="masthead-logo" src="assets/images/img-logo-004.png" alt="website logo"></a>
     <h1 class="site-title">The Miniature Photographer</h1>
 </header>
 
@@ -24,10 +28,10 @@ require_once "vendor/autoload.php";
 
     <nav>
         <ul>
-            <li><a href="index.php">home</a></li>
+            <li><a href="index">home</a></li>
             <li><a href="admin/login.php">admin</a></li>
-            <li><a href="game.php">game</a></li>
-            <li><a href="contact.php">contact</a></li>
+            <li><a href="game">game</a></li>
+            <li><a href="contact">contact</a></li>
         </ul>
     </nav>
 </section><!-- .main-nav -->
@@ -66,7 +70,7 @@ require_once "vendor/autoload.php";
             <p>&nbsp;</p>
             <label class="textareaLabel" for="comments">Comments Length:<span id="length"></span></label>
             <textarea name="comments" id="comments" spellcheck="true" tabindex="6" required="required"></textarea>
-            <?php if (filter_input(INPUT_SERVER, 'SERVER_NAME', FILTER_SANITIZE_URL) == "localhost") { ?>
+            <?php if (filter_input(INPUT_SERVER, 'SERVER_NAME', FILTER_SANITIZE_URL) === "localhost") { ?>
                 <div id="recaptcha" class="g-recaptcha" data-sitekey="6LdXNpAUAAAAAMwtslAEqbi9CU3sviuv2imYbQfe"
                      data-callback="correctCaptcha"></div>
 
@@ -98,5 +102,6 @@ require_once "vendor/autoload.php";
     };
 </script>
 <script src='https://www.google.com/recaptcha/api.js' async defer></script>
+<script src="assets/js/cookie.notice.js"></script>
 </body>
 </html>

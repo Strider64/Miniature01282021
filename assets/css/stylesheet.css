@@ -637,11 +637,20 @@ img {
 Header:
 --------------------------------------------------------------*/
 .masthead {
-  padding: 0 1em;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 1.250em;
   border-bottom: 1px solid #e6e6e6; }
+  .masthead img {
+    width: 6.250em;
+    height: 6.250em;
+    margin-right: 1.250em; }
   .masthead h1 {
     font-family: 'Cormorant Garamond', serif;
+    font-variant-ligatures: common-ligatures;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
     color: rgba(85, 85, 85, 0.8); }
 
 /*--------------------------------------------------------------
@@ -697,35 +706,49 @@ Navigation:
   .display_record h3 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.2em;
+    color: #555555;
     font-weight: 700;
+    font-variant-ligatures: contextual;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
     line-height: 0; }
   .display_record h6 {
     font-family: 'Cormorant Garamond', serif;
+    -webkit-font-smoothing: antialiased;
     font-style: italic;
+    color: #555;
     font-size: 1.2em;
     line-height: 0.6; }
   .display_record p {
     font-family: 'Rubik', sans-serif;
+    font-variant-ligatures: contextual;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
     font-size: 1.2em;
-    line-height: 1.5; }
+    line-height: 1.5;
+    color: #555555; }
 
 /* pagination */
 .pagination {
-  display: block;
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-  font-family: 'Rubik', sans-serif;
+  display: flex;
+  justify-content: center; }
+
+.pagination .three-dots {
+  color: #555;
+  margin: 0 0.500em; }
+
+.pagination a {
   font-size: 1.2em;
-  padding: 10px 20px 5px 20px; }
-  .pagination a {
-    color: var(--dk-tan);
-    text-decoration: none;
-    margin: 0 0.500em; }
-  .pagination span.selected {
-    font-weight: bold;
-    color: #000;
-    margin: 0 0.500em; }
+  color: #555;
+  text-decoration: none;
+  padding-left: 0.313em; }
+
+.pagination a.selected {
+  font-weight: bold;
+  color: #000;
+  padding-left: 0.313em; }
 
 /* Create Form  styling */
 .form_classes {
@@ -941,8 +964,9 @@ form#contact {
     max-width: 1000px;
     height: auto;
     background-color: #f2f2f2;
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
     padding: 0.938em 1.250em;
-    margin: 0 auto; }
+    margin: 1.250em auto; }
     form#contact #message {
       position: relative;
       height: 50px;
@@ -1066,9 +1090,6 @@ form#contact {
 .twin {
   padding: 0.313em;
   color: white; }
-
-.twin:last-of-type {
-  background-color: rgba(85, 85, 85, 0.2); }
 
 /* CSS for Listings of Blogs/Threads */
 .cards {

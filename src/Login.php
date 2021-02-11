@@ -16,7 +16,7 @@ class Login extends DatabaseObject
     public $email;
     public $username = [];
     static public $error = [];
-    protected $hashed_password;
+    protected string $password;
     static public $last_login;
 
     public const MAX_LOGIN_AGE = 60*60*24*7; // 7 days:
@@ -24,8 +24,8 @@ class Login extends DatabaseObject
     public function __construct($args = [])
     {
         static::$searchItem = 'username';
-        static::$searchValue = $args['username'];
-        $this->hashed_password = $args['hashed_password'];
+        static::$searchValue = htmlspecialchars($args['username']);
+        $this->password = htmlspecialchars($args['hashed_password']);
     }
 
     public static function full_name(): string
@@ -44,8 +44,8 @@ class Login extends DatabaseObject
 
         $user = static::fetch_by_column_name($sql);
 
-        if ($user && password_verify($this->hashed_password, $user['hashed_password'])) {
-            unset($this->hashed_password, $user['hashed_password']);
+        if ($user && password_verify($this->password, $user['hashed_password'])) {
+            unset($this->password, $user['hashed_password']);
             session_regenerate_id(); // prevent session fixation attacks
             static::$last_login = $_SESSION['last_login'] = time();
             $this->id = $_SESSION['id'] = $user['id'];
@@ -68,7 +68,7 @@ class Login extends DatabaseObject
     #[NoReturn] public static function logout(): void
     {
         unset($_SESSION['last_login'], $_SESSION['id']);
-        header("Location: login.php");
+        header("Location: ../index.php");
         exit();
     }
 }

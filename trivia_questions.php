@@ -13,7 +13,7 @@ $category = htmlspecialchars($_GET['category']);
 
 if (isset($category)) { // Get rid of $api_key if not using:
 
-    $data = Trivia::fetch_data($category);
+    $data = Trivia::fetch_data($category); // Fetch the data from the Database Table:
 
     $mData = []; // Temporary Array Placeholder:
     $answers = []; // Answer Columns from Table Array:

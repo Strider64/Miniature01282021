@@ -11,7 +11,9 @@ require_once "vendor/autoload.php";
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Photography Quiz</title>
+    <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="assets/css/stylesheet.css">
+    <script src="assets/js/cookie.notice.js"></script>
     <script src="assets/js/menu.js" defer></script>
     <script type="text/javascript" src="assets/js/game.js" defer></script>
 
@@ -19,6 +21,7 @@ require_once "vendor/autoload.php";
 <body class="site">
 <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 <header class="masthead">
+    <a href="index"><img class="masthead-logo" src="assets/images/img-logo-004.png" alt="website logo"></a>
     <h1 class="site-title">The Miniature Photographer</h1>
 </header>
 
@@ -27,10 +30,10 @@ require_once "vendor/autoload.php";
 
     <nav>
         <ul>
-            <li><a href="index.php">home</a></li>
+            <li><a href="index">home</a></li>
             <li><a href="admin/login.php">admin</a></li>
-            <li><a href="game.php">game</a></li>
-            <li><a href="contact.php">contact</a></li>
+            <li><a href="game">game</a></li>
+            <li><a href="contact">contact</a></li>
         </ul>
     </nav>
 </section><!-- .main-nav -->

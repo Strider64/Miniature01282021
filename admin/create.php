@@ -28,6 +28,10 @@ if (isset($_POST['submit'], $_FILES['image'])) {
      * if it contains the info otherwise set to null.
      */
     if ($file_ext === 'jpeg' || $file_ext === 'jpg') {
+        /*
+         * I don't like suppressing errors, but this
+         * is the only way that I have  found out how to do it.
+         */
         $exif_data = @exif_read_data($file_tmp);
 
         if (array_key_exists('Make', $exif_data) && array_key_exists('Model', $exif_data)) {
@@ -101,7 +105,6 @@ if (isset($_POST['submit'], $_FILES['image'])) {
      * database table.
      */
     if (empty($errors) === true) {
-        //move_uploaded_file($file_tmp, "../" . $new_file_name);
         /* Save to Database Table CMS */
         $cms = new CMS($data);
         $result = $cms->create();
@@ -129,6 +132,7 @@ if (isset($_POST['submit'], $_FILES['image'])) {
 <body class="site">
 <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 <header class="masthead">
+    <img class="masthead-logo" src="/assets/images/img-logo-004.png" alt="website logo">
     <h1 class="site-title">The Miniature Photographer</h1>
 </header>
 

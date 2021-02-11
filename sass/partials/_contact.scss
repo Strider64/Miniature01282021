@@ -160,8 +160,9 @@ form#contact {
     max-width: 1000px;
     height: auto;
     background-color: #f2f2f2;
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
     padding: 0.938em 1.250em;
-    margin: 0 auto;
+    margin: 1.250em auto;
     #message {
       position: relative;
       height: 50px;

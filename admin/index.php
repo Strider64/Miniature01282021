@@ -44,6 +44,7 @@ $cms = CMS::page($per_page, $offset);
 <body class="site">
 <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 <header class="masthead">
+    <img class="masthead-logo" src="/assets/images/img-logo-004.png" alt="website logo">
     <h1 class="site-title">The Miniature Photographer</h1>
 </header>
 
@@ -76,13 +77,15 @@ $cms = CMS::page($per_page, $offset);
         }
         ?>
     </ul>
+    <?php
+    $url = 'index.php';
+    echo $pagination->new_page_links($url);
+    echo '</div>';
+    ?>
 </main>
 <section class="sidebar">
     <aside class="twin">
-        <?php
-        $url = 'index.php';
-        echo $pagination->page_links($url);
-        ?>
+
     </aside>
     <aside class="twin">
         <img src="../assets/images/img-logo-003.jpg" alt="Detroit Kern's Clock">

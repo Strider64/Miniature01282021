@@ -28,11 +28,13 @@ if ($submit) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Page</title>
     <link rel="stylesheet" href="../assets/css/stylesheet.css">
+    <script src="../assets/js/cookie.notice.js"></script>
     <script src="../assets/js/menu.js" defer></script>
 </head>
 <body class="site">
 <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 <header class="masthead">
+    <img class="masthead-logo" src="/assets/images/img-logo-004.png" alt="website logo">
     <h1 class="site-title">The Miniature Photographer</h1>
 </header>
 
