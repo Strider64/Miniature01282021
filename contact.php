@@ -61,15 +61,15 @@ require_once "vendor/autoload.php";
                 <input type="radio" id="radioMessage" name="reason" value="message" checked>
                 <label for="radioMessage">message</label>
 
-                <input type="radio" id="radioOrder" name="reason" value="order">
-                <label for="radioOrder">order</label>
+                <input type="radio" id="radioOrder" name="reason" value="inquiry">
+                <label for="radioOrder">inquiry</label>
 
                 <input type="radio" id="radioStatus" name="reason" value="status">
                 <label for="radioStatus">status</label>
             </div>
             <p>&nbsp;</p>
             <label class="textareaLabel" for="comments">Comments Length:<span id="length"></span></label>
-            <textarea name="comments" id="comments" spellcheck="true" tabindex="6" required="required"></textarea>
+            <textarea name="comments" id="comments" spellcheck="true" placeholder="Enter Message Here..." tabindex="6" required="required"></textarea>
             <?php if (filter_input(INPUT_SERVER, 'SERVER_NAME', FILTER_SANITIZE_URL) === "localhost") { ?>
                 <div id="recaptcha" class="g-recaptcha" data-sitekey="6LdXNpAUAAAAAMwtslAEqbi9CU3sviuv2imYbQfe"
                      data-callback="correctCaptcha"></div>

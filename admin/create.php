@@ -70,8 +70,8 @@ if (isset($_POST['submit'], $_FILES['image'])) {
         $errors[] = "extension not allowed, please choose a JPEG or PNG file.";
     }
 
-    if ($file_size >= 29360128) {
-        $errors[] = 'File size must be less than or equal to 28 MB';
+    if ($file_size >= 44040192) {
+        $errors[] = 'File size must be less than or equal to 42 MB';
     }
 
     /*
@@ -149,7 +149,7 @@ if (isset($_POST['submit'], $_FILES['image'])) {
 </section><!-- .main-nav -->
 
 <main id="content" class="main-area">
-    <form class="form_classes" action="create.php" method="post" enctype="multipart/form-data">
+    <form id="formData" class="form_classes" action="create.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="cms[user_id]" value="3">
         <input type="hidden" name="cms[author]" value="John Pepp">
         <input type="hidden" name="action" value="upload">
@@ -173,5 +173,6 @@ if (isset($_POST['submit'], $_FILES['image'])) {
 <footer class="colophon">
     <p>&copy; <?php echo date("Y") ?> The Miniature Photographer</p>
 </footer>
+<!--<script src="../assets/js/save_to_cms.js"></script>-->
 </body>
 </html>

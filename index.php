@@ -44,7 +44,7 @@ $monthly = new CalendarObject();
 
 $monthly->phpDate();
 
-$calendar = $monthly->generateCalendar('index.php');
+
 
 
 //echo '<img class="thumb" src="' . $record['thumb_path'] . '" alt="thumbnail">' . "\n";
@@ -68,6 +68,7 @@ $calendar = $monthly->generateCalendar('index.php');
 <header class="masthead">
     <img class="masthead-logo" src="assets/images/img-logo-004.png" alt="website logo">
     <h1 class="site-title">The Miniature Photographer</h1>
+    <?= $monthly->generateCalendar(); ?>
 </header>
 
 <div class="main-nav">
@@ -109,7 +110,9 @@ $calendar = $monthly->generateCalendar('index.php');
     ?>
 
 </main>
+
 <div class="sidebar">
+
     <aside class="twin">
 
     </aside>

@@ -59,7 +59,7 @@ const contact = () => {
     let comments = d.querySelector("textarea");
     let output = d.querySelector("#length");
 
-    d.getElementById('contact').scrollIntoView();
+    //d.getElementById('contact').scrollIntoView();
 
 
     name.addEventListener('input', () => {

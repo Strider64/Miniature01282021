@@ -1,4 +1,6 @@
 @import "partials/_reset";
+@import "partials/color_theme_1";
+@import "partials/_calendar";
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Rubik&display=swap');
 
 $size: 3.125em;
@@ -56,6 +58,7 @@ Typography
 --------------------------------------------------------------*/
 
 body {
+  background-color: $color-medium-01;
   font-size: 1.125em;
   margin: 0;
 }
@@ -64,7 +67,10 @@ body {
 /* Trivia Game */
 
 .displayStatus {
+  background-color: $color-really-dark-01;
+  color: $color-light-01;
   padding: 1.250em;
+  margin: 1.250em auto;
 
   h4 {
     font-family: 'Cormorant Garamond', serif;
@@ -83,15 +89,15 @@ body {
     height: 1.420em;
     border: none;
     transition: background-color 0.5s ease;
-    background-color: #327a35;
+    background-color: $color-light-01;
     font-family: 'Rubik', sans-serif;
     font-size: 1em;
-    color: white;
+    color: $color-really-dark-01;
     text-align: center;
     text-decoration: none;
     padding: 0.938em 1.875em;
     &:hover {
-      background-color: #4cab50;
+      background-color: darken($color-light-01, 10%);
     }
   }
 
@@ -114,7 +120,7 @@ body {
     font-size: 0.8em;
     line-height: 0.313em;
     text-align: center;
-    color: #000;
+    color: #fff;
   }
 }
 
@@ -137,7 +143,7 @@ body {
 }
 
 #mainGame #triviaSection #questionBox {
-  background-color: #f1f1f1;
+  background-color: $color-really-dark-01;
   padding: 0.313em 0.625em;
 }
 
@@ -146,11 +152,11 @@ body {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.4em;
   line-height: 1.5;
+  color: $color-light-01;
 }
 
 #mainGame #triviaSection #buttonContainer {
-  background-color: #f1f1f1;
-  padding: 0.313em;
+  background-color: $color-dark-01;
   margin-bottom: 0.625em;
 }
 
@@ -160,10 +166,10 @@ body {
   height: 3.125em;
   outline: none;
   cursor: pointer;
-  background-color: #f1f1f1;
+  background-color: $color-dark-01;
   font-family: 'Rubik', sans-serif;
   font-size: 1.2em;
-  color: #2e2e2e;
+  color: $color-light-01;
   text-transform: capitalize;
   text-align: left;
   padding-left: 0.625em;
@@ -183,7 +189,7 @@ body {
   left: 0.313em;
   font-family: 'Rubik', sans-serif;
   font-size: 1.0em;
-  color: #000;
+  color: $color-light-01;
   line-height: 0.938em;
 }
 
@@ -193,7 +199,7 @@ body {
   right: 3.125em;
   font-family: 'Rubik', sans-serif;
   font-size: 1.0em;
-  color: #000;
+  color: $color-light-01;
   line-height: 0.938em;
 }
 
@@ -216,16 +222,18 @@ body {
   max-width: 9.375em;
   height: 2.500em;
   cursor: pointer;
-  background-color: #898ac4;
+  transition: background-color 0.5s ease;
+  background-color: lighten($color-really-dark-02, 10%);
   font-family: 'Rubik', sans-serif;
   font-size: 1.2em;
   color: #fff;
   text-transform: capitalize;
+  &:hover {
+    background-color: $color-really-dark-02;
+  }
 }
 
-#mainGame #nextStyle #next:hover {
 
-}
 
 a.qBtn {
   float: right;
@@ -257,7 +265,7 @@ a.qBtn:hover {
 /*--------------------------------------------------------------
 General styling
 --------------------------------------------------------------*/
-@import "partials/_calendar";
+
 
 .shadow {
   -moz-box-shadow: inset 0 0 0.313em #000000;
@@ -369,7 +377,7 @@ Header:
     text-rendering: optimizeLegibility;
     text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
-    color: rgba(#555, 0.8);
+    color: #fff;
   }
 }
 
@@ -379,15 +387,18 @@ Navigation:
 .main-nav {
   padding: 1em;
   font-size: 1.1em;
-  color: white;
-  background-color: rgba(#555, 0.5);
+  color: $color-light-01;
+  background: rgb(57,61,56);
+  background: linear-gradient(90deg, rgba(57,61,56,0.9317927854735644) 0%, rgba(65,84,60,0.9345939059217437) 32%, rgba(104,120,100,1) 100%);
+  border-radius: 0 0 1.875em 0;
+  box-shadow: 0 0.250em 0.500em 0 rgba(0, 0, 0, 0.2), 0 0.375em 1.250em 0 rgba(0, 0, 0, 0.19);
 }
 
 .trigger {
   display: none;
   padding: .1em .5em;
-  color: white;
-  background-color: rgba(#555, 1.0);
+  color: $color-light-01;
+  background-color: $color-really-dark-02;
   border: none;
   transform: rotate(90deg);
 }
@@ -403,7 +414,7 @@ Navigation:
 
 .main-nav ul {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
@@ -473,21 +484,21 @@ Navigation:
 }
 
 .pagination .three-dots {
-  color: #555;
+  color: $color-really-dark-01;
   margin: 0.313em 0.500em;
 }
 
 .pagination a {
   font-family: 'Rubik', sans-serif;
   font-size: 1.2em;
-  color: #555;
+  color: $color-really-dark-01;
   text-decoration: none;
   padding-left: 0.313em;
 }
 
 .pagination a.selected {
-  font-weight: bold;
-  color: #000;
+  font-weight: bolder;
+  color: $color-really-dark-02;
   padding-left: 0.313em;
 }
 
@@ -612,12 +623,12 @@ Navigation:
 }
 
 .card {
-  background-color: #f1f1f1;
+  background-color: $color-really-dark-01;
   margin-bottom: 1em;
 }
 
 .card a {
-  color: hsl(0, 0%, 5%);
+  color: $color-light-01;
   text-decoration: none;
   border: 1px transparent;
   transition: all .2s;
@@ -659,13 +670,14 @@ Navigation:
 
 /* Footer CSS */
 .colophon {
-  padding: 0.313em;
+  background-color: $color-really-dark-02;
   text-align: center;
   margin-top: 6.250em;
   border-top: 1px solid hsl(0, 0%, 90%);
+  padding: 0.313em;
   p {
     font-family: 'Rubik', sans-serif;
-    color: #000;
+    color: $color-light-01;
   }
 }
 
@@ -684,12 +696,12 @@ CSS Grid layout for wider screens, when browser supports grid:
       left: -14em;
       overflow-x: hidden;
       display: grid;
-      grid-template-columns: 15em calc(100% - 1em);
+      grid-template-columns: 15em calc(100% - 1em) 15em;
       grid-template-areas:
-				"nav header"
-				"nav main"
-				"nav sidebar"
-				"nav footer";
+				"nav header header"
+				"nav main sidebar"
+				"nav main sidebar"
+				"footer footer footer";
       transition: left .6s;
     }
 
@@ -704,13 +716,6 @@ CSS Grid layout for wider screens, when browser supports grid:
     .main-area {
       grid-area: main;
     }
-
-    .footerStyle {
-      grid-column: 1/4;
-      grid-row: 4/5;
-      justify-items: auto;
-    }
-
 
     .sidebar {
       grid-area: sidebar;
@@ -899,6 +904,7 @@ CSS Grid layout for wider screens, when browser supports grid:
 				"title"
                 "info";
     justify-content: space-around;
+    width: 31.25em;
   }
 
   .startBtn {
@@ -950,6 +956,6 @@ CSS Grid layout for wider screens, when browser supports grid:
     grid-template-areas:
 				"nav header header"
 				"nav main sidebar"
-				"nav footer footer";
+				"footer footer footer";
   }
 }

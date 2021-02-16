@@ -325,6 +325,7 @@
     /* Success function utilizing FETCH */
     const quizUISuccess = (parsedData) => {
         mainGame.style.display = 'grid';
+        d.getElementById('content').scrollIntoView();
         console.log(parsedData);
         gameData = parsedData;
         //gameData = parsedData.sort(() => Math.random() - .5); // randomize questions:
@@ -371,6 +372,6 @@
     d.querySelector('#customBtn').addEventListener('click', startGame, false);
     d.querySelector('#quiz').style.display = "none";
 
-    ;
+
 
 })();
