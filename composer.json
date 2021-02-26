@@ -19,7 +19,8 @@
     "ext-pdo": "*",
     "ext-readline": "*",
     "ext-exif": "*",
-    "ext-gd": "*"
+    "ext-gd": "*",
+    "ext-curl": "*"
   }
   ,
   "require-dev": {

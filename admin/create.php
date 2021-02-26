@@ -151,7 +151,7 @@ if (isset($_POST['submit'], $_FILES['image'])) {
 <main id="content" class="main-area">
     <form id="formData" class="form_classes" action="create.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="cms[user_id]" value="3">
-        <input type="hidden" name="cms[author]" value="John Pepp">
+        <input type="hidden" name="cms[author]" value="<?= Login::full_name() ?>">
         <input type="hidden" name="action" value="upload">
         <input class="form_image_upload_style" type="file" name="image">
         <label class="heading_label_style" for="heading">Heading</label>

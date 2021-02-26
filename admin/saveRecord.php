@@ -3,20 +3,9 @@
 require_once 'assets/config/config.php';
 require_once "vendor/autoload.php";
 
-use Miniature\Database as DB;
-use Miniature\Users as Login;
 
-$login = new Login();
 
-$username = (isset($_SESSION['id'])) ? $login->username($_SESSION['id']) : null;
 
-if (!$username) {
-    header("Location: game.php");
-    exit();
-} 
-
-$conn = DB::getInstance();
-$pdo = $conn->getConnection();
 
 $data = json_decode(file_get_contents('php://input'), true);
 

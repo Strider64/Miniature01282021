@@ -11,9 +11,7 @@ $monthly->phpDate();
 
 $calendar = $monthly->generateCalendar('login.php');
 
-$submit = $_POST['submit'] ?? null;
-
-if ($submit) {
+if (isset($_POST['submit'])) {
     $login = new Login($_POST['user']);
     $login->login();
 }
@@ -51,9 +49,9 @@ if ($submit) {
 <main id="content" class="main-area">
     <form class="login" method="post" action="login.php">
         <label class="text_username" for="username">Username</label>
-        <input id="username" class="io_username" type="text" name="user[username]" value="">
+        <input id="username" class="io_username" type="text" name="user[username]" value="" required>
         <label class="text_password" for="password">Password</label>
-        <input id="password" class="io_password" type="password" name="user[hashed_password]">
+        <input id="password" class="io_password" type="password" name="user[hashed_password]" required>
         <button class="login_button" type="submit" name="submit" value="login">Login</button>
     </form>
 </main>

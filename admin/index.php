@@ -53,9 +53,12 @@ $cms = CMS::page($per_page, $offset);
 
     <nav>
         <ul>
+
             <li><a href="index.php">home</a></li>
             <li><a href="create.php">create</a></li>
+            <li><a href="addQuiz.php">add Q</a></li>
             <li><a href="logout.php">logout</a></li>
+
         </ul>
     </nav>
 </section><!-- .main-nav -->

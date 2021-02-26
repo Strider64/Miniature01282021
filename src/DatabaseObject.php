@@ -34,11 +34,20 @@ class DatabaseObject // Extended by the children class:
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public static function fetch_all($sql): array
+    {
+
+        $stmt = Database::pdo()->prepare($sql);
+
+        $stmt->execute([ static::$searchItem => static::$searchValue ]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     /*
      * Total rows in Database Table
      */
     public static function countAll() {
-        return Database::pdo()->query("SELECT count(*) FROM " . static::$table)->fetchColumn();
+        return Database::pdo()->query("SELECT count(id) FROM " . static::$table)->fetchColumn();
     }
 
     /*

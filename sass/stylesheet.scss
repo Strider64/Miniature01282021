@@ -96,6 +96,7 @@ body {
     text-align: center;
     text-decoration: none;
     padding: 0.938em 1.875em;
+
     &:hover {
       background-color: darken($color-light-01, 10%);
     }
@@ -106,6 +107,7 @@ body {
 #mainGame {
   margin-top: 1.250em;
 }
+
 #mainGame::after {
   content: ' ';
   display: block;
@@ -228,11 +230,11 @@ body {
   font-size: 1.2em;
   color: #fff;
   text-transform: capitalize;
+
   &:hover {
     background-color: $color-really-dark-02;
   }
 }
-
 
 
 a.qBtn {
@@ -308,7 +310,8 @@ img {
 .login {
   padding: 0.313em;
   margin-top: 3.125em;
-  .text_username{
+
+  .text_username {
     display: flex;
     justify-content: center;
     background-color: darken(#86B3D1, 10%);
@@ -351,6 +354,7 @@ img {
     background-color: darken(#86B3D1, 10%);
     box-shadow: 2px 2px 1px rgba(#000, 0.5);
     padding: 0.625em;
+
     &:hover, &:active {
       background-color: darken(#86B3D1, 20%);
     }
@@ -366,11 +370,13 @@ Header:
   justify-content: center;
   padding: 1.250em;
   border-bottom: 1px solid hsl(0, 0%, 90%);
+
   img {
     width: 6.250em;
     height: 6.250em;
     margin-right: 1.250em;
   }
+
   h1 {
     font-family: 'Cormorant Garamond', serif;
     font-variant-ligatures: common-ligatures;
@@ -388,8 +394,8 @@ Navigation:
   padding: 1em;
   font-size: 1.1em;
   color: $color-light-01;
-  background: rgb(57,61,56);
-  background: linear-gradient(90deg, rgba(57,61,56,0.9317927854735644) 0%, rgba(65,84,60,0.9345939059217437) 32%, rgba(104,120,100,1) 100%);
+  background: rgb(57, 61, 56);
+  background: linear-gradient(90deg, rgba(57, 61, 56, 0.9317927854735644) 0%, rgba(65, 84, 60, 0.9345939059217437) 32%, rgba(104, 120, 100, 1) 100%);
   border-radius: 0 0 1.875em 0;
   box-shadow: 0 0.250em 0.500em 0 rgba(0, 0, 0, 0.2), 0 0.375em 1.250em 0 rgba(0, 0, 0, 0.19);
 }
@@ -436,6 +442,7 @@ Navigation:
 
 /* Display Full Page */
 .display_record {
+  background-color: #f1f1f1;
   padding: 1.250em;
 
   img {
@@ -502,10 +509,70 @@ Navigation:
   padding-left: 0.313em;
 }
 
+/* Trivia Form CSS */
+.trivia_form {
+  width: 100%;
+  margin-top: 2.500em;
+
+  .question_label, .answer_one_label, .answer_two_label,
+  .answer_three_label, .answer_four_label, .correct_answer_label {
+    width: 100%;
+    background-color: #86B3D1;
+    color: #fff;
+    text-align: center;
+    line-height: 3.125em;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+    padding: 1.250em 2.500em;
+  }
+
+  .question_input {
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    background-color: #f2f2f2;
+    font-size: 1.2em;
+    line-height: 1.5;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+    height: 25.00em;
+    padding: 0.625em;
+  }
+
+  .answer_one_input, .answer_two_input, .answer_three_input, .answer_four_input, .correct_answer_input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: #f2f2f2;
+    font-size: 1.2em;
+    line-height: 1.5;
+    height: 3.125em;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+    padding: 0.313em 0.625em;
+  }
+
+  .form_button {
+    outline: none;
+    color: #fff;
+    border: none;
+    background-color: var(--blue);
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.2em;
+    text-transform: capitalize;
+    padding: 0.625em 13.1em;
+    transition: background-color .5s;
+    &:hover, &:active {
+      background-color: darken(#86B3D1, 10%);
+    }
+  }
+
+}
+
 /* Create Form  styling */
 .form_classes {
   width: 100%;
   margin-top: 2.500em;
+
   .form_image_upload_style {
     width: 100%;
   }
@@ -565,10 +632,12 @@ Navigation:
     background-color: var(--blue);
     padding: 0.625em 2.500em;
     transition: background-color .5s;
+
     &:hover, &:active {
       background-color: darken(#86B3D1, 10%);
     }
   }
+
   .form_button {
 
     outline: none;
@@ -581,6 +650,7 @@ Navigation:
     text-transform: capitalize;
     padding: 0.625em 13.1em;
     transition: background-color .5s;
+
     &:hover, &:active {
       background-color: darken(#86B3D1, 10%);
     }
@@ -599,7 +669,6 @@ Navigation:
     }
   }
 }
-
 
 
 @import "partials/_contact";
@@ -675,12 +744,12 @@ Navigation:
   margin-top: 6.250em;
   border-top: 1px solid hsl(0, 0%, 90%);
   padding: 0.313em;
+
   p {
     font-family: 'Rubik', sans-serif;
     color: $color-light-01;
   }
 }
-
 
 
 /*--------------------------------------------------------------
@@ -778,6 +847,7 @@ CSS Grid layout for wider screens, when browser supports grid:
   .cms_heading {
     grid-area: heading;
     font-size: 1.4em;
+
     p.byline {
       font-size: 1.0em;
     }
@@ -786,7 +856,7 @@ CSS Grid layout for wider screens, when browser supports grid:
     grid-area: content;
   }
 
-/* Full Page Grid */
+  /* Full Page Grid */
   .display_record {
     display: grid;
     grid-template-columns: fit-content(60.00em);
@@ -854,6 +924,72 @@ CSS Grid layout for wider screens, when browser supports grid:
     grid-area: login_button;
   }
 
+  /* trivia grid styling */
+  .trivia_form {
+    display: grid;
+    grid-template-columns: 18.5em 37em;
+    grid-auto-rows: auto;
+    grid-template-areas:
+				"question_label question_textarea"
+				"answer1_label answer1_input"
+                "answer2_label answer2_input"
+                "answer3_label answer3_input"
+                "answer4_label answer4_input"
+                "correct_label correct_input"
+                "form_button form_button";
+    grid-gap: 1.250em;
+    justify-content: center;
+    overflow: hidden;
+    .question_label {
+      grid-area: question_label;
+      padding: 0;
+    }
+    .question_input {
+      grid-area: question_textarea;
+    }
+    .answer_one_label {
+      grid-area: answer1_label;
+      padding: 0;
+    }
+    .answer_one_input {
+      grid-area: answer1_input;
+    }
+    .answer_two_label {
+      grid-area: answer2_label;
+      padding: 0;
+    }
+    .answer_two_input {
+      grid-area: answer2_input;
+    }
+    .answer_three_label {
+      grid-area: answer3_label;
+      padding: 0;
+    }
+    .answer_three_input {
+      grid-area: answer3_input;
+    }
+    .answer_four_label {
+      grid-area: answer4_label;
+      padding: 0;
+    }
+    .answer_four_input {
+      grid-area: answer4_input;
+    }
+    .correct_answer_label {
+      grid-area: correct_label;
+      padding: 0;
+    }
+    .correct_answer_input {
+      grid-area: correct_input;
+    }
+    .form_button {
+      grid-area: form_button;
+      display: flex;
+      justify-content: space-evenly;
+      margin: 0 auto;
+      width: 50%;
+    }
+  }
   /* form grid styling */
   .form_classes {
     display: grid;
@@ -867,20 +1003,25 @@ CSS Grid layout for wider screens, when browser supports grid:
     grid-gap: 1.250em;
     justify-content: center;
     overflow: hidden;
+
     .form_image_upload_style {
       grid-area: upload;
     }
+
     .heading_label_style {
       grid-area: heading;
       padding: 0;
     }
+
     .enter_input_style {
       grid-area: heading_input;
     }
+
     .text_label_style {
       grid-area: content_label;
       padding: 0;
     }
+
     .text_input_style {
       grid-area: content;
     }
@@ -947,7 +1088,9 @@ CSS Grid layout for wider screens, when browser supports grid:
     grid-area: next;
   }
 
-} // End of Media Query
+}
+
+// End of Media Query
 
 @media screen and (min-width: 78em) {
 

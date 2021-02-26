@@ -717,6 +717,7 @@ Navigation:
 
 /* Display Full Page */
 .display_record {
+  background-color: #f1f1f1;
   padding: 1.250em; }
   .display_record img {
     width: 100%;
@@ -769,6 +770,54 @@ Navigation:
   font-weight: bolder;
   color: #687864;
   padding-left: 0.313em; }
+
+/* Trivia Form CSS */
+.trivia_form {
+  width: 100%;
+  margin-top: 2.500em; }
+  .trivia_form .question_label, .trivia_form .answer_one_label, .trivia_form .answer_two_label,
+  .trivia_form .answer_three_label, .trivia_form .answer_four_label, .trivia_form .correct_answer_label {
+    width: 100%;
+    background-color: #86B3D1;
+    color: #fff;
+    text-align: center;
+    line-height: 3.125em;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+    padding: 1.250em 2.500em; }
+  .trivia_form .question_input {
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    background-color: #f2f2f2;
+    font-size: 1.2em;
+    line-height: 1.5;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+    height: 25.00em;
+    padding: 0.625em; }
+  .trivia_form .answer_one_input, .trivia_form .answer_two_input, .trivia_form .answer_three_input, .trivia_form .answer_four_input, .trivia_form .correct_answer_input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: #f2f2f2;
+    font-size: 1.2em;
+    line-height: 1.5;
+    height: 3.125em;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+    padding: 0.313em 0.625em; }
+  .trivia_form .form_button {
+    outline: none;
+    color: #fff;
+    border: none;
+    background-color: var(--blue);
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.2em;
+    text-transform: capitalize;
+    padding: 0.625em 13.1em;
+    transition: background-color .5s; }
+    .trivia_form .form_button:hover, .trivia_form .form_button:active {
+      background-color: #619cc3; }
 
 /* Create Form  styling */
 .form_classes {
@@ -1279,6 +1328,52 @@ CSS Grid layout for wider screens, when browser supports grid:
 
   .login_button {
     grid-area: login_button; }
+
+  /* trivia grid styling */
+  .trivia_form {
+    display: grid;
+    grid-template-columns: 18.5em 37em;
+    grid-auto-rows: auto;
+    grid-template-areas: "question_label question_textarea" "answer1_label answer1_input" "answer2_label answer2_input" "answer3_label answer3_input" "answer4_label answer4_input" "correct_label correct_input" "form_button form_button";
+    grid-gap: 1.250em;
+    justify-content: center;
+    overflow: hidden; }
+    .trivia_form .question_label {
+      grid-area: question_label;
+      padding: 0; }
+    .trivia_form .question_input {
+      grid-area: question_textarea; }
+    .trivia_form .answer_one_label {
+      grid-area: answer1_label;
+      padding: 0; }
+    .trivia_form .answer_one_input {
+      grid-area: answer1_input; }
+    .trivia_form .answer_two_label {
+      grid-area: answer2_label;
+      padding: 0; }
+    .trivia_form .answer_two_input {
+      grid-area: answer2_input; }
+    .trivia_form .answer_three_label {
+      grid-area: answer3_label;
+      padding: 0; }
+    .trivia_form .answer_three_input {
+      grid-area: answer3_input; }
+    .trivia_form .answer_four_label {
+      grid-area: answer4_label;
+      padding: 0; }
+    .trivia_form .answer_four_input {
+      grid-area: answer4_input; }
+    .trivia_form .correct_answer_label {
+      grid-area: correct_label;
+      padding: 0; }
+    .trivia_form .correct_answer_input {
+      grid-area: correct_input; }
+    .trivia_form .form_button {
+      grid-area: form_button;
+      display: flex;
+      justify-content: space-evenly;
+      margin: 0 auto;
+      width: 50%; }
 
   /* form grid styling */
   .form_classes {
