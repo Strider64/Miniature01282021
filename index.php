@@ -2,8 +2,8 @@
 /*
  * Website Development by John Pepp
  * Created on February 11, 2020
- * Updated on February 11, 2021
- * Version 1.5.0 Beta
+ * Updated on February 26, 2021
+ * Version 1.7.5 Beta
  */
 require_once 'assets/config/config.php';
 require_once "vendor/autoload.php";
@@ -68,7 +68,7 @@ $monthly->phpDate();
 <header class="masthead">
     <img class="masthead-logo" src="assets/images/img-logo-004.png" alt="website logo">
     <h1 class="site-title">The Miniature Photographer</h1>
-    <?= $monthly->generateCalendar(); ?>
+    <?= $monthly->generateCalendar() ?>
 </header>
 
 <div class="main-nav">
