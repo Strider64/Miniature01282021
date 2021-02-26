@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
 <body class="site">
 <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 <header class="masthead">
-    <img class="masthead-logo" src="/assets/images/img-logo-004.png" alt="website logo">
+    <img class="masthead-logo" src="../assets/images/img-logo-004.png" alt="website logo">
     <h1 class="site-title">The Miniature Photographer</h1>
 </header>
 

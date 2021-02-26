@@ -41,20 +41,26 @@ class Trivia extends DatabaseObject
         $sql = "SELECT id, user_id, hidden, question, answer1, answer2, answer3, answer4, category FROM " . static::$table . " WHERE category=:category";
         return static::fetch_all_by_column_name($sql);
     }
-
+    /*
+     * Grab all the columns from table in order
+     * to edit:
+     */
     public static function fetch_all_data($searchTerm): array
     {
         static::$searchItem = 'category';
         static::$searchValue = $searchTerm;
         $sql = "SELECT * FROM " . static::$table . " WHERE category=:category";
-        return  static::fetch_all($sql);
+        return  static::fetch_all_by_column_name($sql);
 
     }
 
-    public static function fetch_correct_answer($answer):array
+    /*
+     * Fetch correct answer:
+     */
+    public static function fetch_correct_answer($searchTerm):array
     {
         static::$searchItem = 'id';
-        static::$searchValue = $answer;
+        static::$searchValue = $searchTerm;
         $sql = "SELECT id, correct FROM " . static::$table . " WHERE id=:id";
         return static::fetch_by_column_name($sql);
     }
@@ -89,6 +95,36 @@ class Trivia extends DatabaseObject
         }
 
         return $stmt->execute($attribute_pairs); // Execute and send boolean true:
+
+    }
+
+    public function update(): bool
+    {
+        /* Initialize an array */
+        $attribute_pairs = [];
+        //echo "<pre>" . print_r(static::$params, 1) . "</pre>";
+        //die();
+
+        /* Create the prepared statement string */
+        foreach (static::$params as $key => $value)
+        {
+            if($key === 'id') { continue; } // Don't include the id:
+            $attribute_pairs[] = "{$key}=:{$key}"; // Assign it to an array:
+        }
+
+        /*
+         * The query/sql implodes the prepared statement array in the proper format
+         * and I also hard code the date_updated column as I practically use that for
+         * all my database table. Though I think you could override that in the child
+         * class if you needed too.
+         */
+        $sql  = 'UPDATE ' . static::$table . ' SET ';
+        $sql .= implode(", ", $attribute_pairs) . ', play_date=NOW() WHERE id =:id';
+
+        /* Normally in two lines, but you can daisy chain pdo method calls */
+        Database::pdo()->prepare($sql)->execute(static::$params);
+
+        return true;
 
     }
 

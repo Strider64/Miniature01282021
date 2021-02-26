@@ -143,6 +143,8 @@ if (isset($_POST['submit'], $_FILES['image'])) {
         <ul>
             <li><a href="index.php">home</a></li>
             <li><a href="create.php">create</a></li>
+            <li><a href="addQuiz.php">add Q</a></li>
+            <li><a href="editQuiz.php">edit Q</a></li>
             <li><a href="logout.php">logout</a></li>
         </ul>
     </nav>

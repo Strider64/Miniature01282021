@@ -25,16 +25,16 @@ var saveRecord = null;
 //var api_key = d.querySelector('#editTrivia').getAttribute('data-key');
 
 var tableIndex = 0,
-        totalRecords = 0,
-        records = null,
-        record = null;
+    totalRecords = 0,
+    records = null,
+    record = null;
 
 /* Convert RGBa to HEX  */
 function rgba2hex(orig) {
     var a,
-            rgb = orig.replace(/\s/g, '').match(/^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i),
-            alpha = (rgb && rgb[4] || "").trim(),
-            hex = rgb ?
+        rgb = orig.replace(/\s/g, '').match(/^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i),
+        alpha = (rgb && rgb[4] || "").trim(),
+        hex = rgb ?
             (rgb[1] | 1 << 8).toString(16).slice(1) +
             (rgb[2] | 1 << 8).toString(16).slice(1) +
             (rgb[3] | 1 << 8).toString(16).slice(1) : orig;
@@ -64,13 +64,12 @@ const myRed = myColor("rgba(84, 0, 30, 0.70)"); /* Red with 70% transparency */
 
 
 const insertData = (data) => {
-     
-    record = data;
-    //console.log('record', record);
-    position.textContent = record.id;
 
-    user_id.value = record.user_id;
-    id.value = record.id;
+    record = data;
+    position.textContent = record.id;
+    id.value = parseInt(record.id);
+    user_id.value = parseInt(record.user_id);
+
     hidden.value = record.hidden;
     question.value = record.question;
     answer1.value = record.answer1;
@@ -83,7 +82,7 @@ const insertData = (data) => {
 };
 
 const forward = (e) => {
-    status.style.color = "#fff";
+    status.style.color = "#555";
     e.preventDefault();
     if (tableIndex < totalRecords - 1) {
 
@@ -98,11 +97,10 @@ const forward = (e) => {
 eNext.addEventListener("click", forward, false);
 
 const reverse = (e) => {
-    status.style.color = "#fff";
+    status.style.color = "#555";
     e.preventDefault();
 
     if (tableIndex > 0) {
-        //console.log(tableIndex);
         tableIndex -= 1;
         insertData(records[tableIndex]);
     } else {
@@ -142,9 +140,9 @@ const handleErrors = function (response) {
 /* FETCH request */
 const createRequest = function (url, succeed, fail) {
     fetch(url)
-            .then((response) => handleErrors(response))
-            .then((data) => succeed(data))
-            .catch((error) => fail(error));
+        .then((response) => handleErrors(response))
+        .then((data) => succeed(data))
+        .catch((error) => fail(error));
 };
 
 createRequest(requestUrl, tableUISuccess, tableUIError);
@@ -174,21 +172,17 @@ const saveRequest = (saveUrl, succeed, fail) => {
         method: 'POST', // or 'PUT'
         body: JSON.stringify(saveRecord)
     })
-            .then((response) => handleSaveErrors(response))
-            .then((data) => succeed(data))
-            .catch((error) => fail(error));
+        .then((response) => handleSaveErrors(response))
+        .then((data) => succeed(data))
+        .catch((error) => fail(error));
 };
 
-var serializeArray = function (form) {
+const serializeArray = function (form) {
 
-//    for (var i = 0; i < form.elements.length; i++) {
-//        console.log(i, form.elements[i].value);
-//    }
+    const serialized = {
 
-
-    var serialized = {
-        id: parseInt(form.elements[1].value),
-        user_id: parseInt(form.elements[2].value),
+        id: parseInt(record.id),
+        user_id: parseInt(record.user_id),
         hidden: hidden.value,
         question: question.value,
         answer1: answer1.value,
@@ -199,8 +193,8 @@ var serializeArray = function (form) {
     };
 
 
-    record.id = form.elements[1].value;
-    record.user_id = form.elements[2].value;
+    record.id = id.value;
+    record.user_id = user_id.value;
     record.hidden = hidden.value;
     record.question = question.value;
     record.answer1 = answer1.value;
@@ -216,18 +210,13 @@ var serializeArray = function (form) {
 
 
 const sendToTable = (e) => {
-
     e.preventDefault();
     var form = d.querySelector('#editTrivia');
     saveRecord = serializeArray(form);
-    //console.log(records[tableIndex]);
-    //console.log(JSON.stringify(saveRecord));
     saveRequest(saveUrl, saveUISuccess, saveUIError);
 };
 
 submitBtn.addEventListener('click', sendToTable, false);
-
-
 
 
 createRequest("retrieve_table.php", tableUISuccess, tableUIError);

@@ -1,7 +1,9 @@
 <?php
 require_once '../assets/config/config.php';
 require_once "../vendor/autoload.php";
+
 use Miniature\Login;
+
 Login::is_login($_SESSION['last_login']);
 ?>
 <!doctype html>
@@ -44,33 +46,33 @@ Login::is_login($_SESSION['last_login']);
 <main id="content" class="main-area">
     <div id="remote">
         <a id="ePrev" class="btn" title="Previous Button" href="#">Prev</a>
-        <h2 id="status">Record No. <span id="position"></span></h2>
+        <h2 id="status">Record No.<span id="position"></span></h2>
         <a id="eNext" class="btn" title="Next Button" href="#">Next</a>
     </div>
-    <form id="editTrivia" action="editTrivia.php" method="post" data-key="">
-        <fieldset>
-            <legend id="legend">Edit Trivia</legend>
-            <input id="id" type="hidden" name="id" value="0">
-            <input id="user_id" type="hidden" name="user_id" value="">
-            <select id="hiddenQ" class="select-css" name="hidden" tabindex="1">
-                <option id="setOption" value="" selected></option>
-                <option value="yes">Question is Hidden!</option>
-                <option value="no">Question is NOT Hidden!</option>
-            </select>
-            <textarea id="addQuestion" name="question" tabindex="2" placeholder="Add question here..."
-                      autofocus></textarea>
-            <label for="addAnswer1">Answer 1</label>
-            <input id="addAnswer1" type="text" name="answer1" value="" tabindex="3">
-            <label for="addAnswer2">Answer 2</label>
-            <input id="addAnswer2" type="text" name="answer2" value="" tabindex="4">
-            <label for="addAnswer3">Answer 3</label>
-            <input id="addAnswer3" type="text" name="answer3" value="" tabindex="5">
-            <label for="addAnswer4">Answer 4</label>
-            <input id="addAnswer4" type="text" name="answer4" value="" tabindex="6">
-            <label for="addCorrect">Correct</label>
-            <input id="addCorrect" type="text" name="correct" value="" tabindex="7">
-            <input id="submitBtn" type="submit" name="submit" value="save" tabindex="8">
-        </fieldset>
+    <form id="editTrivia" class="trivia_form" action="editTrivia.php" method="post" data-key="">
+
+        <input id="id" type="hidden" name="id" value="0">
+        <input id="user_id" type="hidden" name="user_id" value="">
+        <select id="hiddenQ" class="select-css" name="hidden" tabindex="1">
+            <option id="setOption" value="" selected></option>
+            <option value="yes">Question is Hidden!</option>
+            <option value="no">Question is NOT Hidden!</option>
+        </select>
+        <label class="question_label" for="addQuestion">Content</label>
+        <textarea id="addQuestion" class="question_input" name="question" tabindex="2" placeholder="Add question here..."
+                  autofocus></textarea>
+        <label class="answer_one_label" for="addAnswer1">Answer 1</label>
+        <input id="addAnswer1" class="answer_one_input" type="text" name="answer1" value="" tabindex="3">
+        <label class="answer_two_label" for="addAnswer2">Answer 2</label>
+        <input id="addAnswer2" class="answer_two_input" type="text" name="answer2" value="" tabindex="4">
+        <label class="answer_three_label" for="addAnswer3">Answer 3</label>
+        <input id="addAnswer3" class="answer_three_input" type="text" name="answer3" value="" tabindex="5">
+        <label class="answer_four_label" for="addAnswer4">Answer 4</label>
+        <input id="addAnswer4" class="answer_four_input" type="text" name="answer4" value="" tabindex="6">
+        <label class="correct_answer_label" for="addCorrect">Correct</label>
+        <input class="correct_answer_input" id="addCorrect" type="text" name="correct" value="" tabindex="7">
+        <input class="form_button" id="submitBtn" type="submit" name="submit" value="save" tabindex="8">
+
     </form>
 </main>
 <section class="sidebar">

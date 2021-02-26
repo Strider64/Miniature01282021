@@ -924,6 +924,49 @@ CSS Grid layout for wider screens, when browser supports grid:
     grid-area: login_button;
   }
 
+  #remote {
+    display: grid;
+    grid-template-columns: 9.25em 37.00em 9.25em;
+    grid-auto-rows: auto;
+    grid-template-areas: "left center right";
+    grid-gap: 1.250em;
+    justify-content: space-evenly;
+    overflow: hidden;
+    margin-top: 1.250em;
+    #ePrev {
+      grid-area: left;
+      display: flex;
+      justify-content: space-around;
+      background-color: #fff;
+      font-family: 'Rubik', sans-serif;
+      font-size: 1.00em;
+      line-height: 4.125em;
+      color: #555;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    #status {
+      grid-area: center;
+      display: flex;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8em;
+      color: #555;
+    }
+    #eNext {
+      grid-area: right;
+      display: flex;
+      justify-content: space-around;
+      background-color: #fff;
+      font-family: 'Rubik', sans-serif;
+      font-size: 1.00em;
+      line-height: 4.125em;
+      color: #555;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  }
+
   /* trivia grid styling */
   .trivia_form {
     display: grid;
@@ -936,7 +979,7 @@ CSS Grid layout for wider screens, when browser supports grid:
                 "answer3_label answer3_input"
                 "answer4_label answer4_input"
                 "correct_label correct_input"
-                "form_button form_button";
+                "select_cat form_button";
     grid-gap: 1.250em;
     justify-content: center;
     overflow: hidden;
@@ -981,6 +1024,10 @@ CSS Grid layout for wider screens, when browser supports grid:
     }
     .correct_answer_input {
       grid-area: correct_input;
+    }
+    .select-css {
+      grid-area: select_cat;
+      padding: 0 0.625em;
     }
     .form_button {
       grid-area: form_button;

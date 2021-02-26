@@ -44,7 +44,7 @@ $cms = CMS::page($per_page, $offset);
 <body class="site">
 <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 <header class="masthead">
-    <img class="masthead-logo" src="/assets/images/img-logo-004.png" alt="website logo">
+    <img class="masthead-logo" src="../assets/images/img-logo-004.png" alt="website logo">
     <h1 class="site-title">The Miniature Photographer</h1>
 </header>
 
@@ -57,6 +57,7 @@ $cms = CMS::page($per_page, $offset);
             <li><a href="index.php">home</a></li>
             <li><a href="create.php">create</a></li>
             <li><a href="addQuiz.php">add Q</a></li>
+            <li><a href="editQuiz.php">edit Q</a></li>
             <li><a href="logout.php">logout</a></li>
 
         </ul>
