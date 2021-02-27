@@ -1,8 +1,8 @@
 /*
- *  The Chalkboard Quiz 5.60 using FETCH/JSON
- *  by John Pepp
+ *  The Photography Quiz 5.80 using FETCH/JSON
+ *  by John R. Pepp
  *  Started: January 14, 2020
- *  Revised: September 30, 2020 @ 1:30pm
+ *  Revised: February 26, 2021 @ 5:45pm 
  */
 
 'use strict';
@@ -43,10 +43,8 @@
 
     const quizUrl = 'trivia_questions.php?'; // PHP database script
     const d = document; // Shorten docoment function::
-
-    const photographyBtn = d.querySelector('#photography');
-
-    const gameTitle = d.querySelector('.gameTitle');
+    d.querySelector('#photography');
+    d.querySelector('.gameTitle');
     const buttonContainer = d.querySelector('#buttonContainer');
     const question = d.querySelector('#question');
     const next = d.querySelector('#next');
@@ -66,8 +64,7 @@
         choose = d.querySelector('#selectCat'),
         failedLoad = false,
         username = d.querySelector('.displayMessage').getAttribute('data-username'),
-        hs_table = {},
-        saveRecord = null;
+        hs_table = {};
 
 
     let responseAns = {};
@@ -133,7 +130,7 @@
             }
 
             /*
-             * User ansered incorrectly
+             * User answered incorrectly
              */
             if (userAnswer !== correct && userAnswer === parseInt(answer.getAttribute('data-correct'))) {
                 answer.style['background-color'] = myRed;
