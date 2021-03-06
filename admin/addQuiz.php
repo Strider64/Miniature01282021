@@ -19,13 +19,10 @@ Login::is_login($_SESSION['last_login']);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0">
     <title>Photography Quiz</title>
     <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../assets/css/stylesheet.css">
-    <script src="../assets/js/cookie.notice.js"></script>
+    <link rel="stylesheet" media="all" href="../assets/css/stylesheet.css">
     <script src="../assets/js/menu.js" defer></script>
     <script type="text/javascript" src="../assets/js/game.js" defer></script>
 
@@ -33,7 +30,7 @@ Login::is_login($_SESSION['last_login']);
 <body class="site">
 <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 <header class="masthead">
-    <a href="../index.php"><img class="masthead-logo" src="../assets/images/img-logo-004.png" alt="website logo"></a>
+    <a href="../indexbackup.php"><img class="masthead-logo" src="../assets/images/img-logo-004.png" alt="website logo"></a>
     <h1 class="site-title">The Miniature Photographer</h1>
 </header>
 
@@ -80,7 +77,7 @@ Login::is_login($_SESSION['last_login']);
 
     </aside>
     <aside class="twin">
-        <img src="../assets/images/img-logo-003.jpg" alt="Detroit Kern's Clock">
+
     </aside>
 </section><!-- .twins -->
 <footer class="colophon">

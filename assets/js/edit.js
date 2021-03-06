@@ -20,18 +20,18 @@ const answer4 = d.querySelector('#addAnswer4');
 const correct = d.querySelector('#addCorrect');
 
 const saveUrl = "saveRecord.php";
-var saveRecord = null;
+let saveRecord = null;
 
 //var api_key = d.querySelector('#editTrivia').getAttribute('data-key');
 
-var tableIndex = 0,
+let tableIndex = 0,
     totalRecords = 0,
     records = null,
     record = null;
 
 /* Convert RGBa to HEX  */
 function rgba2hex(orig) {
-    var a,
+    let a,
         rgb = orig.replace(/\s/g, '').match(/^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i),
         alpha = (rgb && rgb[4] || "").trim(),
         hex = rgb ?
@@ -52,7 +52,7 @@ function rgba2hex(orig) {
 }
 
 const myColor = (colorcode) => {
-    var hexColor = rgba2hex(colorcode);
+    let hexColor = rgba2hex(colorcode);
     return '#' + hexColor;
 };
 
@@ -112,8 +112,8 @@ const reverse = (e) => {
 
 ePrev.addEventListener("click", reverse, false);
 
-var defaultCat = "photography";
-var requestUrl = "retrieve_table.php";
+let defaultCat = "photography";
+let requestUrl = "retrieve_table.php";
 
 /* Success function utilizing FETCH */
 const tableUISuccess = function (parsedData) {
@@ -149,8 +149,9 @@ createRequest(requestUrl, tableUISuccess, tableUIError);
 
 
 /* Success function utilizing FETCH */
-const saveUISuccess = function (messageData) {
+const saveUISuccess = function () {
     status.style.color = myGreen;
+    setTimeout(function () { status.style.color = "#555" ; }, 4000);
 };
 
 /* If Database Table fails to update data in mysql table */
@@ -211,7 +212,7 @@ const serializeArray = function (form) {
 
 const sendToTable = (e) => {
     e.preventDefault();
-    var form = d.querySelector('#editTrivia');
+    let form = d.querySelector('#editTrivia');
     saveRecord = serializeArray(form);
     saveRequest(saveUrl, saveUISuccess, saveUIError);
 };

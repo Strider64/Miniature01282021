@@ -1,0 +1,608 @@
+/*--------------------------------------------------------------
+CSS Reset
+--------------------------------------------------------------*/
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,700;1,500&family=Work+Sans:ital,wght@0,400;0,500;0,700;1,500;1,600&display=swap");
+html {
+  font-family: sans-serif; }
+
+body {
+  margin: 0; }
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block; }
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline; }
+
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+[hidden],
+template {
+  display: none; }
+
+a {
+  background-color: transparent; }
+
+a:active,
+a:hover {
+  outline: 0; }
+
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+b,
+strong {
+  font-weight: bold; }
+
+dfn {
+  font-style: italic; }
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0; }
+
+mark {
+  background: #ff0;
+  color: #000; }
+
+small {
+  font-size: 80%; }
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+img {
+  display: block;
+  border: 0;
+  width: 100%;
+  height: auto; }
+
+svg:not(:root) {
+  overflow: hidden; }
+
+figure {
+  margin: 1em 40px; }
+
+hr {
+  box-sizing: content-box;
+  height: 0; }
+
+pre {
+  overflow: auto; }
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em; }
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0; }
+
+button {
+  overflow: visible; }
+
+button,
+select {
+  text-transform: none; }
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer; }
+
+button[disabled],
+html input[disabled] {
+  cursor: default; }
+
+input {
+  line-height: normal; }
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0; }
+
+input[type="search"] {
+  box-sizing: content-box; }
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em; }
+
+legend {
+  border: 0;
+  padding: 0; }
+
+textarea {
+  overflow: auto; }
+
+optgroup {
+  font-weight: bold; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+td,
+th {
+  padding: 0; }
+
+/* Accessibility */
+#skip a {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden; }
+  #skip a:focus {
+    position: static;
+    width: auto;
+    height: auto; }
+
+/* Typography Styling */
+h1, h2, h3, h4, h5, h6, legend {
+  font-family: 'Work Sans', sans-serif; }
+
+p, a, label {
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.2em;
+  line-height: 1.5;
+  font-weight: normal; }
+
+/* General Styling */
+body {
+  background-color: #f1f1f1;
+  padding: 0;
+  margin: 0; }
+
+img {
+  width: 100%; }
+
+ol, ul {
+  list-style: none; }
+
+/* Smartphone CSS */
+.masthead {
+  display: none;
+  background-image: url(../images/img-header-001-414.jpg);
+  background-repeat: no-repeat;
+  height: 12.50em;
+  border-bottom: 1px solid #e6e6e6; }
+
+/* Navigational CSS */
+.nav {
+  position: relative;
+  width: 100%;
+  height: 3.700em;
+  background-color: #A6BDB7;
+  border-bottom: 1px solid #e6e6e6; }
+
+.nav-title {
+  display: inline-block;
+  font-size: 1.2em;
+  line-height: 0.5;
+  color: #fff;
+  padding-left: 0.625em; }
+
+.nav > .nav-btn {
+  display: none; }
+
+.nav > .nav-links {
+  display: inline;
+  float: right;
+  font-size: 1.250em;
+  padding-right: 3.125em; }
+
+.nav > .nav-links > a {
+  display: inline-block;
+  line-height: 1.875em;
+  text-decoration: none;
+  color: #efefef;
+  padding: 0.313em 0.625em; }
+
+.nav > .nav-links > a:hover {
+  background-color: rgba(0, 0, 0, 0.3); }
+
+.nav > #nav-check {
+  display: none; }
+
+/* Navigation CSS Media Query */
+@media screen and (max-width: 77em) {
+  .nav > .nav-btn {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0; }
+
+  .nav > .nav-btn > label {
+    display: inline-block;
+    cursor: pointer;
+    width: 3.125em;
+    height: 3.125em;
+    padding: 0.875em; }
+
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 1.563em;
+    height: 0.625em;
+    border-top: 0.125em solid #eee; }
+
+  .nav > .nav-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #333;
+    height: 0;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    left: 0; }
+
+  .nav > .nav-links > a {
+    display: block;
+    width: 100%; }
+
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0; }
+
+  .nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 3.125em);
+    overflow-y: auto; } }
+/* pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  background-color: #fff; }
+
+.pagination .three-dots {
+  color: #7a9c93;
+  font-size: 1.4em;
+  font-weight: bold;
+  margin: 0.313em 0.500em 0; }
+
+.pagination a {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.4em;
+  color: #7a9c93;
+  text-decoration: none;
+  padding-left: 0.313em; }
+
+.pagination a.selected {
+  font-weight: bolder;
+  color: #4b655f;
+  padding-left: 0.313em; }
+
+/* CMS Article */
+.cms {
+  background-color: #FFFFFF;
+  padding: 1.250em;
+  margin: 0; }
+  .cms header h1 {
+    color: #38603D;
+    font-weight: 500; }
+  .cms time {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #38603D; }
+  .cms .byline p {
+    color: #38603D; }
+  .cms .byline p img {
+    width: 6.250em;
+    height: 6.250em; }
+  .cms .container img {
+    float: left;
+    width: 60%;
+    padding: 0 1.250em 0.625em 0; }
+  .cms .container p {
+    font-size: 1.4em;
+    line-height: 1.5;
+    color: #38603D;
+    font-weight: 400; }
+
+.nasa_perseverance_container figcaption {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.0em;
+  line-height: 1.5;
+  font-weight: bold;
+  color: #38603D;
+  padding-top: 0.313em; }
+
+.sidebar {
+  display: none;
+  background-color: #DBDED5;
+  padding: 0.625em; }
+
+/* Trivia Game */
+.displayStatus {
+  background-color: #d2dedb;
+  color: #4b655f;
+  padding: 1.250em; }
+  .displayStatus h4 {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.4em;
+    line-height: 0;
+    font-weight: 500; }
+  .displayStatus p {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.4em;
+    line-height: 1.5; }
+  .displayStatus #customBtn {
+    display: block;
+    height: 1.420em;
+    border: none;
+    transition: background-color 0.5s ease;
+    background-color: #FFFFFF;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #3C413D;
+    text-align: center;
+    text-decoration: none;
+    padding: 0.938em 1.875em; }
+    .displayStatus #customBtn:hover {
+      background-color: #DBDED5; }
+
+.triviaContainer {
+  background-color: #89a79f; }
+
+#mainGame {
+  padding: 1.250em; }
+
+#mainGame::after {
+  content: ' ';
+  display: block;
+  clear: both; }
+
+#mainGame #headerStyle h2 {
+  font-family: 'Rubik', sans-serif;
+  font-size: 0.8em;
+  line-height: 0.313em;
+  text-align: center;
+  color: #38603D; }
+
+#mainGame #headerStyle h2 #clock {
+  font-size: 1.4em; }
+
+#mainGame #headerStyle h2 #currentQuestion {
+  font-size: 1.2em;
+  margin-left: 2em; }
+
+#mainGame #headerStyle h2 #totalQuestions {
+  font-size: 1.2em; }
+
+#mainGame #triviaSection {
+  margin: 0; }
+
+#mainGame #triviaSection #questionBox {
+  background-color: #FFFFFF;
+  padding: 0.313em 0.625em; }
+
+#mainGame #triviaSection #questionBox h2 {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.4em;
+  line-height: 1.5;
+  color: #3C413D;
+  font-weight: 400; }
+
+#mainGame #triviaSection #buttonContainer {
+  background-color: #38603D;
+  margin-bottom: 0.625em; }
+
+#mainGame #triviaSection #buttonContainer .answerButton {
+  display: block;
+  width: 100%;
+  height: 3.125em;
+  border: 2px solid #A6BDB7;
+  outline: none;
+  cursor: pointer;
+  background-color: #7a9c93;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.2em;
+  color: #FFFFFF;
+  text-transform: capitalize;
+  text-align: left;
+  padding-left: 0.625em;
+  margin: 0; }
+
+#mainGame #playerStats {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 40px; }
+
+#mainGame #playerStats #score {
+  position: absolute;
+  top: 3.125em;
+  left: 0.313em;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.0em;
+  color: #38603D;
+  line-height: 0.938em; }
+
+#mainGame #playerStats #percent {
+  position: absolute;
+  top: 3.125em;
+  right: 3.125em;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.0em;
+  color: #38603D;
+  line-height: 0.938em; }
+
+#mainGame #nextStyle {
+  position: relative;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 3.125em; }
+
+#mainGame #nextStyle #next {
+  position: absolute;
+  top: -35px;
+  right: 20px;
+  border: none;
+  outline: none;
+  display: block;
+  width: 100%;
+  max-width: 9.375em;
+  height: 2.500em;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  background-color: #c3d3cf;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.2em;
+  color: #fff;
+  text-transform: capitalize; }
+  #mainGame #nextStyle #next:hover {
+    background-color: #A6BDB7; }
+
+a.qBtn {
+  float: right;
+  font-size: 1.0em;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #555;
+  border: 1px solid #555;
+  padding: 2px 7px;
+  margin-right: 5.000em;
+  margin-bottom: 3.125em;
+  transition: background-color .5s; }
+
+a.qBtn:visited, a.qBtn:active {
+  background-color: #555; }
+
+a.qBtn:hover {
+  color: #555;
+  background-color: rgba(0, 0, 0, 0.3); }
+
+.disableClick {
+  pointer-events: none; }
+
+/* Contact Form CSS */
+div#message {
+  background-color: #DBDED5; }
+
+form {
+  background-color: #7a9c93;
+  padding: 0.938em; }
+  form input[type=text], form input[type=tel], form input[type=email], form input[type="password"], form select, form textarea {
+    width: 100%;
+    padding: 0.750em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 0.375em;
+    margin-bottom: 1em;
+    resize: vertical; }
+  form textarea {
+    resize: none;
+    height: 12.50em; }
+  form input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 0.250em;
+    cursor: pointer;
+    padding: 0.750em 1.250em;
+    margin-top: 0.625em; }
+  form input[type=submit]:hover {
+    background-color: #45a049; }
+
+/* Footer CSS */
+.colophon {
+  background-color: #A6BDB7;
+  text-align: center;
+  border-top: 1px solid #e6e6e6;
+  padding: 0.313em; }
+  .colophon p {
+    font-family: 'Rubik', sans-serif;
+    color: #FFFFFF; }
+
+/* Approximately the size of an iPad 768px */
+@supports (grid-area: auto) {
+  @media screen and (min-width: 48em) {
+    .site {
+      display: grid;
+      grid-template-columns: 1fr minmax(14.4em, 33.6em);
+      grid-template-areas: "header header" "sidebar nav" "sidebar main" "footer footer";
+      justify-content: center; }
+
+    .masthead {
+      grid-area: header;
+      display: block;
+      background-image: url(../images/img-header-001-1024.jpg); }
+
+    .nav {
+      grid-area: nav; }
+
+    .sidebar {
+      grid-area: sidebar;
+      display: block; }
+
+    .main {
+      grid-area: main; }
+
+    .colophon {
+      grid-area: footer; } } }
+/* Approximately the size of an iPad Pro 12.9in 1024px */
+@supports (grid-area: auto) {
+  @media screen and (min-width: 64em) {
+    .site {
+      display: grid;
+      grid-template-columns: 1fr minmax(19.2em, 44.8em);
+      grid-template-areas: "header header" "nav nav" "sidebar main" "footer footer";
+      justify-content: center; }
+
+    .masthead {
+      background-image: url(../images/img-header-001-1024.jpg); } } }
+/* Approximately the size of a 1248px large display monitor */
+@supports (grid-area: auto) {
+  @media screen and (min-width: 78em) {
+    .site {
+      display: grid;
+      grid-template-columns: 1fr minmax(23.4em, 54.6em);
+      grid-template-areas: "header header" "nav nav" "sidebar main" "footer footer";
+      justify-content: center;
+      width: 78em;
+      margin: 0 auto; }
+
+    .masthead {
+      background-image: url(../images/img-header-001-1248.jpg); } } }
+
+/*# sourceMappingURL=styles.css.map */

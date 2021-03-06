@@ -24,7 +24,7 @@ Login::is_login($_SESSION['last_login']);
 <body class="site">
 <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 <header class="masthead">
-    <a href="../index.php"><img class="masthead-logo" src="../assets/images/img-logo-004.png" alt="website logo"></a>
+    <a href="../indexbackup.php"><img class="masthead-logo" src="../assets/images/img-logo-004.png" alt="website logo"></a>
     <h1 class="site-title">The Miniature Photographer</h1>
 </header>
 
@@ -80,7 +80,7 @@ Login::is_login($_SESSION['last_login']);
 
     </aside>
     <aside class="twin">
-        <img src="../assets/images/img-logo-003.jpg" alt="Detroit Kern's Clock">
+
     </aside>
 </section><!-- .twins -->
 <footer class="colophon">

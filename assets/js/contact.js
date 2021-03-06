@@ -36,7 +36,7 @@ const contact = () => {
     const d = document;
     const sendUrl = 'sendMsg.php';
     const submit = d.querySelector('#submitForm');
-    const radioBtn = d.querySelector('#radio-toolbar');
+    const radioBtn = d.querySelector('#message-type');
     const buttons = d.getElementsByName("reason");
     const message = d.querySelector('#message');
     const messageSuccess = d.querySelector('#messageSuccess');
@@ -55,6 +55,7 @@ const contact = () => {
     sendEmail.reason = 'message';
     sendEmail.token = d.querySelector('#token').value;
 
+    message.style.display = "none";
 
     let comments = d.querySelector("textarea");
     let output = d.querySelector("#length");
@@ -137,6 +138,7 @@ const contact = () => {
 
             notice.textContent = "Email Successfully Sent!";
             notice.style.color = "green";
+            message.style.display = "block";
             messageSuccess.style.display = "block";
             d.querySelectorAll('form > *').forEach(function (a) {
                 a.disabled = true;

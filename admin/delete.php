@@ -24,9 +24,9 @@ if (!empty($id)) {
     /*
      * Redirect to the Administrator's Home page
      */
-    header("Location: index.php");
+    header("Location: indexbackup.php");
     exit();
 }
 
-header("Location: index.php");
+header("Location: indexbackup.php");
 exit();

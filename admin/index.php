@@ -82,7 +82,7 @@ $cms = CMS::page($per_page, $offset);
         ?>
     </ul>
     <?php
-    $url = 'index.php';
+    $url = 'indexbackup.php';
     echo $pagination->new_page_links($url);
     echo '</div>';
     ?>
@@ -92,7 +92,7 @@ $cms = CMS::page($per_page, $offset);
 
     </aside>
     <aside class="twin">
-        <img src="../assets/images/img-logo-003.jpg" alt="Detroit Kern's Clock">
+
     </aside>
 </section><!-- .twins -->
 <footer class="colophon">

@@ -8,41 +8,46 @@ require_once "vendor/autoload.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Photography Quiz</title>
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="stylesheet" href="assets/css/stylesheet.css">
-    <script src="assets/js/cookie.notice.js"></script>
-    <script src="assets/js/menu.js" defer></script>
+          content="width=device-width, user-scalable=yes, initial-scale=1.0">
+    <title>Photography Trivia</title>
+    <link rel="stylesheet" media="all" href="assets/css/styles.css">
     <script type="text/javascript" src="assets/js/game.js" defer></script>
-
 </head>
 <body class="site">
-<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+<div id="skip"><a href="#content">Skip to Main Content</a></div>
 <header class="masthead">
-    <a href="index"><img class="masthead-logo" src="assets/images/img-logo-004.png" alt="website logo"></a>
-    <h1 class="site-title">The Miniature Photographer</h1>
+
 </header>
 
-<section class="main-nav">
-    <button class="trigger" aria-expanded="false">Menu<span class="screen-reader-text">Reveal menu</span></button>
+<div class="nav">
+    <input type="checkbox" id="nav-check">
 
-    <nav>
-        <ul>
-            <li><a href="index">home</a></li>
-            <li><a href="admin/login.php">admin</a></li>
-            <li><a href="game">game</a></li>
-            <li><a href="contact">contact</a></li>
-        </ul>
-    </nav>
-</section><!-- .main-nav -->
+    <h3 class="nav-title">
+        The Miniature Photographer
+    </h3>
 
-<main id="content" class="main-area">
+    <div class="nav-btn">
+        <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.php">Home</a>
+        <a href="admin/login.php">Admin</a>
+        <a href="game.php">Quiz</a>
+        <a href="contact.php">Contact</a>
+    </div>
+</div>
+
+<div class="sidebar">
+
+</div>
+<main id="content" class="main">
     <div class="displayStatus">
-        <div id="startBtn">
-            <a class="logo" id="customBtn" title="Start Button" href="game.php">Start Button</a>
-        </div>
+
         <h4 class="displayTitle">Welcome to Photography Trivia</h4>
         <p class="triviaInfo">Photography Trivia game is written in vanilla javascript and can be easily transported along with the
             HTML/CSS.
@@ -50,10 +55,10 @@ require_once "vendor/autoload.php";
             Javascript.
             I obtained an Associates Degree in Computer Graphics: Game Design and Interactive Media that has helped me
             through
-            the years to develop this game. I have stripped some of the features away temporary as I have a better
-            understanding of PHP Object-oriented Programming (OOP). Though I will be making improvements to the rest of
-            this website before I comeback to put those features back.</p>
-
+            the years to develop this game.</p>
+        <div id="startBtn">
+            <a class="logo" id="customBtn" title="Start Button" href="game.php">Start Button</a>
+        </div>
     </div>
 
     <div id="quiz" class="displayMessage" data-username="Strider">
@@ -80,14 +85,6 @@ require_once "vendor/autoload.php";
         </div>
     </div>
 </main>
-<section class="sidebar">
-    <aside class="twin">
-
-    </aside>
-    <aside class="twin">
-        <img src="assets/images/img-logo-003.jpg" alt="Detroit Kern's Clock">
-    </aside>
-</section><!-- .twins -->
 <footer class="colophon">
     <p>&copy; <?php echo date("Y") ?> The Miniature Photographer</p>
 </footer>

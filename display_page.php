@@ -17,7 +17,7 @@ if ($id && is_int($id)) {
     $record = CMS::fetch_by_id($id);
     $cms = new CMS($record);
 } else {
-    header("Location: index.php");
+    header("Location: indexbackup.php");
     exit();
 }
 ?>
@@ -25,18 +25,16 @@ if ($id && is_int($id)) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0">
     <title>Display Full Page</title>
-    <link rel="stylesheet" href="\assets/css/stylesheet.css">
+    <link rel="stylesheet" media="all" href="\assets/css/stylesheet.css">
     <script src="\assets/js/menu.js" defer></script>
 </head>
 <body class="site">
 <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 <header class="masthead">
     <img class="masthead-logo" src="\assets/images/img-logo-004.png" alt="website logo">
-    <h1 class="site-title">The Miniature Photographer</h1>
+    <h1 class="site-title">Miniature Photographer</h1>
 </header>
 
 <section class="main-nav">
@@ -63,11 +61,12 @@ if ($id && is_int($id)) {
 
 </main>
 <section class="sidebar">
+
     <aside class="twin">
 
     </aside>
     <aside class="twin">
-        <img src="\assets/images/img-logo-003.jpg" alt="Detroit Kern's Clock">
+
     </aside>
 </section><!-- .twins -->
 <footer class="colophon">

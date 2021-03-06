@@ -102,8 +102,6 @@ class Trivia extends DatabaseObject
     {
         /* Initialize an array */
         $attribute_pairs = [];
-        //echo "<pre>" . print_r(static::$params, 1) . "</pre>";
-        //die();
 
         /* Create the prepared statement string */
         foreach (static::$params as $key => $value)

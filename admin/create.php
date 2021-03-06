@@ -109,7 +109,7 @@ if (isset($_POST['submit'], $_FILES['image'])) {
         $cms = new CMS($data);
         $result = $cms->create();
         if ($result) {
-            header("Location: index.php");
+            header("Location: indexbackup.php");
             exit();
         }
     } else {
@@ -122,11 +122,9 @@ if (isset($_POST['submit'], $_FILES['image'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0">
     <title>Add Post</title>
-    <link rel="stylesheet" href="../assets/css/stylesheet.css">
+    <link rel="stylesheet" media="all" href="../assets/css/stylesheet.css">
     <script src="../assets/js/menu.js" defer></script>
 </head>
 <body class="site">
@@ -169,7 +167,7 @@ if (isset($_POST['submit'], $_FILES['image'])) {
 
     </aside>
     <aside class="twin">
-        <img src="../assets/images/img-logo-003.jpg" alt="Detroit Kern's Clock">
+
     </aside>
 </section><!-- .twins -->
 <footer class="colophon">
