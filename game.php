@@ -43,7 +43,9 @@ require_once "vendor/autoload.php";
 </div>
 
 <div class="sidebar">
-
+    <a class="logo_style" href="https://www.flickr.com/people/pepster/"><img src="assets/images/logo-flickr-256x256-001.jpg" alt="Flickr Profile"></a>
+    <a class="logo_style" href="https://www.facebook.com/Pepster64"><img src="assets/images/logo-facebook-400x400-002.png" alt="Miniature Photographer" ></a>
+    <a class="logo_style" href="http://www.linkedin.com/in/johnpepp"><img src="assets/images/logo-linkedin-640x640-001.png" alt="LinkedIn Profile" ></a>
 </div>
 <main id="content" class="main">
     <div class="displayStatus">
@@ -88,5 +90,6 @@ require_once "vendor/autoload.php";
 <footer class="colophon">
     <p>&copy; <?php echo date("Y") ?> The Miniature Photographer</p>
 </footer>
+
 </body>
 </html>

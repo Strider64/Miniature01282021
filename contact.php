@@ -42,7 +42,9 @@ require_once "vendor/autoload.php";
 </div>
 
 <div class="sidebar">
-
+    <a class="logo_style" href="http://www.flickr.com/people/pepster/"><img src="assets/images/logo-flickr-256x256-001.jpg"
+                                                                            alt="Flickr Profile"></a>
+    <a class="logo_style" href="https://www.facebook.com/Pepster64"><img src="assets/images/logo-facebook-400x400-002.png" alt="Miniature Photographer" ></a>
 </div>
 <main id="content" class="main">
     <div id="message">

@@ -16,6 +16,7 @@ namespace Miniature;
    #
    # ========================================================================#
 
+use GdImage;
 use JetBrains\PhpStorm\ArrayShape;
 
 Class Resize {
@@ -41,7 +42,7 @@ Class Resize {
 
     ## --------------------------------------------------------
 
-    private function openImage($file): \GdImage|bool
+    private function openImage($file): GdImage|bool
     {
         // *** Get extension
         $extension = strtolower(strrchr($file, '.'));
@@ -150,7 +151,8 @@ Class Resize {
 
     ## --------------------------------------------------------
 
-    private function getOptimalCrop($newWidth, $newHeight) {
+    #[ArrayShape(['optimalWidth' => "float|int", 'optimalHeight' => "float|int"])] private function getOptimalCrop($newWidth, $newHeight): array
+    {
 
         $heightRatio = $this->height / $newHeight;
         $widthRatio = $this->width / $newWidth;
@@ -169,7 +171,8 @@ Class Resize {
 
     ## --------------------------------------------------------
 
-    private function crop($optimalWidth, $optimalHeight, $newWidth, $newHeight) {
+    private function crop($optimalWidth, $optimalHeight, $newWidth, $newHeight): void
+    {
         // *** Find center - this will be used for the crop
         $cropStartX = ( $optimalWidth / 2) - ( $newWidth / 2 );
         $cropStartY = ( $optimalHeight / 2) - ( $newHeight / 2 );
@@ -183,7 +186,8 @@ Class Resize {
 
     ## --------------------------------------------------------
 
-    public function saveImage($savePath, $imageQuality = "100") {
+    public function saveImage($savePath, $imageQuality = "100"): void
+    {
         // *** Get extension
         $extension = strrchr($savePath, '.');
         $extension = strtolower($extension);
