@@ -15,7 +15,7 @@ document.querySelector('#video');
 const nasaUISuccess = function (parsedData) {
     let image_length = parsedData.latest_photos.length;
     let nasa_image = parsedData.latest_photos[image_length-1].img_src;
-    //console.log('Nasa Data JSON', parsedData);
+    console.log('Nasa Data JSON', parsedData);
     // console.log ('object', parsedData.latest_photos[106].img_src);
     // console.log ('object', parsedData.latest_photos.length);
     // console.log ('object', parsedData.latest_photos);

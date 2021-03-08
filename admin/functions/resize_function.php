@@ -22,15 +22,10 @@ function resize($file_temp, $new_file_name, $thumb = false): bool
 
     $new_height = null;
 
-    if ($thumb) {
-        $new_width = 300;
-        $newImageHeight = ($new_width * $old_height) / $old_width;
-        $newImageWidth = $new_width;
-    } else {
-        $new_width = 1200;
-        $newImageHeight = ($new_width * $old_height) / $old_width;
-        $newImageWidth = $new_width;
-    }
+    $new_width = 1200;
+    $newImageHeight = ($new_width * $old_height) / $old_width;
+    $newImageWidth = $new_width;
+
 
     $temp = '../' . $new_file_name; // folder is nested one down from root:
 

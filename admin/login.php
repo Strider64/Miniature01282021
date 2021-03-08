@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
         <input class="login_button" type="submit" name="submit" value="login">
     </form>
 </main>
-</main>
+
 <footer class="colophon">
     <p>&copy; <?php echo date("Y") ?> The Miniature Photographer</p>
 </footer>

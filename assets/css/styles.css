@@ -178,10 +178,10 @@ th {
     height: auto; }
 
 /* Typography Styling */
-h1, h2, h3, h4, h5, h6, legend {
+h1, h2, h3, h4, h5, h6, legend, label {
   font-family: 'Work Sans', sans-serif; }
 
-p, a, label {
+p, a, label, textarea {
   font-family: 'Rubik', sans-serif;
   font-size: 1.2em;
   line-height: 1.5;
@@ -194,10 +194,35 @@ body {
   margin: 0; }
 
 img {
-  width: 100%; }
+  width: 100%;
+  height: auto; }
 
 ol, ul {
   list-style: none; }
+
+.deleteBtn {
+  text-decoration: none;
+  color: #38603D;
+  font-weight: 400;
+  margin: 0 0.625em; }
+  .deleteBtn:hover {
+    color: #fff; }
+
+.form_button {
+  outline: none;
+  color: #fff;
+  border: none;
+  background-color: #38603D;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+  width: 6.25em;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.2em;
+  text-transform: capitalize;
+  padding: 0.313em;
+  transition: background-color .5s; }
+
+.form_classes .form_button:hover, .form_classes .form_button:active {
+  background-color: #254029; }
 
 /* Smartphone CSS */
 .masthead {
@@ -235,6 +260,7 @@ ol, ul {
   display: inline-block;
   line-height: 1.875em;
   text-decoration: none;
+  text-transform: capitalize;
   color: #efefef;
   padding: 0.313em 0.625em; }
 
@@ -318,8 +344,7 @@ ol, ul {
     color: #38603D;
     font-weight: 500; }
   .cms time {
-    font-size: 1.2em;
-    font-weight: 500;
+    font-weight: 400;
     color: #38603D; }
   .cms .byline p {
     color: #38603D; }
@@ -327,14 +352,20 @@ ol, ul {
     width: 6.250em;
     height: 6.250em; }
   .cms .container img {
-    float: left;
-    width: 60%;
-    padding: 0 1.250em 0.625em 0; }
+    width: 100%;
+    max-width: 37.000em;
+    height: auto; }
   .cms .container p {
     font-size: 1.4em;
     line-height: 1.5;
     color: #38603D;
     font-weight: 400; }
+  .cms .container .editBtn {
+    text-decoration: none;
+    color: #38603D;
+    font-weight: 400; }
+    .cms .container .editBtn:hover {
+      font-weight: 500; }
 
 .nasa_perseverance_container figcaption {
   font-family: 'Work Sans', sans-serif;
@@ -514,7 +545,28 @@ a.qBtn:hover {
 .disableClick {
   pointer-events: none; }
 
-/* Contact Form CSS */
+#remote {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1.4em;
+  text-align: center;
+  align-items: baseline;
+  background-color: #A6BDB7; }
+  #remote #ePrev {
+    flex: 25%;
+    padding: 0.625em;
+    color: #fff;
+    text-decoration: none; }
+  #remote #status {
+    color: #fff;
+    padding: 0.625em; }
+  #remote #eNext {
+    flex: 25%;
+    padding: 0.625em;
+    color: #fff;
+    text-decoration: none; }
+
+/* Form CSS */
 div#message {
   background-color: #DBDED5; }
 

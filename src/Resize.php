@@ -16,15 +16,17 @@ namespace Miniature;
    #
    # ========================================================================#
 
+use JetBrains\PhpStorm\ArrayShape;
+
 Class Resize {
 
     // *** Class variables
     private $image;
-    private $width;
-    private $height;
+    private false|int $width;
+    private false|int $height;
     private $imageResized;
 
-    function __construct($fileName) {
+    public function __construct($fileName) {
         // *** Open up the file
         $this->image = $this->openImage($fileName);
 
@@ -34,36 +36,29 @@ Class Resize {
     }
     
     public function resize($filename) {
-        self::__construct($filename);
+        $this->__construct($filename);
     }
 
     ## --------------------------------------------------------
 
-    private function openImage($file) {
+    private function openImage($file): \GdImage|bool
+    {
         // *** Get extension
         $extension = strtolower(strrchr($file, '.'));
 
-        switch ($extension) {
-            case '.jpg':
-            case '.jpeg':
-                $img = @imagecreatefromjpeg($file);
-                break;
-            case '.gif':
-                $img = @imagecreatefromgif($file);
-                break;
-            case '.png':
-                $img = @imagecreatefrompng($file);
-                break;
-            default:
-                $img = false;
-                break;
-        }
+        $img = match ($extension) {
+            '.jpg', '.jpeg' => @imagecreatefromjpeg($file),
+            '.gif' => @imagecreatefromgif($file),
+            '.png' => @imagecreatefrompng($file),
+            default => false,
+        };
         return $img;
     }
 
     ## --------------------------------------------------------
 
-    public function resizeImage($newWidth, $newHeight, $option = "auto") {
+    public function resizeImage($newWidth, $newHeight, $option = "auto"): void
+    {
         // *** Get optimal width and height - based on $option
         $optionArray = $this->getDimensions($newWidth, $newHeight, $option);
 
@@ -77,14 +72,15 @@ Class Resize {
 
 
         // *** if option is 'crop', then crop too
-        if ($option == 'crop') {
+        if ($option === 'crop') {
             $this->crop($optimalWidth, $optimalHeight, $newWidth, $newHeight);
         }
     }
 
     ## --------------------------------------------------------
 
-    private function getDimensions($newWidth, $newHeight, $option) {
+    #[ArrayShape(['optimalWidth' => "float|int|mixed", 'optimalHeight' => "float|int|mixed"])] private function getDimensions($newWidth, $newHeight, $option): array
+    {
 
         switch ($option) {
             case 'exact':
@@ -115,19 +111,20 @@ Class Resize {
 
     ## --------------------------------------------------------
 
-    private function getSizeByFixedHeight($newHeight) {
+    private function getSizeByFixedHeight($newHeight): float|int
+    {
         $ratio = $this->width / $this->height;
-        $newWidth = $newHeight * $ratio;
-        return $newWidth;
+        return $newHeight * $ratio;
     }
 
-    private function getSizeByFixedWidth($newWidth) {
+    private function getSizeByFixedWidth($newWidth): float|int
+    {
         $ratio = $this->height / $this->width;
-        $newHeight = $newWidth * $ratio;
-        return $newHeight;
+        return $newWidth * $ratio;
     }
 
-    private function getSizeByAuto($newWidth, $newHeight) {
+    #[ArrayShape(['optimalWidth' => "float|int", 'optimalHeight' => "float|int"])] private function getSizeByAuto($newWidth, $newHeight): array
+    {
         if ($this->height < $this->width) {
         // *** Image to be resized is wider (landscape)
             $optimalWidth = $newWidth;
@@ -136,19 +133,16 @@ Class Resize {
         // *** Image to be resized is taller (portrait)
             $optimalWidth = $this->getSizeByFixedHeight($newHeight);
             $optimalHeight = $newHeight;
+        } else if ($newHeight < $newWidth) {
+            $optimalWidth = $newWidth;
+            $optimalHeight = $this->getSizeByFixedWidth($newWidth);
+        } else if ($newHeight > $newWidth) {
+            $optimalWidth = $this->getSizeByFixedHeight($newHeight);
+            $optimalHeight = $newHeight;
         } else {
-        // *** Image to be resizerd is a square
-            if ($newHeight < $newWidth) {
-                $optimalWidth = $newWidth;
-                $optimalHeight = $this->getSizeByFixedWidth($newWidth);
-            } else if ($newHeight > $newWidth) {
-                $optimalWidth = $this->getSizeByFixedHeight($newHeight);
-                $optimalHeight = $newHeight;
-            } else {
-                // *** Sqaure being resized to a square
-                $optimalWidth = $newWidth;
-                $optimalHeight = $newHeight;
-            }
+            // *** Sqaure being resized to a square
+            $optimalWidth = $newWidth;
+            $optimalHeight = $newHeight;
         }
 
         return array('optimalWidth' => $optimalWidth, 'optimalHeight' => $optimalHeight);

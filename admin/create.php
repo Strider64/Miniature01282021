@@ -3,6 +3,7 @@ require_once "../assets/config/config.php";
 require_once "../vendor/autoload.php";
 require_once "functions/resize_function.php";
 
+use Miniature\Resize;
 use Miniature\CMS;
 use Miniature\Login;
 
@@ -19,7 +20,6 @@ if (isset($_POST['submit'], $_FILES['image'])) {
     $file_name = $_FILES['image']['name']; // Temporary file for thumbnails directory:
     $file_size = $_FILES['image']['size']; // Temporary file for uploads directory:
     $file_tmp = $_FILES['image']['tmp_name'];
-    $thumb_tmp = $_FILES['image']['tmp_name'];
     $file_type = $_FILES['image']['type'];
     $file_ext = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
 
@@ -78,27 +78,23 @@ if (isset($_POST['submit'], $_FILES['image'])) {
      * Set the paths to the correct folders
      */
     $dir_path = 'assets/uploads/';
-    $thumb_path = 'assets/thumbnails/';
 
     /*
      * Create unique names for thumbnail and large image.
      */
-    $new_thumb_name = $thumb_path . 'thumb-gallery-' . time() . '.' . $file_ext;
-    $new_file_name = $dir_path . 'img-gallery-' . time() . '.' . $file_ext;
+    $new_file_name = $dir_path . 'img-gallery-' . time() . '-600x400.' . $file_ext;
 
+    move_uploaded_file($file_tmp,"../" . $new_file_name);
+
+    $resize = new Resize("../" . $new_file_name);
+    $resize->resizeImage(600, 400, 'landscape');
+    $resize->saveImage("../" . $new_file_name, 100);
     /*
      * Set path information for database table.
      */
-    $data['thumb_path'] = $new_thumb_name;
     $data['image_path'] = $new_file_name;
 
-    /*
-     * Call resize function to set the thumbnails and large images
-     * to the correct size and save them to their corresponding
-     * directories.
-     */
-    $thumb_result = resize($thumb_tmp, $new_thumb_name, true);
-    $save_result = resize($file_tmp, $new_file_name);
+
 
     /*
      * If no errors save ALL the information to the
@@ -109,7 +105,7 @@ if (isset($_POST['submit'], $_FILES['image'])) {
         $cms = new CMS($data);
         $result = $cms->create();
         if ($result) {
-            header("Location: indexbackup.php");
+            header("Location: index.php");
             exit();
         }
     } else {
@@ -122,57 +118,62 @@ if (isset($_POST['submit'], $_FILES['image'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0">
-    <title>Add Post</title>
-    <link rel="stylesheet" media="all" href="../assets/css/stylesheet.css">
-    <script src="../assets/js/menu.js" defer></script>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=yes, initial-scale=1.0">
+    <title>Create Post</title>
+    <link rel="stylesheet" media="all" href="../assets/css/styles.css">
 </head>
 <body class="site">
-<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+<div id="skip"><a href="#content">Skip to Main Content</a></div>
 <header class="masthead">
-    <img class="masthead-logo" src="/assets/images/img-logo-004.png" alt="website logo">
-    <h1 class="site-title">The Miniature Photographer</h1>
+
 </header>
 
-<section class="main-nav">
-    <button class="trigger" aria-expanded="false">Menu<span class="screen-reader-text">Reveal menu</span></button>
+<div class="nav">
+    <input type="checkbox" id="nav-check">
 
-    <nav>
-        <ul>
-            <li><a href="index.php">home</a></li>
-            <li><a href="create.php">create</a></li>
-            <li><a href="addQuiz.php">add Q</a></li>
-            <li><a href="editQuiz.php">edit Q</a></li>
-            <li><a href="logout.php">logout</a></li>
-        </ul>
-    </nav>
-</section><!-- .main-nav -->
+    <h3 class="nav-title">
+        The Miniature Photographer
+    </h3>
 
-<main id="content" class="main-area">
+    <div class="nav-btn">
+        <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.php">Home</a>
+        <a href="create.php">Create</a>
+        <a href="addQuiz.php">Add Q</a>
+        <a href="editQuiz.php">Edit Q</a>
+        <a href="logout.php">Logout</a>
+    </div>
+</div>
+
+<div class="sidebar">
+
+</div>
+<main id="content" class="main">
     <form id="formData" class="form_classes" action="create.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="cms[user_id]" value="3">
         <input type="hidden" name="cms[author]" value="<?= Login::full_name() ?>">
         <input type="hidden" name="action" value="upload">
         <input class="form_image_upload_style" type="file" name="image">
+        <br>
+        <br>
         <label class="heading_label_style" for="heading">Heading</label>
         <input class="enter_input_style" id="heading" type="text" name="cms[heading]" value="" tabindex="1" required
                autofocus>
         <label class="text_label_style" for="content">Content</label>
         <textarea class="text_input_style" id="content" name="cms[content]" tabindex="2"></textarea>
-        <button class="form_button" type="submit" name="submit" value="enter">submit</button>
+        <input class="login_button" type="submit" name="submit" value="Enter">
     </form>
+
 </main>
-<section class="sidebar">
-    <aside class="twin">
-
-    </aside>
-    <aside class="twin">
-
-    </aside>
-</section><!-- .twins -->
 <footer class="colophon">
     <p>&copy; <?php echo date("Y") ?> The Miniature Photographer</p>
 </footer>
-<!--<script src="../assets/js/save_to_cms.js"></script>-->
 </body>
-</html>

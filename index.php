@@ -83,18 +83,25 @@ $cms = CMS::page($per_page, $offset);
     <?php foreach ($cms as $record) { ?>
         <article class="cms" itemscope itemtype="http://schema.org/Article">
             <header>
-                <h1 itemprop="headline"><?= $record['heading'] ?></h1>
-                <time itemprop="dateCreated datePublished"><?= htmlspecialchars(CMS::styleDate($record['date_added'])) ?></time>
                 <div class="byline" itemprop="author publisher" itemscope itemtype="http://schema.org/Organization">
                     <p>
                         <img itemprop="image logo" src="assets/images/img-logo-004.png" alt="website logo">
-                        Created by <span itemprop="name"><?= $record['author'] ?></span>
+                        <span itemprop="name"><?= $record['author'] ?> created on </span>
+                        <time itemprop="dateCreated datePublished"><?= htmlspecialchars(CMS::styleDate($record['date_added'])) ?></time>
                     </p>
                 </div>
+                <h1 itemprop="headline"><?= $record['heading'] ?></h1>
+
+
             </header>
             <section class="container" itemprop="articleBody">
-                <img itemprop="image" src="<?php echo htmlspecialchars($record['image_path']); ?>" alt="article image">
+
+                <img itemprop="image"
+                     src="<?php echo htmlspecialchars($record['image_path']); ?>" <?= getimagesize($record['image_path'])[3] ?>
+                     alt="article image">
+
                 <p><?= nl2br($record['content']) ?></p>
+
             </section>
         </article>
     <?php } ?>
