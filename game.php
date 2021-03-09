@@ -49,7 +49,7 @@ require_once "vendor/autoload.php";
 </div>
 <main id="content" class="main">
     <div class="displayStatus">
-
+        <span id="clock"></span>
         <h4 class="displayTitle">Welcome to Photography Trivia</h4>
         <p class="triviaInfo">Photography Trivia game is written in vanilla javascript and can be easily transported along with the
             HTML/CSS.
@@ -66,22 +66,23 @@ require_once "vendor/autoload.php";
     <div id="quiz" class="displayMessage" data-username="Strider">
         <div class="triviaContainer" data-records=" ">
             <div id="mainGame">
-                <div id="headerStyle" data-user="">
-                    <h2>Time Left: <span id="clock"></span><span id="currentQuestion"></span><span
-                                id="totalQuestions"></span></h2>
-                </div>
+
                 <div id="triviaSection" data-correct="">
                     <div id="questionBox">
                         <h2 id="question">What is the Question?</h2>
                     </div>
                     <div id="buttonContainer"></div>
                 </div>
+                <div id="headerStyle" data-user="">
+                    <h2><span id="currentQuestion"></span> out of <span id="totalQuestions"></span> questions</h2>
+                </div>
+
+                <div id="nextStyle">
+                    <button id="next" class="nextBtn">Next</button>
+                </div>
                 <div id="playerStats">
                     <h2 id="score">Score 0 Points</h2>
                     <h2 id="percent">100 percent</h2>
-                </div>
-                <div id="nextStyle">
-                    <button id="next" class="nextBtn">Next</button>
                 </div>
             </div>
         </div>

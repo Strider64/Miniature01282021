@@ -150,8 +150,8 @@ createRequest(requestUrl, tableUISuccess, tableUIError);
 
 /* Success function utilizing FETCH */
 const saveUISuccess = function () {
-    status.style.color = myGreen;
-    setTimeout(function () { status.style.color = "#555" ; }, 4000);
+    status.style.color = "#45A049";
+    setTimeout(function () { status.style.color = "#fff" ; }, 4000);
 };
 
 /* If Database Table fails to update data in mysql table */

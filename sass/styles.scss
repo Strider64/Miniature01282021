@@ -94,7 +94,7 @@ ol, ul {
   position: relative;
   width: 100%;
   height: 3.700em;
-  background-color: $color-really-dark-02;
+  background-color: lighten($color-really-dark-02, 15%);
   border-bottom: 1px solid hsl(0, 0%, 90%);
 }
 
@@ -216,17 +216,17 @@ ol, ul {
   margin: 0;
 
   header h1 {
-    color: $color-dark-01;
+    color: $color-really-dark-02;
     font-weight: 500;
   }
 
   time {
     font-weight: 400;
-    color: $color-dark-01;
+    color: $color-really-dark-02;
   }
 
   .byline p {
-    color: $color-dark-01;
+    color: $color-really-dark-02;
   }
 
   .byline p img {
@@ -244,12 +244,12 @@ ol, ul {
     p {
       font-size: 1.4em;
       line-height: 1.5;
-      color: $color-dark-01;
+      color: $color-really-dark-02;
       font-weight: 400;
     }
     .editBtn {
       text-decoration: none;
-      color: $color-dark-01;
+      color: $color-really-dark-02;
       font-weight: 400;
       &:hover {
         font-weight: 500;
@@ -281,7 +281,7 @@ ol, ul {
 /* Trivia Game */
 
 .displayStatus {
-  background-color: lighten($color-really-dark-02, 15%);
+  background-color: $color-light-01;
   color: darken($color-really-dark-02, 35%);
   padding: 1.250em;
 
@@ -303,24 +303,24 @@ ol, ul {
     height: 1.420em;
     border: none;
     transition: background-color 0.5s ease;
-    background-color: $color-light-01;
+    background-color: darken($color-medium-01, 8%);
     font-family: 'Work Sans', sans-serif;
     font-size: 1.6em;
     font-weight: bold;
-    color: $color-really-dark-01;
+    color: $color-light-01;
     text-align: center;
     text-decoration: none;
     padding: 0.938em 1.875em;
 
     &:hover {
-      background-color: $color-medium-01;
+      background-color: darken($color-medium-01, 12%);
     }
   }
 
 }
 
 .triviaContainer {
-  background-color: darken($color-really-dark-02, 10%);
+  background-color: lighten($color-really-dark-02, 35%);
 }
 
 #mainGame {
@@ -337,14 +337,19 @@ ol, ul {
 
   h2 {
     font-family: 'Rubik', sans-serif;
-    font-size: 0.8em;
+    font-size: 1.2em;
+    font-weight: 400;
     line-height: 0.313em;
     text-align: center;
-    color: $color-dark-01;
+    color: $color-light-01;
+    span {
+      color: $color-really-dark-02;
+    }
   }
 }
 
 #mainGame #headerStyle h2 #clock {
+  opacity: 0;
   font-size: 1.4em;
 }
 
@@ -370,7 +375,7 @@ ol, ul {
   font-family: 'Work Sans', sans-serif;
   font-size: 1.4em;
   line-height: 1.5;
-  color: $color-really-dark-01;
+  color: $color-really-dark-02;
   font-weight: 400;
 }
 
@@ -383,10 +388,10 @@ ol, ul {
   display: block;
   width: 100%;
   height: 3.125em;
-  border: 2px solid $color-really-dark-02;
+  border: 2px solid $color-light-01;
   outline: none;
   cursor: pointer;
-  background-color: darken($color-really-dark-02, 15%);
+  background-color: rgba($color-really-dark-02, 0.6);
   font-family: 'Rubik', sans-serif;
   font-size: 1.2em;
   color: $color-light-01;
@@ -405,21 +410,21 @@ ol, ul {
 
 #mainGame #playerStats #score {
   position: absolute;
-  top: 3.125em;
+  top: 0;
   left: 0.313em;
   font-family: 'Rubik', sans-serif;
-  font-size: 1.0em;
-  color: $color-dark-01;
+  font-size: 1.2em;
+  color: $color-light-01;
   line-height: 0.938em;
 }
 
 #mainGame #playerStats #percent {
   position: absolute;
-  top: 3.125em;
+  top: 0;
   right: 3.125em;
   font-family: 'Rubik', sans-serif;
-  font-size: 1.0em;
-  color: $color-dark-01;
+  font-size: 1.2em;
+  color: $color-light-01;
   line-height: 0.938em;
 }
 
@@ -515,9 +520,12 @@ div#message {
 }
 
 form {
-  background-color: darken($color-really-dark-02, 15%);
+  background-color: lighten($color-really-dark-02, 30%);
   padding: 0.938em;
 
+  label {
+    color: $color-light-01;
+  }
   input[type=text], input[type=tel], input[type=email], input[type="password"], select, textarea {
     width: 100%;
     padding: 0.750em;
@@ -553,7 +561,7 @@ form {
 
 /* Footer CSS */
 .colophon {
-  background-color: $color-really-dark-02;
+  background-color: lighten($color-really-dark-02, 15%);
   text-align: center;
   border-top: 1px solid hsl(0, 0%, 90%);
   padding: 0.313em;

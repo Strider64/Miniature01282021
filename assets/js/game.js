@@ -83,10 +83,10 @@
 
         const currentQuestion = d.querySelector('#currentQuestion');
         const totalQ = d.querySelector('#totalQuestions');
-        currentQuestion.textContent = (gameIndex + 1) + " out of ";
-        totalQ.textContent = totalQuestions + " questions";
+        currentQuestion.textContent = gameIndex + 1;
+        totalQ.textContent = totalQuestions;
 
-        newClock.style['color'] = '#C63637';
+        newClock.style['color'] = '#2e2e2e';
         newClock.textContent = ((seconds < 10) ? `0${seconds}` : seconds);
         const countdown = () => {
             if (seconds === 0) {
@@ -95,7 +95,7 @@
                 newClock.textContent = "00";
 
                 scoringFcn(userAnswer, correct);
-                highlightFCN(userAnswer, correct);
+                //highlightFCN(userAnswer, correct);
                 calcPercent(answeredRight, total);
                 disableListeners();
                 if ((gameIndex + 1) === totalQuestions) {

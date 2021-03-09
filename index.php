@@ -6,6 +6,14 @@ use Miniature\CMS;
 use Miniature\Pagination;
 
 /*
+ * Website Development by John Pepp
+ * Created on February 11, 2020
+ * Updated on March 9, 2021
+ * Version 1.8.0 Beta
+ */
+
+
+/*
  * Using pagination in order to have a nice looking
  * website page.
  */

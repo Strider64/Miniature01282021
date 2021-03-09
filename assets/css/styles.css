@@ -208,7 +208,7 @@ ol, ul {
 
 .deleteBtn {
   text-decoration: none;
-  color: #38603D;
+  color: #A6BDB7;
   font-weight: 400;
   margin: 0 0.625em; }
   .deleteBtn:hover {
@@ -243,7 +243,7 @@ ol, ul {
   position: relative;
   width: 100%;
   height: 3.700em;
-  background-color: #A6BDB7;
+  background-color: #54905c;
   border-bottom: 1px solid #e6e6e6; }
 
 .nav-title {
@@ -324,7 +324,7 @@ ol, ul {
   background-color: #fff; }
 
 .pagination .three-dots {
-  color: #7a9c93;
+  color: #1c301e;
   font-size: 1.4em;
   font-weight: bold;
   margin: 0.313em 0.500em 0; }
@@ -332,18 +332,18 @@ ol, ul {
 .pagination a {
   font-family: 'Work Sans', sans-serif;
   font-size: 1.4em;
-  color: #7a9c93;
+  color: #1c301e;
   text-decoration: none;
   padding-left: 0.313em; }
 
 .pagination a.selected {
   font-weight: bolder;
-  color: #4b655f;
+  color: black;
   padding-left: 0.313em; }
 
 /* CMS Article */
 .cms {
-  background-color: #FFFFFF;
+  background-color: #F5F5F5;
   padding: 1.250em;
   margin: 0; }
   .cms header h1 {
@@ -378,7 +378,7 @@ ol, ul {
   font-size: 1.0em;
   line-height: 1.5;
   font-weight: bold;
-  color: #38603D;
+  color: #A6BDB7;
   padding-top: 0.313em; }
 
 .sidebar {
@@ -388,8 +388,8 @@ ol, ul {
 
 /* Trivia Game */
 .displayStatus {
-  background-color: #d2dedb;
-  color: #4b655f;
+  background-color: #F5F5F5;
+  color: black;
   padding: 1.250em; }
   .displayStatus h4 {
     font-family: 'Rubik', sans-serif;
@@ -405,19 +405,19 @@ ol, ul {
     height: 1.420em;
     border: none;
     transition: background-color 0.5s ease;
-    background-color: #FFFFFF;
+    background-color: #c7ccbe;
     font-family: 'Work Sans', sans-serif;
     font-size: 1.6em;
     font-weight: bold;
-    color: #3C413D;
+    color: #F5F5F5;
     text-align: center;
     text-decoration: none;
     padding: 0.938em 1.875em; }
     .displayStatus #customBtn:hover {
-      background-color: #DBDED5; }
+      background-color: #bec3b3; }
 
 .triviaContainer {
-  background-color: #89a79f; }
+  background-color: #8ebd94; }
 
 #mainGame {
   padding: 1.250em; }
@@ -429,12 +429,16 @@ ol, ul {
 
 #mainGame #headerStyle h2 {
   font-family: 'Rubik', sans-serif;
-  font-size: 0.8em;
+  font-size: 1.2em;
+  font-weight: 400;
   line-height: 0.313em;
   text-align: center;
-  color: #38603D; }
+  color: #F5F5F5; }
+  #mainGame #headerStyle h2 span {
+    color: #38603D; }
 
 #mainGame #headerStyle h2 #clock {
+  opacity: 0;
   font-size: 1.4em; }
 
 #mainGame #headerStyle h2 #currentQuestion {
@@ -448,31 +452,31 @@ ol, ul {
   margin: 0; }
 
 #mainGame #triviaSection #questionBox {
-  background-color: #FFFFFF;
+  background-color: #F5F5F5;
   padding: 0.313em 0.625em; }
 
 #mainGame #triviaSection #questionBox h2 {
   font-family: 'Work Sans', sans-serif;
   font-size: 1.4em;
   line-height: 1.5;
-  color: #3C413D;
+  color: #38603D;
   font-weight: 400; }
 
 #mainGame #triviaSection #buttonContainer {
-  background-color: #38603D;
+  background-color: #A6BDB7;
   margin-bottom: 0.625em; }
 
 #mainGame #triviaSection #buttonContainer .answerButton {
   display: block;
   width: 100%;
   height: 3.125em;
-  border: 2px solid #A6BDB7;
+  border: 2px solid #F5F5F5;
   outline: none;
   cursor: pointer;
-  background-color: #7a9c93;
+  background-color: rgba(56, 96, 61, 0.6);
   font-family: 'Rubik', sans-serif;
   font-size: 1.2em;
-  color: #FFFFFF;
+  color: #F5F5F5;
   text-transform: capitalize;
   text-align: left;
   padding-left: 0.625em;
@@ -486,20 +490,20 @@ ol, ul {
 
 #mainGame #playerStats #score {
   position: absolute;
-  top: 3.125em;
+  top: 0;
   left: 0.313em;
   font-family: 'Rubik', sans-serif;
-  font-size: 1.0em;
-  color: #38603D;
+  font-size: 1.2em;
+  color: #F5F5F5;
   line-height: 0.938em; }
 
 #mainGame #playerStats #percent {
   position: absolute;
-  top: 3.125em;
+  top: 0;
   right: 3.125em;
   font-family: 'Rubik', sans-serif;
-  font-size: 1.0em;
-  color: #38603D;
+  font-size: 1.2em;
+  color: #F5F5F5;
   line-height: 0.938em; }
 
 #mainGame #nextStyle {
@@ -521,13 +525,13 @@ ol, ul {
   height: 2.500em;
   cursor: pointer;
   transition: background-color 0.5s ease;
-  background-color: #c3d3cf;
+  background-color: #4b8051;
   font-family: 'Rubik', sans-serif;
   font-size: 1.2em;
   color: #fff;
   text-transform: capitalize; }
   #mainGame #nextStyle #next:hover {
-    background-color: #A6BDB7; }
+    background-color: #38603D; }
 
 a.qBtn {
   float: right;
@@ -557,7 +561,7 @@ a.qBtn:hover {
   font-size: 1.4em;
   text-align: center;
   align-items: baseline;
-  background-color: #A6BDB7; }
+  background-color: #38603D; }
   #remote #ePrev {
     flex: 25%;
     padding: 0.625em;
@@ -577,8 +581,10 @@ div#message {
   background-color: #DBDED5; }
 
 form {
-  background-color: #7a9c93;
+  background-color: #7eb384;
   padding: 0.938em; }
+  form label {
+    color: #F5F5F5; }
   form input[type=text], form input[type=tel], form input[type=email], form input[type="password"], form select, form textarea {
     width: 100%;
     padding: 0.750em;
@@ -604,13 +610,13 @@ form {
 
 /* Footer CSS */
 .colophon {
-  background-color: #A6BDB7;
+  background-color: #54905c;
   text-align: center;
   border-top: 1px solid #e6e6e6;
   padding: 0.313em; }
   .colophon p {
     font-family: 'Rubik', sans-serif;
-    color: #FFFFFF; }
+    color: #F5F5F5; }
 
 /* Approximately the size of an iPad 768px */
 @supports (grid-area: auto) {
