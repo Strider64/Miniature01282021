@@ -206,6 +206,10 @@ img {
 ol, ul {
   list-style: none; }
 
+h2.main_heading {
+  color: #38603D;
+  text-align: center; }
+
 .deleteBtn {
   text-decoration: none;
   color: #A6BDB7;
@@ -342,36 +346,24 @@ ol, ul {
   padding-left: 0.313em; }
 
 /* CMS Article */
-.cms {
+article.cms {
   background-color: #F5F5F5;
   padding: 1.250em;
   margin: 0; }
-  .cms header h1 {
-    color: #38603D;
-    font-weight: 500; }
-  .cms time {
-    font-weight: 400;
-    color: #38603D; }
-  .cms .byline p {
-    color: #38603D; }
-  .cms .byline p img {
-    width: 6.250em;
-    height: 6.250em; }
-  .cms .container img {
+  article.cms .byline {
+    background-color: #DBDED5;
+    padding: 0.625em;
+    margin-bottom: 1.250em; }
+    article.cms .byline img.logo {
+      width: 6.250em;
+      height: 6.250em; }
+    article.cms .byline h2.title, article.cms .byline span {
+      color: #38603D; }
+  article.cms .article_image {
     width: 100%;
-    max-width: 37.000em;
-    height: auto; }
-  .cms .container p {
-    font-size: 1.4em;
-    line-height: 1.5;
-    color: #38603D;
-    font-weight: 400; }
-  .cms .container .editBtn {
-    text-decoration: none;
-    color: #38603D;
-    font-weight: 400; }
-    .cms .container .editBtn:hover {
-      font-weight: 500; }
+    max-width: 37.000em; }
+  article.cms p {
+    color: #38603D; }
 
 .nasa_perseverance_container figcaption {
   font-family: 'Work Sans', sans-serif;
@@ -428,11 +420,10 @@ ol, ul {
   clear: both; }
 
 #mainGame #headerStyle h2 {
-  font-family: 'Rubik', sans-serif;
   font-size: 1.2em;
   font-weight: 400;
   line-height: 0.313em;
-  text-align: center;
+  text-align: end;
   color: #F5F5F5; }
   #mainGame #headerStyle h2 span {
     color: #38603D; }
@@ -500,7 +491,7 @@ ol, ul {
 #mainGame #playerStats #percent {
   position: absolute;
   top: 0;
-  right: 3.125em;
+  right: 0.125em;
   font-family: 'Rubik', sans-serif;
   font-size: 1.2em;
   color: #F5F5F5;
@@ -508,9 +499,9 @@ ol, ul {
 
 #mainGame #nextStyle {
   position: relative;
-  top: 0;
+  top: 2.125em;
   right: 0;
-  width: 100%;
+  width: 74%;
   height: 3.125em; }
 
 #mainGame #nextStyle #next {
@@ -521,8 +512,8 @@ ol, ul {
   outline: none;
   display: block;
   width: 100%;
-  max-width: 9.375em;
-  height: 2.500em;
+  max-width: 5.375em;
+  height: 2.000em;
   cursor: pointer;
   transition: background-color 0.5s ease;
   background-color: #4b8051;
@@ -643,7 +634,28 @@ form {
       grid-area: main; }
 
     .colophon {
-      grid-area: footer; } } }
+      grid-area: footer; }
+
+    article.cms .byline {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-template-rows: 3.125em 3.125em;
+      grid-template-areas: "logo title" "logo author_style";
+      padding: 0;
+      margin: 0 0 0.6250em; }
+
+    img.logo {
+      grid-area: logo; }
+
+    h2.title {
+      grid-area: title;
+      font-size: 1.4em;
+      text-align: center;
+      font-weight: bold; }
+
+    .author_style {
+      grid-area: author_style;
+      text-align: center; } } }
 /* Approximately the size of an iPad Pro 12.9in 1024px */
 @supports (grid-area: auto) {
   @media screen and (min-width: 64em) {

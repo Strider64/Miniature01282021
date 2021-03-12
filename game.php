@@ -73,17 +73,19 @@ require_once "vendor/autoload.php";
                     </div>
                     <div id="buttonContainer"></div>
                 </div>
+                <div id="nextStyle">
+                    <button id="next" class="nextBtn">Next</button>
+                </div>
+
                 <div id="headerStyle" data-user="">
                     <h2><span id="currentQuestion"></span> out of <span id="totalQuestions"></span> questions</h2>
                 </div>
 
-                <div id="nextStyle">
-                    <button id="next" class="nextBtn">Next</button>
-                </div>
                 <div id="playerStats">
                     <h2 id="score">Score 0 Points</h2>
                     <h2 id="percent">100 percent</h2>
                 </div>
+
             </div>
         </div>
     </div>

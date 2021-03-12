@@ -82,41 +82,45 @@ $cms = CMS::page($per_page, $offset);
 </div>
 
 <div class="sidebar">
-    <a class="logo_style" href="http://www.flickr.com/people/pepster/"><img src="assets/images/logo-flickr-256x256-001.jpg" alt="Flickr Profile"></a>
-    <a class="logo_style" href="https://www.facebook.com/Pepster64"><img src="assets/images/logo-facebook-400x400-002.png" alt="Miniature Photographer" ></a>
-    <a class="logo_style" href="http://www.linkedin.com/in/johnpepp"><img src="assets/images/logo-linkedin-640x640-001.png" alt="LinkedIn Profile" ></a>
+    <a class="logo_style" href="http://www.flickr.com/people/pepster/"><img
+                src="assets/images/logo-flickr-256x256-001.jpg" alt="Flickr Profile"></a>
+    <a class="logo_style" href="https://www.facebook.com/Pepster64"><img
+                src="assets/images/logo-facebook-400x400-002.png" alt="Miniature Photographer"></a>
+    <a class="logo_style" href="http://www.linkedin.com/in/johnpepp"><img
+                src="assets/images/logo-linkedin-640x640-001.png" alt="LinkedIn Profile"></a>
 </div>
 <main id="content" class="main">
-    <?php foreach ($cms as $record) { ?>
-        <article class="cms" itemscope itemtype="http://schema.org/Article">
-            <header>
-                <div class="byline" itemprop="author publisher" itemscope itemtype="http://schema.org/Organization">
-                    <p>
-                        <img itemprop="image logo" src="assets/images/img-logo-004.png" alt="website logo">
-                        <span itemprop="name"><?= $record['author'] ?> created on </span>
-                        <time itemprop="dateCreated datePublished"><?= htmlspecialchars(CMS::styleDate($record['date_added'])) ?></time>
-                    </p>
-                </div>
-                <h1 itemprop="headline"><?= $record['heading'] ?></h1>
+    <section class="container">
+        <h2 class="main_heading">The Miniature Journal</h2>
+        <?php foreach ($cms as $record) { ?>
+            <article class="cms" itemscope itemtype="http://schema.org/Article">
+                <header itemprop="articleBody">
+                    <div class="byline" itemprop="author publisher" itemscope itemtype="http://schema.org/Organization">
+                        <img itemprop="image logo" class="logo" src="assets/images/img-logo-004.png"
+                             alt="website logo">
+                        <h2 itemprop="headline" class="title"><?= $record['heading'] ?></h2>
+
+                        <span itemprop="name" class="author_style">Created by <?= $record['author'] ?> on
+                        <time itemprop="dateCreated datePublished"
+                              datetime="<?= htmlspecialchars(CMS::styleTime($record['date_added'])) ?>" ><?= htmlspecialchars(CMS::styleDate($record['date_added'])) ?></time></span>
+
+                    </div>
 
 
-            </header>
-            <section class="container" itemprop="articleBody">
-
-                <img itemprop="image"
-                     src="<?php echo htmlspecialchars($record['image_path']); ?>" <?= getimagesize($record['image_path'])[3] ?>
-                     alt="article image">
-
+                    <img itemprop="image" class="article_image"
+                         src="<?php echo htmlspecialchars($record['image_path']); ?>" <?= getimagesize($record['image_path'])[3] ?>
+                         alt="article image">
+                </header>
                 <p><?= nl2br($record['content']) ?></p>
 
-            </section>
-        </article>
-    <?php } ?>
-    <?php
-    $url = 'index.php';
-    echo $pagination->new_page_links($url);
-    ?>
 
+            </article>
+        <?php } ?>
+        <?php
+        $url = 'index.php';
+        echo $pagination->new_page_links($url);
+        ?>
+    </section>
 </main>
 <footer class="colophon">
     <p>&copy; <?php echo date("Y") ?> The Miniature Photographer</p>

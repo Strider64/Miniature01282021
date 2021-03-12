@@ -73,35 +73,36 @@ $cms = CMS::page($per_page, $offset);
 
 </div>
 <main id="content" class="main">
-    <?php foreach ($cms as $record) { ?>
-        <article class="cms" itemscope itemtype="http://schema.org/Article">
-            <header>
-                <div class="byline" itemprop="author publisher" itemscope itemtype="http://schema.org/Organization">
-                    <p>
-                        <img itemprop="image logo" src="../assets/images/img-logo-004.png" alt="website logo">
-                        <span itemprop="name"><?= $record['author'] ?> on <time itemprop="dateCreated datePublished"><?= htmlspecialchars(CMS::styleDate($record['date_added'])) ?></time></span>
-                    </p>
-                </div>
-                <h1 itemprop="headline"><?= $record['heading'] ?></h1>
+    <section class="container">
+        <h2 class="main_heading">The Miniature Journal</h2>
+        <?php foreach ($cms as $record) { ?>
+            <article class="cms" itemscope itemtype="http://schema.org/Article">
+                <header itemprop="articleBody">
+                    <div class="byline" itemprop="author publisher" itemscope itemtype="http://schema.org/Organization">
+                        <img itemprop="image logo" class="logo" src="../assets/images/img-logo-004.png"
+                             alt="website logo">
+                        <h2 itemprop="headline" class="title"><?= $record['heading'] ?></h2>
+
+                        <span itemprop="name" class="author_style">Created by <?= $record['author'] ?> on
+                        <time itemprop="dateCreated datePublished"
+                              datetime="<?= htmlspecialchars(CMS::styleTime($record['date_added'])) ?>" ><?= htmlspecialchars(CMS::styleDate($record['date_added'])) ?></time></span>
+
+                    </div>
 
 
-            </header>
-            <section class="container" itemprop="articleBody">
-
-                <img itemprop="image"
-                     src="<?php echo "../" . htmlspecialchars($record['image_path']); ?>" <?= getimagesize("../" . $record['image_path'])[3] ?>
-                     alt="article image">
-
+                    <img itemprop="image" class="article_image"
+                         src="<?php echo "../" . htmlspecialchars($record['image_path']); ?>" alt="article image">
+                </header>
                 <p><?= nl2br($record['content']) ?></p>
                 <a class="editBtn" href="edit.php?id=<?= urldecode($record['id']) ?>">Record <?= urldecode($record['id']) ?></a>
-            </section>
-        </article>
-    <?php } ?>
-    <?php
-    $url = 'index.php';
-    echo $pagination->new_page_links($url);
-    ?>
 
+            </article>
+        <?php } ?>
+        <?php
+        $url = 'index.php';
+        echo $pagination->new_page_links($url);
+        ?>
+    </section>
 </main>
 <footer class="colophon">
     <p>&copy; <?php echo date("Y") ?> The Miniature Photographer</p>

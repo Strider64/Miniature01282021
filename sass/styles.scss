@@ -54,6 +54,11 @@ ol, ul {
   list-style: none;
 }
 
+h2.main_heading {
+  color: $color-really-dark-02;
+  text-align: center;
+}
+
 .deleteBtn {
   text-decoration: none;
   color: $color-dark-01;
@@ -210,55 +215,40 @@ ol, ul {
 
 /* CMS Article */
 
-.cms {
+article.cms {
   background-color: $color-light-01;
   padding: 1.250em;
   margin: 0;
 
-  header h1 {
-    color: $color-really-dark-02;
-    font-weight: 500;
-  }
-
-  time {
-    font-weight: 400;
-    color: $color-really-dark-02;
-  }
-
-  .byline p {
-    color: $color-really-dark-02;
-  }
-
-  .byline p img {
-    width: 6.250em;
-    height: 6.250em;
-  }
-
-  .container {
-
-    img {
-      width: 100%;
-      max-width: 37.000em;
-      height: auto;
+  .byline {
+    background-color: $color-medium-01;
+    padding: 0.625em;
+    margin-bottom: 1.250em;
+    img.logo {
+      width: 6.250em;
+      height: 6.250em;
     }
-    p {
-      font-size: 1.4em;
-      line-height: 1.5;
+    h2.title, span {
       color: $color-really-dark-02;
-      font-weight: 400;
     }
-    .editBtn {
-      text-decoration: none;
-      color: $color-really-dark-02;
-      font-weight: 400;
-      &:hover {
-        font-weight: 500;
-      }
-    }
+
+
+  }
+  span.author_style {
 
   }
 
+  .article_image {
+    width: 100%;
+    max-width: 37.000em;
+  }
+
+  p {
+    color: $color-really-dark-02;
+  }
 }
+
+
 .nasa_perseverance_container {
   #perseverance_image {
 
@@ -336,11 +326,10 @@ ol, ul {
 #mainGame #headerStyle {
 
   h2 {
-    font-family: 'Rubik', sans-serif;
     font-size: 1.2em;
     font-weight: 400;
     line-height: 0.313em;
-    text-align: center;
+    text-align: end;
     color: $color-light-01;
     span {
       color: $color-really-dark-02;
@@ -421,7 +410,7 @@ ol, ul {
 #mainGame #playerStats #percent {
   position: absolute;
   top: 0;
-  right: 3.125em;
+  right: 0.125em;
   font-family: 'Rubik', sans-serif;
   font-size: 1.2em;
   color: $color-light-01;
@@ -430,9 +419,9 @@ ol, ul {
 
 #mainGame #nextStyle {
   position: relative;
-  top: 0;
+  top: 2.125em;
   right: 0;
-  width: 100%;
+  width: 74%;
   height: 3.125em;
 }
 
@@ -444,8 +433,8 @@ ol, ul {
   outline: none;
   display: block;
   width: 100%;
-  max-width: 9.375em;
-  height: 2.500em;
+  max-width: 5.375em;
+  height: 2.000em;
   cursor: pointer;
   transition: background-color 0.5s ease;
   background-color: lighten($color-really-dark-02, 10%);
@@ -607,6 +596,34 @@ form {
       grid-area: footer;
     }
 
+    article.cms .byline {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-template-rows: 3.125em 3.125em;
+      grid-template-areas:
+              "logo title"
+              "logo author_style";
+
+      padding: 0;
+      margin: 0 0 0.6250em;
+    }
+
+    img.logo {
+      grid-area: logo;
+    }
+
+    h2.title {
+      grid-area: title;
+      font-size: 1.4em;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .author_style {
+      grid-area: author_style;
+      text-align: center;
+    }
+
   }
 }
 
@@ -627,6 +644,7 @@ form {
     .masthead {
       background-image: url(../images/img-header-001-1024.jpg);
     }
+
   }
 }
 

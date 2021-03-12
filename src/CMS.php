@@ -35,6 +35,15 @@ class CMS extends DatabaseObject
         return substr($content, 0, $count) . "...";
     }
 
+    public static function styleTime($time_style): string
+    {
+        try {
+            $dateStylized = new DateTime($prettyDate, new DateTimeZone("America/Detroit"));
+        } catch (Exception $e) {
+        }
+
+        return $dateStylized->format("Y-m-d H:i:s");
+    }
     /*
      * Put the date from 00-00-0000 00:00:00 that is stored in the MySQL
      * database table to a more presentable format such as January 1, 2021.
