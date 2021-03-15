@@ -20,6 +20,9 @@ const answer4 = d.querySelector('#addAnswer4');
 const correct = d.querySelector('#addCorrect');
 
 const saveUrl = "saveRecord.php";
+const deleteRecord = d.querySelector('#delete_quiz_record');
+
+console.log(deleteRecord);
 let saveRecord = null;
 
 //var api_key = d.querySelector('#editTrivia').getAttribute('data-key');
@@ -66,8 +69,11 @@ const myRed = myColor("rgba(84, 0, 30, 0.70)"); /* Red with 70% transparency */
 const insertData = (data) => {
 
     record = data;
+
     position.textContent = record.id;
     id.value = parseInt(record.id);
+    deleteRecord.setAttribute("href", "delete_quiz_record.php?id=" + id.value);
+    console.log(deleteRecord);
     user_id.value = parseInt(record.user_id);
 
     hidden.value = record.hidden;
@@ -82,7 +88,7 @@ const insertData = (data) => {
 };
 
 const forward = (e) => {
-    status.style.color = "#555";
+    status.style.color = "#fff";
     e.preventDefault();
     if (tableIndex < totalRecords - 1) {
 
@@ -97,7 +103,7 @@ const forward = (e) => {
 eNext.addEventListener("click", forward, false);
 
 const reverse = (e) => {
-    status.style.color = "#555";
+    status.style.color = "#fff";
     e.preventDefault();
 
     if (tableIndex > 0) {

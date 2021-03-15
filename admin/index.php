@@ -94,7 +94,7 @@ $cms = CMS::page($per_page, $offset);
                          src="<?php echo "../" . htmlspecialchars($record['image_path']); ?>" alt="article image">
                 </header>
                 <p><?= nl2br($record['content']) ?></p>
-                <a class="editBtn" href="edit.php?id=<?= urldecode($record['id']) ?>">Record <?= urldecode($record['id']) ?></a>
+                <a class="form_button" href="edit.php?id=<?= urldecode($record['id']) ?>">Record <?= urldecode($record['id']) ?></a>
 
             </article>
         <?php } ?>

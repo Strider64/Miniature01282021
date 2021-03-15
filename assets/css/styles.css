@@ -210,15 +210,7 @@ h2.main_heading {
   color: #38603D;
   text-align: center; }
 
-.deleteBtn {
-  text-decoration: none;
-  color: #A6BDB7;
-  font-weight: 400;
-  margin: 0 0.625em; }
-  .deleteBtn:hover {
-    color: #fff; }
-
-.form_button {
+.form_button, .deleteBtn {
   outline: none;
   color: #fff;
   border: none;
@@ -228,6 +220,7 @@ h2.main_heading {
   font-family: 'Rubik', sans-serif;
   font-size: 1.2em;
   text-transform: capitalize;
+  text-decoration: none;
   padding: 0.313em;
   transition: background-color .5s; }
 
@@ -591,6 +584,7 @@ form {
   form input[type=submit] {
     background-color: #4CAF50;
     color: white;
+    text-transform: capitalize;
     border: none;
     border-radius: 0.250em;
     cursor: pointer;

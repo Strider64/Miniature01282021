@@ -169,7 +169,8 @@ if (isset($_POST['submit'], $_FILES['image'])) {
                autofocus>
         <label class="text_label_style" for="content">Content</label>
         <textarea class="text_input_style" id="content" name="cms[content]" tabindex="2"></textarea>
-        <input class="login_button" type="submit" name="submit" value="Enter">
+<!--        <input class="login_button" type="submit" name="submit" value="Enter">-->
+        <button class="form_button" type="submit" name="submit" value="enter">submit</button>
     </form>
 
 </main>

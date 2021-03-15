@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
                tabindex="1" required autofocus>
         <label class="text_label_style" for="content">Content</label>
         <textarea class="text_input_style" id="content" name="cms[content]" tabindex="2"><?= $cms->content ?></textarea>
-        <?php echo '<a class="deleteBtn" href="delete.php?id=' . $id . '" onclick="return confirm(\'Are you sure you want to delete this item?\');">Delete</a>'; ?>
+        <button class="form_button" formaction="delete.php?id=<?= $id ?>" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
         <button class="form_button" type="submit" name="submit" value="enter">submit</button>
     </form>
 </main>

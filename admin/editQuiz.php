@@ -77,7 +77,7 @@ Login::is_login($_SESSION['last_login']);
         <label class="correct_answer_label" for="addCorrect">Correct</label>
         <input class="correct_answer_input" id="addCorrect" type="text" name="correct" value="" tabindex="7">
         <input class="form_button" id="submitBtn" type="submit" name="submit" value="save" tabindex="8">
-
+        <a id="delete_quiz_record" class="deleteBtn" href="#" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
     </form>
 </main>
 <footer class="colophon">
