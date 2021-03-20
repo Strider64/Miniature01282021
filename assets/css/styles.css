@@ -210,23 +210,6 @@ h2.main_heading {
   color: #38603D;
   text-align: center; }
 
-.form_button, .deleteBtn {
-  outline: none;
-  color: #fff;
-  border: none;
-  background-color: #38603D;
-  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
-  width: 6.25em;
-  font-family: 'Rubik', sans-serif;
-  font-size: 1.2em;
-  text-transform: capitalize;
-  text-decoration: none;
-  padding: 0.313em;
-  transition: background-color .5s; }
-
-.form_classes .form_button:hover, .form_classes .form_button:active {
-  background-color: #254029; }
-
 /* Smartphone CSS */
 .masthead {
   display: none;
@@ -318,7 +301,7 @@ h2.main_heading {
 .pagination {
   display: flex;
   justify-content: center;
-  background-color: #fff; }
+  background-color: #dbded5; }
 
 .pagination .three-dots {
   color: #1c301e;
@@ -344,14 +327,14 @@ article.cms {
   padding: 1.250em;
   margin: 0; }
   article.cms .byline {
-    background-color: #DBDED5;
+    background-color: #54905C;
     padding: 0.625em;
     margin-bottom: 1.250em; }
     article.cms .byline img.logo {
       width: 6.250em;
       height: 6.250em; }
     article.cms .byline h2.title, article.cms .byline span {
-      color: #38603D; }
+      color: #fff; }
   article.cms .article_image {
     width: 100%;
     max-width: 37.000em; }
@@ -592,6 +575,21 @@ form {
     margin-top: 0.625em; }
   form input[type=submit]:hover {
     background-color: #45a049; }
+  form button {
+    outline: none;
+    color: #fff;
+    border: none;
+    background-color: #38603D;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+    width: 6.25em;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.2em;
+    text-transform: capitalize;
+    text-decoration: none;
+    padding: 0.313em;
+    transition: background-color .5s; }
+    form button:hover, form button:active {
+      background-color: #254029; }
 
 /* Footer CSS */
 .colophon {

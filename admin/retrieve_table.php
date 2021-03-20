@@ -19,15 +19,6 @@ header('Content-type: application/json');
 
 output($data);
 
-function errorOutput($output, $code = 500)
-{
-    http_response_code($code);
-    try {
-        echo json_encode($output, JSON_THROW_ON_ERROR);
-    } catch (JsonException) {
-    }
-}
-
 
 /*
  * After converting data array to JSON send back to javascript using

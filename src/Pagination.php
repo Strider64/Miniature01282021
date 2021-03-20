@@ -77,6 +77,7 @@ class Pagination {
 
     #[Pure] public function new_page_links($url): string
     {
+
         $links = "";
         $links .= "<div class=\"pagination\">";
 //        if ($this->current_page < $this->total_pages()) {

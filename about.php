@@ -25,7 +25,7 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
 }
 
 $per_page = 1; // Total number of records to be displayed:
-$total_count = CMS::countAllPage('index'); // Total Records in the db table:
+$total_count = CMS::countAllPage('about'); // Total Records in the db table:
 
 
 /* Send the 3 variables to the Pagination class to be processed */
@@ -34,13 +34,12 @@ $pagination = new Pagination($current_page, $per_page, $total_count);
 
 /* Grab the offset (page) location from using the offset method */
 $offset = $pagination->offset();
-//echo "<pre>" . print_r($offset, 1) . "</pre>";
-//die();
+
 /*
  * Grab the data from the CMS class method *static*
  * and put the data into an array variable.
  */
-$cms = CMS::page($per_page, $offset);
+$cms = CMS::page($per_page, $offset, 'about');
 
 
 ?>
@@ -50,7 +49,7 @@ $cms = CMS::page($per_page, $offset);
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=yes, initial-scale=1.0">
-    <title>The Miniature Photographer</title>
+    <title>About Page</title>
     <link rel="stylesheet" media="all" href="assets/css/styles.css">
 </head>
 <body class="site">
@@ -85,18 +84,18 @@ $cms = CMS::page($per_page, $offset);
 
 <div class="sidebar">
     <a class="logo_style" href="http://www.flickr.com/people/pepster/"><img
-                src="assets/images/logo-flickr-256x256-001.jpg" alt="Flickr Profile"></a>
+            src="assets/images/logo-flickr-256x256-001.jpg" alt="Flickr Profile"></a>
     <a class="logo_style" href="https://www.facebook.com/Pepster64"><img
-                src="assets/images/logo-facebook-400x400-002.png" alt="Miniature Photographer"></a>
+            src="assets/images/logo-facebook-400x400-002.png" alt="Miniature Photographer"></a>
     <a class="logo_style" href="http://www.linkedin.com/in/johnpepp"><img
-                src="assets/images/logo-linkedin-640x640-001.png" alt="LinkedIn Profile"></a>
+            src="assets/images/logo-linkedin-640x640-001.png" alt="LinkedIn Profile"></a>
 </div>
 <main id="content" class="main">
-    <div class="container">
+    <section class="container">
+        <h2 class="main_heading">About John Pepp</h2>
 
         <?php foreach ($cms as $record) { ?>
-
-            <article class="cms" itemscope itemtype="http://schema.org/Article">
+                <article class="cms" itemscope itemtype="http://schema.org/Article">
                 <header itemprop="articleBody">
                     <div class="byline" itemprop="author publisher" itemscope itemtype="http://schema.org/Organization">
                         <img itemprop="image logo" class="logo" src="assets/images/img-logo-004.png"
@@ -105,7 +104,7 @@ $cms = CMS::page($per_page, $offset);
 
                         <span itemprop="name" class="author_style">Created by <?= $record['author'] ?> on
                         <time itemprop="dateCreated datePublished"
-                              datetime="<?= htmlspecialchars(CMS::styleTime($record['date_added'])) ?>"><?= htmlspecialchars(CMS::styleDate($record['date_added'])) ?></time></span>
+                              datetime="<?= htmlspecialchars(CMS::styleTime($record['date_added'])) ?>" ><?= htmlspecialchars(CMS::styleDate($record['date_added'])) ?></time></span>
 
                     </div>
 
@@ -114,17 +113,16 @@ $cms = CMS::page($per_page, $offset);
                          src="<?php echo htmlspecialchars($record['image_path']); ?>" <?= getimagesize($record['image_path'])[3] ?>
                          alt="article image">
                 </header>
-
-                <p><?= nl2br($record['content']) ?></p>
+            <p><?= nl2br($record['content']) ?></p>
 
 
             </article>
         <?php } ?>
         <?php
-        $url = 'index.php';
-        echo $pagination->new_page_links($url);
+        $url = 'about.php';
+        //echo $pagination->new_page_links($url);
         ?>
-    </div>
+    </section>
 </main>
 <footer class="colophon">
     <p>&copy; <?php echo date("Y") ?> The Miniature Photographer</p>

@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace Miniature;
 
@@ -13,6 +13,7 @@ class CMS extends DatabaseObject
     static protected array $db_columns = ['id', 'user_id', 'thumb_path', 'image_path', 'Model', 'ExposureTime', 'Aperture', 'ISO', 'FocalLength', 'author', 'heading', 'content', 'data_updated', 'date_added'];
     public $id;
     public $user_id;
+    public $page;
     public $thumb_path;
     public $image_path;
     public $Model;
@@ -44,6 +45,20 @@ class CMS extends DatabaseObject
 
         return $dateStylized->format("Y-m-d H:i:s");
     }
+
+    public static function countAllPage($page)
+    {
+        static::$searchItem = 'page';
+        static::$searchValue = $page;
+        $sql = "SELECT count(id) FROM " . static::$table . " WHERE page=:page";
+        $stmt = Database::pdo()->prepare($sql);
+
+        $stmt->execute([ static::$searchItem => static::$searchValue ]);
+        return $stmt->fetchColumn();
+
+
+    }
+
     /*
      * Put the date from 00-00-0000 00:00:00 that is stored in the MySQL
      * database table to a more presentable format such as January 1, 2021.

@@ -164,12 +164,16 @@ if (isset($_POST['submit'], $_FILES['image'])) {
         <input class="form_image_upload_style" type="file" name="image">
         <br>
         <br>
+        <label for="message-type">What Page?</label>
+        <select id="message-type" name="cms[page]">
+            <option value="index">Home Page</option>
+            <option value="about">About Page</option>
+        </select>
         <label class="heading_label_style" for="heading">Heading</label>
         <input class="enter_input_style" id="heading" type="text" name="cms[heading]" value="" tabindex="1" required
                autofocus>
         <label class="text_label_style" for="content">Content</label>
         <textarea class="text_input_style" id="content" name="cms[content]" tabindex="2"></textarea>
-<!--        <input class="login_button" type="submit" name="submit" value="Enter">-->
         <button class="form_button" type="submit" name="submit" value="enter">submit</button>
     </form>
 

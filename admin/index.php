@@ -15,7 +15,7 @@ Login::is_login($_SESSION['last_login']);
  */
 $current_page = $_GET['page'] ?? 1; // Current Page
 $per_page = 1; // Total number of records to be displayed:
-$total_count = CMS::countAll(); // Total Records in the db table:
+$total_count = CMS::countAllPage('index'); // Total Records in the db table:
 
 /* Send the 3 variables to the Pagination class to be processed */
 $pagination = new Pagination($current_page, $per_page, $total_count);
@@ -27,7 +27,7 @@ $offset = $pagination->offset();
  * Grab the data from the CMS class method *static*
  * and put the data into an array variable.
  */
-$cms = CMS::page($per_page, $offset);
+$cms = CMS::page($per_page, $offset, 'index');
 
 ?>
 <!doctype html>
