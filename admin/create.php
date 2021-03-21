@@ -155,6 +155,7 @@ if (isset($_POST['submit'], $_FILES['image'])) {
 
 <div class="sidebar">
 
+
 </div>
 <main id="content" class="main">
     <form id="formData" class="form_classes" action="create.php" method="post" enctype="multipart/form-data">

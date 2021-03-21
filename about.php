@@ -8,8 +8,8 @@ use Miniature\Pagination;
 /*
  * Website Development by John Pepp
  * Created on February 11, 2020
- * Updated on March 17, 2021
- * Version 1.9.8 Beta
+ * Updated on March 21, 2021
+ * Version 2.0.0 Beta
  */
 
 
@@ -84,18 +84,16 @@ $cms = CMS::page($per_page, $offset, 'about');
 
 <div class="sidebar">
     <a class="logo_style" href="http://www.flickr.com/people/pepster/"><img
-            src="assets/images/logo-flickr-256x256-001.jpg" alt="Flickr Profile"></a>
+                src="assets/images/logo-flickr-256x256-001.jpg" alt="Flickr Profile"></a>
     <a class="logo_style" href="https://www.facebook.com/Pepster64"><img
-            src="assets/images/logo-facebook-400x400-002.png" alt="Miniature Photographer"></a>
+                src="assets/images/logo-facebook-400x400-002.png" alt="Miniature Photographer"></a>
     <a class="logo_style" href="http://www.linkedin.com/in/johnpepp"><img
-            src="assets/images/logo-linkedin-640x640-001.png" alt="LinkedIn Profile"></a>
+                src="assets/images/logo-linkedin-640x640-001.png" alt="LinkedIn Profile"></a>
 </div>
 <main id="content" class="main">
-    <section class="container">
-        <h2 class="main_heading">About John Pepp</h2>
-
+    <div class="container">
         <?php foreach ($cms as $record) { ?>
-                <article class="cms" itemscope itemtype="http://schema.org/Article">
+            <article class="cms" itemscope itemtype="http://schema.org/Article">
                 <header itemprop="articleBody">
                     <div class="byline" itemprop="author publisher" itemscope itemtype="http://schema.org/Organization">
                         <img itemprop="image logo" class="logo" src="assets/images/img-logo-004.png"
@@ -104,7 +102,7 @@ $cms = CMS::page($per_page, $offset, 'about');
 
                         <span itemprop="name" class="author_style">Created by <?= $record['author'] ?> on
                         <time itemprop="dateCreated datePublished"
-                              datetime="<?= htmlspecialchars(CMS::styleTime($record['date_added'])) ?>" ><?= htmlspecialchars(CMS::styleDate($record['date_added'])) ?></time></span>
+                              datetime="<?= htmlspecialchars(CMS::styleTime($record['date_added'])) ?>"><?= htmlspecialchars(CMS::styleDate($record['date_added'])) ?></time></span>
 
                     </div>
 
@@ -113,7 +111,7 @@ $cms = CMS::page($per_page, $offset, 'about');
                          src="<?php echo htmlspecialchars($record['image_path']); ?>" <?= getimagesize($record['image_path'])[3] ?>
                          alt="article image">
                 </header>
-            <p><?= nl2br($record['content']) ?></p>
+                <p><?= nl2br($record['content']) ?></p>
 
 
             </article>
@@ -122,7 +120,7 @@ $cms = CMS::page($per_page, $offset, 'about');
         $url = 'about.php';
         //echo $pagination->new_page_links($url);
         ?>
-    </section>
+    </div>
 </main>
 <footer class="colophon">
     <p>&copy; <?php echo date("Y") ?> The Miniature Photographer</p>

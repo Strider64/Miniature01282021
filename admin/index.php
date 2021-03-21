@@ -8,6 +8,11 @@ use Miniature\Login;
 Login::is_login($_SESSION['last_login']);
 
 
+if (isset($_POST['submit'])) {
+    $_SESSION['page'] = $_POST['page'];
+} else {
+    $_SESSION['page'] = 'index';
+}
 
 /*
  * Using pagination in order to have a nice looking
@@ -15,7 +20,7 @@ Login::is_login($_SESSION['last_login']);
  */
 $current_page = $_GET['page'] ?? 1; // Current Page
 $per_page = 1; // Total number of records to be displayed:
-$total_count = CMS::countAllPage('index'); // Total Records in the db table:
+$total_count = CMS::countAllPage($_SESSION['page']); // Total Records in the db table:
 
 /* Send the 3 variables to the Pagination class to be processed */
 $pagination = new Pagination($current_page, $per_page, $total_count);
@@ -27,7 +32,7 @@ $offset = $pagination->offset();
  * Grab the data from the CMS class method *static*
  * and put the data into an array variable.
  */
-$cms = CMS::page($per_page, $offset, 'index');
+$cms = CMS::page($per_page, $offset, $_SESSION['page']);
 
 ?>
 <!doctype html>
@@ -70,7 +75,14 @@ $cms = CMS::page($per_page, $offset, 'index');
 </div>
 
 <div class="sidebar">
-
+    <form class="form_classes" action="index.php" method="post">
+        <label for="select_page">Select Current Page</label>
+        <select id="select_page" name="page">
+            <option value="index" <?php echo ($_SESSION['page'] === 'index') ? 'selected' : null; ?>>Home Page</option>
+            <option value="about"<?php echo ($_SESSION['page'] === 'about') ? 'selected' : null; ?>>About Page</option>
+        </select>
+        <button class="form_button" type="submit" name="submit" value="enter">submit</button>
+    </form>
 </div>
 <main id="content" class="main">
     <section class="container">

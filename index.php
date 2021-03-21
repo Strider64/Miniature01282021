@@ -8,8 +8,8 @@ use Miniature\Pagination;
 /*
  * Website Development by John Pepp
  * Created on February 11, 2020
- * Updated on March 17, 2021
- * Version 1.9.8 Beta
+ * Updated on March 21, 2021
+ * Version 2.0.0 Beta
  */
 
 
@@ -90,6 +90,14 @@ $cms = CMS::page($per_page, $offset);
                 src="assets/images/logo-facebook-400x400-002.png" alt="Miniature Photographer"></a>
     <a class="logo_style" href="http://www.linkedin.com/in/johnpepp"><img
                 src="assets/images/logo-linkedin-640x640-001.png" alt="LinkedIn Profile"></a>
+
+    <p>
+        <a href="https://jigsaw.w3.org/css-validator/check/referer">
+            <img style="border:0;width:88px;height:31px;margin: 0 auto"
+                 src="https://jigsaw.w3.org/css-validator/images/vcss"
+                 alt="Valid CSS!" />
+        </a>
+    </p>
 </div>
 <main id="content" class="main">
     <div class="container">
