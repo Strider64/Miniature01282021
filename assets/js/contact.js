@@ -39,7 +39,7 @@ const contact = () => {
     const radioBtn = d.querySelector('#message-type');
     const buttons = d.getElementsByName("reason");
     const message = d.querySelector('#message');
-    const messageSuccess = d.querySelector('#messageSuccess');
+    //const messageSuccess = d.querySelector('#messageSuccess');
 
     let name = d.querySelector('#name');
     let email = d.querySelector('#email');
@@ -134,12 +134,12 @@ const contact = () => {
         if (result) {
             d.querySelector('#recaptcha').style.display = "none";
             submit.style.display = "none";
-            notice.style.display = "block";
+            notice.style.display = "grid";
 
             notice.textContent = "Email Successfully Sent!";
             notice.style.color = "green";
-            message.style.display = "block";
-            messageSuccess.style.display = "block";
+            message.style.display = "grid";
+            //messageSuccess.style.display = "block";
             d.querySelectorAll('form > *').forEach(function (a) {
                 a.disabled = true;
             });

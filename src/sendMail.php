@@ -55,7 +55,7 @@ class sendMail {
         /* create message */
         $message = (new Swift_Message('A email from ' . $data['name']))
                 ->setFrom([$data['email'] => $data['name']])
-                ->setTo(['jrpepp@pepster.com'])
+                ->setTo(['john.pepp@miniaturephotographer.com'])
                 ->setCc([$data['email'] => $data['name']])
                 ->setBody($data['message'], 'text/html')
                 ->attach(entity: Swift_Attachment::fromPath('https://www.miniaturephotographer.com/assets/images/img-logo-003.jpg'));

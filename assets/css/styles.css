@@ -545,7 +545,8 @@ a.qBtn:hover {
 
 /* Form CSS */
 div#message {
-  background-color: #DBDED5; }
+  background-color: #DBDED5;
+  padding: 0 1.250em; }
 
 form {
   background-color: #7eb384;

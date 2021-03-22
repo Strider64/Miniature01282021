@@ -49,7 +49,6 @@ require_once "vendor/autoload.php";
 <main id="content" class="main">
     <div id="message">
         <h2 id="notice">Form Notification</h2>
-        <a id="messageSuccess" href="index.php" title="Home Page">Home</a>
     </div>
     <form id="contact" name="contact" action="contact.php" method="post" autocomplete="on">
 
