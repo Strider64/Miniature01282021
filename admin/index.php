@@ -11,7 +11,7 @@ Login::is_login($_SESSION['last_login']);
 if (isset($_POST['submit'])) {
     $_SESSION['page'] = $_POST['page'];
 } else {
-    $_SESSION['page'] = 'index';
+    $_SESSION['page'] = 'blog';
 }
 
 /*
@@ -78,8 +78,9 @@ $cms = CMS::page($per_page, $offset, $_SESSION['page']);
     <form class="form_classes" action="index.php" method="post">
         <label for="select_page">Select Current Page</label>
         <select id="select_page" name="page">
-            <option value="index" <?php echo ($_SESSION['page'] === 'index') ? 'selected' : null; ?>>Home Page</option>
-            <option value="about"<?php echo ($_SESSION['page'] === 'about') ? 'selected' : null; ?>>About Page</option>
+            <option value="index" <?php echo ($_SESSION['page'] === 'index') ? 'selected' : null; ?>>Home</option>
+            <option value="index" <?php echo ($_SESSION['page'] === 'blog') ? 'selected' : null; ?>>Blog</option>
+            <option value="about"<?php echo ($_SESSION['page'] === 'about') ? 'selected' : null; ?>>About</option>
         </select>
         <button class="form_button" type="submit" name="submit" value="enter">submit</button>
     </form>

@@ -8,7 +8,7 @@ use Miniature\Pagination;
 /*
  * Website Development by John Pepp
  * Created on February 11, 2020
- * Updated on March 21, 2021
+ * Updated on March 23, 2021
  * Version 2.0.0 Beta
  */
 
@@ -59,29 +59,7 @@ $cms = CMS::page($per_page, $offset);
 
 </header>
 
-<div class="nav">
-    <input type="checkbox" id="nav-check">
-
-    <h3 class="nav-title">
-        The Miniature Photographer
-    </h3>
-
-    <div class="nav-btn">
-        <label for="nav-check">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
-    </div>
-
-    <div class="nav-links">
-        <a href="index.php">Home</a>
-        <a href="about.php">About</a>
-        <a href="admin/login.php">Admin</a>
-        <a href="game.php">Quiz</a>
-        <a href="contact.php">Contact</a>
-    </div>
-</div>
+<?php include_once "assets/includes/inc.nav.php";?>
 
 <div class="sidebar">
     <a class="logo_style" href="http://www.flickr.com/people/pepster/"><img
@@ -129,8 +107,8 @@ $cms = CMS::page($per_page, $offset);
             </article>
         <?php } ?>
         <?php
-        $url = 'index.php';
-        echo $pagination->new_page_links($url);
+        //$url = 'index.php';
+        //echo $pagination->new_page_links($url);
         ?>
     </div>
 </main>

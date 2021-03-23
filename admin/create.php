@@ -167,8 +167,9 @@ if (isset($_POST['submit'], $_FILES['image'])) {
         <br>
         <label for="message-type">What Page?</label>
         <select id="message-type" name="cms[page]">
-            <option value="index">Home Page</option>
-            <option value="about">About Page</option>
+            <option value="index">Home</option>
+            <option value="blog" selected>Blog</option>
+            <option value="about">About</option>
         </select>
         <label class="heading_label_style" for="heading">Heading</label>
         <input class="enter_input_style" id="heading" type="text" name="cms[heading]" value="" tabindex="1" required

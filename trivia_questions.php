@@ -25,9 +25,9 @@ if (isset($category)) { // Get rid of $api_key if not using:
      * Put database table in proper array format in order that
      * JSON will work properly.
      */
-    foreach ($data as $qdata) {
+    foreach ($data as $question_data) {
 
-        foreach ($qdata as $key => $value) {
+        foreach ($question_data as $key => $value) {
 
             switch ($key) {
 
@@ -49,9 +49,9 @@ if (isset($category)) { // Get rid of $api_key if not using:
         /*
          * No Longer needed, but it wouldn't hurt if not unset
          */
-        unset($qdata['answer1'], $qdata['answer2'], $qdata['answer3'], $qdata['answer4']);
+        unset($question_data['answer1'], $question_data['answer2'], $question_data['answer3'], $question_data['answer4']);
 
-        $finished = array_merge($qdata, $answers);
+        $finished = array_merge($question_data, $answers);
         $mData[$indexArray] = $finished;
         $indexArray++;
     }
