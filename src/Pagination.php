@@ -70,7 +70,6 @@ class Pagination {
             }
         }
 
-
         return $output;
     }
 
@@ -80,10 +79,7 @@ class Pagination {
 
         $links = "";
         $links .= "<div class=\"pagination\">";
-//        if ($this->current_page < $this->total_pages()) {
-//            $prev = $this->current_page - 1;
-//            $links .= '<a class="prev" href="' . $url . '?page=' . $prev . '">prev</a>';
-//        }
+
         if ($this->current_page <= $this->total_pages()) {
             if ($this->current_page === 1) {
                 $links .= "<a class='selected' href=\"{$url}?page=1\">1</a>";

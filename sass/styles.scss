@@ -38,6 +38,33 @@ body {
   margin: 0;
 }
 
+.info {
+  display: block;
+  height: auto;
+  background-color: #fff;
+  padding: 0.625em;
+  margin-bottom: 1.250em;
+  h2 {
+    font-weight: 400;
+    font-size: 1.8em;
+    color: $color-really-dark-02;
+  }
+  p {
+    font-weight: 400;
+    color: $color-really-dark-02;
+  }
+
+  .repository {
+    text-decoration: none;
+    color: #21759b;
+    transition: color 0.5s ease;
+    &:hover {
+      color: $color-dark-02;
+    }
+  }
+
+}
+
 .logo_style {
   display: block;
   width: 5em;
@@ -242,7 +269,6 @@ article.cms {
   }
 }
 .sidebar {
-  display: none;
   background-color: $color-medium-01;
   padding: 0.625em;
 }
@@ -586,8 +612,38 @@ form {
     }
     .sidebar {
       grid-area: sidebar;
-      display: block;
+      display: grid;
+      grid-template-columns: 12.50em 12.50em;
+      grid-template-rows: fit-content(6.250em);
+      grid-auto-rows: auto;
+      grid-template-areas:
+                "info info"
+                "flickr facebook"
+                "linkedin css_validation";
+      justify-content: center;
     }
+
+    .info {
+      grid-area: info;
+    }
+    .flickr {
+      grid-area: flickr;
+    }
+
+    .facebook {
+      grid-area: facebook;
+    }
+
+    .linkedin {
+      grid-area: linkedin;
+    }
+
+    .css_validation {
+      grid-area: css_validation;
+      margin-top: 1.563em;
+    }
+
+
     .main {
       grid-area: main;
     }
