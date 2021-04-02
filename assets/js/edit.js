@@ -32,40 +32,6 @@ let tableIndex = 0,
     records = null,
     record = null;
 
-/* Convert RGBa to HEX  */
-function rgba2hex(orig) {
-    let a,
-        rgb = orig.replace(/\s/g, '').match(/^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i),
-        alpha = (rgb && rgb[4] || "").trim(),
-        hex = rgb ?
-            (rgb[1] | 1 << 8).toString(16).slice(1) +
-            (rgb[2] | 1 << 8).toString(16).slice(1) +
-            (rgb[3] | 1 << 8).toString(16).slice(1) : orig;
-
-    if (alpha !== "") {
-        a = alpha;
-    } else {
-        a = "01";
-    }
-    // multiply before convert to HEX
-    a = ((a * 255) | 1 << 8).toString(16).slice(1);
-    hex = hex + a;
-
-    return hex;
-}
-
-const myColor = (colorcode) => {
-    let hexColor = rgba2hex(colorcode);
-    return '#' + hexColor;
-};
-
-/*
- * Constants & Variables Initialization Section.
- */
-const myGreen = myColor("rgba(29, 100, 31, 0.70)"); /* Green with 70% transparency */
-const myRed = myColor("rgba(84, 0, 30, 0.70)"); /* Red with 70% transparency */
-
-
 const insertData = (data) => {
 
     record = data;
@@ -118,7 +84,6 @@ const reverse = (e) => {
 
 ePrev.addEventListener("click", reverse, false);
 
-let defaultCat = "photography";
 let requestUrl = "retrieve_table.php";
 
 /* Success function utilizing FETCH */
@@ -184,7 +149,7 @@ const saveRequest = (saveUrl, succeed, fail) => {
         .catch((error) => fail(error));
 };
 
-const serializeArray = function (form) {
+const serializeArray = function () {
 
     const serialized = {
 

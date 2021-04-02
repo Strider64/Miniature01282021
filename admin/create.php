@@ -30,7 +30,9 @@ if (isset($_POST['submit'], $_FILES['image'])) {
     if ($file_ext === 'jpeg' || $file_ext === 'jpg') {
         /*
          * I don't like suppressing errors, but this
-         * is the only way that I have  found out how to do it.
+         * is the only way that I can so
+         * until find out how to do it this will
+         * have to do.
          */
         $exif_data = @exif_read_data($file_tmp);
 

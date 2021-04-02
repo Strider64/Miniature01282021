@@ -8,8 +8,8 @@ use Miniature\Pagination;
 /*
  * Website Development by John Pepp
  * Created on February 11, 2020
- * Updated on March 23, 2021
- * Version 2.0.0 Beta
+ * Updated on April 1, 2021
+ * Version 2.1.0 Beta
  */
 
 
@@ -34,14 +34,12 @@ $pagination = new Pagination($current_page, $per_page, $total_count);
 
 /* Grab the offset (page) location from using the offset method */
 $offset = $pagination->offset();
-//echo "<pre>" . print_r($offset, 1) . "</pre>";
-//die();
+
 /*
  * Grab the data from the CMS class method *static*
  * and put the data into an array variable.
  */
 $cms = CMS::page($per_page, $offset);
-
 
 ?>
 <!doctype html>
@@ -103,9 +101,9 @@ $cms = CMS::page($per_page, $offset);
         <p>I also have a GitHub repository on website at <a class="repository" href="https://github.com/Strider64/Miniature01282021" title="Github Repository">Miniature Repository</a> that you are free to check out.</p>
     </div>
     <a class="logo_style flickr" href="http://www.flickr.com/people/pepster/"><img
-                src="assets/images/logo-flickr-256x256-001.jpg" alt="Flickr Profile"></a>
+                src="assets/images/img-flickr-logo-001.png" alt="Flickr Profile"></a>
     <a class="logo_style facebook" href="https://www.facebook.com/Pepster64"><img
-                src="assets/images/logo-facebook-400x400-002.png" alt="Miniature Photographer"></a>
+                src="assets/images/img-facebook-logo-001.png" alt="Miniature Photographer"></a>
     <a class="logo_style linkedin" href="http://www.linkedin.com/in/johnpepp"><img
                 src="assets/images/logo-linkedin-640x640-001.png" alt="LinkedIn Profile"></a>
 

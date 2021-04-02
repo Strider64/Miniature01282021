@@ -16,7 +16,7 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
     $current_page = 1;
 }
 
-$per_page = 1; // Total number of records to be displayed:
+$per_page = 3; // Total number of records to be displayed:
 $total_count = CMS::countAllPage('blog'); // Total Records in the db table:
 
 
@@ -57,7 +57,6 @@ $cms = CMS::page($per_page, $offset,'blog');
     <div class="container">
 
         <?php foreach ($cms as $record) { ?>
-
             <article class="cms" itemscope itemtype="http://schema.org/Article">
                 <header itemprop="articleBody">
                     <div class="byline" itemprop="author publisher" itemscope itemtype="http://schema.org/Organization">
@@ -68,18 +67,12 @@ $cms = CMS::page($per_page, $offset,'blog');
                         <span itemprop="name" class="author_style">Created by <?= $record['author'] ?> on
                         <time itemprop="dateCreated datePublished"
                               datetime="<?= htmlspecialchars(CMS::styleTime($record['date_added'])) ?>"><?= htmlspecialchars(CMS::styleDate($record['date_added'])) ?></time></span>
-
                     </div>
-
-
                     <img itemprop="image" class="article_image"
                          src="<?php echo htmlspecialchars($record['image_path']); ?>" <?= getimagesize($record['image_path'])[3] ?>
                          alt="article image">
                 </header>
-
                 <p><?= nl2br($record['content']) ?></p>
-
-
             </article>
         <?php } ?>
         <?php
