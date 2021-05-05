@@ -33,7 +33,7 @@ if (hash_equals($_SESSION['token'], $data['token'])) {
         $data['message'] =
             '<html lang="en">' .
             '<body style=\'background: #eee;\'>' .
-            '<p style="font-size: 1.8em; line-height: 1.5;">' . $data['name'] . '<br>' . $data['email'] . '<br>' . $data['phone'] . '<br>' . $data['website'] . '<br> type of message is ' . $data['reason'] . '</p>' .
+            '<p style="font-size: 1.8em; line-height: 1.5;">' . $data['name'] . '<br>' . $data['email'] . '<br>' . $data['phone'] . '<br>' . $data['website'] . '<br> Subject of Email is ' . $data['reason'] . '</p>' .
             '<p style="font-size: 1.6em; line-height: 1.5;">' . $data['comments'] . '</p>' .
             '<p style="font-size: 1.4em; line-height: 1.5;">Thank You, for taking your time to contact me! I will get back to you as soon as I can.<br> Best regards, John Pepp</p>' .
             '</body>' .

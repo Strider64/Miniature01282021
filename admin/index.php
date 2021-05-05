@@ -47,6 +47,9 @@ $cms = CMS::page($per_page, $offset, $_SESSION['page']);
 <body class="site">
 <div id="skip"><a href="#content">Skip to Main Content</a></div>
 <header class="masthead">
+    <div class="username">
+        <h1><?= Login::full_name() ?></h1>
+    </div>
 
 </header>
 

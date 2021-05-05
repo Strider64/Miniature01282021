@@ -12,6 +12,7 @@
 </head>
 <body>
 <img id="perseverance_image" src="" alt="Nasa Perseverance Image">
+<p id="image_info"></p>
 <script src="assets/js/nasa.js"></script>
 </body>
 </html>

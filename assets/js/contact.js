@@ -39,7 +39,7 @@ const contact = () => {
     const radioBtn = d.querySelector('#message-type');
     const buttons = d.getElementsByName("reason");
     const message = d.querySelector('#message');
-    //const messageSuccess = d.querySelector('#messageSuccess');
+    const messageSuccess = d.querySelector('#messageSuccess');
 
     let name = d.querySelector('#name');
     let email = d.querySelector('#email');

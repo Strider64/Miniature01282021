@@ -14,6 +14,7 @@ document.querySelector('#video');
 /* Success function utilizing FETCH */
 const nasaUISuccess = function (parsedData) {
     let image_length = parsedData.latest_photos.length;
+    console.log(image_length);
     let nasa_image = parsedData.latest_photos[image_length-1].img_src;
     console.log('Nasa Data JSON', parsedData);
     // console.log ('object', parsedData.latest_photos[106].img_src);
@@ -23,7 +24,7 @@ const nasaUISuccess = function (parsedData) {
     nasa_perseverance_image.setAttribute('src', nasa_image);
     //console.log(parsedData.latest_photos[image_length-1].camera);
     let nasaInfo = parsedData.latest_photos[image_length-1].camera;
-    //console.log(nasaInfo.full_name);
+    console.log(nasaInfo.full_name);
     nasa_image_info.textContent = nasaInfo.full_name;
 };
 

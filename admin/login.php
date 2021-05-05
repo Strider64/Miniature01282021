@@ -4,6 +4,10 @@ require_once "../vendor/autoload.php";
 
 use Miniature\CalendarObject;
 use Miniature\Login;
+if (isset($_SESSION['last_login'])) {
+    header("Location: index.php");
+    exit();
+}
 
 $monthly = new CalendarObject();
 

@@ -18,7 +18,7 @@ if (isset($_POST['submit'], $_FILES['image'])) {
     $errors = array();
     $exif_data = [];
     $file_name = $_FILES['image']['name']; // Temporary file for thumbnails directory:
-    $file_size = $_FILES['image']['size']; // Temporary file for uploads directory:
+    $file_size = $_FILES['image']['size'];
     $file_tmp = $_FILES['image']['tmp_name'];
     $file_type = $_FILES['image']['type'];
     $file_ext = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
@@ -82,7 +82,7 @@ if (isset($_POST['submit'], $_FILES['image'])) {
     $dir_path = 'assets/uploads/';
 
     /*
-     * Create unique names for thumbnail and large image.
+     * Create unique name for image.
      */
     $new_file_name = $dir_path . 'img-gallery-' . time() . '-600x400.' . $file_ext;
 

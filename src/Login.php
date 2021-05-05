@@ -57,6 +57,7 @@ class Login extends DatabaseObject
 
     }
 
+
     public static function is_login($last_login): void
     {
         if(!isset($last_login) || ($last_login + self::MAX_LOGIN_AGE) < time()) {

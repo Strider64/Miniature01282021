@@ -91,20 +91,7 @@ $cms = CMS::page($per_page, $offset, 'about');
         <p>A responsive website that deals with photography and website development using the latest coding practices.</p>
         <p>I also have a GitHub repository on website at <a class="repository" href="https://github.com/Strider64/Miniature01282021" title="Github Repository">Miniature Repository</a> that you are free to check out.</p>
     </div>
-    <a class="logo_style flickr" href="http://www.flickr.com/people/pepster/"><img
-                src="assets/images/logo-flickr-256x256-001.jpg" alt="Flickr Profile"></a>
-    <a class="logo_style facebook" href="https://www.facebook.com/Pepster64"><img
-                src="assets/images/logo-facebook-400x400-002.png" alt="Miniature Photographer"></a>
-    <a class="logo_style linkedin" href="http://www.linkedin.com/in/johnpepp"><img
-                src="assets/images/logo-linkedin-640x640-001.png" alt="LinkedIn Profile"></a>
 
-    <p class="css_validation">
-        <a href="https://jigsaw.w3.org/css-validator/check/referer">
-            <img style="border:0;width:88px;height:31px;margin: 0 auto"
-                 src="https://jigsaw.w3.org/css-validator/images/vcss"
-                 alt="Valid CSS!"/>
-        </a>
-    </p>
 </div>
 
 <footer class="colophon">
