@@ -9,7 +9,11 @@ Login::is_login($_SESSION['last_login']);
 
 $result = false;
 $id = (int)htmlspecialchars($_GET['id'] ?? null);
-
+try {
+    $today = $todayDate = new DateTime('today', new DateTimeZone("America/Detroit"));
+} catch (Exception $e) {
+}
+$date_updated = $today->format("Y-m-d H:i:s");
 /*
  * Set the class to of the record (data) to be display
  * to the class then fetch the data to the $record
@@ -78,6 +82,7 @@ if (isset($_POST['submit'])) {
         <input type="hidden" name="cms[id]" value="<?= $id ?>">
         <input type="hidden" name="cms[user_id]" value="<?= $_SESSION['id'] ?>">
         <input type="hidden" name="cms[author]" value="<?= Login::full_name() ?>">
+        <input type="hidden" name="cms[date_updated]" value="<?= $date_updated ?>">
         <input type="hidden" name="action" value="upload">
         <input class="form_image_upload_style" type="file" name="image">
         <br><br>

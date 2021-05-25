@@ -65,9 +65,7 @@ $cms = CMS::page($per_page, $offset, 'about');
                         <span itemprop="name" class="author_style">Created by <?= $record['author'] ?> on
                         <time itemprop="dateCreated datePublished"
                               datetime="<?= htmlspecialchars(CMS::styleTime($record['date_added'])) ?>"><?= htmlspecialchars(CMS::styleDate($record['date_added'])) ?></time></span>
-
                     </div>
-
 
                     <img itemprop="image" class="article_image"
                          src="<?php echo htmlspecialchars($record['image_path']); ?>" <?= getimagesize($record['image_path'])[3] ?>

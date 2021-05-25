@@ -104,6 +104,12 @@ if (isset($_POST['submit'], $_FILES['image'])) {
      */
     if (empty($errors) === true) {
         /* Save to Database Table CMS */
+        try {
+            $today = $todayDate = new DateTime('today', new DateTimeZone("America/Detroit"));
+        } catch (Exception $e) {
+        }
+        $data['date_updated'] = $data['date_added'] = $today->format("Y-m-d H:i:s");
+
         $cms = new CMS($data);
         $result = $cms->create();
         if ($result) {

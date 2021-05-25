@@ -106,8 +106,8 @@ class DatabaseObject // Extended by the children class:
          * Setup the query using prepared states with static:$params being
          * the columns and the array keys being the prepared named placeholders.
          */
-        $sql = 'INSERT INTO ' . static::$table . '(' . implode(", ", array_keys(static::$params)) . ', date_updated, date_added)';
-        $sql .= ' VALUES ( :' . implode(', :', array_keys(static::$params)) . ', NOW(), NOW() )'; // Notice the 2 NOW() calls for dates:
+        $sql = 'INSERT INTO ' . static::$table . '(' . implode(", ", array_keys(static::$params)) . ')';
+        $sql .= ' VALUES ( :' . implode(', :', array_keys(static::$params)) . ')';
 
         /*
          * Prepare the Database Table:
@@ -132,7 +132,7 @@ class DatabaseObject // Extended by the children class:
     /*
      * This is the update that method that I came up with and
      * it does use named place holders. I have always found
-     * updating was easier that creating/adding a record for
+     * updating is easier than creating/adding a record for
      * some strange reason?
      */
     public function update(): bool
@@ -148,13 +148,11 @@ class DatabaseObject // Extended by the children class:
         }
 
         /*
-         * The query/sql implodes the prepared statement array in the proper format
-         * and I also hard code the date_updated column as I practically use that for
-         * all my database table. Though I think you could override that in the child
-         * class if you needed too.
+         * The sql implodes the prepared statement array in the proper format
+         * and updates the correct record by id.
          */
         $sql  = 'UPDATE ' . static::$table . ' SET ';
-        $sql .= implode(", ", $attribute_pairs) . ', date_updated=NOW() WHERE id =:id';
+        $sql .= implode(", ", $attribute_pairs) . ' WHERE id =:id';
 
         /* Normally in two lines, but you can daisy chain pdo method calls */
         Database::pdo()->prepare($sql)->execute(static::$params);

@@ -307,7 +307,7 @@ h2.main_heading {
   .nav > .nav-btn > label > span {
     display: block;
     width: 1.563em;
-    height: 0.625em;
+    height: 0.500em;
     border-top: 0.125em solid #eee; }
 
   .nav > .nav-links {
@@ -318,6 +318,7 @@ h2.main_heading {
     height: 0;
     transition: all 0.3s ease-in;
     overflow-y: hidden;
+    top: 3.125em;
     left: 0; }
 
   .nav > .nav-links > a {
