@@ -3,9 +3,7 @@ CSS Reset
 --------------------------------------------------------------*/
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Rubik&display=swap");
 html {
-  font-family: sans-serif;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%; }
+  font-family: sans-serif; }
 
 body {
   margin: 0; }
@@ -126,17 +124,11 @@ button,
 html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-  -webkit-appearance: button;
   cursor: pointer; }
 
 button[disabled],
 html input[disabled] {
   cursor: default; }
-
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-  border: 0;
-  padding: 0; }
 
 input {
   line-height: normal; }
@@ -146,17 +138,8 @@ input[type="radio"] {
   box-sizing: border-box;
   padding: 0; }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  height: auto; }
-
 input[type="search"] {
-  -webkit-appearance: textfield;
   box-sizing: content-box; }
-
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none; }
 
 fieldset {
   border: 1px solid #c0c0c0;
@@ -180,200 +163,6 @@ table {
 td,
 th {
   padding: 0; }
-
-.calendar-container {
-  display: none; }
-
-/*--------------------------------------------------------------
-CSS Grid layout for wider screens, when browser supports grid:
---------------------------------------------------------------*/
-@supports (grid-area: auto) {
-  @media screen and (min-width: 27em) {
-    .calendar-container {
-      display: block; }
-
-    .calendar {
-      display: grid;
-      width: 100%;
-      grid-template-columns: repeat(7, minmax(2.5em, 1fr));
-      grid-template-rows: 1.5625em;
-      grid-auto-rows: 1.5625em;
-      overflow: auto; }
-      .calendar-container {
-        margin-left: 1.250em;
-        overflow: hidden;
-        box-shadow: 0 0.125em 0.125em rgba(0, 0, 0, 0.1);
-        border-radius: 0.3125em;
-        background: #fff;
-        max-width: 37.5em; }
-      .calendar-header {
-        display: flex;
-        justify-content: space-around;
-        text-align: center;
-        padding: 0.3125em 0;
-        background: linear-gradient(to bottom, #fafbfd 0%, rgba(255, 255, 255, 0) 100%);
-        border-bottom: 1px solid rgba(166, 168, 179, 0.12); }
-        .calendar-header h1.output-month {
-          color: #5085a5;
-          font-size: 1.0em;
-          font-weight: bold; }
-        .calendar-header a {
-          text-decoration: none;
-          text-transform: capitalize;
-          color: #5085a5;
-          font-size: 1.0em;
-          margin-top: 1.0em; }
-          .calendar-header a:hover, .calendar-header a:active {
-            color: #4786ff; }
-
-    .day {
-      border-bottom: 1px solid rgba(166, 168, 179, 0.12);
-      border-right: 1px solid rgba(166, 168, 179, 0.12);
-      text-align: right;
-      padding: 0.5625em 1.125em;
-      letter-spacing: 1px;
-      font-size: 0.8em;
-      box-sizing: border-box;
-      color: #5085a5;
-      position: relative;
-      pointer-events: none;
-      z-index: 1; }
-      .day:nth-of-type(7n + 7) {
-        border-right: 0; }
-      .day:nth-of-type(n + 1):nth-of-type(-n + 7) {
-        grid-row: 2; }
-      .day:nth-of-type(n + 8):nth-of-type(-n + 14) {
-        grid-row: 3; }
-      .day:nth-of-type(n + 15):nth-of-type(-n + 21) {
-        grid-row: 4; }
-      .day:nth-of-type(n + 22):nth-of-type(-n + 28) {
-        grid-row: 5; }
-      .day:nth-of-type(n + 29):nth-of-type(-n + 35) {
-        grid-row: 6; }
-      .day:nth-of-type(7n + 1) {
-        grid-column: 1/1; }
-      .day:nth-of-type(7n + 2) {
-        grid-column: 2/2; }
-      .day:nth-of-type(7n + 3) {
-        grid-column: 3/3; }
-      .day:nth-of-type(7n + 4) {
-        grid-column: 4/4; }
-      .day:nth-of-type(7n + 5) {
-        grid-column: 5/5; }
-      .day:nth-of-type(7n + 6) {
-        grid-column: 6/6; }
-      .day:nth-of-type(7n + 7) {
-        grid-column: 7/7; }
-      .day-name {
-        font-size: 0.75em;
-        text-transform: uppercase;
-        color: #31708e;
-        text-align: center;
-        border-bottom: 1px solid rgba(166, 168, 179, 0.12);
-        line-height: 1.5625em;
-        font-weight: 500; }
-      .day--disabled {
-        color: rgba(152, 160, 166, 0.6);
-        background-color: #ffffff;
-        background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f9f9fa' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
-        cursor: not-allowed; }
-      .day--today {
-        background-color: beige; }
-      .day--holiday {
-        background-color: rgba(0, 128, 0, 0.2); }
-
-    .task {
-      border-left-width: 3px;
-      padding: 0.25em 0.375em;
-      margin: 0.3125em;
-      border-left-style: solid;
-      font-size: 0.4375em;
-      position: relative; }
-      .task--warning {
-        border-left-color: #fdb44d;
-        grid-column: 4 / span 3;
-        grid-row: 3;
-        background: #fef0db;
-        align-self: center;
-        color: #fc9b10;
-        margin-top: -5px; }
-      .task--danger {
-        border-left-color: #fa607e;
-        grid-column: 2 / span 3;
-        grid-row: 3;
-        margin-top: 15px;
-        background: rgba(253, 197, 208, 0.7);
-        align-self: end;
-        color: #f8254e; }
-      .task--info {
-        border-left-color: #4786ff;
-        grid-column: 6 / span 2;
-        grid-row: 5;
-        margin-top: 15px;
-        background: rgba(218, 231, 255, 0.7);
-        align-self: end;
-        color: #0a5eff; }
-      .task--primary {
-        background: #4786ff;
-        border: 0;
-        border-radius: 4px;
-        grid-column: 3 / span 3;
-        grid-row: 4;
-        align-self: end;
-        color: #fff;
-        box-shadow: 0 10px 14px rgba(71, 134, 255, 0.4); }
-      .task__detail {
-        position: absolute;
-        left: 0;
-        top: calc(100% + 10px);
-        background: #fff;
-        border: 1px solid rgba(166, 168, 179, 0.2);
-        color: #000;
-        padding: 20px;
-        box-sizing: border-box;
-        border-radius: 4px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        z-index: 2; }
-        .task__detail:after, .task__detail:before {
-          bottom: 100%;
-          left: 30%;
-          border: solid transparent;
-          content: " ";
-          height: 0;
-          width: 0;
-          position: absolute;
-          pointer-events: none; }
-        .task__detail:before {
-          border-bottom-color: rgba(166, 168, 179, 0.2);
-          border-width: 8px;
-          margin-left: -8px; }
-        .task__detail:after {
-          border-bottom-color: #fff;
-          border-width: 0.1875em;
-          margin-left: -0.1875em; }
-        .task__detail h2 {
-          font-size: 0.469em;
-          margin: 0;
-          color: #51565d; }
-        .task__detail p {
-          margin-top: 0.125em;
-          font-size: 0.375em;
-          margin-bottom: 0;
-          font-weight: 500;
-          color: rgba(81, 86, 93, 0.7); } } }
-.rule-1 {
-  value: 3.125em; }
-
-/*--------------------------------------------------------------
-Website Color Theme
---------------------------------------------------------------*/
-:root {
-  --brown: #844D36;
-  --dk-blue-gray: #474853;
-  --blue: #86B3D1;
-  --mauve: #AAA0A0;
-  --dk-tan: #8E8268;
-  --white: #ffffff; }
 
 /*--------------------------------------------------------------
 Accessibility
@@ -411,14 +200,28 @@ Accessibility
 Typography
 --------------------------------------------------------------*/
 body {
-  background-color: #8fc1e3;
+  background-color: #DBDED5;
   font-size: 1.125em;
   margin: 0; }
 
+ol, ul {
+  list-style: none; }
+
+.socialMediaStyle {
+  width: 15.625em;
+  margin-top: 0.313em;
+  margin-right: 1.250em; }
+
+.socialMediaStyle ul li a {
+  outline: none;
+  border: none;
+  float: left;
+  padding-left: 0.313em; }
+
 /* Trivia Game */
 .displayStatus {
-  background-color: #31708e;
-  color: #f7f9fb;
+  background-color: #3C413D;
+  color: #FFFFFF;
   padding: 1.250em;
   margin: 1.250em auto; }
   .displayStatus h4 {
@@ -434,15 +237,15 @@ body {
     height: 1.420em;
     border: none;
     transition: background-color 0.5s ease;
-    background-color: #f7f9fb;
+    background-color: #FFFFFF;
     font-family: 'Rubik', sans-serif;
     font-size: 1em;
-    color: #31708e;
+    color: #3C413D;
     text-align: center;
     text-decoration: none;
     padding: 0.938em 1.875em; }
     .displayStatus #customBtn:hover {
-      background-color: #d5e0ea; }
+      background-color: #e6e6e6; }
 
 #mainGame {
   margin-top: 1.250em; }
@@ -473,17 +276,17 @@ body {
   margin: 0; }
 
 #mainGame #triviaSection #questionBox {
-  background-color: #31708e;
+  background-color: #3C413D;
   padding: 0.313em 0.625em; }
 
 #mainGame #triviaSection #questionBox h2 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.4em;
   line-height: 1.5;
-  color: #f7f9fb; }
+  color: #FFFFFF; }
 
 #mainGame #triviaSection #buttonContainer {
-  background-color: #5085a5;
+  background-color: #38603D;
   margin-bottom: 0.625em; }
 
 #mainGame #triviaSection #buttonContainer .answerButton {
@@ -492,10 +295,10 @@ body {
   height: 3.125em;
   outline: none;
   cursor: pointer;
-  background-color: #5085a5;
+  background-color: #38603D;
   font-family: 'Rubik', sans-serif;
   font-size: 1.2em;
-  color: #f7f9fb;
+  color: #FFFFFF;
   text-transform: capitalize;
   text-align: left;
   padding-left: 0.625em;
@@ -513,7 +316,7 @@ body {
   left: 0.313em;
   font-family: 'Rubik', sans-serif;
   font-size: 1.0em;
-  color: #f7f9fb;
+  color: #FFFFFF;
   line-height: 0.938em; }
 
 #mainGame #playerStats #percent {
@@ -522,7 +325,7 @@ body {
   right: 3.125em;
   font-family: 'Rubik', sans-serif;
   font-size: 1.0em;
-  color: #f7f9fb;
+  color: #FFFFFF;
   line-height: 0.938em; }
 
 #mainGame #nextStyle {
@@ -544,13 +347,13 @@ body {
   height: 2.500em;
   cursor: pointer;
   transition: background-color 0.5s ease;
-  background-color: #81927d;
+  background-color: #c3d3cf;
   font-family: 'Rubik', sans-serif;
   font-size: 1.2em;
   color: #fff;
   text-transform: capitalize; }
   #mainGame #nextStyle #next:hover {
-    background-color: #687864; }
+    background-color: #A6BDB7; }
 
 a.qBtn {
   float: right;
@@ -578,8 +381,6 @@ a.qBtn:hover {
 General styling
 --------------------------------------------------------------*/
 .shadow {
-  -moz-box-shadow: inset 0 0 0.313em #000000;
-  -webkit-box-shadow: inset 0 0 0.313em #000000;
   box-shadow: inset 0 0 0.313em #000000; }
 
 .button {
@@ -655,19 +456,24 @@ Header:
 .masthead {
   display: flex;
   justify-content: center;
-  padding: 1.250em;
-  border-bottom: 1px solid #e6e6e6; }
+  padding: 0 1.250em;
+  border-bottom: 1px solid #e6e6e6;
+  background-image: url(../images/img-header-002.jpg);
+  background-repeat: no-repeat;
+  background-position: center; }
   .masthead img {
-    width: 6.250em;
-    height: 6.250em;
-    margin-right: 1.250em; }
+    width: 3.125em;
+    height: 3.125em;
+    margin-top: 6.500em;
+    margin-right: 1em; }
   .masthead h1 {
     font-family: 'Cormorant Garamond', serif;
     font-variant-ligatures: common-ligatures;
     text-rendering: optimizeLegibility;
     text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    color: #fff; }
+    font-size: 1.400em;
+    color: #FFFFFF;
+    margin-top: 5.125em; }
 
 /*--------------------------------------------------------------
 Navigation:
@@ -675,17 +481,16 @@ Navigation:
 .main-nav {
   padding: 1em;
   font-size: 1.1em;
-  color: #f7f9fb;
-  background: #393d38;
-  background: linear-gradient(90deg, rgba(57, 61, 56, 0.9317927855) 0%, rgba(65, 84, 60, 0.9345939059) 32%, #687864 100%);
+  color: #FFFFFF;
+  background-color: #A6BDB7;
   border-radius: 0 0 1.875em 0;
   box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.2), 0 0.375em 1.25em 0 rgba(0, 0, 0, 0.19); }
 
 .trigger {
   display: none;
   padding: .1em .5em;
-  color: #f7f9fb;
-  background-color: #687864;
+  color: #FFFFFF;
+  background-color: #2f2f2f;
   border: none;
   transform: rotate(90deg); }
 
@@ -731,11 +536,9 @@ Navigation:
     font-variant-ligatures: contextual;
     text-rendering: optimizeLegibility;
     text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
     line-height: 0; }
   .display_record h6 {
     font-family: 'Cormorant Garamond', serif;
-    -webkit-font-smoothing: antialiased;
     font-style: italic;
     color: #555;
     font-size: 1.0em;
@@ -745,7 +548,6 @@ Navigation:
     font-variant-ligatures: contextual;
     text-rendering: optimizeLegibility;
     text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
     font-size: 1.2em;
     line-height: 1.5;
     color: #555555; }
@@ -756,19 +558,19 @@ Navigation:
   justify-content: center; }
 
 .pagination .three-dots {
-  color: #31708e;
+  color: #3C413D;
   margin: 0.313em 0.500em; }
 
 .pagination a {
   font-family: 'Rubik', sans-serif;
   font-size: 1.2em;
-  color: #31708e;
+  color: #A6BDB7;
   text-decoration: none;
   padding-left: 0.313em; }
 
 .pagination a.selected {
   font-weight: bolder;
-  color: #687864;
+  color: #FFFFFF;
   padding-left: 0.313em; }
 
 /* Trivia Form CSS */
@@ -778,7 +580,7 @@ Navigation:
   .trivia_form .question_label, .trivia_form .answer_one_label, .trivia_form .answer_two_label,
   .trivia_form .answer_three_label, .trivia_form .answer_four_label, .trivia_form .correct_answer_label {
     width: 100%;
-    background-color: #86B3D1;
+    background-color: #38603D;
     color: #fff;
     text-align: center;
     line-height: 3.125em;
@@ -809,7 +611,7 @@ Navigation:
     outline: none;
     color: #fff;
     border: none;
-    background-color: var(--blue);
+    background-color: #38603D;
     box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
     font-family: 'Rubik', sans-serif;
     font-size: 1.2em;
@@ -817,7 +619,7 @@ Navigation:
     padding: 0.625em 13.1em;
     transition: background-color .5s; }
     .trivia_form .form_button:hover, .trivia_form .form_button:active {
-      background-color: #619cc3; }
+      background-color: #254029; }
 
 /* Create Form  styling */
 .form_classes {
@@ -827,7 +629,7 @@ Navigation:
     width: 100%; }
   .form_classes .heading_label_style {
     width: 100%;
-    background-color: #86B3D1;
+    background-color: #38603D;
     color: #fff;
     text-align: center;
     line-height: 3.125em;
@@ -845,7 +647,7 @@ Navigation:
     padding: 0.313em 0.625em; }
   .form_classes .text_label_style {
     width: 100%;
-    background-color: #86B3D1;
+    background-color: #38603D;
     color: #fff;
     text-align: center;
     line-height: 3.125em;
@@ -869,16 +671,16 @@ Navigation:
     text-decoration: none;
     text-transform: capitalize;
     color: #fff;
-    background-color: var(--blue);
+    background-color: #38603D;
     padding: 0.625em 2.500em;
     transition: background-color .5s; }
     .form_classes .delete_button:hover, .form_classes .delete_button:active {
-      background-color: #619cc3; }
+      background-color: #254029; }
   .form_classes .form_button {
     outline: none;
     color: #fff;
     border: none;
-    background-color: var(--blue);
+    background-color: #38603D;
     box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
     font-family: 'Rubik', sans-serif;
     font-size: 1.2em;
@@ -886,275 +688,22 @@ Navigation:
     padding: 0.625em 13.1em;
     transition: background-color .5s; }
     .form_classes .form_button:hover, .form_classes .form_button:active {
-      background-color: #619cc3; }
+      background-color: #254029; }
   .form_classes .deleteBtn {
     display: flex;
     justify-content: center;
     text-decoration: none;
-    background-color: #86B3D1;
+    background-color: #38603D;
     color: #fff;
     line-height: 3.125em; }
     .form_classes .deleteBtn:hover, .form_classes .deleteBtn:active {
-      background-color: #619cc3; }
+      background-color: #254029; }
 
 form#contact {
-  display: block;
-  width: 100%;
-  max-width: 23.4375em;
-  height: auto;
-  background-color: #f2f2f2;
-  padding: 0.938em 1.000em;
-  margin: 0 auto; }
-  form#contact #message {
-    position: relative;
-    height: 2.500em;
-    padding: 0.125em;
-    margin: 0.125em auto; }
-    form#contact #message h2 {
-      display: none;
-      position: absolute;
-      top: 0;
-      left: 0;
-      font-size: 0.8em;
-      line-height: 2.500em; }
-    form#contact #message a {
-      display: none;
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 1.2em;
-      text-decoration: none;
-      color: #555;
-      border: 1px solid #555;
-      padding: 4px 15px;
-      transition: background-color .5s; }
-  form#contact fieldset {
-    border: none;
-    padding: 0.313em;
-    margin-bottom: 0.313em; }
-  form#contact legend {
-    display: none;
-    font-size: 1.0em;
-    color: #555;
-    padding: 0 0.313em; }
-  form#contact label.labelstyle {
-    clear: left;
-    float: left;
-    display: block;
-    width: 250px;
-    height: 1.500em;
-    font-size: 1.2em;
-    line-height: 1.250em;
-    color: #555;
-    text-transform: capitalize;
-    padding: 0.125em 0; }
-  form#contact input {
-    clear: right;
-    width: 17.50em;
-    height: 2.500em;
-    border: 2px solid #555;
-    outline: none;
-    font-size: 1.0em;
-    color: #555;
-    padding-left: 0.313em;
-    margin-bottom: 0.625em; }
-  form#contact #radio-toolbar {
-    margin: 30px 10px 0px 10px; }
-    form#contact #radio-toolbar input[type="radio"] {
-      opacity: 0;
-      position: fixed;
-      width: 0; }
-    form#contact #radio-toolbar label {
-      display: inline-block;
-      background-color: #f2f2f2;
-      padding: 10px 20px;
-      text-transform: capitalize;
-      font-size: 1em;
-      color: #4C9CF1;
-      border: 2px solid #555;
-      border-radius: 4px; }
-    form#contact #radio-toolbar label:hover label:hover {
-      background-color: #dfd; }
-    form#contact #radio-toolbar input[type="radio"]:focus + label {
-      border: 2px dashed #ccc; }
-    form#contact #radio-toolbar input[type="radio"]:checked + label {
-      background-color: #fff;
-      border-color: #fff;
-      color: #555; }
-  form#contact p {
-    margin: 0 0 1em 0; }
-  form#contact .textareaLabel {
-    clear: both;
-    float: left;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.2em;
-    line-height: 1.5;
-    color: #555;
-    margin-top: 10px; }
-  form#contact textarea {
-    border: 2px solid #555;
-    outline: none;
-    resize: none;
-    width: 100%;
-    max-width: 18.00em;
-    height: 25.000em;
-    color: #555;
-    background-color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.0em;
-    line-height: 1.5;
-    padding: 0.625em 0.313em;
-    margin-bottom: 1.250em; }
-  form#contact input[type=submit] {
-    cursor: pointer;
-    clear: both;
-    border: none;
-    outline: none;
-    float: none;
-    display: block;
-    width: 6.500em;
-    height: 2.500em;
-    background-color: #fff;
-    font-size: 1.2em;
-    text-transform: capitalize;
-    text-decoration: none;
-    color: #555;
-    border: 1px solid #555;
-    padding: 4px 15px;
-    transition: background-color .5s;
-    margin: 0.625em auto; }
-    form#contact input[type=submit]:hover {
-      background-color: rgba(0, 0, 0, 0.3); }
+  background-color: #A6BDB7;
+  padding: 0;
+  margin: 0; }
 
-@media screen and (min-width: 75em) {
-  form#contact {
-    display: block;
-    width: 100%;
-    max-width: 1000px;
-    height: auto;
-    background-color: #f2f2f2;
-    box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
-    padding: 0.938em 1.250em;
-    margin: 1.250em auto; }
-    form#contact #message {
-      position: relative;
-      height: 50px;
-      padding: 10px;
-      margin: 10px auto; }
-      form#contact #message h2 {
-        display: none;
-        position: absolute;
-        top: 0;
-        left: 10px;
-        font-size: 1.2em;
-        line-height: 50px; }
-      form#contact #message a {
-        display: none;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 1.2em;
-        text-decoration: none;
-        color: #555;
-        border: 1px solid #555;
-        padding: 4px 15px;
-        transition: background-color .5s; }
-    form#contact fieldset {
-      border: 0.125em solid #555;
-      padding: 0.938em;
-      margin-bottom: 0.625em; }
-    form#contact legend {
-      display: inline-block;
-      font-size: 1.2em;
-      color: #555;
-      padding: 0 0.313em; }
-    form#contact label.labelstyle {
-      clear: left;
-      float: left;
-      display: block;
-      width: 250px;
-      height: 2.500em;
-      font-size: 1.2em;
-      line-height: 1.250em;
-      color: #555;
-      text-transform: capitalize;
-      padding: 0.125em 0; }
-    form#contact input {
-      clear: right;
-      width: 19.688em;
-      height: 40px;
-      border: 2px solid #555;
-      outline: none;
-      font-size: 1.0em;
-      color: #555;
-      padding-left: 0.313em;
-      margin-bottom: 0.625em; }
-    form#contact #radio-toolbar {
-      margin: 30px 10px 0px 10px; }
-      form#contact #radio-toolbar input[type="radio"] {
-        opacity: 0;
-        position: fixed;
-        width: 0; }
-      form#contact #radio-toolbar label {
-        display: inline-block;
-        background-color: #f2f2f2;
-        padding: 10px 20px;
-        text-transform: capitalize;
-        font-size: 1em;
-        color: #4C9CF1;
-        border: 2px solid #555;
-        border-radius: 4px; }
-      form#contact #radio-toolbar label:hover label:hover {
-        background-color: #dfd; }
-      form#contact #radio-toolbar input[type="radio"]:focus + label {
-        border: 2px dashed #ccc; }
-      form#contact #radio-toolbar input[type="radio"]:checked + label {
-        background-color: #fff;
-        border-color: #fff;
-        color: #555; }
-    form#contact p {
-      margin: 0 0 1em 0; }
-    form#contact .textareaLabel {
-      clear: both;
-      float: left;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 1.2em;
-      line-height: 1.5;
-      color: #555;
-      margin-top: 10px; }
-    form#contact textarea {
-      border: 2px solid #555;
-      outline: none;
-      resize: none;
-      width: 100%;
-      max-width: 100%;
-      height: 25.000em;
-      color: #555;
-      background-color: #fff;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 1.0em;
-      line-height: 1.5;
-      padding: 0.625em 0.313em;
-      margin-bottom: 1.250em; }
-    form#contact input[type=submit] {
-      cursor: pointer;
-      clear: both;
-      border: none;
-      outline: none;
-      float: right;
-      display: block;
-      width: 6.500em;
-      height: 2.500em;
-      background-color: #fff;
-      font-size: 1.2em;
-      text-transform: capitalize;
-      text-decoration: none;
-      color: #555;
-      border: 1px solid #555;
-      padding: 4px 15px;
-      transition: background-color .5s; }
-      form#contact input[type=submit]:hover {
-        background-color: rgba(0, 0, 0, 0.3); } }
 /* Sidebar CSS */
 .twin {
   padding: 0.313em;
@@ -1166,11 +715,11 @@ form#contact {
   list-style-type: none; }
 
 .card {
-  background-color: #31708e;
+  background-color: #3C413D;
   margin-bottom: 1em; }
 
 .card a {
-  color: #f7f9fb;
+  color: #FFFFFF;
   text-decoration: none;
   border: 1px transparent;
   transition: all .2s; }
@@ -1199,14 +748,14 @@ form#contact {
 
 /* Footer CSS */
 .colophon {
-  background-color: #687864;
+  background-color: #A6BDB7;
   text-align: center;
   margin-top: 6.250em;
   border-top: 1px solid #e6e6e6;
   padding: 0.313em; }
   .colophon p {
     font-family: 'Rubik', sans-serif;
-    color: #f7f9fb; }
+    color: #FFFFFF; }
 
 /*--------------------------------------------------------------
 CSS Grid layout for wider screens, when browser supports grid:
@@ -1355,7 +904,7 @@ CSS Grid layout for wider screens, when browser supports grid:
       justify-content: center;
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.8em;
-      color: #555; }
+      color: #FFFFFF; }
     #remote #eNext {
       grid-area: right;
       display: flex;
