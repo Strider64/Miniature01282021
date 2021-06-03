@@ -9,12 +9,13 @@ use Miniature\Login;
 
 Login::is_login($_SESSION['last_login']);
 
-define('IMAGE_WIDTH', 2048);
-define('IMAGE_HEIGHT', 1365);
+const IMAGE_WIDTH = 2048;
+const IMAGE_HEIGHT = 1365;
 $save_result = false;
 
 if (isset($_POST['submit'], $_FILES['image'])) {
     $data = $_POST['cms'];
+
     $errors = array();
     $exif_data = [];
     $file_name = $_FILES['image']['name']; // Temporary file for thumbnails directory:

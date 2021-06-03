@@ -159,7 +159,7 @@ const contact = () => {
     };
 
     const saveRequest = (sendUrl, succeed, fail) => {
-        //const data = {username: 'example'};
+
         fetch(sendUrl, {
             method: 'POST', // or 'PUT'
             body: JSON.stringify(sendEmail)

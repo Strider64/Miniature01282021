@@ -59,6 +59,15 @@ class CMS extends DatabaseObject
 
     }
 
+    protected static function filterwords($text){
+        $filterWords = array('fuck', 'shit', 'ass', 'asshole', 'motherfucker');
+        $filterCount = sizeof($filterWords);
+        for ($i = 0; $i < $filterCount; $i++) {
+            $text = preg_replace_callback('/\b' . $filterWords[$i] . '\b/i', function($matches){return str_repeat('*', strlen($matches[0]));}, $text);
+        }
+        return $text;
+    }
+
     /*
      * Put the date from 00-00-0000 00:00:00 that is stored in the MySQL
      * database table to a more presentable format such as January 1, 2021.
@@ -90,6 +99,7 @@ class CMS extends DatabaseObject
         // Caution: allows private/protected properties to be set
         foreach ($args as $k => $v) {
             if (property_exists($this, $k)) {
+                $v = static::filterwords($v);
                 $this->$k = $v;
                 static::$params[$k] = $v;
                 static::$objects[] = $v;

@@ -24,6 +24,7 @@ $date_updated = $today->format("Y-m-d H:i:s");
  */
 if (isset($_POST['submit'])) {
     $cms = new CMS($_POST['cms']);
+
     $result = $cms->update();
     $id = $_POST['cms']['id'];
 } elseif ($id && is_int($id)) {
