@@ -14,6 +14,14 @@ if (isset($_POST['submit'])) {
 }
 
 Login::is_login($_SESSION['last_login']);
+
+/*
+ * Only Sysop privileges are allowed.
+ */
+if (!Login::securityCheck()) {
+    header("Location: index.php");
+    exit();
+}
 ?>
 <!doctype html>
 <html lang="en">

@@ -7,6 +7,13 @@ use Miniature\Login;
 
 Login::is_login($_SESSION['last_login']);
 
+/*
+ * Only Sysop privileges are allowed.
+ */
+if (!Login::securityCheck()) {
+    header("Location: index.php");
+    exit();
+}
 $result = false;
 $id = (int)htmlspecialchars($_GET['id'] ?? null);
 try {

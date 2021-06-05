@@ -5,6 +5,14 @@ require_once "../vendor/autoload.php";
 use Miniature\Login;
 
 Login::is_login($_SESSION['last_login']);
+
+/*
+ * Only Sysop privileges are allowed.
+ */
+if (!Login::securityCheck()) {
+    header("Location: index.php");
+    exit();
+}
 ?>
 <!doctype html>
 <html lang="en">

@@ -9,6 +9,13 @@ use Miniature\Login;
 
 Login::is_login($_SESSION['last_login']);
 
+/*
+ * Only Sysop privileges are allowed.
+ */
+if (!Login::securityCheck()) {
+    header("Location: index.php");
+    exit();
+}
 const IMAGE_WIDTH = 2048;
 const IMAGE_HEIGHT = 1365;
 $save_result = false;

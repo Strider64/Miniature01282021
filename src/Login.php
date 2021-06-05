@@ -16,6 +16,7 @@ class Login extends DatabaseObject
     public $last_name;
     public $email;
     public $username = [];
+    protected $security;
     static public $error = [];
     protected string $password;
     static public $last_login;
@@ -39,6 +40,18 @@ class Login extends DatabaseObject
         return $user['first_name'] . " " . $user['last_name'];
     }
 
+    public static function securityCheck(): bool
+    {
+        static::$searchItem = "id";
+        static::$searchValue = $_SESSION['id'];
+        $sql = "SELECT security FROM " . static::$table . " WHERE id=:id LIMIT 1";
+        $result = static::fetch_by_column_name($sql);
+        if ($result['security'] === 'sysop') {
+            return true;
+        }
+
+        return false;
+    }
 
 
     public function login(): void
