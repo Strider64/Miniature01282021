@@ -13,7 +13,7 @@ const IMAGE_WIDTH = 2048;
 const IMAGE_HEIGHT = 1365;
 $save_result = false;
 
-if (isset($_POST['submit'], $_FILES['image'])) {
+if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST['submit'], $_FILES['image'])) {
     $data = $_POST['cms'];
 
     $errors = array();
@@ -87,7 +87,7 @@ if (isset($_POST['submit'], $_FILES['image'])) {
      */
     $new_file_name = $dir_path . 'img-gallery-' . time() . '-600x400.' . $file_ext;
 
-    move_uploaded_file($file_tmp,"../" . $new_file_name);
+    move_uploaded_file($file_tmp, "../" . $new_file_name);
 
     $resize = new Resize("../" . $new_file_name);
     $resize->resizeImage(600, 400, 'landscape');
@@ -96,7 +96,6 @@ if (isset($_POST['submit'], $_FILES['image'])) {
      * Set path information for database table.
      */
     $data['image_path'] = $new_file_name;
-
 
 
     /*
@@ -120,7 +119,7 @@ if (isset($_POST['submit'], $_FILES['image'])) {
     } else {
         return $errors;
     }
-} // Submit to database table and images to the directories:
+}
 
 ?>
 <!doctype html>

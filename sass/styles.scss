@@ -86,11 +86,6 @@ h2.main_heading {
   text-align: center;
 }
 
-
-
-
-
-
 /* Smartphone CSS */
 .masthead {
   display: none;
@@ -286,6 +281,9 @@ article.cms {
 .sidebar {
   background-color: $color-medium-01;
   padding: 0.625em;
+  .register {
+    text-decoration: none;
+  }
 }
 
 .external_links {
@@ -579,7 +577,7 @@ form {
     outline: none;
     color: #fff;
     border: none;
-    background-color: #38603D;
+    background-color: #4CAF50;
     box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
     width: 6.25em;
     font-family: 'Rubik', sans-serif;
@@ -587,10 +585,11 @@ form {
     text-transform: capitalize;
     text-decoration: none;
     padding: 0.313em;
+    margin: 0.625em;
     transition: background-color .5s;
 
     &:hover, &:active {
-      background-color: #254029;
+      background-color: darken(#45a049, 15%);
     }
   }
 
@@ -742,6 +741,66 @@ form {
     }
     .masthead {
       background-image: url(../images/img-header-001-1024.jpg);
+    }
+
+    .registerStyle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+              "email email"
+              "first last"
+              "screenName telephone"
+              "password1 password2"
+              "birthday submitForm";
+      justify-content: center;
+    }
+
+    .first {
+      grid-area: first;
+      margin: 0 0.625em;
+    }
+
+    .last {
+      grid-area: last;
+      margin: 0 0.625em;
+    }
+
+    .screenName {
+      grid-area: screenName;
+      margin: 0 0.625em;
+    }
+
+    .telephone {
+      grid-area: telephone;
+      margin: 0 0.625em;
+    }
+
+    .emailStyle {
+      grid-area: email;
+      margin: 0 0.625em;
+    }
+
+    .password1 {
+      grid-area: password1;
+      margin: 0.3125em 0.625em;
+    }
+
+    .password2 {
+      grid-area: password2;
+      margin: 0.3125em 0.625em;
+    }
+
+    .birthday {
+      grid-area: birthday;
+      text-transform: capitalize;
+      margin: 0.3125em 0.625em;
+    }
+
+    .submitForm {
+      grid-area: submitForm;
+      button {
+        float: right;
+      }
     }
 
   }

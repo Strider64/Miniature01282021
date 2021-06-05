@@ -60,10 +60,9 @@ if (isset($_POST['submit'])) {
 </div>
 
 <div class="sidebar">
-
+    <a class="register" href="register.php">Need to register?</a>
 </div>
 <main id="content" class="main">
-
     <form class="login" method="post" action="login.php">
         <label class="text_username" for="username">Username</label>
         <input id="username" class="io_username" type="text" name="user[username]" value="" required>

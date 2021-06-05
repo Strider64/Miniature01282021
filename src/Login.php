@@ -6,6 +6,7 @@ namespace Miniature;
 
 use JetBrains\PhpStorm\NoReturn;
 
+
 class Login extends DatabaseObject
 {
     protected static string $table = "admins";
@@ -37,6 +38,8 @@ class Login extends DatabaseObject
 
         return $user['first_name'] . " " . $user['last_name'];
     }
+
+
 
     public function login(): void
     {

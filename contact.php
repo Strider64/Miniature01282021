@@ -26,7 +26,6 @@ require_once "vendor/autoload.php";
     </div>
     <form id="contact" name="contact" action="contact.php" method="post" autocomplete="on">
 
-
         <input id="token" type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
         <label class="labelstyle" for="name" accesskey="U">Contact Name</label>
         <input name="name" type="text" id="name" tabindex="1" autofocus required="required"/>
@@ -55,8 +54,8 @@ require_once "vendor/autoload.php";
         <div id="recaptcha" class="g-recaptcha" data-sitekey="6LdXNpAUAAAAAMwtslAEqbi9CU3sviuv2imYbQfe"
              data-callback="correctCaptcha"></div>
 
-        <input id="submitForm" type="submit" name="submit" value="Submit" tabindex="7" data-response="">
 
+        <button id="submitForm" type="submit" name="submit" value="Submit" tabindex="7" data-response="">Submit</button>
     </form>
 </main>
 
