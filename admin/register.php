@@ -105,7 +105,8 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST['submit'])) {
 
         <div class="telephone">
             <label for="phone">Phone</label>
-            <input id="phone" type="text" name="user[phone]" value="" tabindex="5">
+            <input id="phone" type="tel" name="user[phone]" value="" placeholder="555-555-5555" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" tabindex="5">
+
         </div>
 
         <div class="emailStyle">

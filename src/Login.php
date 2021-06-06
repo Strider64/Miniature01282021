@@ -30,6 +30,21 @@ class Login extends DatabaseObject
         $this->password = htmlspecialchars($args['hashed_password']);
     }
 
+    public static function activate($username, $hashed_password, $validation, $answer) {
+
+        static::$searchItem = 'username';
+        static::$searchValue = htmlspecialchars($username);
+        $sql = "SELECT id, security, hashed_password, validation FROM " . static::$table . " WHERE username =:username LIMIT 1";
+        $result = static::fetch_by_column_name($sql);
+        if ((password_verify($hashed_password, $result['hashed_password']) && ($result['validation'] === $validation)) && $answer == "Kern's") {
+            unset($result['hashed_password']);
+            $result['security'] = 'member';
+            $result['validation'] = 'validated';
+
+        }
+        return $result;
+    }
+
     public static function full_name(): string
     {
         static::$searchItem = 'id';
@@ -46,11 +61,7 @@ class Login extends DatabaseObject
         static::$searchValue = $_SESSION['id'];
         $sql = "SELECT security FROM " . static::$table . " WHERE id=:id LIMIT 1";
         $result = static::fetch_by_column_name($sql);
-        if ($result['security'] === 'sysop') {
-            return true;
-        }
-
-        return false;
+        return $result['security'] === 'sysop';
     }
 
 

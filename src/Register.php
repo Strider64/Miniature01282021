@@ -9,6 +9,7 @@ class Register extends DatabaseObject
     protected static string $table = "admins"; // Table Name:
     static protected array $db_columns = ['first_name', 'last_name', 'email', 'username', 'phone', 'security', 'hashed_password', 'validation', 'new_date', 'update_date', 'birthday'];
 
+    public $id;
     public $first_name;
     public $last_name;
     public $email;
@@ -39,21 +40,6 @@ class Register extends DatabaseObject
             }
         }
     } // End of construct method:
-
-
-
-    public function activate($username, $hashed_password, $validation) {
-        static::$searchItem = 'username';
-        static::$searchValue = htmlspecialchars($username);
-        $sql = "SELECT id, security, hashed_password, validation FROM " . static::$table . " WHERE username =:username LIMIT 1";
-        $result = static::fetch_by_column_name($sql);
-        if ($result && (password_verify($hashed_password, $result['hashed_password']) && $result['validation'] === $validation)) {
-            $result['security'] = 'member';
-            $result['validation'] = 'validated';
-            return $result;
-
-        }
-    }
 
 
 }
