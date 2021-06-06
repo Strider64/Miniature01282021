@@ -30,7 +30,6 @@ class Register extends DatabaseObject
         //die();
 
         $args['hashed_password'] = password_hash($args['hashed_password'], PASSWORD_DEFAULT);
-        $args['validation'] = $this->validation(20);
         // Caution: allows private/protected properties to be set
         foreach ($args as $k => $v) {
             if (property_exists($this, $k)) {
@@ -41,75 +40,20 @@ class Register extends DatabaseObject
         }
     } // End of construct method:
 
-    protected function validation($length = 15, $characters = true, $numbers = true, $case_sensitive = true, $hash = false ): string
-    {
 
-        $password = '';
 
-        if($characters)
-        {
-            $charLength = $length;
-            if($numbers) {
-                $charLength -= 2;
-            }
-            if($case_sensitive) {
-                $charLength -= 2;
-            }
-            if($hash) {
-                $charLength -= 2;
-            }
-            $chars = "abcdefghijklmnopqrstuvwxyz";
-            $password.= substr( str_shuffle( $chars ), 0, $charLength );
+    public function activate($username, $hashed_password, $validation) {
+        static::$searchItem = 'username';
+        static::$searchValue = htmlspecialchars($username);
+        $sql = "SELECT id, security, hashed_password, validation FROM " . static::$table . " WHERE username =:username LIMIT 1";
+        $result = static::fetch_by_column_name($sql);
+        if ($result && (password_verify($hashed_password, $result['hashed_password']) && $result['validation'] === $validation)) {
+            $result['security'] = 'member';
+            $result['validation'] = 'validated';
+            return $result;
+
         }
-
-        if($numbers)
-        {
-            $numbersLength = $length;
-            if($characters) {
-                $numbersLength -= 2;
-            }
-            if($case_sensitive) {
-                $numbersLength -= 2;
-            }
-            if($hash) {
-                $numbersLength -= 2;
-            }
-            $chars = "0123456789";
-            $password.= substr( str_shuffle( $chars ), 0, $numbersLength );
-        }
-
-        if($case_sensitive)
-        {
-            $UpperCaseLength = $length;
-            if($characters) {
-                $UpperCaseLength -= 2;
-            }
-            if($numbers) {
-                $UpperCaseLength -= 2;
-            }
-            if($hash) {
-                $UpperCaseLength -= 2;
-            }
-            $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            $password.= substr( str_shuffle( $chars ), 0, $UpperCaseLength );
-        }
-
-        if($hash)
-        {
-            $hashLength = $length;
-            if($characters) {
-                $hashLength -= 2;
-            }
-            if($numbers) {
-                $hashLength -= 2;
-            }
-            if($case_sensitive) {
-                $hashLength -= 2;
-            }
-            $chars = "!@#$%^&*()_-=+;:,.?";
-            $password.= substr( str_shuffle( $chars ), 0, $hashLength );
-        }
-
-        return str_shuffle( $password );
     }
+
+
 }

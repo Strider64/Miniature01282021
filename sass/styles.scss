@@ -646,6 +646,13 @@ form {
 
     .info {
       grid-area: info;
+      .register {
+        font-weight: 400;
+        color: darken(#38603D, 35%);
+        &:hover {
+          color: #38603D;
+        }
+      }
     }
 
     .external_links {

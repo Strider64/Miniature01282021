@@ -670,6 +670,11 @@ form {
 
     .info {
       grid-area: info; }
+      .info .register {
+        font-weight: 400;
+        color: black; }
+        .info .register:hover {
+          color: #38603D; }
 
     .external_links {
       grid-area: external;
