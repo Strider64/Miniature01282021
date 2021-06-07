@@ -21,7 +21,8 @@ class Login extends DatabaseObject
     protected string $password;
     static public $last_login;
 
-    public const MAX_LOGIN_AGE = 60*60*24*7; // 7 days:
+
+    public const MAX_LOGIN_AGE = 60 * 60 * 24 * 7; // 7 days:
 
     public function __construct($args = [])
     {
@@ -30,19 +31,29 @@ class Login extends DatabaseObject
         $this->password = htmlspecialchars($args['hashed_password']);
     }
 
-    public static function activate($username, $hashed_password, $validation, $answer) {
+    public static function activate($username, $hashed_password, $validation, $answer): bool
+    {
 
         static::$searchItem = 'username';
         static::$searchValue = htmlspecialchars($username);
         $sql = "SELECT id, security, hashed_password, validation FROM " . static::$table . " WHERE username =:username LIMIT 1";
         $result = static::fetch_by_column_name($sql);
-        if ((password_verify($hashed_password, $result['hashed_password']) && ($result['validation'] === $validation)) && $answer == "Kern's") {
-            unset($result['hashed_password']);
-            $result['security'] = 'member';
-            $result['validation'] = 'validated';
+        if (password_verify($hashed_password, $result['hashed_password'])) {
 
+            unset($result['hashed_password']);
+            /*
+             * Update Security Level to next level
+             * which is member status.
+             */
+            if ($result['validation'] === $validation && $answer === "Kern's") {
+                $sql = 'UPDATE admins SET security=:security, validation=:validation WHERE id=:id';
+                Database::pdo()->prepare($sql)->execute(['security' => 'member', 'validation' => 'validate', 'id' => $result['id']]);
+                return true;
+            }
         }
-        return $result;
+
+        return false;
+
     }
 
     public static function full_name(): string
@@ -87,7 +98,7 @@ class Login extends DatabaseObject
 
     public static function is_login($last_login): void
     {
-        if(!isset($last_login) || ($last_login + self::MAX_LOGIN_AGE) < time()) {
+        if (!isset($last_login) || ($last_login + self::MAX_LOGIN_AGE) < time()) {
             header("Location: login.php");
             exit();
         }

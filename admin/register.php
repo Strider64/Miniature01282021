@@ -30,14 +30,18 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST['submit'])) {
         '</body>' .
         '</html>';
 
-    $send->verificationEmail($data);
+
 
     $register = new Register($_POST['user']);
     $result = $register->create();
     if ($result) {
+        $send->verificationEmail($data);
         header("Location: success.php");
         exit();
     }
+
+    header("Location: register.php");
+    exit();
 }
 
 ?>

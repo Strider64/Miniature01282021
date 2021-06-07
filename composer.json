@@ -20,7 +20,8 @@
     "ext-readline": "*",
     "ext-exif": "*",
     "ext-gd": "*",
-    "ext-curl": "*"
+    "ext-curl": "*",
+    "ext-mysql_xdevapi": "*"
   }
   ,
   "require-dev": {

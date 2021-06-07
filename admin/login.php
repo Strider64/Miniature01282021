@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=yes, initial-scale=1.0">
-    <title>Contact Form</title>
+    <title>Login Page</title>
     <link rel="stylesheet" media="all" href="../assets/css/styles.css">
 </head>
 <body class="site">

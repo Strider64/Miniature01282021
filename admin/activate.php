@@ -19,14 +19,14 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST['submit'])) {
     $validation = $_POST['user']['validation'];
     $answer = $_POST['user']['answer'];
 
-    $data = LOGIN::activate($username, $hashed_password, $validation, $answer);
-    $changeStatus = new Register($data);
-    $result = $changeStatus->update();
+    $result = LOGIN::activate($username, $hashed_password, $validation, $answer);
 
     if ($result) {
         header('Location: login.php');
         exit();
     }
+
+
 }
 
 ?>
