@@ -29,8 +29,13 @@
         }
     }); // End of email Event Listener
 
-    checkPassword2.addEventListener('change', () => {
-
+    checkPassword2.addEventListener('input', () => {
+        //console.log(checkPassword2.value);
+       if (checkPassword2.value === checkPassword1.value) {
+           submitBtn.style.display = "inline-block";
+       } else {
+           submitBtn.style.display = "none";
+       }
     });
     /* Success function utilizing FETCH username */
     const sendUISuccess = function (result) {
