@@ -103,18 +103,18 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST['submit'])) {
         </div>
 
         <div class="screenName">
-            <label class="text_username" for="username">Username</label>
+            <label class="text_username" for="username">Username <span class="error"> is unavailable!</span> </label>
             <input id="username" class="io_username" type="text" name="user[username]" value="" tabindex="4" required>
         </div>
 
         <div class="telephone">
             <label for="phone">Phone</label>
-            <input id="phone" type="tel" name="user[phone]" value="" placeholder="555-555-5555" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" tabindex="5">
+            <input id="phone" type="tel" name="user[phone]" value="" placeholder="Example : 555-555-5555 optional" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" tabindex="5">
 
         </div>
 
         <div class="emailStyle">
-            <label for="email">Email</label>
+            <label class="emailLabel" for="email">Email <span class="emailError"> is invalid</span> </label>
             <input id="email" type="email" name="user[email]" value="" tabindex="1" autofocus required>
         </div>
 
@@ -122,7 +122,7 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST['submit'])) {
             <label for="passwordBox">Password</label>
             <input class="passwordBox1" id="passwordBox" type="password" name="user[hashed_password]" value=""
                    tabindex="6" required>
-            <label for="passwordVisibility">Show Passwords</label>
+            <label for="passwordVisibility">Show Passwords (private computer)</label>
             <input class="passwordBtn1" id="passwordVisibility" type="checkbox" tabindex="7">
         </div>
 
@@ -139,7 +139,7 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST['submit'])) {
 
 
         <div class="submitForm">
-            <button id="submitForm" type="submit" name="submit" value="enter" tabindex="10">Submit</button>
+            <button class="submitBtn" id="submitForm" type="submit" name="submit" value="enter" tabindex="10">Submit</button>
         </div>
 
 
@@ -170,6 +170,7 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST['submit'])) {
     document.querySelector(".passwordBtn1").addEventListener('click', passwordVisibility, false);
 
 </script>
+<script src="/assets/js/validation.js"></script>
 
 </body>
 </html>

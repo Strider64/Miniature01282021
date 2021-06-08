@@ -31,31 +31,6 @@ class Login extends DatabaseObject
         $this->password = htmlspecialchars($args['hashed_password']);
     }
 
-    public static function activate($username, $hashed_password, $validation, $answer): bool
-    {
-
-        static::$searchItem = 'username';
-        static::$searchValue = htmlspecialchars($username);
-        $sql = "SELECT id, security, hashed_password, validation FROM " . static::$table . " WHERE username =:username LIMIT 1";
-        $result = static::fetch_by_column_name($sql);
-        if (password_verify($hashed_password, $result['hashed_password'])) {
-
-            unset($result['hashed_password']);
-            /*
-             * Update Security Level to next level
-             * which is member status.
-             */
-            if ($result['validation'] === $validation && $answer === "Kern's") {
-                $sql = 'UPDATE admins SET security=:security, validation=:validation WHERE id=:id';
-                Database::pdo()->prepare($sql)->execute(['security' => 'member', 'validation' => 'validate', 'id' => $result['id']]);
-                return true;
-            }
-        }
-
-        return false;
-
-    }
-
     public static function full_name(): string
     {
         static::$searchItem = 'id';

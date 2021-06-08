@@ -2,11 +2,8 @@
 require_once "../assets/config/config.php";
 require_once "../vendor/autoload.php";
 
-use Miniature\Login;
+
 use Miniature\Register;
-
-
-$verify = new Login();
 
 if (($_SERVER['REQUEST_METHOD'] === 'GET') && isset($_GET['confirmation'])) {
     $data['validation']  = htmlspecialchars($_GET['confirmation']);
@@ -19,7 +16,7 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST['submit'])) {
     $validation = $_POST['user']['validation'];
     $answer = $_POST['user']['answer'];
 
-    $result = LOGIN::activate($username, $hashed_password, $validation, $answer);
+    $result = Register::activate($username, $hashed_password, $validation, $answer);
 
     if ($result) {
         header('Location: login.php');

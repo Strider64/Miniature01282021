@@ -553,6 +553,17 @@ form {
     resize: vertical;
   }
 
+  .emailLabel {
+    .emailError {
+      display: none;
+    }
+  }
+  .text_username {
+    .error {
+      display: none;
+    }
+  }
+
   textarea {
     resize: none;
     height: 12.50em;

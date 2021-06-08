@@ -601,6 +601,10 @@ form {
     margin-top: 0.375em;
     margin-bottom: 1em;
     resize: vertical; }
+  form .emailLabel .emailError {
+    display: none; }
+  form .text_username .error {
+    display: none; }
   form textarea {
     resize: none;
     height: 12.50em; }
