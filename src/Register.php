@@ -33,7 +33,7 @@ class Register extends DatabaseObject
 
             unset($result['hashed_password']);
             /*
-             * Update Security Level to next level
+             * Update General Level to next level
              * which is member status.
              */
             if ($result['validation'] === $validation && $answer === "Kern's") {

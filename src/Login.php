@@ -3,7 +3,7 @@
 
 namespace Miniature;
 
-
+use Miniature\General;
 use JetBrains\PhpStorm\NoReturn;
 
 

@@ -19,13 +19,14 @@ require_once "vendor/autoload.php";
 
 </header>
 
-<?php include_once "assets/includes/inc.nav.php";?>
+<?php include_once "assets/includes/inc.nav.php"; ?>
 
 <main id="content" class="main">
     <div class="displayStatus">
         <span id="clock"></span>
         <h4 class="displayTitle">Welcome to Photography Trivia</h4>
-        <p class="triviaInfo">Photography Trivia game is written in vanilla javascript and can be easily transported along with the
+        <p class="triviaInfo">Photography Trivia game is written in vanilla javascript and can be easily transported
+            along with the
             HTML/CSS.
             Questions and answers are stored in a database table that is easily accessed through PHP, Ajax and
             Javascript.
@@ -40,43 +41,88 @@ require_once "vendor/autoload.php";
     <div id="quiz" class="displayMessage" data-username="Strider">
         <div class="triviaContainer" data-records=" ">
             <div id="mainGame">
-
+                <div id="current">Question No. <span id="currentQuestion"></span></div>
                 <div id="triviaSection" data-correct="">
                     <div id="questionBox">
                         <h2 id="question">What is the Question?</h2>
                     </div>
                     <div id="buttonContainer"></div>
                 </div>
-                <div id="nextStyle">
-                    <button id="next" class="nextBtn">Next</button>
-                </div>
+
 
                 <div id="headerStyle" data-user="">
-                    <h2><span id="currentQuestion"></span> out of <span id="totalQuestions"></span> questions</h2>
-                </div>
+                    <div class="gauge">
+                        <div class="gauge__body">
+                            <div class="gauge__fill"></div>
+                            <div class="gauge__cover">Battery 100%</div>
+                        </div>
+                    </div>
+                    <p id="score">0 Points</p>
+                    <p id="percent">100% Correct</p>
 
-                <div id="playerStats">
-                    <h2 id="score">Score 0 Points</h2>
-                    <h2 id="percent">100 percent</h2>
+
+
+                    <button id="next" class="nextBtn">Next</button>
                 </div>
 
             </div>
         </div>
+    </div>
+    <div id="finalResult">
+        <h2>Game Over!</h2>
+        <p><span class="username"></span> ended up with <span class="totalScore"></span> points and answered <span
+                    class="answeredRight"></span> right.</p>
     </div>
 </main>
 
 <div class="sidebar">
     <div class="info">
         <h2>Website Information</h2>
-        <p>A responsive website that deals with photography and website development using the latest coding practices.</p>
-        <p>I also have a GitHub repository on website at <a class="repository" href="https://github.com/Strider64/Miniature01282021" title="Github Repository">Miniature Repository</a> that you are free to check out.</p>
+        <p>A responsive website that deals with photography and website development using the latest coding
+            practices.</p>
+        <p>I also have a GitHub repository on website at <a class="repository"
+                                                            href="https://github.com/Strider64/Miniature01282021"
+                                                            title="Github Repository">Miniature Repository</a> that you
+            are free to check out.</p>
     </div>
+    <article class="addTriviaInfo">
+        <table id="scoreboard" class="styled-table">
+            <thead>
+            <tr class="tableTitle">
+                <th colspan="2">High Scores</th>
+            </tr>
+            <tr class="subTitle">
+                <th>Name</th>
+                <th>Points</th>
+            </tr>
+            </thead>
+            <tbody class="anchor">
 
+            </tbody>
+        </table>
+    </article>
 </div>
 
 <footer class="colophon">
     <p>&copy; <?php echo date("Y") ?> The Miniature Photographer</p>
 </footer>
+<script>
+    const gaugeElement = document.querySelector(".gauge");
 
+    function setGaugeValue(gauge, value) {
+        if (value < 0 || value > 1) {
+            return;
+        }
+
+        gauge.querySelector(".gauge__fill").style.transform = `rotate(${
+            value / 2
+        }turn)`;
+        gauge.querySelector(".gauge__cover").textContent = `Battery ${Math.round(
+            value * 100
+        )}%`;
+    }
+
+
+</script>
 </body>
 </html>

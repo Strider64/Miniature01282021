@@ -61,14 +61,17 @@
         answeredRight = 0,
         answeredWrong = 0,
         totalQuestions = 0,
+        shotsRemaining = 3,
+
         choose = d.querySelector('#selectCat'),
         failedLoad = false,
         username = d.querySelector('.displayMessage').getAttribute('data-username'),
+        finalResult =d.querySelector('#finalResult'),
         hs_table = {};
 
-
     let responseAns = {};
-
+    setGaugeValue(gaugeElement, shotsRemaining / 3);
+    finalResult.style.display = "none";
     const buttons = d.querySelectorAll(".answerButton");
     const mainGame = d.querySelector('#mainGame');
     next.style.display = "none";
@@ -82,9 +85,9 @@
         const newClock = d.querySelector('#clock');
 
         const currentQuestion = d.querySelector('#currentQuestion');
-        const totalQ = d.querySelector('#totalQuestions');
-        currentQuestion.textContent = gameIndex + 1;
-        totalQ.textContent = totalQuestions;
+
+        currentQuestion.textContent = String(gameIndex + 1);
+
 
         newClock.style['color'] = '#2e2e2e';
         newClock.textContent = ((seconds < 10) ? `0${seconds}` : seconds);
@@ -93,14 +96,19 @@
                 clearTimeout(timer);
                 newClock.style['color'] = myRed;
                 newClock.textContent = "00";
-
+                if (shotsRemaining < 1) {
+                    shotsRemaining = shotsRemaining - 1;
+                    setGaugeValue(gaugeElement, shotsRemaining / 3);
+                }
                 scoringFcn(userAnswer, correct);
                 //highlightFCN(userAnswer, correct);
                 calcPercent(answeredRight, total);
                 disableListeners();
                 if ((gameIndex + 1) === totalQuestions) {
+
                     next.textContent = 'results';
                 }
+
                 next.style.display = "block";
                 next.addEventListener('click', removeQuiz, false);
             } else {
@@ -162,19 +170,23 @@
     /* Calculate Percent */
     const calcPercent = (correct, total) => {
         let average = (correct / total) * 100;
-        percent.textContent = average.toFixed(0) + " percent";
+        percent.textContent = average.toFixed(0) + "% Correct";
     };
 
     /* Figure out Score */
     const scoringFcn = (userAnswer, correct) => {
+
+
         if (userAnswer === correct) {
             score += points;
             answeredRight++;
-            scoreText.textContent = `Score ${score} Points`;
+            scoreText.textContent = `${score} Points`;
         } else {
             score = score - (points / 2);
+            shotsRemaining = shotsRemaining - 1;
+            setGaugeValue(gaugeElement, shotsRemaining / 3);
             answeredWrong++;
-            scoreText.textContent = `Score ${score} Points`;
+            scoreText.textContent = `${score} Points`;
         }
         total++;
     };
@@ -247,7 +259,7 @@
             next.textContent = 'results';
         }
         checkRequest(checkUrl, checkUISuccess, checkUIError);
-        d.querySelector('#headerStyle').setAttribute('data-user', userAnswer);
+        d.querySelector('#headerStyle').setAttribute('data-user', userAnswer.toString());
     };
 
     /* Remove answers from Screen */
@@ -258,21 +270,107 @@
         }
     };
 
+    /* Clear High Score  & remove HS Table */
+    const removeHighScores = () => {
+        let element = d.querySelector('.anchor');
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+
+    }
+
+    /*
+     * Create and Display High Score Table
+     */
+    const displayHSTable = (info) => {
+        info.forEach((value, index) => {
+            let anchor = d.querySelector('.anchor');
+            let trElement = anchor.appendChild(d.createElement('tr'));
+            if ((index + 1) % 2 === 0) {
+                trElement.className = 'active-row';
+            }
+            let tdPlayer = trElement.appendChild(d.createElement('td'));
+            let tdPoints = trElement.appendChild(d.createElement('td'));
+            tdPlayer.appendChild(d.createTextNode(value.player));
+            tdPoints.appendChild(d.createTextNode(value.score));
+        });
+    }
+
+    /* Save User Data to hs_table */
+    const saveHSTableSuccess = (info) => {
+
+        if (info) {
+            removeHighScores();
+            createHSTable('retrieveHighScore.php', retrieveHSTableUISuccess, retrieveHSTableUIError);
+        }
+
+    };
+
+    /* If Database Table fails to save data in mysql table */
+    const saveHSTableUIError = function (error) {
+        console.log("Database Table did not load", error);
+    };
+
+
+    /* create FETCH request */
+    const saveHSTableRequest = (saveUrl, succeed, fail) => {
+        fetch(saveUrl, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(hs_table)
+        })
+            .then((response) => handleErrors(response))
+            .then((data) => succeed(data))
+            .catch((error) => fail(error));
+    };
+
+    /* retrieve User Data from hs_table */
+    const retrieveHSTableUISuccess = function (info) {
+        displayHSTable(info);
+
+    };
+
+    /* If Database Table fails to save data in mysql table */
+    const retrieveHSTableUIError = function (error) {
+        console.log("Database Table did not load", error);
+    };
+
+    /* Create High Score Data using fetch */
+    const createHSTable = (retrieveUrl, succeed, fail) => {
+        let max = 5; // Maximum Records to Be Displayed
+        let maximum = {};
+        maximum.max_limit = max;
+
+        fetch(retrieveUrl, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(maximum)
+        })
+            .then((response) => handleErrors(response))
+            .then((data) => succeed(data))
+            .catch((error) => fail(error));
+    };
+
+    createHSTable('retrieveHighScore.php', retrieveHSTableUISuccess, retrieveHSTableUIError);
+
+
+    /*
+     * Current Online Score of Player
+     */
     const scoreboard = () => {
-        let totalScore = d.querySelector('.totalScore');
 
         const hideGame = d.querySelector('#quiz');
         hideGame.style.display = "none";
+        finalResult.style.display = "block";
         d.querySelector('#scoreboard').style.display = "table";
-        totalScore.textContent = score;
-        d.querySelector('.username').textContent = username;
-        d.querySelector('.answeredRight').textContent = answeredRight;
-        d.querySelector('.totalQuestions').textContent = totalQuestions;
+        d.querySelector('.totalScore').textContent = score;
+        d.querySelector('.username').textContent = "Strider";
+        d.querySelector('.answeredRight').textContent = answeredRight.toString();
+        //d.querySelector('.totalQuestions').textContent = totalQuestions;
         hs_table.player = username;
         hs_table.score = score;
         hs_table.correct = answeredRight;
         hs_table.totalQuestions = totalQuestions;
         question.textContent = 'Game Over';
+        saveHSTableRequest('hs_table.php', saveHSTableSuccess, saveHSTableUIError);
     }
     /* Remove Question & Answers */
     const removeQuiz = () => {
@@ -281,10 +379,9 @@
         next.removeEventListener('click', removeQuiz, false);
         gameIndex++;
 
-        if (gameIndex < totalQuestions) {
+        if (gameIndex < totalQuestions && shotsRemaining > 0) {
             createQuiz(gameData[gameIndex]); // Recreate the Quiz Display:
         } else {
-
             scoreboard();
         }
     };

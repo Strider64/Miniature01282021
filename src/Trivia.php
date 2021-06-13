@@ -126,4 +126,12 @@ class Trivia extends DatabaseObject
 
     }
 
+    static public function insertHighScores($data) {
+        $query = 'INSERT INTO hs_table( player, score, played, correct, totalQuestions, day_of_year ) VALUES ( :player, :score, NOW(), :correct, :totalQuestions, :day_of_year )';
+        $stmt = Database::pdo()->prepare($query);
+
+        $result = $stmt->execute([':player' => $data['player'], ':score' => $data['score'], ':correct' => $data['correct'], ':totalQuestions' => $data['totalQuestions'], ':day_of_year' => $data['day_of_year']]);
+        return $result;
+    }
+
 }

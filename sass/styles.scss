@@ -31,6 +31,65 @@ p, a, label, textarea {
   font-weight: normal;
 }
 
+/* High Score Table */
+.styled-table {
+  border-collapse: collapse;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr.tableTitle {
+  background-color: #fff;
+}
+
+.styled-table thead tr.tableTitle th {
+  text-align: center;
+}
+
+.styled-table thead tr.subTitle {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: center;
+}
+
+.styled-table th,
+.styled-table td {
+  text-align: left;
+  padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: silver;
+}
+
+.styled-table tbody tr:nth-of-type(odd) {
+  background-color: #fff;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: #00b28d;
+}
+
+#totals h2 {
+  color: #fff;
+}
+
+#totals p {
+  color: #fff;
+  line-height: 0.6;
+}
+
 /* General Styling */
 body {
   background-color: #f1f1f1;
@@ -44,11 +103,13 @@ body {
   background-color: #fff;
   padding: 0.625em;
   margin-bottom: 1.250em;
+
   h2 {
     font-weight: 400;
     font-size: 1.8em;
     color: $color-really-dark-02;
   }
+
   p {
     font-weight: 400;
     color: $color-really-dark-02;
@@ -58,6 +119,7 @@ body {
     text-decoration: none;
     color: #21759b;
     transition: color 0.5s ease;
+
     &:hover {
       color: $color-dark-02;
     }
@@ -93,6 +155,7 @@ h2.main_heading {
   background-repeat: no-repeat;
   height: 12.50em;
   border-bottom: 1px solid hsl(0, 0%, 90%);
+
   .username {
     float: right;
     display: block;
@@ -102,6 +165,7 @@ h2.main_heading {
     text-align: center;
     padding: 0.3125em;
     margin: 0.9375em;
+
     h1 {
       font-family: 'Rubik', sans-serif;
       font-size: 1.2em;
@@ -240,16 +304,19 @@ article.cms {
     background-color: #54905C;
     padding: 0.625em;
     margin-bottom: 1.250em;
+
     img.logo {
       width: 6.250em;
       height: 6.250em;
     }
+
     h2.title, span {
       color: #fff;
     }
 
 
   }
+
   span.author_style {
 
   }
@@ -269,6 +336,7 @@ article.cms {
   #perseverance_image {
 
   }
+
   figcaption {
     font-family: 'Work Sans', sans-serif;
     font-size: 1.0em;
@@ -278,9 +346,11 @@ article.cms {
     padding-top: 0.313em;
   }
 }
+
 .sidebar {
   background-color: $color-medium-01;
   padding: 0.625em;
+
   .register {
     text-decoration: none;
   }
@@ -349,19 +419,97 @@ article.cms {
   clear: both;
 }
 
-#mainGame #headerStyle {
+#headerStyle {
+  display: block;
+  background-color: #fff;
+  padding: 1.250em;
+}
+#score {
+  background-color: #00b28d;
+  padding: 0.625em;
+}
+#percent {
+  background-color: #4CAF50;
+  padding: 0.625em
+}
 
-  h2 {
-    font-size: 1.2em;
-    font-weight: 400;
-    line-height: 0.313em;
-    text-align: end;
-    color: $color-light-01;
-    span {
-      color: $color-really-dark-02;
-    }
+#current {
+  background-color: #63846D;
+  color: #fff;
+  padding: 0.625em;
+}
+
+.gauge {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 250px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.250em;
+  color: #004033;
+}
+
+.gauge__body {
+  width: 100%;
+  height: 0;
+  padding-bottom: 50%;
+  background: #b4c0be;
+  position: relative;
+  border-top-left-radius: 100% 200%;
+  border-top-right-radius: 100% 200%;
+  overflow: hidden;
+}
+
+.gauge__fill {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: inherit;
+  height: 100%;
+  background: #009578;
+  transform-origin: center top;
+  transform: rotate(0.25turn);
+  transition: transform 0.2s ease-out;
+}
+
+.gauge__cover {
+  width: 75%;
+  height: 150%;
+  background: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* Text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 25%;
+  box-sizing: border-box;
+}
+
+#next {
+  float: right;
+  outline: none;
+  color: #fff;
+  border: none;
+  background-color: #4CAF50;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+  width: 6.25em;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.2em;
+  text-transform: capitalize;
+  text-decoration: none;
+  padding: 0.313em;
+  margin: 0.625em 0;
+  transition: background-color .5s;
+
+  &:hover, &:active {
+    background-color: darken(#45a049, 15%);
   }
 }
+
 
 #mainGame #headerStyle h2 #clock {
   opacity: 0;
@@ -501,7 +649,6 @@ a.qBtn:hover {
 }
 
 
-
 #remote {
   display: flex;
   flex-wrap: wrap;
@@ -509,6 +656,7 @@ a.qBtn:hover {
   text-align: center;
   align-items: baseline;
   background-color: $color-really-dark-02;
+
   #ePrev {
     flex: 25%;
     padding: 0.625em;
@@ -516,11 +664,13 @@ a.qBtn:hover {
     text-decoration: none;
 
   }
+
   #status {
     color: #fff;
     padding: 0.625em;
 
   }
+
   #eNext {
     flex: 25%;
     padding: 0.625em;
@@ -542,6 +692,7 @@ form {
   label {
     color: $color-light-01;
   }
+
   input[type=text], input[type=tel], input[type=email], input[type="password"], select, textarea {
     width: 100%;
     padding: 0.750em;
@@ -558,6 +709,7 @@ form {
       display: none;
     }
   }
+
   .text_username {
     .error {
       display: none;
@@ -657,52 +809,20 @@ form {
 
     .info {
       grid-area: info;
+
       .register {
         font-weight: 400;
         color: darken(#38603D, 35%);
+
         &:hover {
           color: #38603D;
         }
       }
     }
 
-    .external_links {
+    .addTriviaInfo {
       grid-area: external;
-      display: grid;
-      grid-template-columns: 12.50em 12.50em;
-      grid-template-rows: 1fr 1fr;
-      gap: 0.625em;
-      grid-template-areas:
-                "flickr facebook"
-                "linkedin css_validation";
-      justify-content: center;
-      justify-items: center;
-      background-color: $color-dark-02;
     }
-
-    .external_links > a, .external_links > p {
-      background-color: $color-dark-01;
-      text-align: center;
-      padding: 0.625em;
-    }
-
-    .flickr {
-      grid-area: flickr;
-
-    }
-
-    .facebook {
-      grid-area: facebook;
-    }
-
-    .linkedin {
-      grid-area: linkedin;
-    }
-
-    .css_validation {
-      grid-area: css_validation;
-    }
-
 
 
     .main {
@@ -816,6 +936,7 @@ form {
 
     .submitForm {
       grid-area: submitForm;
+
       button {
         float: right;
       }

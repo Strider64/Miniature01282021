@@ -16,7 +16,7 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
     $current_page = 1;
 }
 
-$per_page = 1; // Total number of records to be displayed:
+$per_page = 3; // Total number of records to be displayed:
 $total_count = CMS::countAllPage('blog'); // Total Records in the db table:
 
 
