@@ -3,7 +3,6 @@
 
 namespace Miniature;
 
-use Miniature\General;
 use JetBrains\PhpStorm\NoReturn;
 
 
@@ -31,6 +30,13 @@ class Login extends DatabaseObject
         $this->password = htmlspecialchars($args['hashed_password']);
     }
 
+    public static function username() {
+        static::$searchItem = 'id';
+        static::$searchValue = $_SESSION['id'];
+        $sql = "SELECT username FROM " . static::$table . " WHERE id = :id LIMIT 1";
+        $user = static::fetch_by_column_name($sql);
+        return $user['username'];
+    }
     public static function full_name(): string
     {
         static::$searchItem = 'id';
@@ -41,13 +47,13 @@ class Login extends DatabaseObject
         return $user['first_name'] . " " . $user['last_name'];
     }
 
-    public static function securityCheck(): bool
+    public static function securityCheck()
     {
         static::$searchItem = "id";
         static::$searchValue = $_SESSION['id'];
         $sql = "SELECT security FROM " . static::$table . " WHERE id=:id LIMIT 1";
-        $result = static::fetch_by_column_name($sql);
-        return $result['security'] === 'sysop';
+        return static::fetch_by_column_name($sql);
+
     }
 
 
@@ -62,7 +68,7 @@ class Login extends DatabaseObject
             session_regenerate_id(); // prevent session fixation attacks
             static::$last_login = $_SESSION['last_login'] = time();
             $this->id = $_SESSION['id'] = $user['id'];
-            header("Location: index.php");
+            header("Location: ../game.php");
             exit();
         }
 

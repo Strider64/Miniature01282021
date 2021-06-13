@@ -2,6 +2,14 @@
 require_once 'assets/config/config.php';
 require_once "vendor/autoload.php";
 
+use Miniature\Login;
+
+if (isset($_SESSION['id'])) {
+    $username = Login::username();
+} else {
+    $username = "Guest";
+}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -16,7 +24,9 @@ require_once "vendor/autoload.php";
 <body class="site">
 <div id="skip"><a href="#content">Skip to Main Content</a></div>
 <header class="masthead">
-
+    <div class="username">
+        <h1><?= $username ?></h1>
+    </div>
 </header>
 
 <?php include_once "assets/includes/inc.nav.php"; ?>
@@ -38,7 +48,7 @@ require_once "vendor/autoload.php";
         </div>
     </div>
 
-    <div id="quiz" class="displayMessage" data-username="Strider">
+    <div id="quiz" class="displayMessage" data-username="<?= $username ?>">
         <div class="triviaContainer" data-records=" ">
             <div id="mainGame">
                 <div id="current">Question No. <span id="currentQuestion"></span></div>
@@ -76,15 +86,6 @@ require_once "vendor/autoload.php";
 </main>
 
 <div class="sidebar">
-    <div class="info">
-        <h2>Website Information</h2>
-        <p>A responsive website that deals with photography and website development using the latest coding
-            practices.</p>
-        <p>I also have a GitHub repository on website at <a class="repository"
-                                                            href="https://github.com/Strider64/Miniature01282021"
-                                                            title="Github Repository">Miniature Repository</a> that you
-            are free to check out.</p>
-    </div>
     <article class="addTriviaInfo">
         <table id="scoreboard" class="styled-table">
             <thead>
@@ -101,6 +102,19 @@ require_once "vendor/autoload.php";
             </tbody>
         </table>
     </article>
+    <?php if (!isset($_SESSION['id'])) { ?>
+    <div class="info">
+        <form class="login" method="post" action="admin/login.php">
+            <label class="text_username" for="username">Username</label>
+            <input id="username" class="io_username" type="text" name="user[username]" value="" required>
+            <label class="text_password" for="password">Password</label>
+            <input id="password" class="io_password" type="password" name="user[hashed_password]" required>
+            <button class="form_button" type="submit" name="submit" value="login">submit</button>
+            <a href="admin/register.php" title="register">register</a>
+        </form>
+    </div>
+    <?php } ?>
+
 </div>
 
 <footer class="colophon">

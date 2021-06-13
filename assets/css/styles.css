@@ -738,7 +738,7 @@ form {
     margin-top: 0.625em; }
   form input[type=submit]:hover {
     background-color: #45a049; }
-  form button {
+  form button, form a {
     outline: none;
     color: #fff;
     border: none;
@@ -752,7 +752,7 @@ form {
     padding: 0.313em;
     margin: 0.625em;
     transition: background-color .5s; }
-    form button:hover, form button:active {
+    form button:hover, form button:active, form a:hover, form a:active {
       background-color: #2e6b31; }
 
 /* Footer CSS */

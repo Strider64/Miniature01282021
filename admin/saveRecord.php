@@ -7,7 +7,15 @@ use Miniature\Login;
 use Miniature\Trivia;
 
 Login::is_login($_SESSION['last_login']);
+$user = Login::securityCheck();
 
+/*
+ * Only Sysop privileges are allowed.
+ */
+if ($user['security'] === 'member') {
+    header("Location: index.php");
+    exit();
+}
 
 $data = json_decode(file_get_contents('php://input'), true);
 

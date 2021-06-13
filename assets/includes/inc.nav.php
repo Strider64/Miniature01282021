@@ -20,5 +20,8 @@
         <a href="game.php">Quiz</a>
         <a href="contact.php">Contact</a>
         <a href="admin/login.php">Admin</a>
+        <?php if (isset($_SESSION['id'])) { ?>
+        <a href="admin/logout.php">logout</a>
+        <?php } ?>
     </div>
 </div>

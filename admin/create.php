@@ -9,10 +9,12 @@ use Miniature\Login;
 
 Login::is_login($_SESSION['last_login']);
 
+$user = Login::securityCheck();
+
 /*
  * Only Sysop privileges are allowed.
  */
-if (!Login::securityCheck()) {
+if ($user['security'] === 'member') {
     header("Location: index.php");
     exit();
 }

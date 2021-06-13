@@ -8,8 +8,8 @@ use Miniature\Pagination;
 /*
  * Website Development by John Pepp
  * Created on February 11, 2020
- * Updated on June 7, 2021
- * Version 3.1.5 Beta
+ * Updated on June 13, 2021
+ * Version 3.3.5 Beta
  */
 
 

@@ -134,4 +134,14 @@ class Trivia extends DatabaseObject
         return $result;
     }
 
+    static public function clearTable() {
+
+
+        $sql = "DELETE FROM hs_table WHERE played < CURDATE()";
+
+        $stmt = Database::pdo()->prepare($sql);
+
+        return $stmt->execute();
+    }
+
 }

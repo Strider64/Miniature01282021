@@ -71,6 +71,7 @@ $cms = CMS::page($per_page, $offset, $_SESSION['page']);
     <div class="nav-links">
         <a href="index.php">home</a>
         <a href="create.php">create</a>
+        <a href="../game.php">quiz</a>
         <a href="addQuiz.php">add Q</a>
         <a href="editQuiz.php">edit Q</a>
         <a href="logout.php">logout</a>

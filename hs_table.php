@@ -22,7 +22,7 @@ header('Content-type: application/json');
 $data = json_decode(file_get_contents('php://input'), true);
 $todays_data = new DateTime('now', new DateTimeZone("America/Detroit"));
 $data['day_of_year'] = $todays_data->format('z');
-
+$trivia::clearTable();
 $result = $trivia::insertHighScores($data);
 
 
