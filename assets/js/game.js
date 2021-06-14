@@ -362,7 +362,7 @@
         finalResult.style.display = "block";
         d.querySelector('#scoreboard').style.display = "table";
         d.querySelector('.totalScore').textContent = score;
-        d.querySelector('.username').textContent = "Strider";
+
         d.querySelector('.answeredRight').textContent = answeredRight.toString();
         //d.querySelector('.totalQuestions').textContent = totalQuestions;
         hs_table.player = username;

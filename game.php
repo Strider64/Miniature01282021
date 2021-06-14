@@ -59,7 +59,6 @@ if (isset($_SESSION['id'])) {
                     <div id="buttonContainer"></div>
                 </div>
 
-
                 <div id="headerStyle" data-user="">
                     <div class="gauge">
                         <div class="gauge__body">
@@ -70,8 +69,6 @@ if (isset($_SESSION['id'])) {
                     <p id="score">0 Points</p>
                     <p id="percent">100% Correct</p>
 
-
-
                     <button id="next" class="nextBtn">Next</button>
                 </div>
 
@@ -80,8 +77,9 @@ if (isset($_SESSION['id'])) {
     </div>
     <div id="finalResult">
         <h2>Game Over!</h2>
-        <p><span class="username"></span> ended up with <span class="totalScore"></span> points and answered <span
+        <p><?= $username ?> ended up with <span class="totalScore"></span> points and answered <span
                     class="answeredRight"></span> right.</p>
+        <a class="btn1" href="game.php" title="Quiz">Play Again?</a>
     </div>
 </main>
 

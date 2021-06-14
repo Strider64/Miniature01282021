@@ -510,6 +510,39 @@ article.cms {
   }
 }
 
+#finalResult {
+  padding: 1.250em;
+  h2 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.8em;
+    color: darken($color-really-dark-02, 15%);
+  }
+  p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    color: darken($color-really-dark-02, 15%);
+  }
+}
+
+.btn1 {
+  outline: none;
+  color: #fff;
+  border: none;
+  background-color: #4CAF50;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+  width: 6.25em;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.2em;
+  text-transform: capitalize;
+  text-decoration: none;
+  padding: 0.313em;
+  margin: 0.625em;
+  transition: background-color .5s;
+
+  &:hover, &:active {
+    background-color: darken(#45a049, 15%);
+  }
+}
 
 #mainGame #headerStyle h2 #clock {
   opacity: 0;
