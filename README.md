@@ -13,7 +13,7 @@ My Main Website based off a tutorial that I am following, but switching from mys
 a much cleaner way of implementation and easier. I still have ways to go, but once I'm finish my classes should
 be easier to transferred from one project to another project. 
 
-#Login and Registration System, Plus Improved Game Play
+# Login and Registration System, Plus Improved Game Play
 
 I added a Login and Registration system to the website in order to improve my game play. I also added
 a high scores table that gives the top 5 players and scores for that date, the table also resets everyday
