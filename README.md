@@ -1,7 +1,7 @@
 # Website Development & Design
 Created by John Pepp on February 1, 2021
 
-Updated on March 24, 2021
+Updated on June 13, 2021
 
 A responsive website that deals with photography and website development using the latest coding practices.
 
@@ -13,3 +13,9 @@ My Main Website based off a tutorial that I am following, but switching from mys
 a much cleaner way of implementation and easier. I still have ways to go, but once I'm finish my classes should
 be easier to transferred from one project to another project. 
 
+#Login and Registration System, Plus Improved Game Play
+
+I added a Login and Registration system to the website in order to improve my game play. I also added
+a high scores table that gives the top 5 players and scores for that date, the table also resets everyday
+once a player has played the new day. I improved the CSS, but plan on improving in order to make game
+play better and look better on mobile devices. 
