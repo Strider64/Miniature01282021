@@ -64,9 +64,8 @@
         shotsRemaining = 3,
 
         choose = d.querySelector('#selectCat'),
-        failedLoad = false,
         username = d.querySelector('.displayMessage').getAttribute('data-username'),
-        finalResult =d.querySelector('#finalResult'),
+        finalResult = d.querySelector('#finalResult'),
         hs_table = {};
 
     let responseAns = {};
@@ -101,7 +100,7 @@
                     setGaugeValue(gaugeElement, shotsRemaining / 3);
                 }
                 scoringFcn(userAnswer, correct);
-                //highlightFCN(userAnswer, correct);
+                highlightFCN(userAnswer, correct);
                 calcPercent(answeredRight, total);
                 disableListeners();
                 if ((gameIndex + 1) === totalQuestions) {
@@ -378,6 +377,7 @@
         next.style.display = "none";
         next.removeEventListener('click', removeQuiz, false);
         gameIndex++;
+        window.scrollTo(0, 0);
 
         if (gameIndex < totalQuestions && shotsRemaining > 0) {
             createQuiz(gameData[gameIndex]); // Recreate the Quiz Display:
@@ -398,20 +398,21 @@
          * create.
          */
         gameData.answers.forEach((value, index) => {
-            /*
-             * Don't Show Answers that have a Blank Field
-             */
+
 
             let gameButton = buttonContainer.appendChild(d.createElement('button'));
             gameButton.id = 'answer' + (index + 1);
             gameButton.className = 'answerButton';
             gameButton.setAttribute('data-correct', (index + 1));
             gameButton.addEventListener('click', clickHandler, false);
+            /*
+             * Don't Show Answers that have a Blank Field
+             */
             if (value !== "") {
                 gameButton.appendChild(d.createTextNode(value));
             } else {
                 gameButton.appendChild(d.createTextNode(" "));
-                gameButton.style.pointerEvents = "none";
+                gameButton.style.pointerEvents = "none"; // Disable Click on Empty Field
             }
         });
     };
@@ -420,7 +421,7 @@
     const quizUISuccess = (parsedData) => {
         mainGame.style.display = 'grid';
         d.getElementById('content').scrollIntoView();
-        console.log(parsedData);
+        //console.log(parsedData);
         gameData = parsedData;
         //gameData = parsedData.sort(() => Math.random() - .5); // randomize questions:
         totalQuestions = parseInt(gameData.length);
@@ -465,7 +466,6 @@
 
     d.querySelector('#customBtn').addEventListener('click', startGame, false);
     d.querySelector('#quiz').style.display = "none";
-
 
 
 })();

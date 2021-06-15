@@ -452,7 +452,7 @@ article.cms {
     font-weight: 500; }
   .displayStatus p {
     font-family: 'Rubik', sans-serif;
-    font-size: 1.4em;
+    font-size: 1.0em;
     line-height: 1.5; }
   .displayStatus #customBtn {
     display: block;
@@ -606,7 +606,7 @@ article.cms {
 
 #mainGame #triviaSection #questionBox {
   background-color: #F5F5F5;
-  padding: 0.313em 0.625em; }
+  padding: 0.125em 0.625em; }
 
 #mainGame #triviaSection #questionBox h2 {
   font-family: 'Work Sans', sans-serif;
@@ -831,7 +831,8 @@ form {
       grid-area: external; }
 
     .main {
-      grid-area: main; }
+      grid-area: main;
+      font-size: 1.2em; }
 
     .colophon {
       grid-area: footer; }

@@ -1,0 +1,15 @@
+RewriteEngine on
+#RewriteBase /
+
+
+RewriteRule ^(index|game|contact)$ $1.php [NC,L]
+RewriteRule ^index.php/(\d+)$ index.php?page=1 [NC,L]
+
+#RewriteRule ^display/(\d+)$ display_page.php?id=$1 [NC,L]
+#RewriteRule ^index/(\d+)$ indexbackup.php?page=$1 [NC,L]
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule (.+) $1.php [NC,L]
+
+
+

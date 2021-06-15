@@ -380,7 +380,7 @@ article.cms {
 
   p {
     font-family: 'Rubik', sans-serif;
-    font-size: 1.4em;
+    font-size: 1.0em;
     line-height: 1.5;
   }
 
@@ -564,7 +564,7 @@ article.cms {
 
 #mainGame #triviaSection #questionBox {
   background-color: $color-light-01;
-  padding: 0.313em 0.625em;
+  padding: 0.125em 0.625em;
 }
 
 #mainGame #triviaSection #questionBox h2 {
@@ -860,6 +860,7 @@ form {
 
     .main {
       grid-area: main;
+      font-size: 1.2em;
     }
     .colophon {
       grid-area: footer;

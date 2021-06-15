@@ -4,6 +4,10 @@ require_once "vendor/autoload.php";
 
 use Miniature\Login;
 
+try {
+    $today = new DateTime("Now", new DateTimeZone("America/Detroit"));
+} catch (Exception $e) {
+}
 if (isset($_SESSION['id'])) {
     $username = Login::username();
 } else {
@@ -35,16 +39,17 @@ if (isset($_SESSION['id'])) {
     <div class="displayStatus">
         <span id="clock"></span>
         <h4 class="displayTitle">Welcome to Photography Trivia</h4>
-        <p class="triviaInfo">Photography Trivia game is written in vanilla javascript and can be easily transported
-            along with the
-            HTML/CSS.
-            Questions and answers are stored in a database table that is easily accessed through PHP, Ajax and
-            Javascript.
-            I obtained an Associates Degree in Computer Graphics: Game Design and Interactive Media that has helped me
-            through
-            the years to develop this game.</p>
+        <p class="triviaInfo">The Miniature Photographer Trivia game has been improved to include
+        a high score table of the top 5 players for that day. Eventually the top winner that day will be
+        allowed to add his/her own question with answers regarding <b>photography</b>. A player can
+        play as long as he or she doesn't get more than 3 questions wrong. In order to win the daily
+        competition you must be registered and login to be eligible; otherwise, a <i>Guest</i>username
+        will be used and won't be factored into the high scores table. (Winning that is)</p>
+        <p>I am still updating this trivia game and I hope to have it finished by the end the week. There might
+        be modifications to the gameplay (rules) and I am always open to constructive critiques
+        to the game.</p>
         <div id="startBtn">
-            <a class="logo" id="customBtn" title="Start Button" href="game.php">Start Button</a>
+            <a class="logo" id="customBtn" title="Start Button" href="game.php">Start Game</a>
         </div>
     </div>
 
@@ -88,7 +93,7 @@ if (isset($_SESSION['id'])) {
         <table id="scoreboard" class="styled-table">
             <thead>
             <tr class="tableTitle">
-                <th colspan="2">High Scores</th>
+                <th colspan="2">High Scores - <?= $today->format("F j, Y") ?></th>
             </tr>
             <tr class="subTitle">
                 <th>Name</th>

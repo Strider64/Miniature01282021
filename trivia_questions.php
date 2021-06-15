@@ -29,6 +29,10 @@ if (isset($category)) { // Get rid of $api_key if not using:
 
         foreach ($question_data as $key => $value) {
 
+            /*
+             * Use Switch Function to convert to the right array format
+             * that is bases on the key (index) of that array.
+             */
             switch ($key) {
 
                 case 'answer1':
