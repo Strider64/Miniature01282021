@@ -36,7 +36,7 @@ class CMS extends DatabaseObject
         return substr($content, 0, $count) . "...";
     }
 
-    public static function styleTime($time_style): string
+    public static function styleTime($prettyDate): string
     {
         try {
             $dateStylized = new DateTime($prettyDate, new DateTimeZone("America/Detroit"));

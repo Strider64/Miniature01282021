@@ -420,7 +420,21 @@ article.cms {
     width: 100%;
     max-width: 37.000em; }
   article.cms p {
-    color: #38603D; }
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.2em;
+    line-height: 1.5;
+    color: #2e2e2e; }
+  article.cms a.anchorStyle {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.0em;
+    line-height: 1.5;
+    color: #2e2e2e;
+    text-decoration: none; }
+    article.cms a.anchorStyle:active, article.cms a.anchorStyle:visited {
+      color: #63846D;
+      font-size: 1.2em; }
+    article.cms a.anchorStyle:hover {
+      color: #3f90af; }
 
 .nasa_perseverance_container figcaption {
   font-family: 'Work Sans', sans-serif;

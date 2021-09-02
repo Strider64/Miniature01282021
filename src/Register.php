@@ -49,10 +49,6 @@ class Register extends DatabaseObject
 
     public function __construct($args = [])
     {
-
-        //echo "<pre>" . print_r($args, 1) . "</pre>";
-        //die();
-
         $args['hashed_password'] = password_hash($args['hashed_password'], PASSWORD_DEFAULT);
         // Caution: allows private/protected properties to be set
         foreach ($args as $k => $v) {

@@ -1,15 +1,13 @@
 <?php
 require_once 'assets/config/config.php';
 require_once "vendor/autoload.php";
-
-use Miniature\CMS;
-use Miniature\Pagination;
+require_once 'assets/functions/procedural_database_functions.php';
 
 /*
  * Website Development by John Pepp
  * Created on February 11, 2020
- * Updated on June 13, 2021
- * Version 3.3.5 Beta
+ * Updated on June 28, 2021
+ * Version 3.3.7 Beta - adding a gallery
  */
 
 
@@ -25,22 +23,21 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
 }
 
 $per_page = 1; // Total number of records to be displayed:
-$total_count = CMS::countAllPage('index'); // Total Records in the db table:
+$total_count = totalRecords($pdo, 'cms');
 
 
-/* Send the 3 variables to the Pagination class to be processed */
-$pagination = new Pagination($current_page, $per_page, $total_count);
+/* calculate the offset */
+$offset = $per_page * ($current_page - 1);
 
+/* calculate total pages to be displayed */
+$total_pages = ceil($total_count / $per_page);
 
-/* Grab the offset (page) location from using the offset method */
-$offset = $pagination->offset();
+//$previous = previous_link('index.php', $current_page);
+//$next = next_link('index.php', $current_page, $total_pages);
+$links = links_function('index.php', $current_page, $total_pages);
 
-/*
- * Grab the data from the CMS class method *static*
- * and put the data into an array variable.
- */
-$cms = CMS::page($per_page, $offset);
-
+$cms = readData($pdo, 'cms', 'blog', $per_page, $offset);
+//echo '<pre>' . print_r($cms,1) . "</pre>";
 ?>
 <!doctype html>
 <html lang="en">
@@ -49,7 +46,7 @@ $cms = CMS::page($per_page, $offset);
     <meta name="viewport"
           content="width=device-width, user-scalable=yes, initial-scale=1.0">
     <title>The Miniature Photographer</title>
-    <link rel="stylesheet" media="all" href="assets/css/styles.css">
+    <link rel="stylesheet" media="all" href="assets/css/miniature.css">
 </head>
 <body class="site">
 <div id="skip"><a href="#content">Skip to Main Content</a></div>
@@ -57,45 +54,47 @@ $cms = CMS::page($per_page, $offset);
 
 </header>
 
-<?php include_once "assets/includes/inc.nav.php"; ?>
+<div class="nav">
+    <input type="checkbox" id="nav-check">
+
+    <h3 class="nav-title">
+        The Miniature Photographer
+    </h3>
+
+    <div class="nav-btn">
+        <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.php">Home</a>
+        <a href="contact.php">Contact</a>
+        <a href="https://www.phototechguru.com/">PhotoTech</a>
+
+    </div>
+</div>
 
 <main id="content" class="main">
     <div class="container">
         <?php foreach ($cms as $record) { ?>
-            <article class="cms" itemscope itemtype="http://schema.org/Article">
-                <header itemprop="articleBody">
-                    <div class="byline" itemprop="author publisher" itemscope itemtype="http://schema.org/Organization">
-                        <img itemprop="image logo" class="logo" src="assets/images/img-logo-004.png"
-                             alt="website logo">
-                        <h2 itemprop="headline" class="title"><?= $record['heading'] ?></h2>
-                        <span itemprop="name" class="author_style">Created by <?= $record['author'] ?> on
-                        <time itemprop="dateCreated datePublished"
-                              datetime="<?= htmlspecialchars(CMS::styleTime($record['date_added'])) ?>"><?= htmlspecialchars(CMS::styleDate($record['date_added'])) ?></time></span>
-                    </div>
-                    <img itemprop="image" class="article_image"
-                         src="<?php echo htmlspecialchars($record['image_path']); ?>" <?= getimagesize($record['image_path'])[3] ?>
-                         alt="article image">
-                </header>
+            <article class="cms">
+                <img class="article_image"
+                     src="<?php echo htmlspecialchars($record['image_path']); ?>" <?= getimagesize($record['image_path'])[3] ?>
+                     alt="article image">
+                <h2><?= $record['heading'] ?></h2>
+                <span class="author_style">Created by <?= $record['author'] ?>
+                    on <?= $record['date_added'] ?>
+                </span>
                 <p><?= nl2br($record['content']) ?></p>
             </article>
         <?php } ?>
-        <?php
-        //$url = 'index.php';
-        //echo $pagination->new_page_links($url);
-        ?>
     </div>
 </main>
 <div class="sidebar">
-    <div class="info">
-        <h2>Website Information</h2>
-        <p>A responsive website that deals with photography and website development using the latest coding
-            practices.</p>
-        <p>I also have a GitHub repository on website at <a class="repository"
-                                                            href="https://github.com/Strider64/Miniature01282021"
-                                                            title="Github Repository">Miniature Repository</a> that you
-            are free to check out.</p>
-    </div>
-
+    <?= $links ?>
 </div>
 <footer class="colophon">
     <p>&copy; <?php echo date("Y") ?> The Miniature Photographer</p>

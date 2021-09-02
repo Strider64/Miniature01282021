@@ -88,7 +88,7 @@ const contact = () => {
         let status = emailIsValid(email.value);
         console.log('Email Address', email.value, 'Status', status);
         if (!status) {
-            email.value = "";``
+            email.value = "";
             email.placeholder = "Email Address is Invalid!";
             email.style.borderColor = "red";
             email.focus();
@@ -113,6 +113,7 @@ const contact = () => {
 
 
     comments.addEventListener("input", () => {
+        // noinspection JSValidateTypes
         output.textContent = comments.value.length;
         const value = comments.value.trim();
 
@@ -175,6 +176,11 @@ const contact = () => {
         sendEmail.phone = phone.value;
         sendEmail.website = website.value;
         sendEmail.response = submit.getAttribute('data-response');
+        if (email.value === '') {
+            email.placeholder = "Email Address is Invalid!";
+            email.style.borderColor = "red";
+            email.focus();
+        }
          if (sendStatus.name && sendStatus.email && sendStatus.comments) {
             saveRequest(sendUrl, sendUISuccess, sendUIError);
         } else {

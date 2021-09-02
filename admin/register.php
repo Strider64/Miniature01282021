@@ -86,7 +86,7 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST['submit'])) {
 <div class="sidebar">
     <div class="info">
         <h2>New Registration System</h2>
-        <p>I'm current implementing a registration system, so please don't try to register at this time as it's still in development. You can, but the account will probably end up being deleted. I will let everyone know with the registration system is complete.</p>
+        <p>I'm current implementing a registration system. Feel to register, but accounts may be deleted from time to time as this is still in development.</p>
     </div>
 </div>
 <main id="content" class="main">
@@ -133,7 +133,7 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST['submit'])) {
         </div>
 
         <div class="birthday">
-            <label for="birthday">Birthday</label>
+            <label for="birthday">Birthday (optional)</label>
             <input id="birthday" type="date" name="user[birthday]" value="1970-01-01" tabindex="9">
         </div>
 

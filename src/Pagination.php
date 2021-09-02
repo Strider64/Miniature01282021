@@ -40,7 +40,7 @@ class Pagination {
         return ($next <= $this->total_pages()) ? $next : false;
     }
 
-    #[Pure] public function previous_link($url=""): string
+    public function previous_link($url=""): string
     {
         if($this->previous_page() !== false) {
             static::$links .= '<a href="' . $url . '?page=' . $this->previous_page() . '">';
@@ -49,7 +49,7 @@ class Pagination {
         return static::$links;
     }
 
-    #[Pure] public function next_link($url=""): string
+    public function next_link($url=""): string
     {
 
         if($this->next_page() !== false) {

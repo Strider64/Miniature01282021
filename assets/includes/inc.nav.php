@@ -15,6 +15,7 @@
 
     <div class="nav-links">
         <a href="index.php">Home</a>
+        <a href="gallery.php">Gallery</a>
         <a href="blog.php">Blog</a>
         <a href="about.php">About</a>
         <a href="game.php">Quiz</a>

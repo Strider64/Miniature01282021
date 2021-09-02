@@ -11,7 +11,7 @@ $user = Login::securityCheck();
 /*
  * Only Sysop privileges are allowed.
  */
-if ($user['security'] === 'member') {
+if ($user['security'] !== 'sysop') {
     header("Location: index.php");
     exit();
 }
@@ -64,7 +64,7 @@ if ($user['security'] === 'member') {
         <h2 id="status">Record No. <span id="position"></span></h2>
         <a id="eNext" class="btn" title="Next Button" href="#">Next</a>
     </div>
-    <form id="editTrivia" class="trivia_form" action="editTrivia.php" method="post" data-key="">
+    <form id="editTrivia" class="trivia_form" action="editQuiz.php" method="post" data-key="">
 
         <input id="id" type="hidden" name="id" value="0">
         <input id="user_id" type="hidden" name="user_id" value="">
@@ -91,7 +91,7 @@ if ($user['security'] === 'member') {
     </form>
 </main>
 <footer class="colophon">
-    <p>&copy; <?php echo date("Y") ?> The Miniature Photographer</p>
+    <p>&copy; <?php echo date("Y") ?> The Photo Tech Guru</p>
 </footer>
 <script type="text/javascript" src="../assets/js/edit.js"></script>
 </body>

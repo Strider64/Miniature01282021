@@ -186,7 +186,7 @@ class CalendarObject {
         $generate .= '<a data-pos="prev" class="prev-left" href="' . $this->output[0]['previous'] . '">prev</a>' . "\n";
         $generate .= '<h1 class="output-month">' . $this->output[0]['month'] . '</h1>' . "\n";
         $generate .= '<a data-pos="next" class="next-right" href="' . $this->output[0]['next'] . '">next</a>' . "\n";
-        $generate .= '</div>' . "\n"; // End of calendar-header:
+        $generate .= '</div>' . "\n"; // End of calendar-header class div:
 
 
         /*
@@ -202,8 +202,8 @@ class CalendarObject {
                 $generate .= '<div class="' . $this->output[$j]['class'] . '">' . $this->output[$j]['date'] . '</div>' . "\n";
             }
 
-        $generate .= '</div>' . "\n"; // End of calendar container:
-        $generate .= '</div>' . "\n"; // End of calendar-container:
+        $generate .= '</div>' . "\n"; // End of calendar class div:
+        $generate .= '</div>' . "\n"; // End of calendar-container class div:
         return $generate;
     }
 

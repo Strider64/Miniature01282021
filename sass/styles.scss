@@ -265,6 +265,8 @@ h2.main_heading {
   }
 }
 
+
+
 /* pagination */
 .pagination {
   display: flex;
@@ -327,8 +329,28 @@ article.cms {
   }
 
   p {
-    color: $color-really-dark-02;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.2em;
+    line-height: 1.5;
+    color: #2e2e2e;
   }
+
+  a.anchorStyle {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.0em;
+    line-height: 1.5;
+    color: #2e2e2e;
+    text-decoration: none;
+
+    &:active, &:visited {
+      color: #63846D;
+      font-size: 1.2em;
+    }
+    &:hover {
+      color: #3f90af;
+    }
+  }
+
 }
 
 

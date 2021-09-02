@@ -1,0 +1,270 @@
+/*--------------------------------------------------------------
+CSS Reset
+--------------------------------------------------------------*/
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,700;1,500&family=Work+Sans:ital,wght@0,400;0,500;0,700;1,500;1,600&display=swap");
+html {
+  font-family: sans-serif; }
+
+body {
+  margin: 0; }
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block; }
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline; }
+
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+[hidden],
+template {
+  display: none; }
+
+a {
+  background-color: transparent; }
+
+a:active,
+a:hover {
+  outline: 0; }
+
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+b,
+strong {
+  font-weight: bold; }
+
+dfn {
+  font-style: italic; }
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0; }
+
+mark {
+  background: #ff0;
+  color: #000; }
+
+small {
+  font-size: 80%; }
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+img {
+  display: block;
+  border: 0;
+  width: 100%;
+  height: auto; }
+
+svg:not(:root) {
+  overflow: hidden; }
+
+figure {
+  margin: 1em 40px; }
+
+hr {
+  box-sizing: content-box;
+  height: 0; }
+
+pre {
+  overflow: auto; }
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em; }
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0; }
+
+button {
+  overflow: visible; }
+
+button,
+select {
+  text-transform: none; }
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer; }
+
+button[disabled],
+html input[disabled] {
+  cursor: default; }
+
+input {
+  line-height: normal; }
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0; }
+
+input[type="search"] {
+  box-sizing: content-box; }
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em; }
+
+legend {
+  border: 0;
+  padding: 0; }
+
+textarea {
+  overflow: auto; }
+
+optgroup {
+  font-weight: bold; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+td,
+th {
+  padding: 0; }
+
+/* Accessibility */
+#skip a {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden; }
+  #skip a:focus {
+    position: static;
+    width: auto;
+    height: auto; }
+
+h1, h2, h3, h4, h5, h6, legend, label {
+  font-family: 'Work Sans', sans-serif; }
+
+p, a, label, textarea {
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.2em;
+  line-height: 1.5;
+  font-weight: normal; }
+
+/* Navigational CSS */
+.nav {
+  position: relative;
+  width: 100%;
+  height: 3.700em;
+  background-color: #2e2e2e;
+  border-bottom: 1px solid #e6e6e6; }
+
+.nav-title {
+  display: inline-block;
+  font-size: 1.2em;
+  line-height: 0.5;
+  color: #4CAF50;
+  padding-left: 0.625em; }
+
+.nav > .nav-btn {
+  display: none; }
+
+.nav > .nav-links {
+  display: inline;
+  float: right;
+  font-size: 1.250em;
+  padding-right: 3.125em; }
+
+.nav > .nav-links > a {
+  display: inline-block;
+  line-height: 1.875em;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #efefef;
+  padding: 0.313em 0.625em; }
+
+.nav > .nav-links > a:hover {
+  background-color: #4CAF50; }
+
+.nav > #nav-check {
+  display: none; }
+
+/* Navigation CSS Media Query */
+@media screen and (max-width: 77em) {
+  .nav > .nav-btn {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0; }
+
+  .nav > .nav-btn > label {
+    display: inline-block;
+    cursor: pointer;
+    width: 3.125em;
+    height: 3.125em;
+    padding: 0.875em; }
+
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 1.563em;
+    height: 0.500em;
+    border-top: 0.125em solid #eee; }
+
+  .nav > .nav-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #333;
+    height: 0;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 3.125em;
+    left: 0; }
+
+  .nav > .nav-links > a {
+    display: block;
+    width: 100%; }
+
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0; }
+
+  .nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 3.125em);
+    overflow-y: auto; } }
+
+/*# sourceMappingURL=gallery.css.map */

@@ -1,0 +1,398 @@
+/*--------------------------------------------------------------
+CSS Reset
+--------------------------------------------------------------*/
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,700;1,500&family=Work+Sans:ital,wght@0,400;0,500;0,700;1,500;1,600&display=swap");
+html {
+  font-family: sans-serif; }
+
+body {
+  margin: 0; }
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block; }
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline; }
+
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+[hidden],
+template {
+  display: none; }
+
+a {
+  background-color: transparent; }
+
+a:active,
+a:hover {
+  outline: 0; }
+
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+b,
+strong {
+  font-weight: bold; }
+
+dfn {
+  font-style: italic; }
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0; }
+
+mark {
+  background: #ff0;
+  color: #000; }
+
+small {
+  font-size: 80%; }
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+img {
+  display: block;
+  border: 0;
+  width: 100%;
+  height: auto; }
+
+svg:not(:root) {
+  overflow: hidden; }
+
+figure {
+  margin: 1em 40px; }
+
+hr {
+  box-sizing: content-box;
+  height: 0; }
+
+pre {
+  overflow: auto; }
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em; }
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0; }
+
+button {
+  overflow: visible; }
+
+button,
+select {
+  text-transform: none; }
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer; }
+
+button[disabled],
+html input[disabled] {
+  cursor: default; }
+
+input {
+  line-height: normal; }
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0; }
+
+input[type="search"] {
+  box-sizing: content-box; }
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em; }
+
+legend {
+  border: 0;
+  padding: 0; }
+
+textarea {
+  overflow: auto; }
+
+optgroup {
+  font-weight: bold; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+td,
+th {
+  padding: 0; }
+
+/* Accessibility */
+#skip a {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden; }
+  #skip a:focus {
+    position: static;
+    width: auto;
+    height: auto; }
+
+/* pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  background-color: #F1F1F1;
+  padding: 0.625em; }
+
+.pagination .three-dots {
+  color: black;
+  font-size: 1.4em;
+  font-weight: bold;
+  margin: 0.313em 0.500em 0; }
+
+.pagination a {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.4em;
+  color: black;
+  text-decoration: none;
+  padding-left: 0.313em; }
+
+.pagination a.selected {
+  font-weight: bolder;
+  color: black;
+  padding-left: 0.313em; }
+
+/* Typography Styling */
+h1, h2, h3, h4, h5, h6, legend, label {
+  font-family: 'Work Sans', sans-serif; }
+
+p, a, label, textarea {
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.2em;
+  line-height: 1.5;
+  font-weight: normal; }
+
+/* Navigational CSS */
+.nav {
+  position: relative;
+  width: 100%;
+  height: 3.700em;
+  background-color: #000;
+  border-bottom: 1px solid #e6e6e6; }
+
+.nav-title {
+  display: inline-block;
+  font-size: 1.2em;
+  line-height: 0.5;
+  color: #fff;
+  padding-left: 0.625em; }
+
+.nav > .nav-btn {
+  display: none; }
+
+.nav > .nav-links {
+  display: inline;
+  float: right;
+  font-size: 1.250em;
+  padding-right: 3.125em; }
+
+.nav > .nav-links > a {
+  display: inline-block;
+  line-height: 1.875em;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #fff;
+  padding: 0.313em 0.625em; }
+
+.nav > .nav-links > a:hover {
+  background-color: #2e2e2e; }
+
+.nav > #nav-check {
+  display: none; }
+
+/* Navigation CSS Media Query */
+@media screen and (max-width: 77em) {
+  .nav > .nav-btn {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0; }
+
+  .nav > .nav-btn > label {
+    display: inline-block;
+    cursor: pointer;
+    width: 3.125em;
+    height: 3.125em;
+    padding: 0.875em; }
+
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 1.563em;
+    height: 0.500em;
+    border-top: 0.125em solid #eee; }
+
+  .nav > .nav-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #333;
+    height: 0;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 3.125em;
+    left: 0; }
+
+  .nav > .nav-links > a {
+    display: block;
+    width: 100%; }
+
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0; }
+
+  .nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 3.125em);
+    overflow-y: auto; } }
+/* CMS Article */
+.cms {
+  background-color: #F5F5F5;
+  padding: 1.250em;
+  margin: 0; }
+  .cms .byline {
+    background-color: #54905C;
+    padding: 0.625em;
+    margin-bottom: 1.250em; }
+    .cms .byline img.logo {
+      width: 6.250em;
+      height: 6.250em; }
+    .cms .byline h2.title, .cms .byline span {
+      color: #fff; }
+  .cms .article_image {
+    width: 100%; }
+  .cms p {
+    color: #000000; }
+
+/* Approximately the size of an iPad 768px */
+@supports (grid-area: auto) {
+  @media screen and (min-width: 48em) {
+    .site {
+      display: grid;
+      grid-template-columns: minmax(1fr, 33.6em);
+      grid-template-areas: "header header" "nav nav" "sidebar main" "footer footer";
+      justify-content: center; }
+
+    .masthead {
+      grid-area: header;
+      display: block; }
+
+    .nav {
+      grid-area: nav; }
+
+    .sidebar {
+      grid-area: sidebar; }
+
+    #content {
+      grid-area: main; }
+      #content .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(31.25em, 1fr));
+        grid-gap: 1.250em;
+        align-items: stretch; }
+        #content .container > article {
+          border: 1px solid #ccc;
+          box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.3); }
+          #content .container > article > img {
+            max-width: 100%; }
+      #content .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(18.5em, 1fr));
+        grid-gap: 1.250em;
+        align-items: stretch; }
+        #content .gallery > article {
+          border: 1px solid #ccc;
+          box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.3); }
+          #content .gallery > article > img {
+            max-width: 100%; }
+        #content .gallery .text {
+          padding: 0 20px 20px; }
+          #content .gallery .text > button {
+            background: gray;
+            border: 0;
+            color: white;
+            padding: 10px;
+            width: 100%; }
+
+    .colophon {
+      grid-area: footer; } } }
+/* Approximately the size of an iPad Pro 12.9in 1024px */
+@supports (grid-area: auto) {
+  @media screen and (min-width: 64em) {
+    .site {
+      display: grid;
+      grid-template-columns: minmax(1fr, 44.8em);
+      grid-template-areas: "header header" "nav nav" "sidebar main" "footer footer";
+      justify-content: center; } } }
+/* Approximately the size of a 1248px large display monitor */
+@supports (grid-area: auto) {
+  @media screen and (min-width: 78em) {
+    .site {
+      display: grid;
+      grid-template-columns: fit-content(50em);
+      grid-template-areas: "header" "nav" "main" "sidebar" "footer";
+      justify-content: center;
+      width: 75em;
+      margin: 0 auto; }
+
+    .masthead {
+      grid-area: header;
+      background-image: url(../images/img-header-001pg.jpg);
+      background-repeat: no-repeat; }
+
+    .checkStyle {
+      grid-area: main;
+      font-size: 1.2em; }
+
+    .sidebar {
+      grid-area: sidebar;
+      justify-content: center; } } }
+
+/*# sourceMappingURL=miniature.css.map */

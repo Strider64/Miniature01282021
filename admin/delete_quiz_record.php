@@ -6,7 +6,15 @@ use Miniature\Trivia;
 use Miniature\Login;
 
 Login::is_login($_SESSION['last_login']);
+$user = Login::securityCheck();
 
+/*
+ * Only Sysop privileges are allowed.
+ */
+if ($user['security'] !== 'sysop') {
+    header("Location: index.php");
+    exit();
+}
 $delete = new Trivia();
 
 $id = $_GET['id'] ?? null;

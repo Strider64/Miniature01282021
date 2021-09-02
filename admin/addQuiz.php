@@ -20,7 +20,7 @@ $user = Login::securityCheck();
 /*
  * Only Sysop privileges are allowed.
  */
-if ($user['security'] === 'member') {
+if ($user['security'] !== 'sysop') {
     header("Location: index.php");
     exit();
 }

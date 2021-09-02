@@ -6,9 +6,9 @@ namespace Miniature;
 use PDO;
 class Database {
 
-    private $_connection;
+    private PDO $_connection;
     // Store the single instance.
-    private static $_instance;
+    private static ?Database $_instance = null; // Don't initialize before it is called:
 
     // Get an instance of the Database.
     // @return Database:
