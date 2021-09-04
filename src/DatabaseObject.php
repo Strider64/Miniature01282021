@@ -160,7 +160,7 @@ class DatabaseObject // Extended by the children class:
             echo 'Caught exception: ', $e->getMessage(), "\n"; // Not for a production server:
         }
 
-
+        return true;
     }
 
     /*
@@ -196,7 +196,7 @@ class DatabaseObject // Extended by the children class:
     }
 
     /*
-     * Delete is probably the most easiest of CRUD (Create Read Update Delete),
+     * Delete is probably the easiest of CRUD (Create Read Update Delete),
      * but is the most dangerous method of the four as the erasure of the data is permanent of
      * PlEASE USE WITH CAUTION! (I use a small javascript code to warn users of deletion)
      */

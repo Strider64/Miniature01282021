@@ -28,6 +28,17 @@ function totalRecords($pdo, $table, $page = 'blog') {
 }
 
 /*
+ * Fetch Single Record by id
+ */
+function fetch_by_id($pdo, $table, $id) {
+    $sql = "SELECT * FROM " . $table . " WHERE id=:id LIMIT 1";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['id' => $id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+/*
+ * Pagination Format
  * Read all the data from the database table in an array format
  */
 function readData($pdo, $table, $page, $perPage, $offset) {
@@ -214,5 +225,22 @@ function next_page($current_page, $total_pages): bool|int
     $links .= next_link('index.php', $current_page, $total_pages); // Display next link if there are any
     $links .= "</div>";
     return $links;
+}
+
+/*
+     * Delete is probably the easiest of CRUD (Create Read Update Delete),
+     * but is the most dangerous method of the four as the erasure of the data is permanent of
+     * PlEASE USE WITH CAUTION! (I use a small javascript code to warn users of deletion)
+     */
+function delete($id, $table, $pdo): bool
+{
+    $sql = 'DELETE FROM ' . $table . ' WHERE id=:id';
+    return $pdo->prepare($sql)->execute([':id' => $id]);
+}
+
+function logout() {
+    unset($_SESSION['last_login'], $_SESSION['id']);
+    header("Location: index.php");
+    exit();
 }
 

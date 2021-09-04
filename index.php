@@ -58,7 +58,7 @@ $cms = readData($pdo, 'cms', 'blog', $per_page, $offset);
     <input type="checkbox" id="nav-check">
 
     <h3 class="nav-title">
-        The Miniature Photographer
+        PHP Procedural Tutorials
     </h3>
 
     <div class="nav-btn">
@@ -71,8 +71,17 @@ $cms = readData($pdo, 'cms', 'blog', $per_page, $offset);
 
     <div class="nav-links">
         <a href="index.php">Home</a>
-        <a href="contact.php">Contact</a>
-        <a href="https://www.phototechguru.com/">PhotoTech</a>
+
+        <?php
+            if (isset($_SESSION['id'])) {
+                echo '<a href="create.php">Create</a>';
+                echo '<a href="logout.php">Logout</a>';
+            } else {
+                echo '<a href="https://www.phototechguru.com/">PhotoTech</a>';
+                echo '<a href="login.php">Login</a>';
+            }
+        ?>
+
 
     </div>
 </div>
@@ -89,6 +98,8 @@ $cms = readData($pdo, 'cms', 'blog', $per_page, $offset);
                     on <?= $record['date_added'] ?>
                 </span>
                 <p><?= nl2br($record['content']) ?></p>
+                <?php echo (isset($_SESSION['id'])) ? '<a class="editButton" href="edit.php?id= ' . urldecode($record['id']) . '">Record ' . urldecode($record['id']) . '</a>' : null; ?>
+
             </article>
         <?php } ?>
     </div>
