@@ -1,7 +1,7 @@
 /*--------------------------------------------------------------
 CSS Reset
 --------------------------------------------------------------*/
-@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,700;1,500&family=Work+Sans:ital,wght@0,400;0,500;0,700;1,500;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;600;700&display=swap");
 html {
   font-family: sans-serif; }
 
@@ -177,12 +177,14 @@ th {
     width: auto;
     height: auto; }
 
+.site {
+  background-color: #fff; }
+
 /* pagination */
 .pagination {
   display: flex;
   justify-content: center;
-  background-color: #F1F1F1;
-  padding: 0.625em; }
+  background-color: #F1F1F1; }
 
 .pagination .three-dots {
   color: black;
@@ -204,10 +206,10 @@ th {
 
 /* Typography Styling */
 h1, h2, h3, h4, h5, h6, legend, label {
-  font-family: 'Work Sans', sans-serif; }
+  font-family: 'IBM Plex Sans Arabic', sans-serif; }
 
 p, a, label, textarea {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
   font-size: 1.2em;
   line-height: 1.5;
   font-weight: normal; }
@@ -291,7 +293,7 @@ p, a, label, textarea {
     height: calc(100vh - 3.125em);
     overflow-y: auto; } }
 .checkStyle {
-  width: 50.000em; }
+  width: 100%; }
 
 code {
   overflow: scroll;
@@ -302,7 +304,7 @@ code {
   background-color: #2e2e2e;
   padding: 0.938em; }
   .form_classes label {
-    font-family: "Rubik", sans-serif;
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
     font-size: 1.2em;
     line-height: 1.5;
     font-weight: normal;
@@ -340,7 +342,7 @@ code {
   .form_classes .select-css {
     display: block;
     font-size: 16px;
-    font-family: sans-serif;
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
     font-weight: 700;
     color: #444;
     line-height: 1.3;
@@ -394,7 +396,7 @@ code {
       background-color: #6e6e6e;
       box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
       width: 6.25em;
-      font-family: "Rubik", sans-serif;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
       font-size: 1.2em;
       text-transform: capitalize;
       text-decoration: none;
@@ -407,9 +409,10 @@ code {
 
 /* CMS Article */
 .cms {
-  background-color: #F5F5F5;
+  height: 100%;
+  background-color: #F5F8FA;
   padding: 1.250em;
-  margin: 1.250em auto; }
+  /* edit button */ }
   .cms .byline {
     background-color: #54905C;
     padding: 0.625em;
@@ -420,9 +423,39 @@ code {
     .cms .byline h2.title, .cms .byline span {
       color: #fff; }
   .cms .article_image {
-    width: 100%; }
+    width: 60%; }
   .cms p {
     color: #000000; }
+  .cms a.editButton {
+    outline: none;
+    float: right;
+    color: #fff;
+    border: none;
+    background-color: #6e6e6e;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+    width: 6.25em;
+    font-family: "Rubik", sans-serif;
+    font-size: 1.2em;
+    text-transform: capitalize;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0.313em;
+    margin: 0.625em;
+    transition: background-color 0.5s; }
+    .cms a.editButton:hover {
+      background-color: #2e2e2e; }
+
+.colophon {
+  grid-area: footer; }
+
+.colophon {
+  display: block;
+  height: auto;
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  color: #F5F5F5;
+  text-align: center;
+  background-color: #2E2E2E;
+  margin-top: 1.250em; }
 
 /* Approximately the size of an iPad 768px */
 @supports (grid-area: auto) {
@@ -535,7 +568,7 @@ code {
   @media screen and (min-width: 78em) {
     .site {
       display: grid;
-      grid-template-columns: fit-content(64em);
+      grid-template-columns: 75em;
       grid-template-areas: "header" "nav" "main" "sidebar" "footer";
       justify-content: center;
       width: 75em;

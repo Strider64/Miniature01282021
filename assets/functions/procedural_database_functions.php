@@ -238,9 +238,5 @@ function delete($id, $table, $pdo): bool
     return $pdo->prepare($sql)->execute([':id' => $id]);
 }
 
-function logout() {
-    unset($_SESSION['last_login'], $_SESSION['id']);
-    header("Location: index.php");
-    exit();
-}
+
 

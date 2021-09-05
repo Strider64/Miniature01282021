@@ -1,5 +1,7 @@
 <?php
 
+use JetBrains\PhpStorm\NoReturn;
+
 function login($username, $password, $pdo, $table) {
     /*
      * Create the PDO Query for the login
@@ -19,4 +21,10 @@ function login($username, $password, $pdo, $table) {
         return $_SESSION['id'] = $user['id'];
     }
     return false;
+}
+
+#[NoReturn] function logout() {
+    unset($_SESSION['last_login'], $_SESSION['id']);
+    header("Location: index.php");
+    exit();
 }

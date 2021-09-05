@@ -2,13 +2,14 @@
 require_once 'assets/config/config.php';
 require_once "vendor/autoload.php";
 require_once 'assets/functions/procedural_database_functions.php';
+require_once 'assets/functions/helper_functions.php';
 
 
 /*
  * Website Development by John Pepp
  * Created on February 11, 2020
- * Updated on June 28, 2021
- * Version 3.3.7 Beta - adding a gallery
+ * Updated on September 5, 2021
+ * Version 4.01 Beta - PHP Procedural Programming with PDO
  */
 
 function codingTags($text): array|string
@@ -16,6 +17,7 @@ function codingTags($text): array|string
     $text = htmlspecialchars($text);
     return str_replace(array('[php]', '[/php]'), array("<pre><code>", "</code></pre>"), $text);
 }
+
 /*
  * Using pagination in order to have a nice looking
  * website page.
@@ -28,6 +30,7 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
 }
 
 $per_page = 1; // Total number of records to be displayed:
+/* Total number of records that NEEDS to be displayed */
 $total_count = totalRecords($pdo, 'cms');
 
 
@@ -37,12 +40,12 @@ $offset = $per_page * ($current_page - 1);
 /* calculate total pages to be displayed */
 $total_pages = ceil($total_count / $per_page);
 
-//$previous = previous_link('index.php', $current_page);
-//$next = next_link('index.php', $current_page, $total_pages);
+/* Figure out the Pagination Links */
 $links = links_function('index.php', $current_page, $total_pages);
 
+/* Finally, call for the data from the database table to display */
 $cms = readData($pdo, 'cms', 'blog', $per_page, $offset);
-//echo '<pre>' . print_r($cms,1) . "</pre>";
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -81,13 +84,13 @@ $cms = readData($pdo, 'cms', 'blog', $per_page, $offset);
         <a href="index.php">Home</a>
 
         <?php
-            if (isset($_SESSION['id'])) {
-                echo '<a href="create.php">Create</a>';
-                echo '<a href="logout.php">Logout</a>';
-            } else {
-                echo '<a href="https://www.phototechguru.com/">PhotoTech</a>';
-                echo '<a href="login.php">Login</a>';
-            }
+        if (isset($_SESSION['id'])) {
+            echo '<a href="create.php">Create</a>';
+            echo '<a href="logout.php">Logout</a>';
+        } else {
+            echo '<a href="https://www.phototechguru.com/">PhotoTech</a>';
+            echo '<a href="login.php">Login</a>';
+        }
         ?>
 
 
@@ -95,30 +98,36 @@ $cms = readData($pdo, 'cms', 'blog', $per_page, $offset);
 </div>
 
 <main id="content" class="checkStyle">
-    <div class="container">
-        <?php foreach ($cms as $record) { ?>
-            <article class="cms">
-                <img class="article_image"
-                     src="<?php echo htmlspecialchars($record['image_path']); ?>" <?= getimagesize($record['image_path'])[3] ?>
-                     alt="article image">
-                <h2><?= $record['heading'] ?></h2>
-                <span class="author_style">Created by <?= $record['author'] ?>
-                    on <?= $record['date_added'] ?>
+
+
+    <!-- Display all the Records in the database table using pagination -->
+    <?php foreach ($cms as $record) { ?>
+        <article class="cms">
+            <img class="article_image"
+                 src="<?php echo htmlspecialchars($record['image_path']); ?>" <?= getimagesize($record['image_path'])[3] ?>
+                 alt="article image">
+            <h2><?= $record['heading'] ?></h2>
+            <span class="author_style">Created by <?= $record['author'] ?>
+                    on <?= style_date($record['date_added']) ?>
                 </span>
-                <?php
-                //$content = str_replace("[code]", "<pre><code class=\"language-html\">", $record['content']);
-                //$content2 = str_replace("[/code]", "</code></pre>", $content);
-                $content = codingTags($record['content']);
-                ?>
+            <?php
+            /*
+             * Display code using highlight.js that shows
+             * the code in proper format and highlighting by
+             * call the codingTags() function.
+             */
+            $content = codingTags($record['content']);
+            ?>
 
 
-                <p><?= nl2br($content) ?></p>
-                <?php echo (isset($_SESSION['id'])) ? '<a class="editButton" href="edit.php?id= ' . urldecode($record['id']) . '">Record ' . urldecode($record['id']) . '</a>' : null; ?>
-            </article>
-        <?php } ?>
-    </div>
+            <p><?= nl2br($content) ?></p>
+            <?php echo (isset($_SESSION['id'])) ? '<a class="editButton" href="edit.php?id= ' . urldecode($record['id']) . '">Record ' . urldecode($record['id']) . '</a>' : null; ?>
+        </article>
+    <?php } ?>
+
 </main>
 <div class="sidebar">
+    <!-- The HTML links to make Pagination useful -->
     <?= $links ?>
 </div>
 <footer class="colophon">
