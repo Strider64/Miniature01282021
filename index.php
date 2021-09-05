@@ -4,7 +4,6 @@ require_once "vendor/autoload.php";
 require_once 'assets/functions/procedural_database_functions.php';
 require_once 'assets/functions/helper_functions.php';
 
-
 /*
  * Website Development by John Pepp
  * Created on February 11, 2020
@@ -109,7 +108,8 @@ $cms = readData($pdo, 'cms', 'blog', $per_page, $offset);
             <h2><?= $record['heading'] ?></h2>
             <span class="author_style">Created by <?= $record['author'] ?>
                     on <?= style_date($record['date_added']) ?>
-                </span>
+            </span>
+
             <?php
             /*
              * Display code using highlight.js that shows
@@ -118,7 +118,6 @@ $cms = readData($pdo, 'cms', 'blog', $per_page, $offset);
              */
             $content = codingTags($record['content']);
             ?>
-
 
             <p><?= nl2br($content) ?></p>
             <?php echo (isset($_SESSION['id'])) ? '<a class="editButton" href="edit.php?id= ' . urldecode($record['id']) . '">Record ' . urldecode($record['id']) . '</a>' : null; ?>
