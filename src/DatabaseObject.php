@@ -60,7 +60,7 @@ class DatabaseObject // Extended by the children class:
      */
     public static function page($perPage, $offset, $loc = 'index'): array
     {
-        $sql = 'SELECT * FROM ' . static::$table . ' WHERE page=:page ORDER BY date_updated DESC LIMIT :perPage OFFSET :blogOffset';
+        $sql = 'SELECT * FROM ' . static::$table . ' WHERE page=:page ORDER BY date_updated ASC LIMIT :perPage OFFSET :blogOffset';
         $stmt = Database::pdo()->prepare($sql); // Prepare the query:
         $stmt->execute(['perPage' => $perPage, 'blogOffset' => $offset, 'page' => $loc]); // Execute the query with the supplied data:
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

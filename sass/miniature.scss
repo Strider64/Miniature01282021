@@ -18,6 +18,7 @@
   }
 }
 
+
 /* pagination */
 .pagination {
   display: flex;
@@ -148,7 +149,14 @@ p, a, label, textarea {
     overflow-y: auto;
   }
 }
+.checkStyle {
+  width: 50.000em;
+}
 
+code {
+  overflow: scroll;
+  height: 25.000em;
+}
 /* Form Styling */
 .form_classes {
   background-color: #2e2e2e;
@@ -358,13 +366,9 @@ p, a, label, textarea {
     .sidebar {
       grid-area: sidebar;
     }
-    #content {
-      grid-area: main;
-    }
 
     .checkStyle {
       grid-area: main;
-      font-size: 1.2em;
     }
 
     .form_classes {

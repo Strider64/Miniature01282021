@@ -55,8 +55,6 @@ class CMS extends DatabaseObject
 
         $stmt->execute([ static::$searchItem => static::$searchValue ]);
         return $stmt->fetchColumn();
-
-
     }
 
     protected static function filterwords($text){

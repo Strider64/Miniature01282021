@@ -3,6 +3,7 @@ require_once 'assets/config/config.php';
 require_once "vendor/autoload.php";
 require_once 'assets/functions/procedural_database_functions.php';
 
+
 /*
  * Website Development by John Pepp
  * Created on February 11, 2020
@@ -10,7 +11,11 @@ require_once 'assets/functions/procedural_database_functions.php';
  * Version 3.3.7 Beta - adding a gallery
  */
 
-
+function codingTags($text): array|string
+{
+    $text = htmlspecialchars($text);
+    return str_replace(array('[php]', '[/php]'), array("<pre><code>", "</code></pre>"), $text);
+}
 /*
  * Using pagination in order to have a nice looking
  * website page.
@@ -47,6 +52,10 @@ $cms = readData($pdo, 'cms', 'blog', $per_page, $offset);
           content="width=device-width, user-scalable=yes, initial-scale=1.0">
     <title>The Miniature Photographer</title>
     <link rel="stylesheet" media="all" href="assets/css/miniature.css">
+    <link rel="stylesheet" href="assets/js/styles/a11y-light.min.css">
+    <script src="assets/js/highlight.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
 </head>
 <body class="site">
 <div id="skip"><a href="#content">Skip to Main Content</a></div>
@@ -56,7 +65,6 @@ $cms = readData($pdo, 'cms', 'blog', $per_page, $offset);
 
 <div class="nav">
     <input type="checkbox" id="nav-check">
-
     <h3 class="nav-title">
         PHP Procedural Tutorials
     </h3>
@@ -86,7 +94,7 @@ $cms = readData($pdo, 'cms', 'blog', $per_page, $offset);
     </div>
 </div>
 
-<main id="content" class="main">
+<main id="content" class="checkStyle">
     <div class="container">
         <?php foreach ($cms as $record) { ?>
             <article class="cms">
@@ -97,9 +105,15 @@ $cms = readData($pdo, 'cms', 'blog', $per_page, $offset);
                 <span class="author_style">Created by <?= $record['author'] ?>
                     on <?= $record['date_added'] ?>
                 </span>
-                <p><?= nl2br($record['content']) ?></p>
-                <?php echo (isset($_SESSION['id'])) ? '<a class="editButton" href="edit.php?id= ' . urldecode($record['id']) . '">Record ' . urldecode($record['id']) . '</a>' : null; ?>
+                <?php
+                //$content = str_replace("[code]", "<pre><code class=\"language-html\">", $record['content']);
+                //$content2 = str_replace("[/code]", "</code></pre>", $content);
+                $content = codingTags($record['content']);
+                ?>
 
+
+                <p><?= nl2br($content) ?></p>
+                <?php echo (isset($_SESSION['id'])) ? '<a class="editButton" href="edit.php?id= ' . urldecode($record['id']) . '">Record ' . urldecode($record['id']) . '</a>' : null; ?>
             </article>
         <?php } ?>
     </div>

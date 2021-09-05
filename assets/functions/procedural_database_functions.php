@@ -42,7 +42,7 @@ function fetch_by_id($pdo, $table, $id) {
  * Read all the data from the database table in an array format
  */
 function readData($pdo, $table, $page, $perPage, $offset) {
-    $sql = 'SELECT * FROM ' . $table . ' WHERE page=:page ORDER BY date_updated DESC LIMIT :perPage OFFSET :blogOffset';
+    $sql = 'SELECT * FROM ' . $table . ' WHERE page=:page ORDER BY date_added DESC LIMIT :perPage OFFSET :blogOffset';
     $stmt = $pdo->prepare($sql); // Prepare the query:
     $stmt->execute(['perPage' => $perPage, 'blogOffset' => $offset, 'page' => $page]); // Execute the query with the supplied data:
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
